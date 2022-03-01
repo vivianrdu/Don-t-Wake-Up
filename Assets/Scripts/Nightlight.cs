@@ -10,6 +10,7 @@ public class Nightlight : MonoBehaviour
 
     #region Physics_components
     BoxCollider2D nightlightBC;
+    public float radius;
     #endregion
 
     #region Targeting_variables
@@ -21,7 +22,7 @@ public class Nightlight : MonoBehaviour
     // player
     // Nightlight Animation object
 
-    // if detects player in box collider 2D using Raycast 2D AND player turns on nightlight AND timer == 60
+    // if detects player in box collider 2D using Raycast 2D AND player turns on nightlight by pressing "E" AND timer == 60
     // nightlight Animation bool 'on' set to TRUE
     // nightlight Animation nightlight_flickering starts playing
     // nightlight Animation timer starts counting down
@@ -47,15 +48,24 @@ public class Nightlight : MonoBehaviour
         {
             return;
         }
-
-        else if (anim.GetFloat("timer") == 60 & anim.GetBool("on") == true)
+        else
         {
-            Flicker();
+            float timerDuration = anim.GetFloat("timer");
+
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.zero);
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (hit.transform.CompareTag("Player") & Input.GetKeyDown("E") & timerDuration > 0)
+                {
+                    GetComponent<Animator>().SetBool("on", true);
+                    anim.SetFloat("timer", timerDuration - Time.deltaTime);
+                }
+                else
+                {
+                    GetComponent<Animator>().SetBool("on", false);
+                    anim.SetFloat("timer", -1);
+                }
+            }
         }
-    }
-
-    private void Flicker()
-    {
-
     }
 }
