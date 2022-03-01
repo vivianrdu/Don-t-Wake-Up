@@ -22,7 +22,7 @@ AnimationClip:
     - time: 0
       value: {fileID: -6344965914745571226, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
     - time: 0.016666668
-      value: {fileID: 5135910187908866642, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
+      value: {fileID: -6344965914745571226, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
     - time: 0.033333335
       value: {fileID: 5864207143089217223, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
     - time: 0.05
@@ -83,7 +83,7 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: -6344965914745571226, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
-    - {fileID: 5135910187908866642, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
+    - {fileID: -6344965914745571226, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
     - {fileID: 5864207143089217223, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
     - {fileID: -8780800716943782342, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
     - {fileID: 3108134881139309914, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
@@ -114,7 +114,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
