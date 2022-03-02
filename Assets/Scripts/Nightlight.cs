@@ -55,7 +55,7 @@ public class Nightlight : MonoBehaviour
             RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.zero);
             foreach (RaycastHit2D hit in hits)
             {
-                if (hit.transform.CompareTag("Player") & Input.GetKeyDown("E") & timerDuration > 0)
+                if (hit.transform.CompareTag("Player") & Input.GetKeyDown(KeyCode.E) & timerDuration > 0)
                 {
                     GetComponent<Animator>().SetBool("on", true);
                     anim.SetFloat("timer", timerDuration - Time.deltaTime);
