@@ -59,3 +59,6 @@ TagManager:
   - name: Trees
     uniqueID: 1925380199
     locked: 0
+  - name: Wall
+    uniqueID: 3476378439
+    locked: 0
