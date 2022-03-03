@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 1430339713
     locked: 0
+  - name: Other Trees
+    uniqueID: 3537425947
+    locked: 0
   - name: Floor
     uniqueID: 4144963607
     locked: 0
