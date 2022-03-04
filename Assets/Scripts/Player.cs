@@ -118,4 +118,15 @@ public class Player : MonoBehaviour
         anim.SetFloat("dirY", currDirection.y);
     }
     #endregion
+
+    #region Collision_functions
+    void OnTriggerStay(Collider collision)
+    {
+        if (collision.tag == "Nightlight" && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("start nightlight animation");
+            collision.GetComponent<Nightlight>().TurnOn();
+        }
+    }
+    #endregion
 }
