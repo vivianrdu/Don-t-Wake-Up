@@ -9,7 +9,9 @@ public class Player : MonoBehaviour
     public float running_speed;
     float x_input;
     float y_input;
-    [SerializeField]
+    #endregion
+
+    #region Animation_components
     Animator anim;
     #endregion
 
@@ -17,9 +19,14 @@ public class Player : MonoBehaviour
     Rigidbody2D PlayerRB;
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    #region Other_variables
+    Vector2 currDirection;
+    #endregion
+
+    // Awake is called before the first frame update
+    void Awake()
     {
+        PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
@@ -29,6 +36,8 @@ public class Player : MonoBehaviour
         // check if movement keys are being pressed WASD + Shift
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
+
+        Move();
     }
 
     #region Movement_functions
@@ -37,41 +46,65 @@ public class Player : MonoBehaviour
         // if shift pressed and WASD pressed, set anim.running = true
         if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
         {
+            anim.SetBool("running", true);
+
             if (x_input > 0)
             {
                 PlayerRB.velocity = Vector2.right * running_speed;
+                currDirection = Vector2.right;
             }
             else if (x_input < 0)
             {
                 PlayerRB.velocity = Vector2.left * running_speed;
+                currDirection = Vector2.left;
             }
             else if (y_input > 0)
             {
                 PlayerRB.velocity = Vector2.up * running_speed;
+                currDirection = Vector2.up;
             }
             else if (y_input < 0)
             {
                 PlayerRB.velocity = Vector2.down * running_speed;
+                currDirection = Vector2.down;
+            }
+            else
+            {
+                PlayerRB.velocity = Vector2.zero;
+                anim.SetBool("walking", false);
+                anim.SetBool("running", false);
             }
         }
         // else if WASD pressed, set anim.walking = true
         else if ((Input.GetKey(KeyCode.LeftShift) == false) | (Input.GetKey(KeyCode.RightShift)) == false)
         {
+            anim.SetBool("walking", true);
+
             if (x_input > 0)
             {
                 PlayerRB.velocity = Vector2.right * walking_speed;
+                currDirection = Vector2.right;
             }
             else if (x_input < 0)
             {
                 PlayerRB.velocity = Vector2.left * walking_speed;
+                currDirection = Vector2.left;
             }
             else if (y_input > 0)
             {
                 PlayerRB.velocity = Vector2.up * walking_speed;
+                currDirection = Vector2.up;
             }
             else if (y_input < 0)
             {
                 PlayerRB.velocity = Vector2.down * walking_speed;
+                currDirection = Vector2.down;
+            }
+            else
+            {
+                PlayerRB.velocity = Vector2.zero;
+                anim.SetBool("walking", false);
+                anim.SetBool("running", false);
             }
         }
         // else anim.walking and anim.running = false
@@ -81,6 +114,8 @@ public class Player : MonoBehaviour
             anim.SetBool("walking", false);
             anim.SetBool("running", false);
         }
+        anim.SetFloat("dirX", currDirection.x);
+        anim.SetFloat("dirY", currDirection.y);
     }
     #endregion
 }
