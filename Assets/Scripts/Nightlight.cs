@@ -18,22 +18,6 @@ public class Nightlight : MonoBehaviour
     #endregion
 
 
-    // variables needed:
-    // player
-    // Nightlight Animation object
-
-    // if detects player in box collider 2D using Raycast 2D AND player turns on nightlight by pressing "E" AND timer == 60
-    // nightlight Animation bool 'on' set to TRUE
-    // nightlight Animation nightlight_flickering starts playing
-    // nightlight Animation timer starts counting down
-
-    // if nightlight Animation timer <= 0
-    // nightlight Animation bool 'on' set to FALSE
-    // nightlight Animation nightlight_extinguished starts playing
-    // stop timer (set = -1 ?)
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +25,7 @@ public class Nightlight : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (player == null)
         {
@@ -50,21 +33,29 @@ public class Nightlight : MonoBehaviour
         }
         else
         {
-            float timerDuration = anim.GetFloat("timer");
+            TurnOn();
+        }
+    }
 
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.zero);
-            foreach (RaycastHit2D hit in hits)
+    public void TurnOn()
+    {
+        Debug.Log("timer is " + anim.GetFloat("timer").ToString());
+
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.zero);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (anim.GetFloat("timer") > 0)
             {
-                if (hit.transform.CompareTag("Player") & Input.GetKeyDown(KeyCode.E) & timerDuration > 0)
-                {
-                    GetComponent<Animator>().SetBool("on", true);
-                    anim.SetFloat("timer", timerDuration - Time.deltaTime);
-                }
-                else
-                {
-                    GetComponent<Animator>().SetBool("on", false);
-                    anim.SetFloat("timer", -1);
-                }
+                Debug.Log("Player detected.");
+                GetComponent<Animator>().SetBool("on", true);
+                anim.SetFloat("timer", anim.GetFloat("timer") - Time.deltaTime);
+                Debug.Log("timer at " + anim.GetFloat("timer").ToString());
+            }
+            else if (anim.GetFloat("timer") <= 0)
+            {
+                GetComponent<Animator>().SetBool("on", false);
+                anim.SetFloat("timer", -1);
+                Debug.Log("timer at " + anim.GetFloat("timer").ToString());
             }
         }
     }
