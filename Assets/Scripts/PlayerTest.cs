@@ -119,18 +119,4 @@ public class PlayerTest : MonoBehaviour
     }
     #endregion
 
-    #region Collision_functions
-    private void Interact()
-    {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + currDirection, new Vector2(0.5f, 0.5f), 0f, Vector2.zero, 0f);
-        foreach (RaycastHit2D hit in hits)
-        {
-            if (hit.transform.CompareTag("NightlightTest") && Input.GetKeyDown(KeyCode.E))
-            {
-                hit.transform.GetComponent<NightlightTest>().TurnOn();
-            }
-        }
-        
-    }
-    #endregion
 }
