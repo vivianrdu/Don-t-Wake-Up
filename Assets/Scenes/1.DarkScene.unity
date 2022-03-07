@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walking_speed: 2
   running_speed: 3
+  crouching_speed: 1
 --- !u!61 &38057034
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -337,7 +338,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7786459, y: 1}
+    m_SensorSize: {x: 1.4506024, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -522,7 +523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1
-  player: {fileID: 0}
+  player: {fileID: 38057031}
+  checkpoint: {fileID: 0}
 --- !u!50 &134418449
 Rigidbody2D:
   serializedVersion: 4
@@ -531,7 +533,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134418443}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
