@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     #region Movement_variables
     public float walking_speed;
     public float running_speed;
+    public float crouching_speed;
     float x_input;
     float y_input;
     #endregion
@@ -17,12 +18,11 @@ public class Player : MonoBehaviour
 
     #region Physics_components
     Rigidbody2D PlayerRB;
+    float jumpHeight = 1;
     #endregion
 
     #region Other_variables
     Vector2 currDirection;
-    private bool triggerActive;
-    GameObject nightlight;
     #endregion
 
     // Awake is called before the first frame update
@@ -40,12 +40,6 @@ public class Player : MonoBehaviour
         y_input = Input.GetAxisRaw("Vertical");
 
         Move();
-
-        if (triggerActive && Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("start nightlight animation");
-            GetComponent<Nightlight>().TurnOn();
-        }
     }
 
     #region Movement_functions
@@ -81,6 +75,32 @@ public class Player : MonoBehaviour
                 PlayerRB.velocity = Vector2.zero;
                 anim.SetBool("walking", false);
                 anim.SetBool("running", false);
+                anim.SetBool("jumping", false);
+                anim.SetBool("crouching", false);
+            }
+        }
+        // else if J pressed and WASD pressed, set anim.crouching = true
+        else if (Input.GetKey(KeyCode.J))
+        {
+            anim.SetBool("crouching", true);
+
+            if (x_input > 0)
+            {
+                PlayerRB.velocity = Vector2.right * crouching_speed;
+                currDirection = Vector2.right;
+            }
+            else if (x_input < 0)
+            {
+                PlayerRB.velocity = Vector2.left * crouching_speed;
+                currDirection = Vector2.left;
+            }
+            else
+            {
+                PlayerRB.velocity = Vector2.zero;
+                anim.SetBool("walking", false);
+                anim.SetBool("running", false);
+                anim.SetBool("jumping", false);
+                anim.SetBool("crouching", false);
             }
         }
         // else if WASD pressed, set anim.walking = true
@@ -113,6 +133,33 @@ public class Player : MonoBehaviour
                 PlayerRB.velocity = Vector2.zero;
                 anim.SetBool("walking", false);
                 anim.SetBool("running", false);
+                anim.SetBool("jumping", false);
+                anim.SetBool("crouching", false);
+            }
+        }
+        // jumping
+        else if (Input.GetKeyDown(KeyCode.Space) == true)
+        {
+            anim.SetBool("jumping", true);
+            if (x_input > 0)
+            {
+                PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+                PlayerRB.AddForce(new Vector2(0, jumpHeight));
+                currDirection = Vector2.right;
+            }
+            else if (x_input < 0)
+            {
+                PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+                PlayerRB.AddForce(new Vector2(0, jumpHeight));
+                currDirection = Vector2.left;
+            }
+            else
+            {
+                PlayerRB.velocity = Vector2.zero;
+                anim.SetBool("walking", false);
+                anim.SetBool("running", false);
+                anim.SetBool("jumping", false);
+                anim.SetBool("crouching", false);
             }
         }
         // else anim.walking and anim.running = false
@@ -121,28 +168,12 @@ public class Player : MonoBehaviour
             PlayerRB.velocity = Vector2.zero;
             anim.SetBool("walking", false);
             anim.SetBool("running", false);
+            anim.SetBool("jumping", false);
+            anim.SetBool("crouching", false);
         }
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
     }
     #endregion
 
-    #region Collision_functions
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            triggerActive = true;
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            triggerActive = false;
-        }
-    }
-    #endregion
 }
