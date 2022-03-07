@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
     #region Other_variables
     Vector2 currDirection;
+    private bool triggerActive;
+    GameObject nightlight;
     #endregion
 
     // Awake is called before the first frame update
@@ -38,6 +40,12 @@ public class Player : MonoBehaviour
         y_input = Input.GetAxisRaw("Vertical");
 
         Move();
+
+        if (triggerActive && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("start nightlight animation");
+            GetComponent<Nightlight>().TurnOn();
+        }
     }
 
     #region Movement_functions
@@ -120,12 +128,20 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Collision_functions
-    void OnTriggerStay(Collider collision)
+
+    public void OnTriggerEnter(Collider other)
     {
-        if (collision.tag == "Nightlight" && Input.GetKeyDown(KeyCode.E))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("start nightlight animation");
-            collision.GetComponent<Nightlight>().TurnOn();
+            triggerActive = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            triggerActive = false;
         }
     }
     #endregion
