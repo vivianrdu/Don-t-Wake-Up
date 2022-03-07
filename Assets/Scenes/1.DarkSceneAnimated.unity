@@ -300,8 +300,8 @@ Canvas:
   m_GameObject: {fileID: 413859759}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1111637870}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -360,12 +360,12 @@ VideoPlayer:
   m_VideoClip: {fileID: 32900000, guid: 03df6b05c5dae4fdda313236bdd3bd8a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
+  m_TargetCamera: {fileID: 1111637870}
   m_TargetTexture: {fileID: 8400000, guid: a38063ebf3e9a45c69b01e41d5d2f5fb, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
-  m_RenderMode: 2
+  m_RenderMode: 1
   m_AspectRatio: 5
   m_DataSource: 0
   m_PlaybackSpeed: 1
@@ -379,7 +379,7 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
