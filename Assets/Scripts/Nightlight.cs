@@ -10,9 +10,9 @@ public class Nightlight : MonoBehaviour
     #endregion
 
     #region Physics_components
-    BoxCollider2D nightlightTBC;
     public float radius;
     private bool timerIsRunning;
+    private bool alreadyOn;
     Light2D fire;
     #endregion
 
@@ -25,10 +25,10 @@ public class Nightlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nightlightTBC = GetComponent<BoxCollider2D>();
         fire = GetComponentInChildren<Light2D>();
         anim = GetComponent<Animator>();
         timerIsRunning = false;
+        alreadyOn = false;
     }
 
     void Update()
@@ -39,9 +39,20 @@ public class Nightlight : MonoBehaviour
         {
             return;
         }
+        if (timerIsRunning)
+        {
+            if (player.GetComponent<Player>().currDirection == Vector2.right)
+            {
+                transform.position = player.position + player.TransformDirection(new Vector3(0.5f, 0, 0));
+            }
+            else
+            {
+                transform.position = player.position + player.TransformDirection(new Vector3(-0.5f, 0, 0));
+            }
+        }
         else
         {
-            if ((Input.GetKeyDown(KeyCode.E)) && (distFromPlayer <= radius) && (timerIsRunning == false))
+            if ((Input.GetKeyDown(KeyCode.E)) && (distFromPlayer <= radius) && (timerIsRunning == false) && (alreadyOn == false))
             {
                 Debug.Log("Picked up");
                 PickedUp();
@@ -50,10 +61,20 @@ public class Nightlight : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+    }
+
     private void PickedUp()
     {
         fire.intensity = 1;
         timerIsRunning = true;
+        alreadyOn = true; //player can't pick it up again
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void Reset()
@@ -64,21 +85,24 @@ public class Nightlight : MonoBehaviour
 
     private void TurnOff()
     {
-        timerIsRunning = false;
+        anim.SetBool("on", false);
+        timerIsRunning = false; //stops timer
+        GetComponent<BoxCollider2D>().enabled = true; //falls onto the ground
     }
 
     public IEnumerator Countdown()
     {
-        float totalTransitionTime = 20f;
+        float totalTransitionTime = 2000f;
         float elapsedTime = 0;
+        anim.SetBool("on", true);
 
         while (fire.intensity >= 0.1)
         {
             fire.intensity = Mathf.Lerp(fire.intensity, 0, elapsedTime / totalTransitionTime);
+            fire.pointLightOuterRadius = Mathf.Lerp(fire.pointLightOuterRadius, 0, elapsedTime / totalTransitionTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         TurnOff();
         Debug.Log("Turned off");
     }
