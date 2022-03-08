@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Other_variables
-    Vector2 currDirection;
+    public Vector2 currDirection;
     #endregion
 
     // Awake is called before the first frame update
