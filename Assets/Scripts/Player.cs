@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     #region Movement_variables
     public float walking_speed;
     public float running_speed;
+    public float crouching_speed;
     float x_input;
     float y_input;
     #endregion
@@ -17,10 +18,11 @@ public class Player : MonoBehaviour
 
     #region Physics_components
     Rigidbody2D PlayerRB;
+    float jumpHeight = 1;
     #endregion
 
     #region Other_variables
-    Vector2 currDirection;
+    public Vector2 currDirection;
     #endregion
 
     // Awake is called before the first frame update
@@ -43,28 +45,59 @@ public class Player : MonoBehaviour
     #region Movement_functions
     private void Move()
     {
-        // if shift pressed and WASD pressed, set anim.running = true
-        if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
+        // if J pressed and WASD pressed, set anim.crouching = true
+        if (Input.GetKey(KeyCode.J))
         {
-            anim.SetBool("running", true);
+            anim.SetBool("crouching", true);
 
             if (x_input > 0)
             {
+                PlayerRB.velocity = Vector2.right * crouching_speed;
+                currDirection = Vector2.right;
+            }
+            else if (x_input < 0)
+            {
+                PlayerRB.velocity = Vector2.left * crouching_speed;
+                currDirection = Vector2.left;
+            }
+            else
+            {
+                PlayerRB.velocity = Vector2.zero;
+                anim.SetBool("walking", false);
+                anim.SetBool("running", false);
+                anim.SetBool("jumping", false);
+                anim.SetBool("crouching", false);
+            }
+        }
+
+        // else if shift pressed and WASD pressed, set anim.running = true
+        else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
+        {
+            anim.SetBool("running", true);
+            anim.SetBool("walking", true);
+            anim.SetBool("crouching", false);
+
+            if (x_input > 0)
+            {
+                anim.SetBool("walking", true);
                 PlayerRB.velocity = Vector2.right * running_speed;
                 currDirection = Vector2.right;
             }
             else if (x_input < 0)
             {
+                anim.SetBool("walking", true);
                 PlayerRB.velocity = Vector2.left * running_speed;
                 currDirection = Vector2.left;
             }
             else if (y_input > 0)
             {
+                anim.SetBool("walking", true);
                 PlayerRB.velocity = Vector2.up * running_speed;
                 currDirection = Vector2.up;
             }
             else if (y_input < 0)
             {
+                anim.SetBool("walking", true);
                 PlayerRB.velocity = Vector2.down * running_speed;
                 currDirection = Vector2.down;
             }
@@ -73,12 +106,16 @@ public class Player : MonoBehaviour
                 PlayerRB.velocity = Vector2.zero;
                 anim.SetBool("walking", false);
                 anim.SetBool("running", false);
+                anim.SetBool("jumping", false);
+                anim.SetBool("crouching", false);
             }
         }
+        
         // else if WASD pressed, set anim.walking = true
         else if ((Input.GetKey(KeyCode.LeftShift) == false) | (Input.GetKey(KeyCode.RightShift)) == false)
         {
             anim.SetBool("walking", true);
+            anim.SetBool("crouching", false);
 
             if (x_input > 0)
             {
@@ -105,6 +142,33 @@ public class Player : MonoBehaviour
                 PlayerRB.velocity = Vector2.zero;
                 anim.SetBool("walking", false);
                 anim.SetBool("running", false);
+                anim.SetBool("jumping", false);
+                anim.SetBool("crouching", false);
+            }
+        }
+        // jumping
+        else if (Input.GetKeyDown(KeyCode.Space) == true)
+        {
+            anim.SetBool("jumping", true);
+            if (x_input > 0)
+            {
+                PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+                PlayerRB.AddForce(new Vector2(0, jumpHeight));
+                currDirection = Vector2.right;
+            }
+            else if (x_input < 0)
+            {
+                PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+                PlayerRB.AddForce(new Vector2(0, jumpHeight));
+                currDirection = Vector2.left;
+            }
+            else
+            {
+                PlayerRB.velocity = Vector2.zero;
+                anim.SetBool("walking", false);
+                anim.SetBool("running", false);
+                anim.SetBool("jumping", false);
+                anim.SetBool("crouching", false);
             }
         }
         // else anim.walking and anim.running = false
@@ -113,20 +177,12 @@ public class Player : MonoBehaviour
             PlayerRB.velocity = Vector2.zero;
             anim.SetBool("walking", false);
             anim.SetBool("running", false);
+            anim.SetBool("jumping", false);
+            anim.SetBool("crouching", false);
         }
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
     }
     #endregion
 
-    #region Collision_functions
-    void OnTriggerStay(Collider collision)
-    {
-        if (collision.tag == "Nightlight" && Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("start nightlight animation");
-            collision.GetComponent<Nightlight>().TurnOn();
-        }
-    }
-    #endregion
 }
