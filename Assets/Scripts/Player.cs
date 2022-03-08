@@ -45,42 +45,8 @@ public class Player : MonoBehaviour
     #region Movement_functions
     private void Move()
     {
-        // if shift pressed and WASD pressed, set anim.running = true
-        if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
-        {
-            anim.SetBool("running", true);
-
-            if (x_input > 0)
-            {
-                PlayerRB.velocity = Vector2.right * running_speed;
-                currDirection = Vector2.right;
-            }
-            else if (x_input < 0)
-            {
-                PlayerRB.velocity = Vector2.left * running_speed;
-                currDirection = Vector2.left;
-            }
-            else if (y_input > 0)
-            {
-                PlayerRB.velocity = Vector2.up * running_speed;
-                currDirection = Vector2.up;
-            }
-            else if (y_input < 0)
-            {
-                PlayerRB.velocity = Vector2.down * running_speed;
-                currDirection = Vector2.down;
-            }
-            else
-            {
-                PlayerRB.velocity = Vector2.zero;
-                anim.SetBool("walking", false);
-                anim.SetBool("running", false);
-                anim.SetBool("jumping", false);
-                anim.SetBool("crouching", false);
-            }
-        }
-        // else if J pressed and WASD pressed, set anim.crouching = true
-        else if (Input.GetKey(KeyCode.J))
+        // if J pressed and WASD pressed, set anim.crouching = true
+        if (Input.GetKey(KeyCode.J))
         {
             anim.SetBool("crouching", true);
 
@@ -103,10 +69,53 @@ public class Player : MonoBehaviour
                 anim.SetBool("crouching", false);
             }
         }
+
+        // else if shift pressed and WASD pressed, set anim.running = true
+        else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
+        {
+            anim.SetBool("running", true);
+            anim.SetBool("walking", true);
+            anim.SetBool("crouching", false);
+
+            if (x_input > 0)
+            {
+                anim.SetBool("walking", true);
+                PlayerRB.velocity = Vector2.right * running_speed;
+                currDirection = Vector2.right;
+            }
+            else if (x_input < 0)
+            {
+                anim.SetBool("walking", true);
+                PlayerRB.velocity = Vector2.left * running_speed;
+                currDirection = Vector2.left;
+            }
+            else if (y_input > 0)
+            {
+                anim.SetBool("walking", true);
+                PlayerRB.velocity = Vector2.up * running_speed;
+                currDirection = Vector2.up;
+            }
+            else if (y_input < 0)
+            {
+                anim.SetBool("walking", true);
+                PlayerRB.velocity = Vector2.down * running_speed;
+                currDirection = Vector2.down;
+            }
+            else
+            {
+                PlayerRB.velocity = Vector2.zero;
+                anim.SetBool("walking", false);
+                anim.SetBool("running", false);
+                anim.SetBool("jumping", false);
+                anim.SetBool("crouching", false);
+            }
+        }
+        
         // else if WASD pressed, set anim.walking = true
         else if ((Input.GetKey(KeyCode.LeftShift) == false) | (Input.GetKey(KeyCode.RightShift)) == false)
         {
             anim.SetBool("walking", true);
+            anim.SetBool("crouching", false);
 
             if (x_input > 0)
             {
