@@ -34,5 +34,29 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("1.DarkScene");
     }
 
+    public void DarkSceneCutscene()
+    {
+        SceneManager.LoadScene("1.DarkSceneAnimated");
+    }
+
+    public void WaterScene()
+    {
+        SceneManager.LoadScene("2.WaterScene");
+    }
+
+    public void WaterSceneCutscene()
+    {
+        SceneManager.LoadScene("2.WaterSceneAnimated");
+    }
+
+    public void PeopleScene()
+    {
+        SceneManager.LoadScene("3.PeopleScene");
+    }
+
+    public void PeopleSceneCutscene()
+    {
+        SceneManager.LoadScene("3.PeopleSceneAnimated");
+    }
     #endregion
 }
