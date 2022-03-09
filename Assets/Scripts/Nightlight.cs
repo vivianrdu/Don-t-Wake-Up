@@ -11,7 +11,7 @@ public class Nightlight : MonoBehaviour
 
     #region Physics_components
     public float radius;
-    private bool timerIsRunning;
+    public bool timerIsRunning;
     private bool alreadyOn;
     Light2D fire;
     #endregion
