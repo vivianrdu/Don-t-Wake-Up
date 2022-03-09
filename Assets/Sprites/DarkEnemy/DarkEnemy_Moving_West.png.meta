@@ -1,43 +1,34 @@
 fileFormatVersion: 2
-guid: 2435b0a871a594223b27bb18658bfb72
+guid: 6f1c2f5eebaca4b0ab9763d967488ed5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6962482940859352156
-    second: DarkEnemy_Idle_0
+      213: 8189975887587697363
+    second: DarkEnemy_Moving_West_0
   - first:
-      213: 499264648055004187
-    second: DarkEnemy_Idle_1
+      213: 1649547829930689963
+    second: DarkEnemy_Moving_West_1
   - first:
-      213: 2405839484146815556
-    second: DarkEnemy_Idle_2
+      213: 7081976677926341982
+    second: DarkEnemy_Moving_West_2
   - first:
-      213: -3755921632797046502
-    second: DarkEnemy_Idle_3
+      213: 6496321281015257880
+    second: DarkEnemy_Moving_West_3
   - first:
-      213: 5771486839513301463
-    second: DarkEnemy_Idle_4
+      213: 4224896670397548073
+    second: DarkEnemy_Moving_West_4
   - first:
-      213: 3299090830478543800
-    second: DarkEnemy_Idle_5
+      213: -5049653816714886189
+    second: DarkEnemy_Moving_West_5
   - first:
-      213: 7333263483827326488
-    second: DarkEnemy_Idle_6
+      213: 2174153741751239377
+    second: DarkEnemy_Moving_West_6
   - first:
-      213: -3423414049084504747
-    second: DarkEnemy_Idle_7
+      213: -8163630834545485915
+    second: DarkEnemy_Moving_West_7
   - first:
-      213: -3774538000471905986
-    second: DarkEnemy_Idle_8
-  - first:
-      213: -2301421739894106671
-    second: DarkEnemy_Idle_9
-  - first:
-      213: -567494995409791507
-    second: DarkEnemy_Idle_10
-  - first:
-      213: -5116509999754702287
-    second: DarkEnemy_Idle_11
+      213: -5011697218467950236
+    second: DarkEnemy_Moving_West_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,71 +114,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: tvOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Lumin
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DarkEnemy_Idle_0
+      name: DarkEnemy_Moving_West_0
       rect:
         serializedVersion: 2
         x: 0
@@ -201,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5483ac8855bf9060800000000000000
-      internalID: 6962482940859352156
+      spriteID: 3d2edaa6da3a8a170800000000000000
+      internalID: 8189975887587697363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DarkEnemy_Idle_1
+      name: DarkEnemy_Moving_West_1
       rect:
         serializedVersion: 2
         x: 100
@@ -222,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1c9a3c5d8ebde600800000000000000
-      internalID: 499264648055004187
+      spriteID: ba5090bf20f54e610800000000000000
+      internalID: 1649547829930689963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DarkEnemy_Idle_2
+      name: DarkEnemy_Moving_West_2
       rect:
         serializedVersion: 2
         x: 200
@@ -243,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4421e2f9342436120800000000000000
-      internalID: 2405839484146815556
+      spriteID: e5d8663444c384260800000000000000
+      internalID: 7081976677926341982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DarkEnemy_Idle_3
+      name: DarkEnemy_Moving_West_3
       rect:
         serializedVersion: 2
         x: 300
@@ -264,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a194de8bc2940ebc0800000000000000
-      internalID: -3755921632797046502
+      spriteID: 81b99bd39c1972a50800000000000000
+      internalID: 6496321281015257880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DarkEnemy_Idle_4
+      name: DarkEnemy_Moving_West_4
       rect:
         serializedVersion: 2
         x: 400
@@ -285,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d1480fa3b0781050800000000000000
-      internalID: 5771486839513301463
+      spriteID: 926c6c32329d1aa30800000000000000
+      internalID: 4224896670397548073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DarkEnemy_Idle_5
+      name: DarkEnemy_Moving_West_5
       rect:
         serializedVersion: 2
         x: 500
@@ -306,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bb0c6881a9b8cd20800000000000000
-      internalID: 3299090830478543800
+      spriteID: 3d38300ab960ce9b0800000000000000
+      internalID: -5049653816714886189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DarkEnemy_Idle_6
+      name: DarkEnemy_Moving_West_6
       rect:
         serializedVersion: 2
         x: 600
@@ -327,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81e0fd5094cf4c560800000000000000
-      internalID: 7333263483827326488
+      spriteID: 1d24b281f452c2e10800000000000000
+      internalID: 2174153741751239377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DarkEnemy_Idle_7
+      name: DarkEnemy_Moving_West_7
       rect:
         serializedVersion: 2
         x: 700
@@ -348,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5558c357f079d70d0800000000000000
-      internalID: -3423414049084504747
+      spriteID: 5a79d7d3205f4be80800000000000000
+      internalID: -8163630834545485915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DarkEnemy_Idle_8
+      name: DarkEnemy_Moving_West_8
       rect:
         serializedVersion: 2
         x: 800
@@ -369,71 +300,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e39a8aadfa52e9bc0800000000000000
-      internalID: -3774538000471905986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DarkEnemy_Idle_9
-      rect:
-        serializedVersion: 2
-        x: 900
-        y: 0
-        width: 100
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d5104bfe15bf00e0800000000000000
-      internalID: -2301421739894106671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DarkEnemy_Idle_10
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 0
-        width: 100
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de599c2fe4adf18f0800000000000000
-      internalID: -567494995409791507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DarkEnemy_Idle_11
-      rect:
-        serializedVersion: 2
-        x: 1100
-        y: 0
-        width: 100
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13213ee73418ef8b0800000000000000
-      internalID: -5116509999754702287
+      spriteID: 4619763deefd27ab0800000000000000
+      internalID: -5011697218467950236
       vertices: []
       indices: 
       edges: []

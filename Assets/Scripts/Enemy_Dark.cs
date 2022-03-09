@@ -16,12 +16,10 @@ public class Enemy_Dark : MonoBehaviour
     [SerializeField]
     Animator anim;
 
-
-
     #endregion
 
 
-    #region Stunstuff
+    #region Stun_variables
     private float stun;
     public float stun_length;
     private bool isinlight;
@@ -45,16 +43,16 @@ public class Enemy_Dark : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         if (playerposition == null)
         {
             DEnemyRB.velocity = new Vector2(0, 0);
+            anim.SetBool("playerDetected", false);
             return;
         }
         //Debug.Log("stun:" + stun);
         if(stun <= 0) 
         {
+            anim.SetBool("playerDetected", true);
             Move();
         }
         
@@ -64,7 +62,6 @@ public class Enemy_Dark : MonoBehaviour
     public void Move()
     {
 
-        
         if (playerposition.position.x > DEnemyRB.transform.position.x)
         {
             direction = new Vector2(1, 0);
@@ -74,7 +71,9 @@ public class Enemy_Dark : MonoBehaviour
         }
         
         DEnemyRB.velocity = direction * walking_speed;
+        anim.SetFloat("dirX", direction.x);
     }
+
 
     /*
      * //need to figure out here to do this with Collision because right now i think it takes line of sight
@@ -100,6 +99,7 @@ public class Enemy_Dark : MonoBehaviour
     {
         if (coll.CompareTag("Glowing"))
         {
+            Debug.Log("Can see");
             isinlight = true;
             stun = stun_length;
             DEnemyRB.velocity = new Vector2(0, 0);
@@ -131,11 +131,11 @@ public class Enemy_Dark : MonoBehaviour
 
     IEnumerator stun_routine()
     {
-
+        Debug.Log("Stun routine started");
         DEnemyColl.enabled = !DEnemyColl.enabled;
-        //Debug.Log("Is it static2?" + DEnemyRB.gameObject.isStatic);
+        Debug.Log("Is it static2?" + DEnemyColl.enabled);
 
-        while (stun >= 0 && isinlight)
+        while (stun >= 0)
         {
             //Debug.Log("coroutine is happening" + stun);
             stun -= Time.deltaTime;

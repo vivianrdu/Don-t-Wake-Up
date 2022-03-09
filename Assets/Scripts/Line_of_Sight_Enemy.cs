@@ -10,6 +10,7 @@ public class Line_of_Sight_Enemy : MonoBehaviour
         if (coll.CompareTag("Player"))
         {
             GetComponentInParent<Enemy_Dark>().playerposition = coll.transform;
+            Debug.Log("Detected player");
           
         }
     }
