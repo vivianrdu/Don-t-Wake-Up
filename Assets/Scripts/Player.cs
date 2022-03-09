@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.J))
         {
             anim.SetBool("crouching", true);
+            anim.SetBool("running", false);
+            anim.SetBool("walking", false);
 
             if (x_input > 0)
             {
@@ -74,8 +76,8 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
         {
             anim.SetBool("running", true);
-            anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
+            anim.SetBool("walking", false);
 
             if (x_input > 0)
             {
@@ -116,6 +118,7 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
 
             if (x_input > 0)
             {
