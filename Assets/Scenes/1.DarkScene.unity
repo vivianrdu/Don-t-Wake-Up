@@ -223,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38057028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.5, y: -15.61, z: 0}
+  m_LocalPosition: {x: -41.5, y: -16.05, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -356,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77583698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.5, y: -12.61, z: -10}
+  m_LocalPosition: {x: -41.5, y: -13.049999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1533279409}
@@ -1309,7 +1309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.5, y: -12.61, z: -10}
+  m_LocalPosition: {x: -41.5, y: -13.049999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1825853206}
@@ -4602,8 +4602,6 @@ MonoBehaviour:
   walking_speed: 4
   anim: {fileID: 1491862752}
   stun_length: 3
-  attackRadius: 2
-  DEnemyRB: {fileID: 0}
 --- !u!1 &1502144150
 GameObject:
   m_ObjectHideFlags: 0

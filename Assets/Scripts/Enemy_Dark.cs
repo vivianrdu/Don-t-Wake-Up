@@ -24,7 +24,6 @@ public class Enemy_Dark : MonoBehaviour
 
     #region Attack_variables
     private bool isAttacking;
-    public float attackRadius;
     #endregion
 
     #region Physics_components
