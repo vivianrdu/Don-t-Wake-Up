@@ -52,6 +52,9 @@ TagManager:
   - name: Ground
     uniqueID: 4144963607
     locked: 0
+  - name: Environment
+    uniqueID: 404949445
+    locked: 0
   - name: Objects
     uniqueID: 977517257
     locked: 0

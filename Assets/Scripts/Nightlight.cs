@@ -72,6 +72,7 @@ public class Nightlight : MonoBehaviour
     private void PickedUp()
     {
         fire.intensity = 1;
+        fire.pointLightOuterRadius = 2;
         timerIsRunning = true;
         alreadyOn = true; //player can't pick it up again
         GetComponent<BoxCollider2D>().enabled = false;

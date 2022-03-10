@@ -77,8 +77,10 @@ public class Enemy_Dark : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
+        Debug.Log(coll.GetComponent<Light2D>().pointLightOuterRadius);
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
+            Debug.Log("Stunned");
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {
