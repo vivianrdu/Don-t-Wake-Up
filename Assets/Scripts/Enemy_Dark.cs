@@ -51,6 +51,7 @@ public class Enemy_Dark : MonoBehaviour
         else
         { 
             anim.SetBool("playerDetected", true);
+            //not currently stunned
             if (anim.GetBool("Stunned") == false)
             {
                 Move();
@@ -77,7 +78,6 @@ public class Enemy_Dark : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        Debug.Log(coll.GetComponent<Light2D>().pointLightOuterRadius);
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
             Debug.Log("Stunned");

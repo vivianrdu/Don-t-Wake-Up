@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Other_variables
+    private float health;
+    #endregion
+
+    #region Other_variables
     public Vector2 currDirection;
     #endregion
 
@@ -30,6 +34,7 @@ public class Player : MonoBehaviour
     {
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        health = 1;
     }
 
     // Update is called once per frame
@@ -40,6 +45,11 @@ public class Player : MonoBehaviour
         y_input = Input.GetAxisRaw("Vertical");
 
         Move();
+
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     #region Movement_functions
@@ -185,6 +195,13 @@ public class Player : MonoBehaviour
         }
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
+    }
+    #endregion
+
+    #region Health_functions
+    private void Die()
+    {
+        Destroy(this);
     }
     #endregion
 
