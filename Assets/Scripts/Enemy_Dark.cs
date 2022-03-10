@@ -113,6 +113,7 @@ public class Enemy_Dark : MonoBehaviour
     IEnumerator Attack_routine()
     {
         isAttacking = true;
+        bool hitPlayer = false;
         DEnemyRB.velocity = Vector2.zero;
 
         anim.SetTrigger("Attacking");
@@ -126,13 +127,15 @@ public class Enemy_Dark : MonoBehaviour
             Debug.Log(hit.transform.name);
             if (hit.transform.CompareTag("Player"))
             {
-                hit.transform.GetComponent<Player>().Die();
+                hitPlayer = true;
             }
         }
-        yield return new WaitForSeconds(0.1f);
+        if (hitPlayer)
+        {
+            playerposition.GetComponent<Player>().Die();
+        }
         isAttacking = false;
-
-        yield return null;
+        yield return new WaitForSeconds(2f);
     }
 
     IEnumerator Stun_routine()

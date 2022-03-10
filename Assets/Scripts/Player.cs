@@ -204,11 +204,14 @@ public class Player : MonoBehaviour
     {
         GameObject img = GameObject.FindWithTag("Fade");
         StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
-        Debug.Log("Done fading");
-        Destroy(this.gameObject);
+        Reload();
+    }
+
+    public void Reload()
+    {
         GameObject gm = GameObject.FindWithTag("GameController");
         Debug.Log("Reloading");
         gm.GetComponent<GameManager>().DarkScene();
-    }
+    }    
     #endregion
 }
