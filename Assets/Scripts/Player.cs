@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     // Awake is called before the first frame update
     void Awake()
     {
+        StartCoroutine(FadeFromBlack());
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         health = 1;
@@ -122,7 +123,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("crouching", false);
             }
         }
-        
+
         // else if WASD pressed, set anim.walking = true
         else if ((Input.GetKey(KeyCode.LeftShift) == false) | (Input.GetKey(KeyCode.RightShift)) == false)
         {
@@ -199,10 +200,13 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Health_functions
-    private void Die()
+    public void Die()
     {
-        Destroy(this);
+        Debug.Log("Dying");
+        Destroy(this.gameObject);
+        StartCoroutine(FadeToBlack());
+        GameObject gm = GameObject.FindWithTag("GameController");
+        gm.GetComponent<GameManager>().DarkScene();
     }
     #endregion
-
 }
