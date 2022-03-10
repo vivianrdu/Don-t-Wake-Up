@@ -11,7 +11,7 @@ public class Nightlight : MonoBehaviour
 
     #region Physics_components
     public float radius;
-    private bool timerIsRunning;
+    public bool timerIsRunning;
     private bool alreadyOn;
     Light2D fire;
     #endregion
@@ -72,6 +72,7 @@ public class Nightlight : MonoBehaviour
     private void PickedUp()
     {
         fire.intensity = 1;
+        fire.pointLightOuterRadius = 2;
         timerIsRunning = true;
         alreadyOn = true; //player can't pick it up again
         GetComponent<BoxCollider2D>().enabled = false;
