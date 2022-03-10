@@ -11,7 +11,6 @@ public class Enemy_Dark : MonoBehaviour
     private Vector2 direction;
     #endregion
 
-
     #region Movement_variables
     public float walking_speed;
     [SerializeField]
@@ -23,6 +22,11 @@ public class Enemy_Dark : MonoBehaviour
     public float stun_length;
     #endregion
 
+    #region Attack_variables
+    private bool isAttacking;
+    public float attackRadius;
+    #endregion
+
     #region Physics_components
     Rigidbody2D DEnemyRB;
     BoxCollider2D DEnemyColl;
@@ -32,9 +36,12 @@ public class Enemy_Dark : MonoBehaviour
     void Start()
     {
         DEnemyRB = GetComponent<Rigidbody2D>();
+        DEnemyColl = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         stun = 0;
-        DEnemyColl = GetComponent<BoxCollider2D>();
+        isAttacking = false;
+        anim.SetBool("playerDetected", false);
+        anim.SetBool("Stunned", false);
     }
 
     // Update is called once per frame
@@ -54,8 +61,17 @@ public class Enemy_Dark : MonoBehaviour
             //not currently stunned
             if (anim.GetBool("Stunned") == false)
             {
+                if (isAttacking == false && (
+                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2)|
+                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1)))
+                {
+
+                        Debug.Log("Attack");
+                        StartCoroutine(Attack_routine());
+                }
                 Move();
             }
+            
         }
         
     }
@@ -93,6 +109,31 @@ public class Enemy_Dark : MonoBehaviour
 
         
         }
+    }
+
+    IEnumerator Attack_routine()
+    {
+        isAttacking = true;
+        DEnemyRB.velocity = Vector2.zero;
+
+        anim.SetTrigger("Attacking");
+
+        Debug.Log("started routine");
+        yield return new WaitForSeconds(0.1f);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            Debug.Log(hit.transform.name);
+            if (hit.transform.CompareTag("Player"))
+            {
+                hit.transform.GetComponent<Player>().Die();
+            }
+        }
+        yield return new WaitForSeconds(0.1f);
+        isAttacking = false;
+
+        yield return null;
     }
 
     IEnumerator Stun_routine()

@@ -199,9 +199,12 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Health_functions
-    private void Die()
+    public void Die()
     {
-        Destroy(this);
+        Debug.Log("Dying");
+        Destroy(this.gameObject);
+        GameObject gm = GameObject.FindWithTag("GameController");
+        gm.GetComponent<GameManager>().DarkScene();
     }
     #endregion
 
