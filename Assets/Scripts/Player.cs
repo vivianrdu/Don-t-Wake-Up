@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -32,7 +33,6 @@ public class Player : MonoBehaviour
     // Awake is called before the first frame update
     void Awake()
     {
-        StartCoroutine(FadeFromBlack());
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         health = 1;
@@ -202,10 +202,12 @@ public class Player : MonoBehaviour
     #region Health_functions
     public void Die()
     {
-        Debug.Log("Dying");
+        GameObject img = GameObject.FindWithTag("Fade");
+        StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
+        Debug.Log("Done fading");
         Destroy(this.gameObject);
-        StartCoroutine(FadeToBlack());
         GameObject gm = GameObject.FindWithTag("GameController");
+        Debug.Log("Reloading");
         gm.GetComponent<GameManager>().DarkScene();
     }
     #endregion
