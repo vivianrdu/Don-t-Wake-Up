@@ -9,12 +9,17 @@ public class GameManager : MonoBehaviour
 
     #region Unity_functions
 
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
     private void Awake()
     {
         if (Instance == null){
             Instance = this;
-        }else if (Instance != this) {
+        } else if (Instance != this) {
             Destroy(this.gameObject);
+            return;
         }
         DontDestroyOnLoad(gameObject);
     }
@@ -27,6 +32,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("0.StartMenu");
         
+    }
+
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("0.Tutorial");
     }
 
     public void DarkScene()
