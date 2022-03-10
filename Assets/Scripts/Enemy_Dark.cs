@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine;
 
 public class Enemy_Dark : MonoBehaviour
@@ -15,14 +16,11 @@ public class Enemy_Dark : MonoBehaviour
     public float walking_speed;
     [SerializeField]
     Animator anim;
-
     #endregion
-
 
     #region Stun_variables
     private float stun;
     public float stun_length;
-    private bool isinlight;
     #endregion
 
     #region Physics_components
@@ -36,7 +34,6 @@ public class Enemy_Dark : MonoBehaviour
         DEnemyRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         stun = 0;
-
         DEnemyColl = GetComponent<BoxCollider2D>();
     }
 
@@ -47,13 +44,17 @@ public class Enemy_Dark : MonoBehaviour
         {
             DEnemyRB.velocity = new Vector2(0, 0);
             anim.SetBool("playerDetected", false);
+            anim.SetBool("Stunned", false);
             return;
         }
-        //Debug.Log("stun:" + stun);
-        if(stun <= 0) 
-        {
+        //detected player in line of sight
+        else
+        { 
             anim.SetBool("playerDetected", true);
-            Move();
+            if (anim.GetBool("Stunned") == false)
+            {
+                Move();
+            }
         }
         
     }
@@ -74,77 +75,38 @@ public class Enemy_Dark : MonoBehaviour
         anim.SetFloat("dirX", direction.x);
     }
 
-
-    /*
-     * //need to figure out here to do this with Collision because right now i think it takes line of sight
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("Glowing"))
+        if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
-           
-            stun = stun_length;
-            DEnemyRB.velocity = new Vector2(0, 0);
-            Debug.Log("Is it Kinematic?" + DEnemyRB.isKinematic);
-            if (!DEnemyRB.isKinematic)
-            {
-
-                //the kinematic check is to prevent multiple coroutines
-                StartCoroutine(stun_routine());
-            }
-
-        }
-    }
-    */
-    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.CompareTag("Glowing"))
-        {
-            Debug.Log("Can see");
-            isinlight = true;
-            stun = stun_length;
-            DEnemyRB.velocity = new Vector2(0, 0);
-
-
+            // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {
-
+                stun = stun_length;
+                anim.SetBool("Stunned", true);
+                DEnemyRB.velocity = new Vector2(0, 0);
                 //the kinematic check is to prevent multiple coroutines
-                StartCoroutine(stun_routine());
+                StartCoroutine(Stun_routine());
             }
 
         
         }
     }
 
-    
-    
-
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Glowing"))
-        {
-            isinlight = false;
-            stun = stun_length;
-        }
-    }
-
-    IEnumerator stun_routine()
+    IEnumerator Stun_routine()
     {
         Debug.Log("Stun routine started");
+        //turn off collider
         DEnemyColl.enabled = !DEnemyColl.enabled;
-        Debug.Log("Is it static2?" + DEnemyColl.enabled);
 
         while (stun >= 0)
         {
             //Debug.Log("coroutine is happening" + stun);
             stun -= Time.deltaTime;
-
-           
-
             yield return null;
         }
         DEnemyColl.enabled = !DEnemyColl.enabled;
+        anim.SetBool("Stunned", false);
     }
 
 }
