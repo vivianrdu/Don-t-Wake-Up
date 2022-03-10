@@ -22,13 +22,11 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Other_variables
-    public Vector2 currDirection;
+    private float health;
     #endregion
 
-    #region respawn variables
-
-    public Transform respawn_anchor;
-
+    #region Other_variables
+    public Vector2 currDirection;
     #endregion
 
     // Awake is called before the first frame update
@@ -36,6 +34,7 @@ public class Player : MonoBehaviour
     {
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        health = 1;
     }
 
     // Update is called once per frame
@@ -46,6 +45,11 @@ public class Player : MonoBehaviour
         y_input = Input.GetAxisRaw("Vertical");
 
         Move();
+
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     #region Movement_functions
@@ -55,6 +59,8 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.J))
         {
             anim.SetBool("crouching", true);
+            anim.SetBool("running", false);
+            anim.SetBool("walking", false);
 
             if (x_input > 0)
             {
@@ -80,8 +86,8 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
         {
             anim.SetBool("running", true);
-            anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
+            anim.SetBool("walking", false);
 
             if (x_input > 0)
             {
@@ -122,6 +128,7 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
 
             if (x_input > 0)
             {
@@ -191,19 +198,11 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-
-    #region respawn_functions
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    #region Health_functions
+    private void Die()
     {
-        if(collision.CompareTag("Respawn_Anchor")
-        {
-
-        }
+        Destroy(this);
     }
-    
-
-
     #endregion
 
 }
