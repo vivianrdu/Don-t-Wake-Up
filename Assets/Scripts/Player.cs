@@ -25,6 +25,12 @@ public class Player : MonoBehaviour
     public Vector2 currDirection;
     #endregion
 
+    #region respawn variables
+
+    public Transform respawn_anchor;
+
+    #endregion
+
     // Awake is called before the first frame update
     void Awake()
     {
@@ -183,6 +189,21 @@ public class Player : MonoBehaviour
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
     }
+    #endregion
+
+
+    #region respawn_functions
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Respawn_Anchor")
+        {
+
+        }
+    }
+    
+
+
     #endregion
 
 }
