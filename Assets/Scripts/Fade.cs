@@ -10,28 +10,33 @@ public class Fade : MonoBehaviour
     private void Start()
     {
         img = GetComponent<Image>();
-
+        StartCoroutine(FadeFromBlack());
     }
 
     public IEnumerator FadeToBlack()
     {
-        // loop over 1 second backwards
-        for (float i = 1; i >= 0; i -= Time.deltaTime)
+        Debug.Log("Fade to black");
+        for (float i = 0; i <= 100; i += Time.deltaTime)
         {
-            // set color with i as alpha
-            img.color = new Color(1, 1, 1, i);
+            img.color = new Color(0, 0, 0, i);
             yield return null;
         }
     }
 
-    public IEnumerator FadeFromBlack()
+    public IEnumerator Wait()
     {
+        Debug.Log("waiting");
+        yield return new WaitForSeconds(10);
+    }
 
+        public IEnumerator FadeFromBlack()
+    {
+        Debug.Log("Fade from black");
         // loop over 1 second
-        for (float i = 0; i <= 1; i += Time.deltaTime)
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
         {
             // set color with i as alpha
-            img.color = new Color(1, 1, 1, i);
+            img.color = new Color(0, 0, 0, i);
             yield return null;
         }
     }
