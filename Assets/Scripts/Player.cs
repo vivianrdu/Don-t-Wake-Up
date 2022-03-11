@@ -29,12 +29,25 @@ public class Player : MonoBehaviour
     public Vector2 currDirection;
     #endregion
 
+    #region Respawnfunctions
+
+    public Vector2 respawn_anchor;
+    
+
+
+    #endregion
+
+
     // Awake is called before the first frame update
     void Awake()
     {
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         health = 1;
+        respawn_anchor = this.transform.position;
+        //manager_used = gameObject.GetComponent<GameManager>();
+
+
     }
 
     // Update is called once per frame
@@ -49,6 +62,14 @@ public class Player : MonoBehaviour
         if (health <= 0)
         {
             Die();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Respawn_Anchor"))
+        {
+            setRespawnAnchor(collision.transform.position);
         }
     }
 
@@ -201,8 +222,31 @@ public class Player : MonoBehaviour
     #region Health_functions
     private void Die()
     {
-        Destroy(this);
+        //Destroy(this);
+        respawn();
+        
+    }
+
+    public void take_damage(float damage)
+    {
+        health -= damage;
     }
     #endregion
+
+    #region Respawn_functions
+
+    private void respawn()
+    {
+        this.transform.position = respawn_anchor;
+    }
+    
+
+    private void setRespawnAnchor(Vector2 positionOfTranform)
+    {
+        respawn_anchor = positionOfTranform;
+    }
+
+    #endregion
+
 
 }

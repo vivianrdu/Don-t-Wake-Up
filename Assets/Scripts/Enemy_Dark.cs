@@ -95,6 +95,7 @@ public class Enemy_Dark : MonoBehaviour
         }
     }
 
+
     IEnumerator Stun_routine()
     {
         Debug.Log("Stun routine started");
