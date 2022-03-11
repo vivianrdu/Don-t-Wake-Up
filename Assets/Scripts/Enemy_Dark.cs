@@ -31,6 +31,13 @@ public class Enemy_Dark : MonoBehaviour
     BoxCollider2D DEnemyColl;
     #endregion
 
+
+
+    #region respawn_and_health_variables
+    public Vector2 respawn_anchor;
+
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +48,9 @@ public class Enemy_Dark : MonoBehaviour
         isAttacking = false;
         anim.SetBool("playerDetected", false);
         anim.SetBool("Stunned", false);
+
+        respawn_anchor = this.transform.position;
+
     }
 
     // Update is called once per frame
@@ -75,7 +85,7 @@ public class Enemy_Dark : MonoBehaviour
         
     }
 
-
+    #region Movement_functions
     public void Move()
     {
 
@@ -90,7 +100,18 @@ public class Enemy_Dark : MonoBehaviour
         DEnemyRB.velocity = direction * walking_speed;
         anim.SetFloat("dirX", direction.x);
     }
+    #endregion
 
+    #region death_and_respawn_variables
+
+    public void reset_position()
+    {
+        this.transform.position = respawn_anchor;
+    }
+
+    #endregion
+
+    #region Triggers and Collisions
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
@@ -109,7 +130,9 @@ public class Enemy_Dark : MonoBehaviour
         
         }
     }
+    #endregion
 
+    #region Routines
     IEnumerator Attack_routine()
     {
         isAttacking = true;
@@ -132,7 +155,11 @@ public class Enemy_Dark : MonoBehaviour
         }
         if (hitPlayer)
         {
+            Debug.Log("before error");
+            Player player_test = FindObjectOfType<Player>();
             playerposition.GetComponent<Player>().Die();
+            //player_test.Die();
+            Debug.Log("after error");
         }
         isAttacking = false;
         yield return new WaitForSeconds(2f);
@@ -153,5 +180,5 @@ public class Enemy_Dark : MonoBehaviour
         DEnemyColl.enabled = !DEnemyColl.enabled;
         anim.SetBool("Stunned", false);
     }
-
+    #endregion
 }

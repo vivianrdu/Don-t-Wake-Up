@@ -27,8 +27,10 @@ public class Player : MonoBehaviour
     Rigidbody2D PlayerRB;
     #endregion
 
-    #region Other_variables
+    #region HEalth_variables and respawns;
     private float health;
+    public Vector2 respawn_anchor;
+
     #endregion
 
     #region Other_variables
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         health = 1;
+        respawn_anchor = this.transform.position;
     }
 
     // Update is called once per frame
@@ -55,6 +58,7 @@ public class Player : MonoBehaviour
         // jump
         if (Input.GetKeyDown(KeyCode.Space) && canJump())
         {
+            Debug.Log("jumping works");
             PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
         }
         // end jump
@@ -180,6 +184,11 @@ public class Player : MonoBehaviour
         }
         // jumping
         //else if (Input.GetKeyDown(KeyCode.Space) == true)
+           
+        //{
+        //    Debug.Log("isJunping");
+        //    jumping();
+        //}
         //{
         //    anim.SetBool("jumping", true);
         //    if (x_input > 0)
@@ -215,6 +224,33 @@ public class Player : MonoBehaviour
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
     }
+
+
+    private void jumping()
+    {
+        Debug.Log("isJunping function called");
+        anim.SetBool("jumping", true);
+        if (x_input > 0)
+        {
+            PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+            PlayerRB.AddForce(new Vector2(0, jumpHeight));
+            currDirection = Vector2.right;
+        }
+        else if (x_input < 0)
+        {
+            PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+            PlayerRB.AddForce(new Vector2(0, jumpHeight));
+            currDirection = Vector2.left;
+        }
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
+            anim.SetBool("walking", false);
+            anim.SetBool("running", false);
+            anim.SetBool("jumping", false);
+            anim.SetBool("crouching", false);
+        }
+    }
     #endregion
 
     #region Health_functions
@@ -222,6 +258,9 @@ public class Player : MonoBehaviour
     {
         GameObject img = GameObject.FindWithTag("Fade");
         StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
+        
+
+        Debug.Log("before reload");
         Reload();
     }
 
@@ -229,7 +268,38 @@ public class Player : MonoBehaviour
     {
         GameObject gm = GameObject.FindWithTag("GameController");
         Debug.Log("Reloading");
-        gm.GetComponent<GameManager>().DarkScene();
-    }    
+        gm.GetComponent<GameManager>().reset_current_scene();
+        this.transform.position = respawn_anchor;
+    }
+
+
+
     #endregion
+
+    #region Collision and triggers
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("feetcontact");
+            feetContact = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            feetContact = false;
+        }
+    }
+
+    #endregion
+
+
+
+
+
+
 }
