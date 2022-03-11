@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("1.DarkScene");
     }
 
+
     public void DarkSceneCutscene()
     {
         SceneManager.LoadScene("1.DarkSceneAnimated");
@@ -63,4 +64,22 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("3.PeopleSceneAnimated");
     }
     #endregion
+
+    public void reset_current_scene()
+    {
+        Enemy_Dark[] enemies_in_Scene;
+        //Scene scene = SceneManager.GetActiveScene();
+        enemies_in_Scene = FindObjectsOfType<Enemy_Dark>();
+
+        // iterate root objects and do something
+        for (int i = 0; i < enemies_in_Scene.Length; ++i)
+        {
+            //Make an Enemy Class then let each class inherit main functions from Parent
+            
+            Enemy_Dark enemy_Dark = enemies_in_Scene[i];
+            enemy_Dark.reset_position();
+        }
+    }
+
+
 }
