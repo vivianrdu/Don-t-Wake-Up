@@ -11,6 +11,12 @@ public class Player : MonoBehaviour
     public float crouching_speed;
     float x_input;
     float y_input;
+
+    // bool to detect whether Player's feet is in contact with a surface
+    public bool feetContact;
+    // bool to decide how high Player can jump
+    public float jumpForce;
+    public float jumpHeight;
     #endregion
 
     #region Animation_components
@@ -19,7 +25,6 @@ public class Player : MonoBehaviour
 
     #region Physics_components
     Rigidbody2D PlayerRB;
-    float jumpHeight = 1;
     #endregion
 
     #region Other_variables
@@ -47,6 +52,13 @@ public class Player : MonoBehaviour
 
         Move();
 
+        // jump
+        if (Input.GetKeyDown(KeyCode.Space) && canJump())
+        {
+            PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+        }
+        // end jump
+
         if (health <= 0)
         {
             Die();
@@ -54,6 +66,12 @@ public class Player : MonoBehaviour
     }
 
     #region Movement_functions
+    // jump function
+    public bool canJump()
+    {
+        return feetContact;
+    }
+
     private void Move()
     {
         // if J pressed and WASD pressed, set anim.crouching = true
@@ -161,30 +179,30 @@ public class Player : MonoBehaviour
             }
         }
         // jumping
-        else if (Input.GetKeyDown(KeyCode.Space) == true)
-        {
-            anim.SetBool("jumping", true);
-            if (x_input > 0)
-            {
-                PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
-                PlayerRB.AddForce(new Vector2(0, jumpHeight));
-                currDirection = Vector2.right;
-            }
-            else if (x_input < 0)
-            {
-                PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
-                PlayerRB.AddForce(new Vector2(0, jumpHeight));
-                currDirection = Vector2.left;
-            }
-            else
-            {
-                PlayerRB.velocity = Vector2.zero;
-                anim.SetBool("walking", false);
-                anim.SetBool("running", false);
-                anim.SetBool("jumping", false);
-                anim.SetBool("crouching", false);
-            }
-        }
+        //else if (Input.GetKeyDown(KeyCode.Space) == true)
+        //{
+        //    anim.SetBool("jumping", true);
+        //    if (x_input > 0)
+        //    {
+        //        PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+        //        PlayerRB.AddForce(new Vector2(0, jumpHeight));
+        //        currDirection = Vector2.right;
+        //    }
+        //    else if (x_input < 0)
+        //    {
+        //        PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+        //        PlayerRB.AddForce(new Vector2(0, jumpHeight));
+        //        currDirection = Vector2.left;
+        //    }
+        //    else
+        //    {
+        //        PlayerRB.velocity = Vector2.zero;
+        //        anim.SetBool("walking", false);
+        //        anim.SetBool("running", false);
+        //        anim.SetBool("jumping", false);
+        //        anim.SetBool("crouching", false);
+        //    }
+        //}
         // else anim.walking and anim.running = false
         else
         {
