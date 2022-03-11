@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,6 +11,12 @@ public class Player : MonoBehaviour
     public float crouching_speed;
     float x_input;
     float y_input;
+
+    // bool to detect whether Player's feet is in contact with a surface
+    public bool feetContact;
+    // bool to decide how high Player can jump
+    public float jumpForce;
+    public float jumpHeight;
     #endregion
 
     #region Animation_components
@@ -18,7 +25,6 @@ public class Player : MonoBehaviour
 
     #region Physics_components
     Rigidbody2D PlayerRB;
-    float jumpHeight = 1;
     #endregion
 
     #region Other_variables
@@ -29,25 +35,12 @@ public class Player : MonoBehaviour
     public Vector2 currDirection;
     #endregion
 
-    #region Respawnfunctions
-
-    public Vector2 respawn_anchor;
-    
-
-
-    #endregion
-
-
     // Awake is called before the first frame update
     void Awake()
     {
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         health = 1;
-        respawn_anchor = this.transform.position;
-        //manager_used = gameObject.GetComponent<GameManager>();
-
-
     }
 
     // Update is called once per frame
@@ -59,21 +52,26 @@ public class Player : MonoBehaviour
 
         Move();
 
+        // jump
+        if (Input.GetKeyDown(KeyCode.Space) && canJump())
+        {
+            PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+        }
+        // end jump
+
         if (health <= 0)
         {
             Die();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    #region Movement_functions
+    // jump function
+    public bool canJump()
     {
-        if (collision.CompareTag("Respawn_Anchor"))
-        {
-            setRespawnAnchor(collision.transform.position);
-        }
+        return feetContact;
     }
 
-    #region Movement_functions
     private void Move()
     {
         // if J pressed and WASD pressed, set anim.crouching = true
@@ -143,7 +141,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("crouching", false);
             }
         }
-        
+
         // else if WASD pressed, set anim.walking = true
         else if ((Input.GetKey(KeyCode.LeftShift) == false) | (Input.GetKey(KeyCode.RightShift)) == false)
         {
@@ -181,30 +179,30 @@ public class Player : MonoBehaviour
             }
         }
         // jumping
-        else if (Input.GetKeyDown(KeyCode.Space) == true)
-        {
-            anim.SetBool("jumping", true);
-            if (x_input > 0)
-            {
-                PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
-                PlayerRB.AddForce(new Vector2(0, jumpHeight));
-                currDirection = Vector2.right;
-            }
-            else if (x_input < 0)
-            {
-                PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
-                PlayerRB.AddForce(new Vector2(0, jumpHeight));
-                currDirection = Vector2.left;
-            }
-            else
-            {
-                PlayerRB.velocity = Vector2.zero;
-                anim.SetBool("walking", false);
-                anim.SetBool("running", false);
-                anim.SetBool("jumping", false);
-                anim.SetBool("crouching", false);
-            }
-        }
+        //else if (Input.GetKeyDown(KeyCode.Space) == true)
+        //{
+        //    anim.SetBool("jumping", true);
+        //    if (x_input > 0)
+        //    {
+        //        PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+        //        PlayerRB.AddForce(new Vector2(0, jumpHeight));
+        //        currDirection = Vector2.right;
+        //    }
+        //    else if (x_input < 0)
+        //    {
+        //        PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
+        //        PlayerRB.AddForce(new Vector2(0, jumpHeight));
+        //        currDirection = Vector2.left;
+        //    }
+        //    else
+        //    {
+        //        PlayerRB.velocity = Vector2.zero;
+        //        anim.SetBool("walking", false);
+        //        anim.SetBool("running", false);
+        //        anim.SetBool("jumping", false);
+        //        anim.SetBool("crouching", false);
+        //    }
+        //}
         // else anim.walking and anim.running = false
         else
         {
@@ -220,33 +218,18 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Health_functions
-    private void Die()
+    public void Die()
     {
-        //Destroy(this);
-        respawn();
-        
+        GameObject img = GameObject.FindWithTag("Fade");
+        StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
+        Reload();
     }
 
-    public void take_damage(float damage)
+    public void Reload()
     {
-        health -= damage;
-    }
+        GameObject gm = GameObject.FindWithTag("GameController");
+        Debug.Log("Reloading");
+        gm.GetComponent<GameManager>().DarkScene();
+    }    
     #endregion
-
-    #region Respawn_functions
-
-    private void respawn()
-    {
-        this.transform.position = respawn_anchor;
-    }
-    
-
-    private void setRespawnAnchor(Vector2 positionOfTranform)
-    {
-        respawn_anchor = positionOfTranform;
-    }
-
-    #endregion
-
-
 }
