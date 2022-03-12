@@ -268,7 +268,8 @@ public class Player : MonoBehaviour
     {
         GameObject gm = GameObject.FindWithTag("GameController");
         Debug.Log("Reloading");
-        gm.GetComponent<GameManager>().reset_current_scene();
+        gm.GetComponent<GameManager>().DarkScene();
+        //gm.GetComponent<GameManager>().reset_current_scene();
         this.transform.position = respawn_anchor;
     }
 
