@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public void reset_current_scene()
+    public void Reset_current_scene()
     {
         Enemy_Dark[] enemies_in_Scene;
         //Scene scene = SceneManager.GetActiveScene();
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
             //Make an Enemy Class then let each class inherit main functions from Parent
             
             Enemy_Dark enemy_Dark = enemies_in_Scene[i];
-            enemy_Dark.reset_position();
+            enemy_Dark.Reset_position();
         }
     }
 

@@ -16,20 +16,14 @@ public class Fade : MonoBehaviour
     public IEnumerator FadeToBlack()
     {
         Debug.Log("Fade to black");
-        for (float i = 0; i <= 100; i += Time.deltaTime)
+        for (float i = 0; i <= 1; i += Time.deltaTime)
         {
             img.color = new Color(0, 0, 0, i);
             yield return null;
         }
     }
 
-    public IEnumerator Wait()
-    {
-        Debug.Log("waiting");
-        yield return new WaitForSeconds(10);
-    }
-
-        public IEnumerator FadeFromBlack()
+    public IEnumerator FadeFromBlack()
     {
         Debug.Log("Fade from black");
         // loop over 1 second
