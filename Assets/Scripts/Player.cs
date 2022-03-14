@@ -258,19 +258,17 @@ public class Player : MonoBehaviour
     {
         GameObject img = GameObject.FindWithTag("Fade");
         StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
-        
-
-        Debug.Log("before reload");
         Reload();
+        StartCoroutine(img.GetComponent<Fade>().FadeFromBlack());
     }
 
     public void Reload()
     {
         GameObject gm = GameObject.FindWithTag("GameController");
         Debug.Log("Reloading");
-        gm.GetComponent<GameManager>().DarkScene();
-        //gm.GetComponent<GameManager>().reset_current_scene();
-        this.transform.position = respawn_anchor;
+        //gm.GetComponent<GameManager>().DarkScene();
+        gm.GetComponent<GameManager>().Reset_current_scene();
+        transform.position = respawn_anchor;
     }
 
 

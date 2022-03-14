@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walking_speed: 2
-  running_speed: 3
+  running_speed: 4
   crouching_speed: 1
   feetContact: 0
   jumpForce: 50
@@ -343,7 +343,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2664,7 +2664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &980876331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2681,8 +2681,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -567.93835, y: -428.05994}
-  m_SizeDelta: {x: 103.9244, y: 10.282}
+  m_AnchoredPosition: {x: -487.36523, y: -428.05994}
+  m_SizeDelta: {x: 265.0707, y: 10.282}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &980876332
 MonoBehaviour:
