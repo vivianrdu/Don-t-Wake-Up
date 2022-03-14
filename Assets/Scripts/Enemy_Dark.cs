@@ -102,11 +102,16 @@ public class Enemy_Dark : MonoBehaviour
     }
     #endregion
 
-    #region death_and_respawn_variables
+    #region Death_and_Respawn_variables
 
-    public void reset_position()
+    public void Reset_position()
     {
-        this.transform.position = respawn_anchor;
+        transform.position = respawn_anchor;
+        //reset
+        stun = 0;
+        isAttacking = false;
+        anim.SetBool("playerDetected", false);
+        anim.SetBool("Stunned", false);
     }
 
     #endregion
@@ -136,7 +141,7 @@ public class Enemy_Dark : MonoBehaviour
     IEnumerator Attack_routine()
     {
         isAttacking = true;
-        bool hitPlayer = false;
+        //bool hitPlayer = false;
         DEnemyRB.velocity = Vector2.zero;
 
         anim.SetTrigger("Attacking");
@@ -150,19 +155,20 @@ public class Enemy_Dark : MonoBehaviour
             Debug.Log(hit.transform.name);
             if (hit.transform.CompareTag("Player"))
             {
-                hitPlayer = true;
+                playerposition.GetComponent<Player>().Die();
             }
         }
-        if (hitPlayer)
-        {
-            Debug.Log("before error");
-            Player player_test = FindObjectOfType<Player>();
-            playerposition.GetComponent<Player>().Die();
+        //if (hitPlayer)
+        //{
+            //Debug.Log("before error");
+            //Player player_test = FindObjectOfType<Player>();
+            
             //player_test.Die();
-            Debug.Log("after error");
-        }
+            //Debug.Log("after error");
+        //}
         isAttacking = false;
-        yield return new WaitForSeconds(2f);
+        anim.SetBool("Attacking", false);
+        yield return null;
     }
 
     IEnumerator Stun_routine()
