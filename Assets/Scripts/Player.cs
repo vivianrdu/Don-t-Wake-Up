@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Health_variables and respawns;
-    private float health;
     public Vector2 respawn_anchor;
     #endregion
 
@@ -41,7 +40,6 @@ public class Player : MonoBehaviour
     {
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        health = 1;
         respawn_anchor = this.transform.position;
     }
 
@@ -61,11 +59,6 @@ public class Player : MonoBehaviour
             PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
         }
         // end jump
-
-        if (health <= 0)
-        {
-            Die();
-        }
     }
 
     #region Movement_functions
@@ -77,8 +70,8 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        // if J pressed and WASD pressed, set anim.crouching = true
-        if (Input.GetKey(KeyCode.J))
+        // if S pressed and WASD pressed, set anim.crouching = true
+        if (Input.GetKey(KeyCode.S))
         {
             anim.SetBool("crouching", true);
             anim.SetBool("running", false);
@@ -123,6 +116,7 @@ public class Player : MonoBehaviour
                 PlayerRB.velocity = Vector2.left * running_speed;
                 currDirection = Vector2.left;
             }
+            /**
             else if (y_input > 0)
             {
                 anim.SetBool("walking", true);
@@ -134,7 +128,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("walking", true);
                 PlayerRB.velocity = Vector2.down * running_speed;
                 currDirection = Vector2.down;
-            }
+            }**/
             else
             {
                 PlayerRB.velocity = Vector2.zero;
