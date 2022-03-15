@@ -27,10 +27,9 @@ public class Player : MonoBehaviour
     Rigidbody2D PlayerRB;
     #endregion
 
-    #region HEalth_variables and respawns;
+    #region Health_variables and respawns;
     private float health;
     public Vector2 respawn_anchor;
-
     #endregion
 
     #region Other_variables
@@ -253,6 +252,13 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region Spawn_function
+    public void Set_spawn_anchor(Vector2 checkpoint)
+    {
+        respawn_anchor = checkpoint;
+    }
+    #endregion
+
     #region Health_functions
     public IEnumerator Die()
     {
@@ -283,9 +289,6 @@ public class Player : MonoBehaviour
         /** Fades from black **/
         StartCoroutine(img.GetComponent<Fade>().FadeFromBlack());
     }
-
-
-
     #endregion
 
     #region Collision and triggers
