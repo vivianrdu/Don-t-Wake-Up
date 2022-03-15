@@ -70,9 +70,10 @@ public class Enemy_Dark : MonoBehaviour
             //not currently stunned
             if (anim.GetBool("Stunned") == false)
             {
+                Debug.Log(Vector2.Distance(playerposition.position, transform.position));
                 if (isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2)|
-                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1)))
+                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))
                 {
 
                         Debug.Log("Attack");
@@ -141,34 +142,36 @@ public class Enemy_Dark : MonoBehaviour
     IEnumerator Attack_routine()
     {
         isAttacking = true;
-        //bool hitPlayer = false;
+        float attackLength = 1f;
         DEnemyRB.velocity = Vector2.zero;
 
         anim.SetTrigger("Attacking");
 
-        Debug.Log("started routine");
-        yield return new WaitForSeconds(0.1f);
+        while (attackLength >= 0)
+        {
+            attackLength -= Time.deltaTime;
+            yield return null;
+        }
+        //if (hitPlayer)
+        //{
+        //Debug.Log("before error");
+        //Player player_test = FindObjectOfType<Player>();
+
+        //player_test.Die();
+        //Debug.Log("after error");
+        //}
         RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
 
         foreach (RaycastHit2D hit in hits)
         {
-            Debug.Log(hit.transform.name);
             if (hit.transform.CompareTag("Player"))
             {
-                playerposition.GetComponent<Player>().Die();
+                yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
             }
         }
-        //if (hitPlayer)
-        //{
-            //Debug.Log("before error");
-            //Player player_test = FindObjectOfType<Player>();
-            
-            //player_test.Die();
-            //Debug.Log("after error");
-        //}
+
         isAttacking = false;
         anim.SetBool("Attacking", false);
-        yield return null;
     }
 
     IEnumerator Stun_routine()

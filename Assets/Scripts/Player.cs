@@ -228,7 +228,7 @@ public class Player : MonoBehaviour
 
     private void jumping()
     {
-        Debug.Log("isJunping function called");
+        Debug.Log("isJumping function called");
         anim.SetBool("jumping", true);
         if (x_input > 0)
         {
@@ -254,21 +254,34 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Health_functions
-    public void Die()
+    public IEnumerator Die()
     {
+        /** Player SpriteRenderer disabled (disappears) **/
+        transform.GetComponent<SpriteRenderer>().enabled = false;
+
         GameObject img = GameObject.FindWithTag("Fade");
-        StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
+        yield return StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
+        yield return new WaitForSeconds(1f);
         Reload();
-        StartCoroutine(img.GetComponent<Fade>().FadeFromBlack());
     }
 
     public void Reload()
     {
         GameObject gm = GameObject.FindWithTag("GameController");
-        Debug.Log("Reloading");
-        //gm.GetComponent<GameManager>().DarkScene();
+        GameObject img = GameObject.FindWithTag("Fade");
+
+        /** This occurs when screen is black:
+         * Player position is reset
+         * Player SpriteRenderer reenabled (appears)
+         * Player faces forward
+        **/
         gm.GetComponent<GameManager>().Reset_current_scene();
+        transform.GetComponent<SpriteRenderer>().enabled = true;
         transform.position = respawn_anchor;
+        currDirection = Vector2.down;
+
+        /** Fades from black **/
+        StartCoroutine(img.GetComponent<Fade>().FadeFromBlack());
     }
 
 
@@ -295,10 +308,4 @@ public class Player : MonoBehaviour
     }
 
     #endregion
-
-
-
-
-
-
 }
