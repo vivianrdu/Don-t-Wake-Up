@@ -297,6 +297,11 @@ public class Player : MonoBehaviour
             Debug.Log("feetcontact");
             feetContact = true;
         }
+
+        if(collision.gameObject.CompareTag("respawn_anchor"))
+        {
+            respawn_anchor = collision.transform.position;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

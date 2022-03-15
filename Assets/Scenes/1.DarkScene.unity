@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 134418449}
   m_Layer: 0
   m_Name: Nightlight
-  m_TagString: Untagged
+  m_TagString: Nightlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -695,6 +695,7 @@ MonoBehaviour:
   timerIsRunning: 0
   player: {fileID: 38057031}
   checkpoint: {fileID: 0}
+  respawn_anchor: {x: 0, y: 0}
 --- !u!50 &134418449
 Rigidbody2D:
   serializedVersion: 4
