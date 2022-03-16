@@ -266,7 +266,8 @@ MonoBehaviour:
   running_speed: 4
   crouching_speed: 1
   feetContact: 0
-  jumpHeight: 70
+  jumpForce: 50
+  jumpHeight: 20
   respawn_anchor: {x: 0, y: 0}
   currDirection: {x: 0, y: 0}
 --- !u!61 &38057034
@@ -2773,7 +2774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &980876331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8766,6 +8767,10 @@ PrefabInstance:
     - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_Name
       value: DarkEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_RootOrder

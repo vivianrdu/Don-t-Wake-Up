@@ -117,6 +117,136 @@ public class PlayerTest : MonoBehaviour
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
     }
+
+
+    // if S pressed and WASD pressed, set anim.crouching = true
+
+    /*
+
+    if (Input.GetKey(KeyCode.S) && feetContact)
+    {
+        anim.SetBool("crouching", true);
+        anim.SetBool("running", false);
+        anim.SetBool("walking", false);
+
+        if (x_input > 0)
+        {
+            PlayerRB.velocity = Vector2.right * crouching_speed;
+            currDirection = Vector2.right;
+        }
+        else if (x_input < 0)
+        {
+            PlayerRB.velocity = Vector2.left * crouching_speed;
+            currDirection = Vector2.left;
+        }
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
+            anim.SetBool("walking", false);
+            anim.SetBool("running", false);
+            anim.SetBool("jumping", false);
+            anim.SetBool("crouching", false);
+        }
+    }
+
+    // else if shift pressed and WASD pressed, set anim.running = true
+    else if ( feetContact &&(Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift)))
+    {
+        anim.SetBool("running", true);
+        anim.SetBool("crouching", false);
+        anim.SetBool("walking", false);
+
+        if (x_input > 0)
+        {
+            anim.SetBool("walking", true);
+            PlayerRB.velocity = Vector2.right * running_speed;
+            currDirection = Vector2.right;
+        }
+        else if (x_input < 0)
+        {
+            anim.SetBool("walking", true);
+            PlayerRB.velocity = Vector2.left * running_speed;
+            currDirection = Vector2.left;
+        }
+    */
+    /**
+    else if (y_input > 0)
+    {
+        anim.SetBool("walking", true);
+        PlayerRB.velocity = Vector2.up * running_speed;
+        currDirection = Vector2.up;
+    }
+    else if (y_input < 0)
+    {
+        anim.SetBool("walking", true);
+        PlayerRB.velocity = Vector2.down * running_speed;
+        currDirection = Vector2.down;
+    }**/
+
+    /*
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
+            anim.SetBool("walking", false);
+            anim.SetBool("running", false);
+            anim.SetBool("jumping", false);
+            anim.SetBool("crouching", false);
+        }
+    }
+
+    // else if WASD pressed, set anim.walking = true
+    else if ( feetContact &&(!Input.GetKey(KeyCode.LeftShift) | !Input.GetKey(KeyCode.RightShift)))
+    {
+        anim.SetBool("walking", true);
+        anim.SetBool("crouching", false);
+        anim.SetBool("running", false);
+
+        if (x_input > 0)
+        {
+            PlayerRB.velocity = Vector2.right * walking_speed;
+            currDirection = Vector2.right;
+        }
+        else if (x_input < 0)
+        {
+            PlayerRB.velocity = Vector2.left * walking_speed;
+            currDirection = Vector2.left;
+        }
+        /*else if (y_input > 0)
+        {
+            PlayerRB.velocity = Vector2.up * walking_speed;
+            currDirection = Vector2.up;
+        }
+        else if (y_input < 0)
+        {
+            PlayerRB.velocity = Vector2.down * walking_speed;
+            currDirection = Vector2.down;
+        }
+
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
+            anim.SetBool("walking", false);
+            anim.SetBool("running", false);
+            anim.SetBool("jumping", false);
+            anim.SetBool("crouching", false);
+        }
+    }
+    */
+
+    /*
+    else
+    {
+        PlayerRB.velocity = Vector2.zero;
+        anim.SetBool("walking", false);
+        anim.SetBool("running", false);
+        anim.SetBool("jumping", false);
+        anim.SetBool("crouching", false);
+    }
+    anim.SetFloat("dirX", currDirection.x);
+    anim.SetFloat("dirY", currDirection.y);
+    */
     #endregion
+
+
 
 }
