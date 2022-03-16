@@ -12,11 +12,15 @@ public class Player : MonoBehaviour
     float x_input;
     float y_input;
 
+   
+
     // bool to detect whether Player's feet is in contact with a surface
     public bool feetContact;
+    private bool isCrouching;
     // bool to decide how high Player can jump
-    public float jumpForce;
+    //public float jumpForce;
     public float jumpHeight;
+    private bool jumping_routine_ongoing;
     #endregion
 
     #region Animation_components
@@ -55,8 +59,9 @@ public class Player : MonoBehaviour
         // jump
         if (Input.GetKeyDown(KeyCode.Space) && canJump())
         {
-            Debug.Log("jumping works");
-            PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+            
+            //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+            jumping();
         }
         // end jump
     }
@@ -65,185 +70,111 @@ public class Player : MonoBehaviour
     // jump function
     public bool canJump()
     {
-        return feetContact;
+        if (feetContact && !jumping_routine_ongoing && !isCrouching)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void Move()
     {
-        // if S pressed and WASD pressed, set anim.crouching = true
-        if (Input.GetKey(KeyCode.S))
+
+        if(feetContact)
         {
-            anim.SetBool("crouching", true);
-            anim.SetBool("running", false);
-            anim.SetBool("walking", false);
+            
+            
+            
+            
+
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                anim.SetBool("crouching", true);
+                anim.SetBool("running", false);
+                anim.SetBool("walking", false);
+                isCrouching = true;
+
+                PlayerRB.velocity = new Vector2(x_input * crouching_speed,0);
+            } else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
+            {
+                anim.SetBool("running", true);
+                anim.SetBool("crouching", false);
+                anim.SetBool("walking", false);
+                isCrouching = false;
+
+                PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
+            } else
+            {
+
+                
+                anim.SetBool("walking", true);
+                anim.SetBool("crouching", false);
+                anim.SetBool("running", false);
+                isCrouching = false;
+                PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+            }
+
 
             if (x_input > 0)
             {
-                PlayerRB.velocity = Vector2.right * crouching_speed;
                 currDirection = Vector2.right;
             }
             else if (x_input < 0)
             {
-                PlayerRB.velocity = Vector2.left * crouching_speed;
                 currDirection = Vector2.left;
             }
             else
             {
                 PlayerRB.velocity = Vector2.zero;
                 anim.SetBool("walking", false);
-                anim.SetBool("running", false);
-                anim.SetBool("jumping", false);
                 anim.SetBool("crouching", false);
-            }
-        }
-
-        // else if shift pressed and WASD pressed, set anim.running = true
-        else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
-        {
-            anim.SetBool("running", true);
-            anim.SetBool("crouching", false);
-            anim.SetBool("walking", false);
-
-            if (x_input > 0)
-            {
-                anim.SetBool("walking", true);
-                PlayerRB.velocity = Vector2.right * running_speed;
-                currDirection = Vector2.right;
-            }
-            else if (x_input < 0)
-            {
-                anim.SetBool("walking", true);
-                PlayerRB.velocity = Vector2.left * running_speed;
-                currDirection = Vector2.left;
-            }
-            /**
-            else if (y_input > 0)
-            {
-                anim.SetBool("walking", true);
-                PlayerRB.velocity = Vector2.up * running_speed;
-                currDirection = Vector2.up;
-            }
-            else if (y_input < 0)
-            {
-                anim.SetBool("walking", true);
-                PlayerRB.velocity = Vector2.down * running_speed;
-                currDirection = Vector2.down;
-            }**/
-            else
-            {
-                PlayerRB.velocity = Vector2.zero;
-                anim.SetBool("walking", false);
                 anim.SetBool("running", false);
-                anim.SetBool("jumping", false);
-                anim.SetBool("crouching", false);
             }
+            anim.SetFloat("dirX", currDirection.x);
+            anim.SetFloat("dirY", currDirection.y);
         }
 
-        // else if WASD pressed, set anim.walking = true
-        else if ((Input.GetKey(KeyCode.LeftShift) == false) | (Input.GetKey(KeyCode.RightShift)) == false)
-        {
-            anim.SetBool("walking", true);
-            anim.SetBool("crouching", false);
-            anim.SetBool("running", false);
+        
 
-            if (x_input > 0)
-            {
-                PlayerRB.velocity = Vector2.right * walking_speed;
-                currDirection = Vector2.right;
-            }
-            else if (x_input < 0)
-            {
-                PlayerRB.velocity = Vector2.left * walking_speed;
-                currDirection = Vector2.left;
-            }
-            else if (y_input > 0)
-            {
-                PlayerRB.velocity = Vector2.up * walking_speed;
-                currDirection = Vector2.up;
-            }
-            else if (y_input < 0)
-            {
-                PlayerRB.velocity = Vector2.down * walking_speed;
-                currDirection = Vector2.down;
-            }
-            else
-            {
-                PlayerRB.velocity = Vector2.zero;
-                anim.SetBool("walking", false);
-                anim.SetBool("running", false);
-                anim.SetBool("jumping", false);
-                anim.SetBool("crouching", false);
-            }
-        }
-        // jumping
-        //else if (Input.GetKeyDown(KeyCode.Space) == true)
-           
-        //{
-        //    Debug.Log("isJunping");
-        //    jumping();
-        //}
-        //{
-        //    anim.SetBool("jumping", true);
-        //    if (x_input > 0)
-        //    {
-        //        PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
-        //        PlayerRB.AddForce(new Vector2(0, jumpHeight));
-        //        currDirection = Vector2.right;
-        //    }
-        //    else if (x_input < 0)
-        //    {
-        //        PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
-        //        PlayerRB.AddForce(new Vector2(0, jumpHeight));
-        //        currDirection = Vector2.left;
-        //    }
-        //    else
-        //    {
-        //        PlayerRB.velocity = Vector2.zero;
-        //        anim.SetBool("walking", false);
-        //        anim.SetBool("running", false);
-        //        anim.SetBool("jumping", false);
-        //        anim.SetBool("crouching", false);
-        //    }
-        //}
-        // else anim.walking and anim.running = false
-        else
-        {
-            PlayerRB.velocity = Vector2.zero;
-            anim.SetBool("walking", false);
-            anim.SetBool("running", false);
-            anim.SetBool("jumping", false);
-            anim.SetBool("crouching", false);
-        }
-        anim.SetFloat("dirX", currDirection.x);
-        anim.SetFloat("dirY", currDirection.y);
+
     }
 
 
     private void jumping()
     {
-        Debug.Log("isJumping function called");
-        anim.SetBool("jumping", true);
-        if (x_input > 0)
-        {
-            PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
-            PlayerRB.AddForce(new Vector2(0, jumpHeight));
-            currDirection = Vector2.right;
-        }
-        else if (x_input < 0)
-        {
-            PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, 0);
-            PlayerRB.AddForce(new Vector2(0, jumpHeight));
-            currDirection = Vector2.left;
-        }
-        else
-        {
-            PlayerRB.velocity = Vector2.zero;
-            anim.SetBool("walking", false);
-            anim.SetBool("running", false);
-            anim.SetBool("jumping", false);
-            anim.SetBool("crouching", false);
-        }
+        StartCoroutine(Jumping_Routine());
     }
+
+    IEnumerator Jumping_Routine()
+    {
+        jumping_routine_ongoing = true;
+        Debug.Log("jumping coroutine starts");
+        anim.SetBool("walking", false);
+        anim.SetBool("crouching", false);
+        anim.SetBool("running", false);
+
+        anim.SetBool("jumping", true);
+        yield return new WaitForSeconds(0.1f);
+        PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+        Debug.Log(feetContact);
+
+        //yield return new WaitForSeconds(1); // needs to be done to ensure that feetcontact has been lifted
+        feetContact = false;
+        while (!feetContact)
+        {
+            
+            yield return null;
+        }
+        Debug.Log(feetContact);
+        anim.SetBool("jumping", false);
+        jumping_routine_ongoing = false;
+        
+    }
+
     #endregion
 
     #region Spawn_function
@@ -303,6 +234,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        Debug.Log("feetcontact gone");
         if (collision.gameObject.CompareTag("Ground"))
         {
             feetContact = false;

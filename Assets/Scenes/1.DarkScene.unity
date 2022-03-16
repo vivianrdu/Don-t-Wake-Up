@@ -266,8 +266,7 @@ MonoBehaviour:
   running_speed: 4
   crouching_speed: 1
   feetContact: 0
-  jumpForce: 50
-  jumpHeight: 50
+  jumpHeight: 70
   respawn_anchor: {x: 0, y: 0}
   currDirection: {x: 0, y: 0}
 --- !u!61 &38057034

@@ -100,6 +100,7 @@ public class Nightlight : MonoBehaviour
     {
         float totalTransitionTime = 2000f;
         float elapsedTime = 0;
+        anim.SetBool("reset", false);// need this to enable animation upon reset again
         anim.SetBool("on", true);
 
         while (fire.intensity >= 0.1)
@@ -121,6 +122,7 @@ public class Nightlight : MonoBehaviour
         //reset
         timerIsRunning = false;
         alreadyOn = false;
+        anim.SetBool("reset", true);
     }
 
 }
