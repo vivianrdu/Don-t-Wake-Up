@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - respawn_anchor
   - Hideable_Object
+  - Water
   layers:
   - Default
   - TransparentFX
