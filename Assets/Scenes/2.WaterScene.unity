@@ -153,8 +153,8 @@ Transform:
   m_LocalPosition: {x: 29, y: 1.14, z: 10}
   m_LocalScale: {x: 1.27, y: 1.27, z: 1}
   m_Children: []
-  m_Father: {fileID: 144284471}
-  m_RootOrder: 9
+  m_Father: {fileID: 501655828}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &40267958
 BoxCollider2D:
@@ -194,13 +194,13 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: -2
+  m_SurfaceLevel: -1.8
   m_Density: 10
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 90
-  m_FlowMagnitude: 0
-  m_FlowVariation: 0
+  m_FlowMagnitude: 20
+  m_FlowVariation: 50
 --- !u!212 &40267960
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -514,11 +514,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117509800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 126.26, y: 1.14, z: 10}
+  m_LocalPosition: {x: 126.26001, y: 1.14, z: 10}
   m_LocalScale: {x: 1.27, y: 1.27, z: 1}
   m_Children: []
-  m_Father: {fileID: 144284471}
-  m_RootOrder: 12
+  m_Father: {fileID: 501655828}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &117509802
 BoxCollider2D:
@@ -558,13 +558,13 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: -2
+  m_SurfaceLevel: -1.8
   m_Density: 10
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 90
-  m_FlowMagnitude: 0
-  m_FlowVariation: 0
+  m_FlowMagnitude: 20
+  m_FlowVariation: 50
 --- !u!212 &117509804
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -654,14 +654,7 @@ Transform:
   - {fileID: 761761490}
   - {fileID: 1984055784}
   - {fileID: 1468703012}
-  - {fileID: 1452322943}
-  - {fileID: 40267957}
-  - {fileID: 2069725595}
-  - {fileID: 1161666158}
-  - {fileID: 117509801}
-  - {fileID: 1137285388}
-  - {fileID: 2009851960}
-  - {fileID: 185328551}
+  - {fileID: 501655828}
   m_Father: {fileID: 1169343218}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1010,8 +1003,8 @@ Transform:
   m_LocalPosition: {x: 223.55, y: 1.14, z: 10}
   m_LocalScale: {x: 1.27, y: 1.27, z: 1}
   m_Children: []
-  m_Father: {fileID: 144284471}
-  m_RootOrder: 15
+  m_Father: {fileID: 501655828}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &185328552
 BoxCollider2D:
@@ -1051,13 +1044,13 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: -2
+  m_SurfaceLevel: -1.8
   m_Density: 10
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 90
-  m_FlowMagnitude: 0
-  m_FlowVariation: 0
+  m_FlowMagnitude: 20
+  m_FlowVariation: 50
 --- !u!212 &185328554
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2320,6 +2313,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &501655827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 501655828}
+  m_Layer: 0
+  m_Name: Waves
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &501655828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501655827}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1452322943}
+  - {fileID: 40267957}
+  - {fileID: 2069725595}
+  - {fileID: 1161666158}
+  - {fileID: 117509801}
+  - {fileID: 1137285388}
+  - {fileID: 2009851960}
+  - {fileID: 185328551}
+  m_Father: {fileID: 144284471}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511872277
 GameObject:
   m_ObjectHideFlags: 0
@@ -4556,8 +4587,8 @@ Transform:
   m_LocalPosition: {x: 158.6, y: 1.14, z: 10}
   m_LocalScale: {x: 1.27, y: 1.27, z: 1}
   m_Children: []
-  m_Father: {fileID: 144284471}
-  m_RootOrder: 13
+  m_Father: {fileID: 501655828}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1137285389
 BoxCollider2D:
@@ -4597,13 +4628,13 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: -2
+  m_SurfaceLevel: -1.8
   m_Density: 10
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 90
-  m_FlowMagnitude: 0
-  m_FlowVariation: 0
+  m_FlowMagnitude: 20
+  m_FlowVariation: 50
 --- !u!212 &1137285391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4686,8 +4717,8 @@ Transform:
   m_LocalPosition: {x: 93.81, y: 1.14, z: 10}
   m_LocalScale: {x: 1.27, y: 1.27, z: 1}
   m_Children: []
-  m_Father: {fileID: 144284471}
-  m_RootOrder: 11
+  m_Father: {fileID: 501655828}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1161666159
 BoxCollider2D:
@@ -4727,13 +4758,13 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: -2
+  m_SurfaceLevel: -1.8
   m_Density: 10
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 90
-  m_FlowMagnitude: 0
-  m_FlowVariation: 0
+  m_FlowMagnitude: 20
+  m_FlowVariation: 50
 --- !u!212 &1161666161
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5691,8 +5722,8 @@ Transform:
   m_LocalPosition: {x: -3.51, y: 1.14, z: 10}
   m_LocalScale: {x: 1.27, y: 1.27, z: 1}
   m_Children: []
-  m_Father: {fileID: 144284471}
-  m_RootOrder: 8
+  m_Father: {fileID: 501655828}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1452322944
 BoxCollider2D:
@@ -5732,13 +5763,13 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: -2
+  m_SurfaceLevel: -1.8
   m_Density: 10
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 90
-  m_FlowMagnitude: 0
-  m_FlowVariation: 0
+  m_FlowMagnitude: 20
+  m_FlowVariation: 50
 --- !u!212 &1452322946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6117,9 +6148,9 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 2.6147478, y: -2.3777785}
       - {x: 0.2594108, y: -2.9090552}
-      - {x: -3.3009014, y: -3.9536622}
-      - {x: 3.0677671, y: -4.3518486}
-      - {x: 7.7296057, y: -3.7069557}
+      - {x: -4.750779, y: -4.598053}
+      - {x: 3.0677671, y: -4.5532207}
+      - {x: 9.300308, y: -4.4318953}
 --- !u!1 &1573709981
 GameObject:
   m_ObjectHideFlags: 0
@@ -7306,8 +7337,8 @@ Transform:
   m_LocalPosition: {x: 191.09, y: 1.14, z: 10}
   m_LocalScale: {x: 1.27, y: 1.27, z: 1}
   m_Children: []
-  m_Father: {fileID: 144284471}
-  m_RootOrder: 14
+  m_Father: {fileID: 501655828}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2009851961
 BoxCollider2D:
@@ -7347,13 +7378,13 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: -2
+  m_SurfaceLevel: -1.8
   m_Density: 10
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 90
-  m_FlowMagnitude: 0
-  m_FlowVariation: 0
+  m_FlowMagnitude: 20
+  m_FlowVariation: 50
 --- !u!212 &2009851963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7602,8 +7633,8 @@ Transform:
   m_LocalPosition: {x: 61.46, y: 1.14, z: 10}
   m_LocalScale: {x: 1.27, y: 1.27, z: 1}
   m_Children: []
-  m_Father: {fileID: 144284471}
-  m_RootOrder: 10
+  m_Father: {fileID: 501655828}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2069725596
 BoxCollider2D:
@@ -7643,13 +7674,13 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: -2
+  m_SurfaceLevel: -1.8
   m_Density: 10
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 90
-  m_FlowMagnitude: 0
-  m_FlowVariation: 0
+  m_FlowMagnitude: 20
+  m_FlowVariation: 50
 --- !u!212 &2069725598
 SpriteRenderer:
   m_ObjectHideFlags: 0
