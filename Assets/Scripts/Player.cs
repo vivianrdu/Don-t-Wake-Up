@@ -107,6 +107,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("crouching", true);
                 anim.SetBool("running", false);
                 anim.SetBool("walking", false);
+                anim.SetBool("swimming", false);
                 isCrouching = true;
 
                 PlayerRB.velocity = new Vector2(x_input * crouching_speed,0);
@@ -123,6 +124,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("running", true);
                 anim.SetBool("crouching", false);
                 anim.SetBool("walking", false);
+                anim.SetBool("swimming", false);
                 isCrouching = false;
                 isHidden = false;
                 PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
@@ -133,6 +135,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("walking", true);
                 anim.SetBool("crouching", false);
                 anim.SetBool("running", false);
+                anim.SetBool("swimming", false);
                 isCrouching = false;
                 isHidden = false;
                 PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
@@ -153,6 +156,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("walking", false);
                 anim.SetBool("crouching", false);
                 anim.SetBool("running", false);
+                anim.SetBool("swimming", false);
             }
         }
         if (feetContact_water)
@@ -195,6 +199,7 @@ public class Player : MonoBehaviour
         anim.SetBool("walking", false);
         anim.SetBool("crouching", false);
         anim.SetBool("running", false);
+        anim.SetBool("swimming", false);
 
         anim.SetBool("jumping", true);
         yield return new WaitForSeconds(0.1f);
