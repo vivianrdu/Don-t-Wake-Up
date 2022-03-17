@@ -21,6 +21,10 @@ public class Nightlight : MonoBehaviour
     public Transform checkpoint;
     #endregion
 
+    #region respawn_variables
+    public Vector2 respawn_anchor;
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,7 @@ public class Nightlight : MonoBehaviour
         anim = GetComponent<Animator>();
         timerIsRunning = false;
         alreadyOn = false;
+        respawn_anchor = transform.position;
     }
 
     void Update()
@@ -95,6 +100,7 @@ public class Nightlight : MonoBehaviour
     {
         float totalTransitionTime = 2000f;
         float elapsedTime = 0;
+        anim.SetBool("reset", false);// need this to enable animation upon reset again
         anim.SetBool("on", true);
 
         while (fire.intensity >= 0.1)
@@ -107,4 +113,16 @@ public class Nightlight : MonoBehaviour
         TurnOff();
         Debug.Log("Turned off");
     }
+
+
+
+    public void Reset_position()
+    {
+        transform.position = respawn_anchor;
+        //reset
+        timerIsRunning = false;
+        alreadyOn = false;
+        anim.SetBool("reset", true);
+    }
+
 }
