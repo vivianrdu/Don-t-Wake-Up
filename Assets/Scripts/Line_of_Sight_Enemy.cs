@@ -7,11 +7,16 @@ public class Line_of_Sight_Enemy : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D coll)
     {
+
+        
         if (coll.CompareTag("Player"))
         {
-            GetComponentInParent<Enemy_Dark>().playerposition = coll.transform;
-            Debug.Log("Detected player");
-          
+            //right now if enemy sees player once then player cannot hide anymore.
+            if (!coll.GetComponent<Player>().isHidden)
+            {
+                GetComponentInParent<Enemy_Dark>().playerposition = coll.transform;
+                Debug.Log("Detected player");
+            }
         }
     }
 

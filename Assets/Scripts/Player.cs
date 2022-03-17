@@ -16,12 +16,22 @@ public class Player : MonoBehaviour
 
     // bool to detect whether Player's feet is in contact with a surface
     public bool feetContact;
-    private bool isCrouching;
+    public bool isCrouching;
+    
+
+
+
     // bool to decide how high Player can jump
     //public float jumpForce;
     public float jumpHeight;
     private bool jumping_routine_ongoing;
     #endregion
+
+    #region hide_variables
+    public bool isHidden;
+    private bool withinHiding;
+    #endregion
+
 
     #region Animation_components
     Animator anim;
@@ -45,6 +55,11 @@ public class Player : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
+
+
+        isHidden = false; //is done as enemy checks that automatically, otherwise get null error
+        isCrouching = false;
+
     }
 
     // Update is called once per frame
@@ -85,11 +100,6 @@ public class Player : MonoBehaviour
 
         if(feetContact)
         {
-            
-            
-            
-            
-
 
             if (Input.GetKey(KeyCode.S))
             {
@@ -99,13 +109,21 @@ public class Player : MonoBehaviour
                 isCrouching = true;
 
                 PlayerRB.velocity = new Vector2(x_input * crouching_speed,0);
+
+                if(withinHiding)
+                {
+                    Debug.Log("hiding called");
+                    isHidden = true;
+                    Debug.Log(isHidden);
+                }
+
             } else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
             {
                 anim.SetBool("running", true);
                 anim.SetBool("crouching", false);
                 anim.SetBool("walking", false);
                 isCrouching = false;
-
+                isHidden = false;
                 PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
             } else
             {
@@ -115,6 +133,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("crouching", false);
                 anim.SetBool("running", false);
                 isCrouching = false;
+                isHidden = false;
                 PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
             }
 
@@ -241,5 +260,26 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Hideable_Object"))
+        {
+
+            withinHiding = true;
+            Debug.Log("within Hiding" + withinHiding);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Hideable_Object"))
+        {
+            withinHiding = false;
+        }
+    }
+
     #endregion
+
+    
 }

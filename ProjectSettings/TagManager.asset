@@ -9,6 +9,7 @@ TagManager:
   - Fade
   - Ground
   - respawn_anchor
+  - Hideable_Object
   layers:
   - Default
   - TransparentFX
