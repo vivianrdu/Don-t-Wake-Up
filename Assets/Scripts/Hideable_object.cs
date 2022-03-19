@@ -6,11 +6,11 @@ public class Hideable_object : Non_interactable_Items
 {
     // Start is called before the first frame update
 
-    
+    SpriteRenderer spriteRenderer_used;
 
     void Awake()
     {
-       
+        spriteRenderer_used = GetComponent<SpriteRenderer>();
         
     }
 
@@ -34,6 +34,12 @@ public class Hideable_object : Non_interactable_Items
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
+    }
+
+
 
     #endregion
 
@@ -42,6 +48,7 @@ public class Hideable_object : Non_interactable_Items
     private void hideplayer()
     {
         //change sprite here so that boulder is semitransparent and that player object is now on different layer than enemy
+        spriteRenderer_used.color = new Color(1f, 1f, 1f, .5f);
     }
 
     #endregion

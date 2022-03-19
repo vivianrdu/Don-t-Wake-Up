@@ -7,6 +7,7 @@ public class Enemy_Dark : MonoBehaviour
 {
 
     #region Player_Variables
+    public Player player_in_Game;
     public Transform playerposition;
     private Vector2 direction;
     #endregion
@@ -56,20 +57,30 @@ public class Enemy_Dark : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerposition == null)
+        
+
+        if (playerposition == null || player_in_Game == null)
         {
-            DEnemyRB.velocity = new Vector2(0, 0);
-            anim.SetBool("playerDetected", false);
-            anim.SetBool("Stunned", false);
-            return;
+
+
+
+            patrol();
+
+            
+            
         }
         //detected player in line of sight
         else
-        { 
-            anim.SetBool("playerDetected", true);
-            //not currently stunned
-            if (anim.GetBool("Stunned") == false)
+        {
+            if (player_in_Game.isHidden)
             {
+                Debug.Log("player is hidden is called");
+                patrol();
+            }
+            //not currently stunned
+            else if (anim.GetBool("Stunned") == false)
+            {
+                anim.SetBool("playerDetected", true); //maybe have to move this for animation
                 Debug.Log(Vector2.Distance(playerposition.position, transform.position));
                 if (isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2)|
@@ -101,6 +112,16 @@ public class Enemy_Dark : MonoBehaviour
         DEnemyRB.velocity = direction * walking_speed;
         anim.SetFloat("dirX", direction.x);
     }
+
+    public void patrol()
+    {
+        DEnemyRB.velocity = new Vector2(0, 0);
+        anim.SetBool("playerDetected", false);
+        anim.SetBool("Stunned", false);
+        return;
+    }
+
+
     #endregion
 
     #region Death_and_Respawn_variables

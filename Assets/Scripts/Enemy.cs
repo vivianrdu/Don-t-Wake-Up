@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 
 
     #region Player_Variables
+    public Player player_in_Game;
     public Transform playerposition;
     private Vector2 direction;
     #endregion

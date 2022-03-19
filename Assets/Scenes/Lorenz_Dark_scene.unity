@@ -266,6 +266,7 @@ MonoBehaviour:
   running_speed: 4
   crouching_speed: 1
   feetContact: 0
+  feetContact_water: 0
   isCrouching: 0
   jumpHeight: 70
   isHidden: 0
@@ -8410,8 +8411,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -150003689
-  m_SortingLayer: 3
+  m_SortingLayerID: 1026919303
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ca8c533911da445a1ad201c05def4e80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8881,6 +8882,10 @@ PrefabInstance:
     - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_Name
       value: DarkEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_RootOrder
