@@ -11,6 +11,7 @@ TagManager:
   - respawn_anchor
   - Hideable_Object
   - Water
+  - Crate
   layers:
   - Default
   - TransparentFX
