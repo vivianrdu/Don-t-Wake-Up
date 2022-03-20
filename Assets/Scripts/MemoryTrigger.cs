@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MemoryTrigger : MonoBehaviour
 {
@@ -25,11 +26,27 @@ public class MemoryTrigger : MonoBehaviour
     void Update()
     {
         float distFromPlayer = Vector2.Distance(player.position, transform.position);
+        string currentScene = SceneManager.GetActiveScene().name;
 
         if ((Input.GetKeyDown(KeyCode.E)) && (distFromPlayer <= radius))
         {
             GameObject gm = GameObject.FindWithTag("GameController");
-            gm.GetComponent<GameManager>().DarkSceneCutscene();
+            if (currentScene == "0.Tutorial")
+            {
+                gm.GetComponent<GameManager>().DarkScene();
+            }
+            else if (currentScene == "1.DarkScene")
+            {
+                gm.GetComponent<GameManager>().DarkSceneCutscene();
+            }
+            else if (currentScene == "2.WaterScene")
+            {
+                gm.GetComponent<GameManager>().WaterSceneCutscene();
+            }
+            else if (currentScene == "3.PeopleScene")
+            {
+                gm.GetComponent<GameManager>().PeopleSceneCutscene();
+            }
         }
     }
 }
