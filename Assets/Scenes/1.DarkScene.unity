@@ -266,10 +266,7 @@ MonoBehaviour:
   running_speed: 4
   crouching_speed: 1
   feetContact: 0
-<<<<<<< HEAD
-=======
   feetContact_water: 0
->>>>>>> d6d44c01ffc41e14e73717a407e09b5c07246b80
   isCrouching: 0
   jumpHeight: 70
   isHidden: 0
