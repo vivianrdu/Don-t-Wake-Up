@@ -2725,8 +2725,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 878574956}
-  - component: {fileID: 878574957}
   - component: {fileID: 878574955}
+  - component: {fileID: 878574957}
   - component: {fileID: 878574954}
   - component: {fileID: 878574953}
   m_Layer: 0
@@ -2821,9 +2821,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 977517257
-  m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingLayerID: 1026919303
+  m_SortingLayer: 7
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2cc224ca59d4e449fa27162e0843db9e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2843,7 +2843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878574952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.51, y: -16.52, z: 12}
+  m_LocalPosition: {x: -37.51, y: -16.49, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8693,7 +8693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_RootOrder
