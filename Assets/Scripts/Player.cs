@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
 
     #region Other_variables
     public Vector2 currDirection;
+    public int keys = 0; // the number of keys the player has
     #endregion
 
     // Awake is called before the first frame update
