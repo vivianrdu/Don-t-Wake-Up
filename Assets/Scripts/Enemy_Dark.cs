@@ -31,7 +31,9 @@ public class Enemy_Dark : MonoBehaviour
     BoxCollider2D DEnemyColl;
     #endregion
 
-
+    #region Sound_variables
+    public AudioManager audioManager;
+    #endregion
 
     #region respawn_and_health_variables
     public Vector2 respawn_anchor;
@@ -65,7 +67,7 @@ public class Enemy_Dark : MonoBehaviour
         }
         //detected player in line of sight
         else
-        { 
+        {
             anim.SetBool("playerDetected", true);
             //not currently stunned
             if (anim.GetBool("Stunned") == false)
