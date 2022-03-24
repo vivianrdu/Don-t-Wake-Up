@@ -19,9 +19,21 @@ public class AudioManager : MonoBehaviour
     private static bool keepFadingIn;
     private static bool keepFadingOut;
 
+    private static AudioManager instance;
+
     // Use this for initialization
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         foreach (Sound sound in sounds)
         {
             sound.source = gameObject.AddComponent<AudioSource>();
@@ -57,10 +69,11 @@ public class AudioManager : MonoBehaviour
         {
             PlayMusic("StartMenuBGMusic");
         }
-        else if (SceneManager.GetActiveScene().name == "0.Tutorial")
-        {
+        // keep same music for tutorial scene
+        //else if (SceneManager.GetActiveScene().name == "0.Tutorial")
+        //{
 
-        }
+        //}
         else if (SceneManager.GetActiveScene().name == "1.DarkScene")
         {
 
