@@ -4943,6 +4943,7 @@ MonoBehaviour:
   feetContact: 0
   feetContact_water: 0
   isCrouching: 0
+  movingCrate: 0
   jumpHeight: 70
   isHidden: 0
   respawn_anchor: {x: 0, y: 0}
@@ -5591,8 +5592,16 @@ PrefabInstance:
       value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569164, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
+      propertyPath: m_Mass
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007780930176569164, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007780930176569164, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569164, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_GravityScale
@@ -5662,5 +5671,9 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 925466532}
+    - target: {fileID: 7611598562479270179, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
+      propertyPath: radius
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
