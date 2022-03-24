@@ -271,6 +271,12 @@ public class Player : MonoBehaviour
             feetContact = true;
         }
 
+        else if (collision.gameObject.CompareTag("Crate")) // player should be able to move on top of a crate
+        {
+            Debug.Log("Standing on crate");
+            feetContact = true;
+        } 
+
         if(collision.gameObject.CompareTag("respawn_anchor"))
         {
             respawn_anchor = collision.transform.position;
@@ -280,7 +286,7 @@ public class Player : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         Debug.Log("feetcontact gone");
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Crate"))
         {
             feetContact = false;
         }
