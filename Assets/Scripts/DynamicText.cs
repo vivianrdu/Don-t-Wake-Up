@@ -14,30 +14,38 @@ public class DynamicText : MonoBehaviour
     #endregion
 
     #region Targeting_variables
-    public Transform nightlight;
+    public Transform player;
     #endregion
 
     void Start()
     {
         text = GetComponent<Text>();
-        alreadyRunning= false;
     }
 
     void Update()
     {
-        if (alreadyRunning == false && text != null)
+        float distFromPlayer = Vector2.Distance(player.position, transform.position);
+        Debug.Log(distFromPlayer);
+        if (distFromPlayer < 3)
         {
-            if (nightlight.GetComponent<Nightlight>().timerIsRunning)
+            if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+        && text.text == "move\n(a) or (d)")
             {
-                alreadyRunning = true;
+                StartCoroutine(FadeTextToZeroAlpha(1f, text));
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && text.text == "collect\n(e)")
+            {
+                StartCoroutine(FadeTextToZeroAlpha(1f, text));
+            }
+            else if (Input.GetKeyDown(KeyCode.T) && text.text == "push or pull\n(t) to lock on/off")
+            {
                 StartCoroutine(FadeTextToZeroAlpha(1f, text));
             }
         }
-        
     }
 
 
-    public IEnumerator FadeTextToFullAlpha(float t, Text i)
+    IEnumerator FadeTextToFullAlpha(float t, Text i)
     {
         i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
         while (i.color.a < 1.0f)
@@ -47,7 +55,7 @@ public class DynamicText : MonoBehaviour
         }
     }
 
-    public IEnumerator FadeTextToZeroAlpha(float t, Text i)
+    IEnumerator FadeTextToZeroAlpha(float t, Text i)
     {
         i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
         while (i.color.a > 0.0f)

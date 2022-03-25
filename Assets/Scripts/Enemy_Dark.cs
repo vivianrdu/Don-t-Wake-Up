@@ -7,7 +7,6 @@ public class Enemy_Dark : MonoBehaviour
 {
 
     #region Player_Variables
-    public Player player_in_Game;
     public Transform playerposition;
     private Vector2 direction;
     #endregion
@@ -32,7 +31,9 @@ public class Enemy_Dark : MonoBehaviour
     BoxCollider2D DEnemyColl;
     #endregion
 
-
+    #region Sound_variables
+    public AudioManager audioManager;
+    #endregion
 
     #region respawn_and_health_variables
     public Vector2 respawn_anchor;
@@ -57,30 +58,20 @@ public class Enemy_Dark : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
-        if (playerposition == null || player_in_Game == null)
+        if (playerposition == null)
         {
-
-
-
-            patrol();
-
-            
-            
+            DEnemyRB.velocity = new Vector2(0, 0);
+            anim.SetBool("playerDetected", false);
+            anim.SetBool("Stunned", false);
+            return;
         }
         //detected player in line of sight
         else
         {
-            if (player_in_Game.isHidden)
-            {
-                Debug.Log("player is hidden is called");
-                patrol();
-            }
+            anim.SetBool("playerDetected", true);
             //not currently stunned
-            else if (anim.GetBool("Stunned") == false)
+            if (anim.GetBool("Stunned") == false)
             {
-                anim.SetBool("playerDetected", true); //maybe have to move this for animation
                 Debug.Log(Vector2.Distance(playerposition.position, transform.position));
                 if (isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2)|
@@ -112,16 +103,6 @@ public class Enemy_Dark : MonoBehaviour
         DEnemyRB.velocity = direction * walking_speed;
         anim.SetFloat("dirX", direction.x);
     }
-
-    public void patrol()
-    {
-        DEnemyRB.velocity = new Vector2(0, 0);
-        anim.SetBool("playerDetected", false);
-        anim.SetBool("Stunned", false);
-        return;
-    }
-
-
     #endregion
 
     #region Death_and_Respawn_variables
