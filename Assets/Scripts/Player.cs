@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     public bool feetContact_water;
     public bool isCrouching;
     
-
+    // bool to detect whether player is moving something currently
+    public bool movingCrate;
 
 
     // bool to decide how high Player can jump
@@ -71,16 +72,21 @@ public class Player : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
-        Move();
 
-        // jump
-        if (Input.GetKeyDown(KeyCode.Space) && canJump())
-        {
-            
-            //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
-            jumping();
+        if (movingCrate) { // if trying to move a crate, does a different set of movements
+            CrateMove();
         }
-        // end jump
+        else
+        {
+            Move();
+            // jump
+            if (Input.GetKeyDown(KeyCode.Space) && canJump())
+            {
+                //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+                jumping();
+            }
+            // end jump
+        }
     }
 
     #region Movement_functions
@@ -97,12 +103,40 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void CrateMove()
+    {
+        Debug.Log("moving crate");
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            anim.SetBool("walking", true);
+            anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
+            anim.SetBool("swimming", false);
+            isCrouching = false;
+            isHidden = false;
+            PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+        }
+        if (x_input > 0)
+        {
+            currDirection = Vector2.right;
+        }
+        else if (x_input < 0)
+        {
+            currDirection = Vector2.left;
+        }
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
+            anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
+            anim.SetBool("swimming", false);
+        }
+    }
+
     private void Move()
     {
-
         if(feetContact)
         {
-
             if (Input.GetKey(KeyCode.S))
             {
                 anim.SetBool("crouching", true);
@@ -131,8 +165,6 @@ public class Player : MonoBehaviour
                 PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
             } else
             {
-
-                
                 anim.SetBool("walking", true);
                 anim.SetBool("crouching", false);
                 anim.SetBool("running", false);
@@ -265,7 +297,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if(collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Crate"))
         {
             Debug.Log("feetcontact");
             feetContact = true;
@@ -279,9 +311,9 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("feetcontact gone");
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Crate"))
         {
+            Debug.Log("feetcontact gone");
             feetContact = false;
         }
     }
@@ -325,5 +357,9 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-
+    #region Return Functions
+    public Rigidbody2D returnPlayerRB() {
+        return PlayerRB;
+    }
+    #endregion
 }
