@@ -7,26 +7,33 @@ public class Crate : MonoBehaviour
 
     #region Targeting_variables
     public Transform player;
-    public bool isGrabbed = false;
+    public float radius;
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    #region Physics_variables
+    Rigidbody2D CrateRB;
+    public Vector2 CrateDirection;
+    #endregion 
+
+    void Awake()
     {
-        
+        CrateRB = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-    }
-
-    private void OnCollisionEnter2D (Collision2D coll)
-    {
-        if (Input.GetKeyDown(KeyCode.T) && coll.gameObject.CompareTag("Player"))
+        float distFromPlayer = Vector2.Distance(player.position, transform.position);
+        if (Input.GetKey(KeyCode.T) && distFromPlayer <= radius)
         {
-            Destroy(this.gameObject);
-        } 
+            Debug.Log("moving crate");
+            player.GetComponent<Player>().movingCrate = true;
+            CrateRB.velocity = player.GetComponent<Player>().returnPlayerRB().velocity;
+        }
+        else
+        {
+            player.GetComponent<Player>().movingCrate = false;
+            CrateRB.velocity = Vector2.zero;
+        }
     }
 }
