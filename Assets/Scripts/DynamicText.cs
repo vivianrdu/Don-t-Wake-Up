@@ -29,7 +29,7 @@ public class DynamicText : MonoBehaviour
         if (distFromPlayer < 3)
         {
             if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
-        && text.text == "move\n(a) or (d)")
+                && text.text == "move\n(a) or (d)")
             {
                 StartCoroutine(FadeTextToZeroAlpha(1f, text));
             }
@@ -38,6 +38,15 @@ public class DynamicText : MonoBehaviour
                 StartCoroutine(FadeTextToZeroAlpha(1f, text));
             }
             else if (Input.GetKeyDown(KeyCode.T) && text.text == "push or pull\n(t) to lock on/off")
+            {
+                StartCoroutine(FadeTextToZeroAlpha(1f, text));
+            }
+            else if ((Input.GetKeyDown(KeyCode.LeftShift) || (Input.GetKeyDown(KeyCode.RightShift)))
+                && text.text == "hold SHIFT to run")
+            {
+                StartCoroutine(FadeTextToZeroAlpha(1f, text));
+            }
+            else if ((Input.GetKeyDown(KeyCode.Space)) && text.text == "press SPACE to jump on crates")
             {
                 StartCoroutine(FadeTextToZeroAlpha(1f, text));
             }
