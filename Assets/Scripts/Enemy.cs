@@ -8,17 +8,28 @@ public class Enemy : MonoBehaviour
 
     #region Player_Variables
     public Transform playerposition;
-    private Vector2 direction;
+    public Player player_in_Game;
     #endregion
 
-   
+    #region Movement_variables
+    public float walking_speed;
+    [SerializeField]
+    protected Animator anim;
+    #endregion
+
+
+    #region Attack_variables
+    protected bool isAttacking;
+    #endregion
 
     #region Physics_components
-    Rigidbody2D DEnemyRB;
-    BoxCollider2D DEnemyColl;
+    protected Rigidbody2D DEnemyRB;
+    protected BoxCollider2D DEnemyColl;
     #endregion
 
-
+    #region Sound_variables
+    public AudioManager audioManager;
+    #endregion
 
     #region respawn_and_health_variables
     public Vector2 respawn_anchor;
@@ -49,6 +60,13 @@ public class Enemy : MonoBehaviour
     {
 
     }
+
+
+    public void patrol()
+    {
+    
+    }
+
     #endregion
 
     #region Death_and_Respawn_variables
@@ -57,13 +75,13 @@ public class Enemy : MonoBehaviour
     {
         transform.position = respawn_anchor;
         //reset
-  
+
     }
 
     #endregion
 
     #region Triggers and Collisions
-    
+
     #endregion
 
 

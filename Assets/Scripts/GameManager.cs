@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void Reset_current_scene()
     {
-        Enemy_Dark[] enemies_in_Scene;
+        Enemy[] enemies_in_Scene;
         Nightlight[] nightlights;
         //Scene scene = SceneManager.GetActiveScene();
         enemies_in_Scene = FindObjectsOfType<Enemy_Dark>();
@@ -79,8 +79,8 @@ public class GameManager : MonoBehaviour
         {
             //Make an Enemy Class then let each class inherit main functions from Parent
             
-            Enemy_Dark enemy_Dark = enemies_in_Scene[i];
-            enemy_Dark.Reset_position();
+            Enemy enemy = enemies_in_Scene[i];
+            enemy.Reset_position();
         }
         for (int i = 0; i < nightlights.Length; ++i)
         {
