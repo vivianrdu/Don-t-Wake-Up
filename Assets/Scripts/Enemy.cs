@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     #region Movement_variables
     public float walking_speed;
+    public float attack_speed;
     [SerializeField]
     protected Animator anim;
     #endregion

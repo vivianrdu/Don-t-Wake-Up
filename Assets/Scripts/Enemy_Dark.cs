@@ -13,7 +13,7 @@ public class Enemy_Dark : Enemy
     #endregion
 
     #region Movement_variables
-    
+    public float patrol_radius;
     #endregion
 
     #region Stun_variables
@@ -44,6 +44,8 @@ public class Enemy_Dark : Enemy
 
         respawn_anchor = this.transform.position;
 
+        direction = new Vector2(-1, 0);//set initial start of patrol
+
     }
 
     // Update is called once per frame
@@ -53,8 +55,6 @@ public class Enemy_Dark : Enemy
         {
 
             patrol();
-
-            DEnemyRB.velocity = new Vector2(0, 0);
             anim.SetBool("playerDetected", false);
             anim.SetBool("Stunned", false);
             return;
@@ -100,16 +100,25 @@ public class Enemy_Dark : Enemy
             direction = new Vector2(-1, 0);
         }
         
-        DEnemyRB.velocity = direction * walking_speed;
+        DEnemyRB.velocity = direction * attack_speed;
         anim.SetFloat("dirX", direction.x);
     }
 
     public new void patrol()
     {
-        DEnemyRB.velocity = new Vector2(0, 0);
+        if((transform.position.x - respawn_anchor.x) > (respawn_anchor.x + patrol_radius))
+        {
+            direction = new Vector2(-1, 0);
+        } else if ((transform.position.x - respawn_anchor.x) < (respawn_anchor.x - patrol_radius))
+        {
+            direction = new Vector2(1, 0);
+        }
+
+        DEnemyRB.velocity = direction * walking_speed;
+        anim.SetFloat("dirX", direction.x);
         anim.SetBool("playerDetected", false);
         anim.SetBool("Stunned", false);
-        return;
+        
     }
 
     #endregion
