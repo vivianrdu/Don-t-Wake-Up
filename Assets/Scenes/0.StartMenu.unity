@@ -546,6 +546,10 @@ MonoBehaviour:
     group: Music
     clip: {fileID: 8300000, guid: 9b254a0bb48fa4f9a820a0f980cdedb3, type: 3}
     source: {fileID: 0}
+  - name: DarkSceneBGMusic
+    group: Music
+    clip: {fileID: 8300000, guid: b1d280c5b37ba44f29361ff992f00d71, type: 3}
+    source: {fileID: 0}
   musicGroup: {fileID: -5065870052020328332, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
   sfxGroup: {fileID: -220058948930709544, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
   foleyGroup: {fileID: 4853085873983550569, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
