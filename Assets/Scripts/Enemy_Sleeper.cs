@@ -39,7 +39,8 @@ public class Enemy_Sleeper : Enemy
     {
         if(player_in_Game.isRunning)
         {
-            hunt_player();
+            StartCoroutine(wake_up());
+            
         }
     }
 
@@ -47,20 +48,22 @@ public class Enemy_Sleeper : Enemy
     #region Move_functions
     public void hunt_player()
     {
-        wake_up();
 
         move_to_player();
+        
     }
 
     #endregion
 
     #region waking_up and falling asleep
 
-    private void wake_up()
+     IEnumerator wake_up()
     {
         //input animation code here please
 
-
+        isSleeping = false;
+        yield return new WaitForSeconds(2); //change number here to fit with waking up
+        hunt_player();
     }
 
     #endregion

@@ -63,9 +63,9 @@ public class Enemy_Dark : Enemy
 
         if (playerposition == null || player_in_Game == null)
         {
-
-            patrol();
             anim.SetBool("playerDetected", false);
+            patrol();
+            
             
             return;
         }
@@ -75,6 +75,7 @@ public class Enemy_Dark : Enemy
             if (player_in_Game.isHidden)
             {
                 //Debug.Log("player is hidden is called");
+                anim.SetBool("playerDetected", false);
                 patrol();
             }
             
