@@ -30,8 +30,7 @@ public class Enemy_Large : Enemy
         else
         {
             anim.SetBool("playerDetected", true); //maybe have to move this for animation
-            
-            Move();
+            StartCoroutine(Detected_routine());
         }
     }
 
@@ -57,33 +56,24 @@ public class Enemy_Large : Enemy
     #endregion
 
     #region Routines
+    IEnumerator Detected_routine()
+    {
+        yield return new WaitForSeconds(1f);
+        Move();
+    }
+
     IEnumerator Attack_routine()
     {
-        isAttacking = true;
-        float attackLength = 1f;
+        anim.SetBool("Attacking", true);
         DEnemyRB.velocity = Vector2.zero;
 
-        anim.SetBool("Attacking", true);
-
-        while (attackLength >= 0)
-        {
-            attackLength -= Time.deltaTime;
-            yield return null;
-        }
         
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
+        playerposition.GetComponent<Player>().enabled = !playerposition.GetComponent<Player>().enabled;
 
-        foreach (RaycastHit2D hit in hits)
-        {
-            Debug.Log("casting raycasts");
-            if (hit.transform.CompareTag("Player"))
-            {
-                Debug.Log("Kill player");
-                yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
-            }
-        }
+        Debug.Log("Kill player");
+        yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
+        playerposition.GetComponent<Player>().enabled = !playerposition.GetComponent<Player>().enabled;
 
-        isAttacking = false;
         anim.SetBool("Attacking", false);
     }
     #endregion
