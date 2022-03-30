@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walking_speed: 2
-  running_speed: 8
+  running_speed: 4
   crouching_speed: 1
   feetContact: 0
   feetContact_water: 0
@@ -2772,6 +2772,10 @@ PrefabInstance:
     - target: {fileID: 3180164005120141846, guid: c67d1d2325d2d492492d66fcee8aab90, type: 3}
       propertyPath: m_Name
       value: Boulder
+      objectReference: {fileID: 0}
+    - target: {fileID: 3180164005120141846, guid: c67d1d2325d2d492492d66fcee8aab90, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c67d1d2325d2d492492d66fcee8aab90, type: 3}
@@ -8530,7 +8534,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.022497177, y: 0}
   serializedVersion: 2
-  m_Radius: 1.0174236
+  m_Radius: 2
 --- !u!1001 &8006391227685434765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8602,6 +8606,10 @@ PrefabInstance:
     - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_Name
       value: DarkEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_RootOrder

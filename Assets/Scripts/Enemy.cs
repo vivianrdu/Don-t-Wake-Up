@@ -44,10 +44,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DEnemyRB = GetComponent<Rigidbody2D>();
-        DEnemyColl = GetComponent<BoxCollider2D>();
-
-        respawn_anchor = this.transform.position;
+        
 
     }
 
@@ -58,6 +55,15 @@ public class Enemy : MonoBehaviour
         //detected player in line of sight
         
 
+    }
+
+
+    public void startup_stuff()
+    {
+        DEnemyRB = GetComponent<Rigidbody2D>();
+        DEnemyColl = GetComponent<BoxCollider2D>();
+
+        respawn_anchor = this.transform.position;
     }
 
     #region Movement_functions

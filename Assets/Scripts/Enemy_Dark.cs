@@ -37,6 +37,9 @@ public class Enemy_Dark : Enemy
     // Start is called before the first frame update
     void Start()
     {
+
+        startup_stuff();
+
         DEnemyRB = GetComponent<Rigidbody2D>();
         DEnemyColl = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -112,14 +115,14 @@ public class Enemy_Dark : Enemy
 
     public new void patrol()
     {
-        Debug.Log("patrol timer" + patrol_stopping_timer);
+        //Debug.Log("patrol timer" + patrol_stopping_timer);
         
         if (patrol_stopping_timer <= 0)
         {
 
-            Debug.Log("Patrol patrol stopping timer below 0");
+            //Debug.Log("Patrol patrol stopping timer below 0");
             float random_number = Random.Range(0, 1000);
-            Debug.Log("random number" + random_number);
+            //Debug.Log("random number" + random_number);
             if (random_number < patrol_stopping_randoness)
             {
                 patrol_stopping_timer = Random.Range(0, 5);
@@ -182,6 +185,15 @@ public class Enemy_Dark : Enemy
     #region Triggers and Collisions
     private void OnTriggerEnter2D(Collider2D coll)
     {
+
+        Debug.Log(coll.tag);
+
+
+        Debug.Log("collide Trigger" + coll.CompareTag("Glowing"));
+            
+            
+        Debug.Log(" light"+ coll.GetComponent<Light2D>().pointLightOuterRadius );
+
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
             Debug.Log("Stunned");
