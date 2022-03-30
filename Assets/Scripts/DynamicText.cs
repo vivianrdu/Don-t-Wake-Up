@@ -25,7 +25,7 @@ public class DynamicText : MonoBehaviour
     void Update()
     {
         float distFromPlayer = Vector2.Distance(player.position, transform.position);
-        Debug.Log(distFromPlayer);
+        //Debug.Log(distFromPlayer);
         if (distFromPlayer < 3)
         {
             if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))

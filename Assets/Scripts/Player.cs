@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public bool feetContact;
     public bool feetContact_water;
     public bool isCrouching;
+    public bool isRunning;
     
     // bool to detect whether player is moving something currently
     public bool movingCrate;
@@ -144,6 +145,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("walking", false);
                 anim.SetBool("swimming", false);
                 isCrouching = true;
+                isRunning = false;
 
                 PlayerRB.velocity = new Vector2(x_input * crouching_speed,0);
 
@@ -152,6 +154,9 @@ public class Player : MonoBehaviour
                     Debug.Log("hiding called");
                     isHidden = true;
                     Debug.Log(isHidden);
+                }else
+                {
+                    isHidden = false;
                 }
 
             } else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
@@ -162,6 +167,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("swimming", false);
                 isCrouching = false;
                 isHidden = false;
+                isRunning = true;
                 PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
             } else
             {
@@ -171,6 +177,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("swimming", false);
                 isCrouching = false;
                 isHidden = false;
+                isRunning = false;
                 PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
             }
 
