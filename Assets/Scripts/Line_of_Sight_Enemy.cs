@@ -14,8 +14,8 @@ public class Line_of_Sight_Enemy : MonoBehaviour
             //right now if enemy sees player once then player cannot hide anymore.
             
             
-            GetComponentInParent<Enemy_Dark>().playerposition = coll.transform;
-            GetComponentInParent<Enemy_Dark>().player_in_Game = coll.GetComponent<Player>();
+            GetComponentInParent<Enemy>().playerposition = coll.transform;
+            GetComponentInParent<Enemy>().player_in_Game = coll.GetComponent<Player>();
             Debug.Log("Detected player");
             
         }
@@ -25,7 +25,7 @@ public class Line_of_Sight_Enemy : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            GetComponentInParent<Enemy_Dark>().playerposition = null;
+            GetComponentInParent<Enemy>().playerposition = null;
             
         }
     }

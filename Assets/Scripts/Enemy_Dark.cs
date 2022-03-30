@@ -8,14 +8,14 @@ public class Enemy_Dark : Enemy
 
     #region Player_Variables
     
-    private Vector2 direction;
+    
     
     #endregion
 
     #region Movement_variables
     public float patrol_radius;
     public float patrol_stopping_randoness;
-    private float patrol_stopping_timer;
+    
     private float currdirection_of_patrol;
     #endregion
 
@@ -102,14 +102,8 @@ public class Enemy_Dark : Enemy
     public new void Move()
     {
 
-        if (playerposition.position.x > DEnemyRB.transform.position.x)
-        {
-            direction = new Vector2(1, 0);
-        } else
-        {
-            direction = new Vector2(-1, 0);
-        }
-        
+        move_to_player();
+
         DEnemyRB.velocity = direction * attack_speed;
         anim.SetFloat("dirX", direction.x);
         patrol_stopping_timer = Random.Range(0, 5); //so there is a delay when the enemy stops following the player, so it doesn't immeadietly walk away
