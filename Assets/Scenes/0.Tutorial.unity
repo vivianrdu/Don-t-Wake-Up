@@ -3307,11 +3307,11 @@ RectTransform:
   m_Father: {fileID: 910270289}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -614.46, y: -429.67}
-  m_SizeDelta: {x: 5.1123, y: 3.1192}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -49.016174, y: -16.229614}
+  m_SizeDelta: {x: 5.1123047, y: 3.1192017}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &190812067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5043,6 +5043,7 @@ MonoBehaviour:
   feetContact: 0
   feetContact_water: 0
   isCrouching: 0
+  isRunning: 0
   movingCrate: 0
   jumpHeight: 70
   isHidden: 0
