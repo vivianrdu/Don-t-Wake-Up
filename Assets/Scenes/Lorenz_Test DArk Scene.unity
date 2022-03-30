@@ -347,7 +347,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.1655042, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8555,11 +8555,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.55
+      value: -6.77
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.49
+      value: -15.34
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8602,8 +8602,24 @@ PrefabInstance:
       value: 0.071965955
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861682, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
+      propertyPath: attack_speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507887553624861682, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: audioManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507887553624861682, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
+      propertyPath: patrol_radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507887553624861682, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
+      propertyPath: walking_speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507887553624861682, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
+      propertyPath: patrol_stopping_randoness
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}

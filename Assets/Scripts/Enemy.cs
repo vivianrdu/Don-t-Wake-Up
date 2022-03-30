@@ -9,14 +9,19 @@ public class Enemy : MonoBehaviour
     #region Player_Variables
     public Transform playerposition;
     public Player player_in_Game;
+    protected Vector2 direction;
     #endregion
 
     #region Movement_variables
     public float walking_speed;
+    public float attack_speed;
     [SerializeField]
     protected Animator anim;
     #endregion
 
+    #region Patrol_variables
+    protected float patrol_stopping_timer;
+    #endregion
 
     #region Attack_variables
     protected bool isAttacking;
@@ -58,9 +63,20 @@ public class Enemy : MonoBehaviour
     #region Movement_functions
     public void Move()
     {
-
+        
     }
-
+    
+    public void move_to_player()
+    {
+        if (playerposition.position.x > DEnemyRB.transform.position.x)
+        {
+            direction = new Vector2(1, 0);
+        }
+        else
+        {
+            direction = new Vector2(-1, 0);
+        }
+    }
 
     public void patrol()
     {
