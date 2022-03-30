@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 1102254481}
   - component: {fileID: 1102254482}
   - component: {fileID: 1102254483}
+  - component: {fileID: 1102254484}
   m_Layer: 0
   m_Name: SleepingDarkEnemy
   m_TagString: Untagged
@@ -688,6 +689,7 @@ MonoBehaviour:
   playerposition: {fileID: 0}
   player_in_Game: {fileID: 0}
   walking_speed: 0
+  attack_speed: 0
   anim: {fileID: 0}
   audioManager: {fileID: 0}
   respawn_anchor: {x: 0, y: 0}
@@ -717,6 +719,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4266792, y: 0.1697262}
   m_EdgeRadius: 0
+--- !u!114 &1102254484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102254478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5beb115e33e88a4cad64da85b586e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerposition: {fileID: 0}
+  player_in_Game: {fileID: 0}
+  walking_speed: 0
+  attack_speed: 0
+  anim: {fileID: 0}
+  audioManager: {fileID: 0}
+  respawn_anchor: {x: 0, y: 0}
+  patrol_radius: 0
 --- !u!1 &1156664436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,3 +1075,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff53d7c78a02e45e1a1f1971e10b3aac, type: 3}
+--- !u!1 &8573235879203800687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8573235879137934345, guid: ff53d7c78a02e45e1a1f1971e10b3aac, type: 3}
+  m_PrefabInstance: {fileID: 8573235879203800686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8573235879203800688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8573235879203800687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb63c6e656a044d648d5827f9141d139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerposition: {fileID: 0}
+  player_in_Game: {fileID: 0}
+  walking_speed: 0
+  attack_speed: 0
+  anim: {fileID: 0}
+  audioManager: {fileID: 0}
+  respawn_anchor: {x: 0, y: 0}
