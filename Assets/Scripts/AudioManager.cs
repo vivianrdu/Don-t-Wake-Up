@@ -7,17 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-
-
     public Sound[] sounds;
 
 
     public AudioMixerGroup musicGroup;
     public AudioMixerGroup sfxGroup;
     public AudioMixerGroup foleyGroup;
-
-    private static bool keepFadingIn;
-    private static bool keepFadingOut;
 
     private static AudioManager instance;
 
@@ -65,43 +60,47 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().name == "0.StartMenu")
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnEnable()
+    {
+        Debug.Log("OnEnable called");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        String sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName == "0.StartMenu")
         {
             PlayMusic("StartMenuBGMusic");
         }
-        // keep same music for tutorial scene
-        //else if (SceneManager.GetActiveScene().name == "0.Tutorial")
-        //{
-
-        //}
-        else if (SceneManager.GetActiveScene().name == "1.DarkScene")
+        else if (sceneName == "0.Tutorial")
         {
-
+            if (!IsPlaying("StartMenuBGMusic"))
+            {
+                PlayMusic("StartMenuBGMusic");
+            }
         }
-        else if (SceneManager.GetActiveScene().name == "1.DarkSceneAnimated")
+        else if (sceneName == "1.DarkScene")
         {
-
+            if (IsPlaying("StartMenuBGMusic"))
+            {
+                SwapMusic("StartMenuBGMusic", "DarkSceneBGMusic");
+            }
+            else
+            {
+                PlayMusic("DarkSceneBGMusic");
+            }
         }
-        else if (SceneManager.GetActiveScene().name == "2.WaterScene")
-        {
+    }
 
-        }
-        else if (SceneManager.GetActiveScene().name == "2.WaterScene")
-        {
-
-        }
-        else if (SceneManager.GetActiveScene().name == "2.WaterSceneAnimated")
-        {
-
-        }
-        else if (SceneManager.GetActiveScene().name == "3.PeopleScene")
-        {
-
-        }
-        else if (SceneManager.GetActiveScene().name == "3.PeopleSceneAnimated")
-        {
-
-        }
+    void OnDisable()
+    {
+        Debug.Log("OnDisable");
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void Play(string name)
@@ -139,6 +138,36 @@ public class AudioManager : MonoBehaviour
             newSource.volume = Mathf.Lerp(0, 1, timeElapsed / timeToFade);
             timeElapsed += Time.deltaTime;
             Debug.Log(newSource.volume.ToString());
+            yield return null;
+        }
+    }
+
+    public void SwapMusic(string name1, string name2)
+    {
+        Sound s1 = Array.Find(sounds, sound => sound.name == name1);
+        Sound s2 = Array.Find(sounds, sound => sound.name == name2);
+        if (s1 == null || s2 == null)
+        {
+            Debug.Log("No music");
+            return;
+        }
+        s2.source.volume = 0;
+        StartCoroutine(SwapTrackFade(s1.source, s2.source));
+    }
+
+    private IEnumerator SwapTrackFade(AudioSource source1, AudioSource source2)
+    {
+        float timeToFade = 1.25f;
+        float timeElapsed = 0;
+
+        source2.PlayOneShot(source2.clip);
+
+        while (timeElapsed < timeToFade)
+        {
+            source1.volume = Mathf.Lerp(1, 0, timeElapsed / timeToFade);
+            source2.volume = Mathf.Lerp(0, 1, timeElapsed / timeToFade);
+
+            timeElapsed += Time.deltaTime;
             yield return null;
         }
     }
