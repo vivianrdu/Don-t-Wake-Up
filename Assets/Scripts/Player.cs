@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     float x_input;
     float y_input;
 
-   
+    // Iris Edit 1
+    private AudioManager audioManager;
 
     // bool to detect whether Player's feet is in contact with a surface
     public bool feetContact;
@@ -62,6 +63,8 @@ public class Player : MonoBehaviour
         respawn_anchor = this.transform.position;
         spritePlayer = GetComponent<SpriteRenderer>();
 
+        // Iris Edit 1
+        audioManager = FindObjectOfType<AudioManager>();
 
         isHidden = false; //is done as enemy checks that automatically, otherwise get null error
         isCrouching = false;
@@ -308,9 +311,17 @@ public class Player : MonoBehaviour
 
     #region Collision and triggers
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            feetContact = true;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Crate"))
+        if(collision.gameObject.CompareTag("Crate"))
         {
             Debug.Log("feetcontact");
             feetContact = true;

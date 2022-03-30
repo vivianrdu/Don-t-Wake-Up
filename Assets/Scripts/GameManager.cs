@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
 
-    private AudioManager audioManager;
-
     #region Unity_functions
 
     private void Start()
@@ -36,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void DarkScene()
     {
+        Debug.Log("Load DarkScene");
         SceneManager.LoadScene("1.DarkScene");
     }
 
