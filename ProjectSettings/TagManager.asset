@@ -64,6 +64,12 @@ TagManager:
   - name: Objects
     uniqueID: 977517257
     locked: 0
+  - name: Player_Hidden
+    uniqueID: 1650461969
+    locked: 0
+  - name: Hideable_Object
+    uniqueID: 2413960821
+    locked: 0
   - name: Enemies
     uniqueID: 2806018371
     locked: 0

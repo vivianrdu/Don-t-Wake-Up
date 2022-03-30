@@ -18,6 +18,7 @@ public class Enemy_Sleeper : Enemy
 
     #region Stun_variables
     private bool isSleeping;
+    
     #endregion
 
     #region Attack_variables
@@ -32,12 +33,13 @@ public class Enemy_Sleeper : Enemy
     void Start()
     {
         isSleeping = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(player_in_Game.isRunning)
+        if(player_in_Game.isRunning && !isSleeping)
         {
             StartCoroutine(wake_up());
             
