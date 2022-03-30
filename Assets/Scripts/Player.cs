@@ -302,9 +302,17 @@ public class Player : MonoBehaviour
 
     #region Collision and triggers
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            feetContact = true;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Crate"))
+        if(collision.gameObject.CompareTag("Crate"))
         {
             Debug.Log("feetcontact");
             feetContact = true;
