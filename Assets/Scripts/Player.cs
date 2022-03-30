@@ -152,6 +152,9 @@ public class Player : MonoBehaviour
                     Debug.Log("hiding called");
                     isHidden = true;
                     Debug.Log(isHidden);
+                }else
+                {
+                    isHidden = false;
                 }
 
             } else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
