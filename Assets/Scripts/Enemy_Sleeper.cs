@@ -33,6 +33,7 @@ public class Enemy_Sleeper : Enemy
     void Start()
     {
         isSleeping = true;
+        DEnemyColl.enabled = false;
         
     }
 
@@ -62,7 +63,7 @@ public class Enemy_Sleeper : Enemy
      IEnumerator wake_up()
     {
         //input animation code here please
-
+        DEnemyColl.enabled = true;
         isSleeping = false;
         yield return new WaitForSeconds(2); //change number here to fit with waking up
         hunt_player();
