@@ -21,29 +21,40 @@ public class Enemy_Large : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (playerposition == null || player_in_Game == null)
+        if (playerposition == null)
         {
             anim.SetBool("playerDetected", false);
-            patrol();
-
-
             return;
         }
         //detected player in line of sight
         else
         {
             anim.SetBool("playerDetected", true); //maybe have to move this for animation
-            if (isAttacking == false && (
-                (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) |
-                (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))
-            {
-
-                Debug.Log("Attack");
-                StartCoroutine(Attack_routine());
-            }
+            
             Move();
         }
     }
+
+    #region Movement_functions
+    public new void Move()
+    {
+        anim.SetBool("Chasing", true);
+        move_to_player();
+        DEnemyRB.velocity = direction * attack_speed;
+        anim.SetFloat("dirX", direction.x);
+    }
+
+    #endregion
+
+    #region Triggers and Collisions
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(Attack_routine());
+        }
+    }
+    #endregion
 
     #region Routines
     IEnumerator Attack_routine()
@@ -52,7 +63,7 @@ public class Enemy_Large : Enemy
         float attackLength = 1f;
         DEnemyRB.velocity = Vector2.zero;
 
-        anim.SetTrigger("Attacking");
+        anim.SetBool("Attacking", true);
 
         while (attackLength >= 0)
         {
@@ -64,8 +75,10 @@ public class Enemy_Large : Enemy
 
         foreach (RaycastHit2D hit in hits)
         {
+            Debug.Log("casting raycasts");
             if (hit.transform.CompareTag("Player"))
             {
+                Debug.Log("Kill player");
                 yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
             }
         }
