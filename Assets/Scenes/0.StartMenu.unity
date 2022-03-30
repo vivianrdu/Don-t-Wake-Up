@@ -550,6 +550,46 @@ MonoBehaviour:
     group: Music
     clip: {fileID: 8300000, guid: b1d280c5b37ba44f29361ff992f00d71, type: 3}
     source: {fileID: 0}
+  - name: DarkEnemyChase
+    group: Foley
+    clip: {fileID: 8300000, guid: 8a89cf429e112418187e93a0278584a7, type: 3}
+    source: {fileID: 0}
+  - name: DarkEnemyBreathing
+    group: Foley
+    clip: {fileID: 8300000, guid: b1d280c5b37ba44f29361ff992f00d71, type: 3}
+    source: {fileID: 0}
+  - name: DarkEnemyKilling
+    group: SFX
+    clip: {fileID: 8300000, guid: 8b6a2107dbada4e1bbb17222056c56c9, type: 3}
+    source: {fileID: 0}
+  - name: NightlightOn
+    group: SFX
+    clip: {fileID: 8300000, guid: 4a5727c82007a4f6885f549f8b04e176, type: 3}
+    source: {fileID: 0}
+  - name: NightlightOff
+    group: SFX
+    clip: {fileID: 8300000, guid: 14a4d2bd00f3a46078172caf85e976cc, type: 3}
+    source: {fileID: 0}
+  - name: Dragging
+    group: Foley
+    clip: {fileID: 8300000, guid: bcbdd598b3d724d2b801ff1bb92b21fe, type: 3}
+    source: {fileID: 0}
+  - name: PlayerWalking
+    group: Foley
+    clip: {fileID: 8300000, guid: 34f3fb90be7274b03a948833152a869b, type: 3}
+    source: {fileID: 0}
+  - name: PlayerRunning
+    group: Foley
+    clip: {fileID: 8300000, guid: a889eadbc81c34ab989f859e606f3d89, type: 3}
+    source: {fileID: 0}
+  - name: PlayerSwimming
+    group: Foley
+    clip: {fileID: 8300000, guid: e8ffd3c4b5f8741c6b875600c95a655a, type: 3}
+    source: {fileID: 0}
+  - name: PlayerDeath
+    group: SFX
+    clip: {fileID: 8300000, guid: 11264bcecd80d4d93a9df096b726cd3d, type: 3}
+    source: {fileID: 0}
   musicGroup: {fileID: -5065870052020328332, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
   sfxGroup: {fileID: -220058948930709544, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
   foleyGroup: {fileID: 4853085873983550569, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
