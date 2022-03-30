@@ -108,7 +108,6 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
-            Debug.Log("No music");
             return;
         }
         s.source.PlayOneShot(s.source.clip);
@@ -119,7 +118,6 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
-            Debug.Log("No music");
             return;
         }
         s.source.volume = 0;

@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     float x_input;
     float y_input;
 
-   
+    // Iris Edit 1
+    private AudioManager audioManager;
 
     // bool to detect whether Player's feet is in contact with a surface
     public bool feetContact;
@@ -60,6 +61,8 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
 
+        // Iris Edit 1
+        audioManager = FindObjectOfType<AudioManager>();
 
         isHidden = false; //is done as enemy checks that automatically, otherwise get null error
         isCrouching = false;
