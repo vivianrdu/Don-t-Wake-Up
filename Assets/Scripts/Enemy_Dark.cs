@@ -61,6 +61,8 @@ public class Enemy_Dark : Enemy
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
+
 
         patrol_stopping_timer -= Time.deltaTime;
 
@@ -86,7 +88,6 @@ public class Enemy_Dark : Enemy
             else if (anim.GetBool("Stunned") == false)
             {
                 anim.SetBool("playerDetected", true); //maybe have to move this for animation
-                //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
                 if (isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2)|
                     (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))

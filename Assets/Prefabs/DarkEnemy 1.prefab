@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8507887553624861680}
   - component: {fileID: 8507887553624861683}
   - component: {fileID: 8507887553624861682}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DarkEnemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1488948925
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -1678950870653644771, guid: fd4192f07728e4542935b22b492ba4a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -145,7 +145,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 8507887554019217494}
   - component: {fileID: 8507887554019217497}
   - component: {fileID: 8507887554019217496}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LineOfSight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
