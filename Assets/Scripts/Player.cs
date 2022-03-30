@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
 
 
     #region Animation_components
+    SpriteRenderer spritePlayer;
     Animator anim;
     #endregion
 
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
+        spritePlayer = GetComponent<SpriteRenderer>();
 
 
         isHidden = false; //is done as enemy checks that automatically, otherwise get null error
@@ -154,13 +156,16 @@ public class Player : MonoBehaviour
                     Debug.Log("hiding called");
                     isHidden = true;
                     Debug.Log(isHidden);
+                    spritePlayer.sortingLayerName = "Player_Hidden";
                 }else
                 {
                     isHidden = false;
+                    spritePlayer.sortingLayerName = "Player";
                 }
 
             } else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
             {
+                spritePlayer.sortingLayerName = "Player";
                 anim.SetBool("running", true);
                 anim.SetBool("crouching", false);
                 anim.SetBool("walking", false);
@@ -171,6 +176,7 @@ public class Player : MonoBehaviour
                 PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
             } else
             {
+                spritePlayer.sortingLayerName = "Player";
                 anim.SetBool("walking", true);
                 anim.SetBool("crouching", false);
                 anim.SetBool("running", false);
