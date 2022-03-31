@@ -32,7 +32,7 @@ public class Enemy_Sleeper : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        startup_stuff();
+        Startup();
         ismoving = false;
         isSleeping = true;
         anim.SetBool("isSleeping", true);
@@ -44,19 +44,16 @@ public class Enemy_Sleeper : Enemy
     // Update is called once per frame
     void Update()
     {
-
-
-        if (ismoving)
-        {
-            attack_the_player();
-            move_to_player();
-           
-        }
         if (player_in_Game == null || playerposition == null)
         {
             return;
         }
-
+        if (ismoving)
+        {
+            Attack();
+            move_to_player();
+           
+        }
         else
         {
             if (playerposition != null)

@@ -13,8 +13,7 @@ public class Enemy_Large : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        startup_stuff();
-        anim = GetComponent<Animator>();
+        Startup();
         isAttacking = false;
         anim.SetBool("playerDetected", false);
 

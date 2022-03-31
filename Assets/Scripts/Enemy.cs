@@ -41,28 +41,24 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
-    // Start is called before the first frame update
     void Start()
     {
-        startup_stuff();
+        Startup();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-        //detected player in line of sight
-        
+                
 
     }
 
-
-    public void startup_stuff()
+    /** Gets RigidBody, collider, animator, respawn anchor **/
+    public void Startup()
     {
         DEnemyRB = GetComponent<Rigidbody2D>();
         DEnemyColl = GetComponent<BoxCollider2D>();
-
+        anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
     }
 
@@ -122,14 +118,7 @@ public class Enemy : MonoBehaviour
             attackLength -= Time.deltaTime;
             yield return null;
         }
-        //if (hitPlayer)
-        //{
-        //Debug.Log("before error");
-        //Player player_test = FindObjectOfType<Player>();
 
-        //player_test.Die();
-        //Debug.Log("after error");
-        //}
         RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
 
         foreach (RaycastHit2D hit in hits)
@@ -144,7 +133,7 @@ public class Enemy : MonoBehaviour
         anim.SetBool("Attacking", false);
     }
 
-    public void attack_the_player()
+    public void Attack()
     {
         if (isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) |
