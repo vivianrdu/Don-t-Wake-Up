@@ -8,8 +8,6 @@ public class Enemy_Dark : Enemy
 
     #region Player_Variables
     
-    
-    
     #endregion
 
     #region Movement_variables
@@ -35,10 +33,8 @@ public class Enemy_Dark : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        startup_stuff();
-        DEnemyRB = GetComponent<Rigidbody2D>();
-        DEnemyColl = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
+        Startup();
+
         stun = 0;
         isAttacking = false;
         anim.SetBool("playerDetected", false);
@@ -84,7 +80,7 @@ public class Enemy_Dark : Enemy
             else if (anim.GetBool("Stunned") == false)
             {
                 anim.SetBool("playerDetected", true); //maybe have to move this for animation
-                attack_the_player();
+                Attack();
                 Move();
             }
             
@@ -176,15 +172,7 @@ public class Enemy_Dark : Enemy
 
     #region Triggers and Collisions
     private void OnTriggerEnter2D(Collider2D coll)
-    {
-
-        Debug.Log("collide Trigger" + coll.CompareTag("Glowing"));
-            
-            
-        //Debug.Log(" light"+ coll.GetComponent<Light2D>().pointLightOuterRadius );
-
-        Debug.Log("enemycollider enabled? " + DEnemyColl.enabled);
-
+    {            
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
             Debug.Log("Stunned " + stun_length);

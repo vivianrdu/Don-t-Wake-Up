@@ -13,8 +13,7 @@ public class Enemy_Large : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        startup_stuff();
-        anim = GetComponent<Animator>();
+        Startup();
         isAttacking = false;
         anim.SetBool("playerDetected", false);
 
@@ -67,8 +66,10 @@ public class Enemy_Large : Enemy
 
         should_I_hunt_the_player = false;
         DEnemyColl.enabled = false;
+        transform.localScale = new Vector3(3, 3, 1);
 
-        
+
+
         Debug.Log(" is playerhunt true?" +playerHunt);
         Debug.Log(" is playerhunt true?" + should_I_hunt_the_player);
         Debug.Log(" is playerposition null? " + playerposition == null);
@@ -115,8 +116,9 @@ public class Enemy_Large : Enemy
     {
         yield return new WaitForSeconds(1f);
         DEnemyColl.enabled = true;
+        /* Increase enemy size */
+        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(8, 8, 1), Time.deltaTime);
 
-        
         playerHunt = true;
 
         yield return null;

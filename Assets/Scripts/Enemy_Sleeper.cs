@@ -13,7 +13,7 @@ public class Enemy_Sleeper : Enemy
 
     #region Movement_variables
     public float patrol_radius;
-    public bool ismoving;
+    public bool isMoving;
     #endregion
 
     #region Stun_variables
@@ -32,8 +32,8 @@ public class Enemy_Sleeper : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        startup_stuff();
-        ismoving = false;
+        Startup();
+        isMoving = false;
         isSleeping = true;
         anim.SetBool("isSleeping", true);
         anim.SetBool("playerDetected", false);
@@ -44,19 +44,16 @@ public class Enemy_Sleeper : Enemy
     // Update is called once per frame
     void Update()
     {
-
-
-        if (ismoving)
-        {
-            attack_the_player();
-            move_to_player();
-           
-        }
         if (player_in_Game == null || playerposition == null)
         {
             return;
         }
-
+        if (isMoving)
+        {
+            Attack();
+            move_to_player();
+           
+        }
         else
         {
             if (playerposition != null)
@@ -77,22 +74,25 @@ public class Enemy_Sleeper : Enemy
     {
         transform.position = respawn_anchor;
         //reset
+        direction = new Vector2(0, 0);
+        DEnemyRB.velocity = direction * attack_speed;
 
-        ismoving = false;
+        isMoving = false;
         isSleeping = true;
         anim.SetBool("isSleeping", true);
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
         isAttacking = false;
+        playerposition = null;
     }
 
 
     #region Move_functions
     public void hunt_player()
     {
-        Debug.Log("is sleeper running" + ismoving);
-        ismoving = true;
-        Debug.Log("is sleeper running2" + ismoving);
+        Debug.Log("is sleeper running" + isMoving);
+        isMoving = true;
+        Debug.Log("is sleeper running2" + isMoving);
 
     }
 
@@ -107,7 +107,7 @@ public class Enemy_Sleeper : Enemy
         Debug.Log("woke up");
         isSleeping = false;
         anim.SetBool("isSleeping", false);
-        yield return new WaitForSeconds(2); //change number here to fit with waking up
+        yield return new WaitForSeconds(1); //change number here to fit with waking up
         anim.SetBool("playerDetected", true);
         hunt_player();
     }
