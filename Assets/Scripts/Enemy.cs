@@ -82,6 +82,8 @@ public class Enemy : MonoBehaviour
         {
             direction = new Vector2(-1, 0);
         }
+        DEnemyRB.velocity = direction * attack_speed;
+        anim.SetFloat("dirX", direction.x);
     }
 
     public void patrol()
@@ -106,6 +108,53 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
+    #region Routines
+    protected IEnumerator Attack_routine()
+    {
+        isAttacking = true;
+        float attackLength = 1f;
+        DEnemyRB.velocity = Vector2.zero;
 
+        anim.SetTrigger("Attacking");
+
+        while (attackLength >= 0)
+        {
+            attackLength -= Time.deltaTime;
+            yield return null;
+        }
+        //if (hitPlayer)
+        //{
+        //Debug.Log("before error");
+        //Player player_test = FindObjectOfType<Player>();
+
+        //player_test.Die();
+        //Debug.Log("after error");
+        //}
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.transform.CompareTag("Player"))
+            {
+                yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
+            }
+        }
+
+        isAttacking = false;
+        anim.SetBool("Attacking", false);
+    }
+
+    public void attack_the_player()
+    {
+        if (isAttacking == false && (
+                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) |
+                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))
+        {
+
+            Debug.Log("Attack");
+            StartCoroutine(Attack_routine());
+        }
+    }
+    #endregion  
 
 }

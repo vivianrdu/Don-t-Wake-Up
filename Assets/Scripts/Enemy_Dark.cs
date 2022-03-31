@@ -84,14 +84,7 @@ public class Enemy_Dark : Enemy
             else if (anim.GetBool("Stunned") == false)
             {
                 anim.SetBool("playerDetected", true); //maybe have to move this for animation
-                if (isAttacking == false && (
-                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2)|
-                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))
-                {
-
-                        Debug.Log("Attack");
-                        StartCoroutine(Attack_routine());
-                }
+                attack_the_player();
                 Move();
             }
             
@@ -105,8 +98,8 @@ public class Enemy_Dark : Enemy
 
         move_to_player();
 
-        DEnemyRB.velocity = direction * attack_speed;
-        anim.SetFloat("dirX", direction.x);
+        //DEnemyRB.velocity = direction * attack_speed;
+        //anim.SetFloat("dirX", direction.x);
         patrol_stopping_timer = Random.Range(0, 5); //so there is a delay when the enemy stops following the player, so it doesn't immeadietly walk away
     }
 
@@ -177,6 +170,8 @@ public class Enemy_Dark : Enemy
         anim.SetBool("Stunned", false);
     }
 
+    
+
     #endregion
 
     #region Triggers and Collisions
@@ -210,40 +205,7 @@ public class Enemy_Dark : Enemy
     #endregion
 
     #region Routines
-    IEnumerator Attack_routine()
-    {
-        isAttacking = true;
-        float attackLength = 1f;
-        DEnemyRB.velocity = Vector2.zero;
-
-        anim.SetTrigger("Attacking");
-
-        while (attackLength >= 0)
-        {
-            attackLength -= Time.deltaTime;
-            yield return null;
-        }
-        //if (hitPlayer)
-        //{
-        //Debug.Log("before error");
-        //Player player_test = FindObjectOfType<Player>();
-
-        //player_test.Die();
-        //Debug.Log("after error");
-        //}
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
-
-        foreach (RaycastHit2D hit in hits)
-        {
-            if (hit.transform.CompareTag("Player"))
-            {
-                yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
-            }
-        }
-
-        isAttacking = false;
-        anim.SetBool("Attacking", false);
-    }
+    
 
     IEnumerator Stun_routine()
     {
