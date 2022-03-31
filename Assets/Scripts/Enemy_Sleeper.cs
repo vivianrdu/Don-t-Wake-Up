@@ -40,7 +40,14 @@ public class Enemy_Sleeper : Enemy
     // Update is called once per frame
     void Update()
     {
-        if(player_in_Game.isRunning && !isSleeping)
+        if (player_in_Game == null)
+        {
+        
+
+
+            return;
+        }
+        else if (player_in_Game.isRunning && !isSleeping)
         {
             StartCoroutine(wake_up());
             
