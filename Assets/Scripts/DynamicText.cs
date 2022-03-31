@@ -37,7 +37,7 @@ public class DynamicText : MonoBehaviour
             {
                 StartCoroutine(FadeTextToZeroAlpha(1f, text));
             }
-            else if (Input.GetKeyDown(KeyCode.T) && text.text == "push or pull\n(t) to lock on/off")
+            else if (Input.GetKeyDown(KeyCode.T) && text.text == "push or pull\nhold (l)")
             {
                 StartCoroutine(FadeTextToZeroAlpha(1f, text));
             }
