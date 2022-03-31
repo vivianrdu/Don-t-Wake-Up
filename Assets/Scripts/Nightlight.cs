@@ -29,7 +29,14 @@ public class Nightlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fire = GetComponentInChildren<Light2D>();
+        Light2D[] lights = GetComponentsInChildren<Light2D>();
+        foreach (Light2D li in lights)
+        {
+            if (li.gameObject.transform.parent != null)
+            {
+                fire = li;
+            }
+        }
         anim = GetComponent<Animator>();
         timerIsRunning = false;
         alreadyOn = false;
