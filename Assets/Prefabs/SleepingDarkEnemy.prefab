@@ -250,8 +250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerposition: {fileID: 0}
   player_in_Game: {fileID: 0}
-  walking_speed: 2
-  attack_speed: 1
+  walking_speed: 1
+  attack_speed: 4
   anim: {fileID: 0}
   audioManager: {fileID: 0}
   respawn_anchor: {x: 0, y: 0}

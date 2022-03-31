@@ -13,7 +13,7 @@ public class Enemy_Sleeper : Enemy
 
     #region Movement_variables
     public float patrol_radius;
-    public bool ismoving;
+    public bool isMoving;
     #endregion
 
     #region Stun_variables
@@ -33,7 +33,7 @@ public class Enemy_Sleeper : Enemy
     void Start()
     {
         Startup();
-        ismoving = false;
+        isMoving = false;
         isSleeping = true;
         anim.SetBool("isSleeping", true);
         anim.SetBool("playerDetected", false);
@@ -48,7 +48,7 @@ public class Enemy_Sleeper : Enemy
         {
             return;
         }
-        if (ismoving)
+        if (isMoving)
         {
             Attack();
             move_to_player();
@@ -75,21 +75,22 @@ public class Enemy_Sleeper : Enemy
         transform.position = respawn_anchor;
         //reset
 
-        ismoving = false;
+        isMoving = false;
         isSleeping = true;
         anim.SetBool("isSleeping", true);
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
         isAttacking = false;
+        playerposition = null;
     }
 
 
     #region Move_functions
     public void hunt_player()
     {
-        Debug.Log("is sleeper running" + ismoving);
-        ismoving = true;
-        Debug.Log("is sleeper running2" + ismoving);
+        Debug.Log("is sleeper running" + isMoving);
+        isMoving = true;
+        Debug.Log("is sleeper running2" + isMoving);
 
     }
 
@@ -104,7 +105,7 @@ public class Enemy_Sleeper : Enemy
         Debug.Log("woke up");
         isSleeping = false;
         anim.SetBool("isSleeping", false);
-        yield return new WaitForSeconds(2); //change number here to fit with waking up
+        yield return new WaitForSeconds(1); //change number here to fit with waking up
         anim.SetBool("playerDetected", true);
         hunt_player();
     }
