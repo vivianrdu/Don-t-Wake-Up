@@ -2669,10 +2669,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeDarkEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8573235879203800692, guid: ff53d7c78a02e45e1a1f1971e10b3aac, type: 3}
-      propertyPath: m_Mass
-      value: 100000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff53d7c78a02e45e1a1f1971e10b3aac, type: 3}
 --- !u!1 &834353054

@@ -28,8 +28,12 @@ public class Enemy_Large : Enemy
     // Update is called once per frame
     void Update()
     {
+
+
+
         if (playerposition != null && should_I_hunt_the_player == false)
         {
+            Debug.Log("Teststtststs:" + playerposition);
             should_I_hunt_the_player = true;
         }
 
@@ -43,6 +47,7 @@ public class Enemy_Large : Enemy
 
         if (playerHunt)
         {
+            
             Move();
         }
     }
@@ -62,8 +67,8 @@ public class Enemy_Large : Enemy
 
         should_I_hunt_the_player = false;
         DEnemyColl.enabled = false;
-        
 
+        
         Debug.Log(" is playerhunt true?" +playerHunt);
         Debug.Log(" is playerhunt true?" + should_I_hunt_the_player);
         Debug.Log(" is playerposition null? " + playerposition == null);
@@ -96,8 +101,9 @@ public class Enemy_Large : Enemy
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !isAttacking)
         {
+            isAttacking = true;
             StartCoroutine(Attack_routine());
         }
         
@@ -112,14 +118,16 @@ public class Enemy_Large : Enemy
 
         
         playerHunt = true;
+
+        yield return null;
     }
 
     new IEnumerator Attack_routine()
     {
         anim.SetBool("Attacking", true);
         DEnemyRB.velocity = Vector2.zero;
-
-        
+        playerHunt = false;
+        should_I_hunt_the_player = false;
         //player_in_Game.enabled = !player_in_Game.enabled;
 
         Debug.Log("Kill player");
@@ -127,6 +135,8 @@ public class Enemy_Large : Enemy
         //player_in_Game.enabled = !player_in_Game.enabled;
 
         anim.SetBool("Attacking", false);
+
+        yield return null;
     }
     #endregion
 }
