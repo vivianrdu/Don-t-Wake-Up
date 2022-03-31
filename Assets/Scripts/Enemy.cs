@@ -97,7 +97,7 @@ public class Enemy : MonoBehaviour
 
     public void Reset_position()
     {
-        transform.position = respawn_anchor;
+        //transform.position = respawn_anchor;
         //reset
 
     }

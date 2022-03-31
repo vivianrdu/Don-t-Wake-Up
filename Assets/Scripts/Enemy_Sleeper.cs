@@ -38,7 +38,7 @@ public class Enemy_Sleeper : Enemy
         anim.SetBool("isSleeping", true);
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
-        
+
     }
 
     // Update is called once per frame
@@ -70,6 +70,20 @@ public class Enemy_Sleeper : Enemy
             }
         }
         
+    }
+
+
+    public new void Reset_position()
+    {
+        transform.position = respawn_anchor;
+        //reset
+
+        ismoving = false;
+        isSleeping = true;
+        anim.SetBool("isSleeping", true);
+        anim.SetBool("playerDetected", false);
+        DEnemyColl.enabled = false;
+        isAttacking = false;
     }
 
 
