@@ -32,6 +32,7 @@ public class Enemy_Sleeper : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        startup_stuff();
         isSleeping = true;
         DEnemyColl.enabled = false;
         
