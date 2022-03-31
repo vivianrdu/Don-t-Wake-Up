@@ -32,16 +32,10 @@ public class Enemy_Dark : Enemy
 
     #endregion
 
-
-
-    private int test_counter;
-
     // Start is called before the first frame update
     void Start()
     {
-        test_counter = 0;
         startup_stuff();
-
         DEnemyRB = GetComponent<Rigidbody2D>();
         DEnemyColl = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -189,15 +183,10 @@ public class Enemy_Dark : Enemy
     private void OnTriggerEnter2D(Collider2D coll)
     {
 
-        test_counter += 1;
-
-        Debug.Log(coll.tag + "   counter " + test_counter);
-
-
         Debug.Log("collide Trigger" + coll.CompareTag("Glowing"));
             
             
-        Debug.Log(" light"+ coll.GetComponent<Light2D>().pointLightOuterRadius );
+        //Debug.Log(" light"+ coll.GetComponent<Light2D>().pointLightOuterRadius );
 
         Debug.Log("enemycollider enabled? " + DEnemyColl.enabled);
 
