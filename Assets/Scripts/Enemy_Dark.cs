@@ -25,18 +25,23 @@ public class Enemy_Dark : Enemy
     #endregion
 
     #region Attack_variables
-    
+
     #endregion
 
     #region Physics_components
-    
+
     #endregion
 
-    
+
+
+    private int test_counter;
 
     // Start is called before the first frame update
     void Start()
     {
+        test_counter = 0;
+        startup_stuff();
+
         DEnemyRB = GetComponent<Rigidbody2D>();
         DEnemyColl = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -183,12 +188,26 @@ public class Enemy_Dark : Enemy
     #region Triggers and Collisions
     private void OnTriggerEnter2D(Collider2D coll)
     {
+
+        test_counter += 1;
+
+        Debug.Log(coll.tag + "   counter " + test_counter);
+
+
+        Debug.Log("collide Trigger" + coll.CompareTag("Glowing"));
+            
+            
+        Debug.Log(" light"+ coll.GetComponent<Light2D>().pointLightOuterRadius );
+
+        Debug.Log("enemycollider enabled? " + DEnemyColl.enabled);
+
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
-            Debug.Log("Stunned");
+            Debug.Log("Stunned " + stun_length);
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {
+                Debug.Log("Stunned 2" + stun_length);
                 stun = stun_length;
                 anim.SetBool("Stunned", true);
                 DEnemyRB.velocity = new Vector2(0, 0);
@@ -239,13 +258,13 @@ public class Enemy_Dark : Enemy
 
     IEnumerator Stun_routine()
     {
-        Debug.Log("Stun routine started");
+        Debug.Log("Stun routine started test");
         //turn off collider
         DEnemyColl.enabled = !DEnemyColl.enabled;
 
         while (stun >= 0)
         {
-            //Debug.Log("coroutine is happening" + stun);
+            Debug.Log("coroutine is happening" + stun);
             stun -= Time.deltaTime;
             yield return null;
         }
