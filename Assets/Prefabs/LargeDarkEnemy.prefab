@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384111440}
   - component: {fileID: 1384111441}
-  - component: {fileID: 8573235879203800691}
+  - component: {fileID: 800394073}
   m_Layer: 0
   m_Name: Line of Sight
   m_TagString: Untagged
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384111439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3, y: 0.01, z: 0}
+  m_LocalScale: {x: 0.97123, y: 0.97123, z: 0.97123}
   m_Children: []
   m_Father: {fileID: 8573235879137934343}
   m_RootOrder: 0
@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc0b6f3cab904640ad12678261c6c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &8573235879203800691
-CircleCollider2D:
+--- !u!61 &800394073
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -57,9 +57,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.29416385, y: 0.16229862}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 2
+  m_Size: {x: 0.4116723, y: 3.515626}
+  m_EdgeRadius: 0
 --- !u!1 &8573235879137934345
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +145,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1488948925
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 2971222710654909111, guid: 90af574e26be04cecb3214e66bc29604, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -182,10 +192,12 @@ MonoBehaviour:
   playerposition: {fileID: 0}
   player_in_Game: {fileID: 0}
   walking_speed: 5
-  attack_speed: 2
+  attack_speed: 4.5
   anim: {fileID: 8573235879137934340}
   audioManager: {fileID: 0}
   respawn_anchor: {x: 0, y: 0}
+  playerHunt: 0
+  should_I_hunt_the_player: 0
 --- !u!50 &8573235879203800692
 Rigidbody2D:
   serializedVersion: 4
@@ -198,10 +210,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100000
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -220,7 +232,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03546205, y: -0.033131123}
+  m_Offset: {x: -0.077756375, y: -0.033131123}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -231,5 +243,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1991534, y: 1.0688512}
+  m_Size: {x: 1.1145647, y: 1.0688512}
   m_EdgeRadius: 0

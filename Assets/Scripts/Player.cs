@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     // bool to detect whether Player's feet is in contact with a surface
     public bool feetContact;
+    public bool feetContact_ground;
     public bool feetContact_water;
     public bool isCrouching;
     public bool isRunning;
@@ -313,10 +314,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            feetContact = true;
-        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -327,7 +325,13 @@ public class Player : MonoBehaviour
             feetContact = true;
         }
 
-        if(collision.gameObject.CompareTag("respawn_anchor"))
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            feetContact = true;
+            feetContact_ground = true;
+        }
+
+        if (collision.gameObject.CompareTag("respawn_anchor"))
         {
             respawn_anchor = collision.transform.position;
         }
@@ -335,10 +339,21 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Crate"))
+        
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            feetContact_ground = false;
+            feetContact = false;
+        }
+        if (collision.gameObject.CompareTag("Crate"))
         {
             Debug.Log("feetcontact gone");
-            feetContact = false;
+
+            if (!feetContact_ground)
+            {
+                feetContact = false;
+            }
         }
     }
 

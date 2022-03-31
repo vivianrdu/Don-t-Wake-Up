@@ -24,7 +24,7 @@ public class Crate : MonoBehaviour
     void Update()
     {
         float distFromPlayer = Vector2.Distance(player.position, transform.position);
-        if (Input.GetKey(KeyCode.T) && distFromPlayer <= radius)
+        if (Input.GetKey(KeyCode.L) && distFromPlayer <= radius)
         {
             Debug.Log("moving crate");
             player.GetComponent<Player>().movingCrate = true;

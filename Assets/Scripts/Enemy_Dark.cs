@@ -8,8 +8,6 @@ public class Enemy_Dark : Enemy
 
     #region Player_Variables
     
-    
-    
     #endregion
 
     #region Movement_variables
@@ -25,21 +23,18 @@ public class Enemy_Dark : Enemy
     #endregion
 
     #region Attack_variables
-    
+
     #endregion
 
     #region Physics_components
-    
-    #endregion
 
-    
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        DEnemyRB = GetComponent<Rigidbody2D>();
-        DEnemyColl = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
+        Startup();
+
         stun = 0;
         isAttacking = false;
         anim.SetBool("playerDetected", false);
@@ -58,6 +53,8 @@ public class Enemy_Dark : Enemy
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
+
 
         patrol_stopping_timer -= Time.deltaTime;
 
@@ -83,15 +80,7 @@ public class Enemy_Dark : Enemy
             else if (anim.GetBool("Stunned") == false)
             {
                 anim.SetBool("playerDetected", true); //maybe have to move this for animation
-                //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
-                if (isAttacking == false && (
-                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2)|
-                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))
-                {
-
-                        Debug.Log("Attack");
-                        StartCoroutine(Attack_routine());
-                }
+                Attack();
                 Move();
             }
             
@@ -105,21 +94,21 @@ public class Enemy_Dark : Enemy
 
         move_to_player();
 
-        DEnemyRB.velocity = direction * attack_speed;
-        anim.SetFloat("dirX", direction.x);
+        //DEnemyRB.velocity = direction * attack_speed;
+        //anim.SetFloat("dirX", direction.x);
         patrol_stopping_timer = Random.Range(0, 5); //so there is a delay when the enemy stops following the player, so it doesn't immeadietly walk away
     }
 
     public new void patrol()
     {
-        Debug.Log("patrol timer" + patrol_stopping_timer);
+        //Debug.Log("patrol timer" + patrol_stopping_timer);
         
         if (patrol_stopping_timer <= 0)
         {
 
-            Debug.Log("Patrol patrol stopping timer below 0");
+            //Debug.Log("Patrol patrol stopping timer below 0");
             float random_number = Random.Range(0, 1000);
-            Debug.Log("random number" + random_number);
+            //Debug.Log("random number" + random_number);
             if (random_number < patrol_stopping_randoness)
             {
                 patrol_stopping_timer = Random.Range(0, 5);
@@ -177,17 +166,20 @@ public class Enemy_Dark : Enemy
         anim.SetBool("Stunned", false);
     }
 
+    
+
     #endregion
 
     #region Triggers and Collisions
     private void OnTriggerEnter2D(Collider2D coll)
-    {
+    {            
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
-            Debug.Log("Stunned");
+            Debug.Log("Stunned " + stun_length);
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {
+                Debug.Log("Stunned 2" + stun_length);
                 stun = stun_length;
                 anim.SetBool("Stunned", true);
                 DEnemyRB.velocity = new Vector2(0, 0);
@@ -201,50 +193,17 @@ public class Enemy_Dark : Enemy
     #endregion
 
     #region Routines
-    IEnumerator Attack_routine()
-    {
-        isAttacking = true;
-        float attackLength = 1f;
-        DEnemyRB.velocity = Vector2.zero;
-
-        anim.SetTrigger("Attacking");
-
-        while (attackLength >= 0)
-        {
-            attackLength -= Time.deltaTime;
-            yield return null;
-        }
-        //if (hitPlayer)
-        //{
-        //Debug.Log("before error");
-        //Player player_test = FindObjectOfType<Player>();
-
-        //player_test.Die();
-        //Debug.Log("after error");
-        //}
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
-
-        foreach (RaycastHit2D hit in hits)
-        {
-            if (hit.transform.CompareTag("Player"))
-            {
-                yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
-            }
-        }
-
-        isAttacking = false;
-        anim.SetBool("Attacking", false);
-    }
+    
 
     IEnumerator Stun_routine()
     {
-        Debug.Log("Stun routine started");
+        Debug.Log("Stun routine started test");
         //turn off collider
         DEnemyColl.enabled = !DEnemyColl.enabled;
 
         while (stun >= 0)
         {
-            //Debug.Log("coroutine is happening" + stun);
+            Debug.Log("coroutine is happening" + stun);
             stun -= Time.deltaTime;
             yield return null;
         }

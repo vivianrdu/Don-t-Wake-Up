@@ -41,23 +41,25 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
-    // Start is called before the first frame update
     void Start()
     {
-        DEnemyRB = GetComponent<Rigidbody2D>();
-        DEnemyColl = GetComponent<BoxCollider2D>();
-
-        respawn_anchor = this.transform.position;
+        Startup();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-        //detected player in line of sight
-        
+                
 
+    }
+
+    /** Gets RigidBody, collider, animator, respawn anchor **/
+    public void Startup()
+    {
+        DEnemyRB = GetComponent<Rigidbody2D>();
+        DEnemyColl = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
+        respawn_anchor = this.transform.position;
     }
 
     #region Movement_functions
@@ -76,6 +78,8 @@ public class Enemy : MonoBehaviour
         {
             direction = new Vector2(-1, 0);
         }
+        DEnemyRB.velocity = direction * attack_speed;
+        anim.SetFloat("dirX", direction.x);
     }
 
     public void patrol()
@@ -89,7 +93,7 @@ public class Enemy : MonoBehaviour
 
     public void Reset_position()
     {
-        transform.position = respawn_anchor;
+        //transform.position = respawn_anchor;
         //reset
 
     }
@@ -100,6 +104,46 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
+    #region Routines
+    protected IEnumerator Attack_routine()
+    {
+        isAttacking = true;
+        float attackLength = 1f;
+        DEnemyRB.velocity = Vector2.zero;
 
+        anim.SetTrigger("Attacking");
+
+        while (attackLength >= 0)
+        {
+            attackLength -= Time.deltaTime;
+            yield return null;
+        }
+
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.transform.CompareTag("Player"))
+            {
+                yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
+            }
+        }
+
+        isAttacking = false;
+        anim.SetBool("Attacking", false);
+    }
+
+    public void Attack()
+    {
+        if (isAttacking == false && (
+                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) |
+                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))
+        {
+
+            Debug.Log("Attack");
+            StartCoroutine(Attack_routine());
+        }
+    }
+    #endregion  
 
 }

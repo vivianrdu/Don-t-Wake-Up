@@ -72,7 +72,7 @@ public class Hideable_object : Non_interactable_Items
             yield return null;
         }
 
-        
+        spriteRenderer_used.color = new Color(1f, 1f, 1f, 1f);
     }
 
     #endregion
