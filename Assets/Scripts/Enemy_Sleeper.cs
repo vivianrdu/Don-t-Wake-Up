@@ -74,6 +74,8 @@ public class Enemy_Sleeper : Enemy
     {
         transform.position = respawn_anchor;
         //reset
+        direction = new Vector2(0, 0);
+        DEnemyRB.velocity = direction * attack_speed;
 
         isMoving = false;
         isSleeping = true;
