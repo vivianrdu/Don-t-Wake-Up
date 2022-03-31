@@ -33,7 +33,10 @@ public class Enemy_Sleeper : Enemy
     void Start()
     {
         startup_stuff();
+        
         isSleeping = true;
+        anim.SetBool("isSleeping", true);
+        anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
         
     }
@@ -43,14 +46,12 @@ public class Enemy_Sleeper : Enemy
     {
         if (player_in_Game == null)
         {
-        
-
-
             return;
         }
-        else if (player_in_Game.isRunning && !isSleeping)
+        else if (player_in_Game.isRunning && isSleeping)
         {
-            StartCoroutine(wake_up());
+            Debug.Log("Waking up");
+            StartCoroutine(Wake_up());
             
         }
     }
@@ -66,13 +67,15 @@ public class Enemy_Sleeper : Enemy
 
     #endregion
 
-    #region waking_up and falling asleep
+    #region Waking_up and Falling_asleep
 
-     IEnumerator wake_up()
+     IEnumerator Wake_up()
     {
         //input animation code here please
         DEnemyColl.enabled = true;
+        Debug.Log("woke up");
         isSleeping = false;
+        anim.SetBool("isSleeping", false);
         yield return new WaitForSeconds(2); //change number here to fit with waking up
         hunt_player();
     }

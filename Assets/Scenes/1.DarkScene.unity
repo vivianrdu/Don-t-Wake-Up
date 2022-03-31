@@ -1725,11 +1725,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 892183942407765031, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
   m_PrefabInstance: {fileID: 1809075474}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &444831227 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 892183942407765030, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
-  m_PrefabInstance: {fileID: 1809075474}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &453665243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2572,7 +2567,7 @@ PrefabInstance:
     - target: {fileID: 892183942407765027, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 444831227}
+      objectReference: {fileID: 752163684}
     - target: {fileID: 892183942407765031, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2619,7 +2614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 892183942407765049, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
       propertyPath: m_Name
-      value: SleepingDarkEnemy
+      value: SleepingDarkEnemy 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
