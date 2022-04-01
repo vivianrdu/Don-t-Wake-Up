@@ -289,7 +289,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &38057032
 Rigidbody2D:
@@ -433,7 +433,7 @@ Transform:
   m_Children:
   - {fileID: 1533279409}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &77583701
 MonoBehaviour:
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 134418447}
   - component: {fileID: 134418449}
   - component: {fileID: 134418450}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nightlight
   m_TagString: Nightlight
   m_Icon: {fileID: 0}
@@ -615,12 +615,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134418443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.41, y: -16.5, z: 0}
+  m_LocalPosition: {x: -31.189999, y: -14.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2117979727}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &134418446
 Animator:
@@ -1264,7 +1264,7 @@ Transform:
   - {fileID: 444831224}
   - {fileID: 752163681}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &339611107
 GameObject:
@@ -2344,7 +2344,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &738688889 stripped
 Transform:
@@ -2962,7 +2962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3180164005120141844, guid: c67d1d2325d2d492492d66fcee8aab90, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22
+      value: -31.05
       objectReference: {fileID: 0}
     - target: {fileID: 3180164005120141844, guid: c67d1d2325d2d492492d66fcee8aab90, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3442,7 +3442,7 @@ Transform:
   - {fileID: 961368829}
   - {fileID: 1381172037}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1106287373
 GameObject:
@@ -4545,7 +4545,7 @@ Transform:
   m_Children:
   - {fileID: 882578993}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1170720386
 GameObject:
@@ -8271,7 +8271,7 @@ Transform:
   - {fileID: 2066966399}
   - {fileID: 921249934}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746255641
 GameObject:
@@ -9317,7 +9317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -9.38
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9377,7 +9377,7 @@ GameObject:
   - component: {fileID: 2117979727}
   - component: {fileID: 2117979728}
   - component: {fileID: 2117979729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Glowing
   m_Icon: {fileID: 0}
@@ -9570,7 +9570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7502300313901235226, guid: 7d610dd5ae45c46929b4b0f020be73c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -84.75
+      value: -71.95
       objectReference: {fileID: 0}
     - target: {fileID: 7502300313901235226, guid: 7d610dd5ae45c46929b4b0f020be73c8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9688,7 +9688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4
+      value: 5.32
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_LocalPosition.y
