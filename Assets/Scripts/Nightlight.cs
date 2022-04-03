@@ -29,6 +29,7 @@ public class Nightlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /** Nightlight itself has a Light2D, this ensures the glow Light2D is the fire **/
         Light2D[] lights = GetComponentsInChildren<Light2D>();
         foreach (Light2D li in lights)
         {
