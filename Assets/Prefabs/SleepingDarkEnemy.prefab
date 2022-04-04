@@ -60,7 +60,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.5
 --- !u!50 &1030070620
 Rigidbody2D:
   serializedVersion: 4
@@ -256,4 +256,4 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   respawn_anchor: {x: 0, y: 0}
   patrol_radius: 0
-  ismoving: 0
+  isMoving: 0
