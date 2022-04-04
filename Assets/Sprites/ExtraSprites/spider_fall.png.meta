@@ -1,49 +1,34 @@
 fileFormatVersion: 2
-guid: a0dc89db4b6ea4d5780b2ed1e69100b4
+guid: 6a5678370068a43679bd0e441672cf45
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2883708358526403477
-    second: hand_grab_0
+      213: -1482901768940510502
+    second: spider_fall_0
   - first:
-      213: -1636013911347316437
-    second: hand_grab_1
+      213: -6895693200941255271
+    second: spider_fall_1
   - first:
-      213: -7794634017480327321
-    second: hand_grab_2
+      213: 226912778632050985
+    second: spider_fall_2
   - first:
-      213: -3886179709059029161
-    second: hand_grab_3
+      213: -4708846328540670030
+    second: spider_fall_3
   - first:
-      213: -3233718836072378458
-    second: hand_grab_4
+      213: -7482065440149901537
+    second: spider_fall_4
   - first:
-      213: 3601823561950805796
-    second: hand_grab_5
+      213: -5198181450172553608
+    second: spider_fall_5
   - first:
-      213: -4552560635265375701
-    second: hand_grab_6
+      213: 4955556114347793615
+    second: spider_fall_6
   - first:
-      213: 4983155013520714008
-    second: hand_grab_7
+      213: -2131355921969782192
+    second: spider_fall_7
   - first:
-      213: 2278457051158625956
-    second: hand_grab_8
-  - first:
-      213: 905743342360232621
-    second: hand_grab_9
-  - first:
-      213: -5348729887274457963
-    second: hand_grab_10
-  - first:
-      213: 7145290155895309496
-    second: hand_grab_11
-  - first:
-      213: -6574746619598203908
-    second: hand_grab_12
-  - first:
-      213: -5368662589129364740
-    second: hand_grab_13
+      213: 2652182241909924386
+    second: spider_fall_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -88,7 +73,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 60
+  spritePixelsToUnits: 15
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -133,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hand_grab_0
+      name: spider_fall_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 32
         y: 0
-        width: 128
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +132,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6c7536c6820bf7d0800000000000000
-      internalID: -2883708358526403477
+      spriteID: ad2a089a2bcab6be0800000000000000
+      internalID: -1482901768940510502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hand_grab_1
+      name: spider_fall_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 995f1d591939d40a0800000000000000
+      internalID: -6895693200941255271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_fall_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9293c5d48f7262300800000000000000
+      internalID: 226912778632050985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_fall_3
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 128
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +195,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b29bb8ef306bb49e0800000000000000
-      internalID: -1636013911347316437
+      spriteID: 2b75e657631d6aeb0800000000000000
+      internalID: -4708846328540670030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hand_grab_2
+      name: spider_fall_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1f63a5bf1d5a2890800000000000000
+      internalID: -7482065440149901537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_fall_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 876a07023895cd7b0800000000000000
+      internalID: -5198181450172553608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_fall_6
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcc1734c70ca5c440800000000000000
+      internalID: 4955556114347793615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_fall_7
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 128
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76fb8e9a8a5e3d390800000000000000
-      internalID: -7794634017480327321
+      spriteID: 052e015d417eb62e0800000000000000
+      internalID: -2131355921969782192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hand_grab_3
+      name: spider_fall_8
       rect:
         serializedVersion: 2
-        x: 384
+        x: 288
         y: 0
-        width: 128
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,218 +300,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 757a43cf424811ac0800000000000000
-      internalID: -3886179709059029161
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_4
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6af8a600ad58f13d0800000000000000
-      internalID: -3233718836072378458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_5
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42fb5b1427f3cf130800000000000000
-      internalID: 3601823561950805796
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_6
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b22a494093e02d0c0800000000000000
-      internalID: -4552560635265375701
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_7
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 819eb993519b72540800000000000000
-      internalID: 4983155013520714008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_8
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ae3b42cd94be9f10800000000000000
-      internalID: 2278457051158625956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_9
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da28e0365c8d19c00800000000000000
-      internalID: 905743342360232621
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_10
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 594ad7d918e75c5b0800000000000000
-      internalID: -5348729887274457963
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_11
-      rect:
-        serializedVersion: 2
-        x: 1408
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b44c371a8b292360800000000000000
-      internalID: 7145290155895309496
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_12
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf316a2b8cec1c4a0800000000000000
-      internalID: -6574746619598203908
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hand_grab_13
-      rect:
-        serializedVersion: 2
-        x: 1664
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cfae300d1ddae75b0800000000000000
-      internalID: -5368662589129364740
+      spriteID: 222e3a872b17ec420800000000000000
+      internalID: 2652182241909924386
       vertices: []
       indices: 
       edges: []
