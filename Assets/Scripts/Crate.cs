@@ -8,6 +8,7 @@ public class Crate : MonoBehaviour
     #region Targeting_variables
     public Transform player;
     public float radius;
+    public Player playerCharacter;
     #endregion
 
     #region Physics_variables
@@ -18,6 +19,7 @@ public class Crate : MonoBehaviour
     void Awake()
     {
         CrateRB = GetComponent<Rigidbody2D>();
+        playerCharacter = player.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -26,13 +28,17 @@ public class Crate : MonoBehaviour
         float distFromPlayer = Vector2.Distance(player.position, transform.position);
         if (Input.GetKey(KeyCode.L) && distFromPlayer <= radius)
         {
-            Debug.Log("moving crate");
-            player.GetComponent<Player>().movingCrate = true;
-            CrateRB.velocity = player.GetComponent<Player>().returnPlayerRB().velocity;
+            //Debug.Log("moving crate");
+            playerCharacter.movingCrate = true;
+
+            if (playerCharacter.feetContact_ground)
+            {
+                CrateRB.velocity = playerCharacter.returnPlayerRB().velocity;
+            }
         }
         else
         {
-            player.GetComponent<Player>().movingCrate = false;
+            playerCharacter.movingCrate = false;
             CrateRB.velocity = Vector2.zero;
         }
     }
