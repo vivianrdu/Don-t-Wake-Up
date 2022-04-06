@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     float x_input;
     float y_input;
 
-    // Iris Edit 1
-    private AudioManager audioManager;
 
     // bool to detect whether Player's feet is in contact with a surface
     public bool feetContact;
@@ -56,6 +54,12 @@ public class Player : MonoBehaviour
     public int keys = 0; // the number of keys the player has
     #endregion
 
+    #region Audio_variables
+    private PlayerSoundHandler sh;
+    const float _timeBetweenFootsteps = 5f;
+    float _lastPlayedFootstepSoundTime = -_timeBetweenFootsteps;
+    #endregion
+
     // Awake is called before the first frame update
     void Awake()
     {
@@ -64,12 +68,11 @@ public class Player : MonoBehaviour
         respawn_anchor = this.transform.position;
         spritePlayer = GetComponent<SpriteRenderer>();
 
-        // Iris Edit 1
-        audioManager = FindObjectOfType<AudioManager>();
 
         isHidden = false; //is done as enemy checks that automatically, otherwise get null error
         isCrouching = false;
 
+        sh = GetComponent<PlayerSoundHandler>();
     }
 
     // Update is called once per frame
@@ -100,6 +103,8 @@ public class Player : MonoBehaviour
     // jump function
     public bool canJump()
     {
+        sh.StopWalking();
+
         if (feetContact && !jumping_routine_ongoing && !isCrouching)
         {
             return true;
@@ -115,6 +120,12 @@ public class Player : MonoBehaviour
         Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
+            if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
+            {
+                sh.PlayWalking();
+                _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
+            }
+
             anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
             anim.SetBool("running", false);
@@ -123,6 +134,7 @@ public class Player : MonoBehaviour
             isHidden = false;
             PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
         }
+
         if (x_input > 0)
         {
             currDirection = Vector2.right;
@@ -146,6 +158,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.S))
             {
+                sh.StopWalking();
+
                 anim.SetBool("crouching", true);
                 anim.SetBool("running", false);
                 anim.SetBool("walking", false);
@@ -153,7 +167,7 @@ public class Player : MonoBehaviour
                 isCrouching = true;
                 isRunning = false;
 
-                PlayerRB.velocity = new Vector2(x_input * crouching_speed,0);
+                    PlayerRB.velocity = new Vector2(x_input * crouching_speed,0);
 
                 if(withinHiding)
                 {
@@ -167,8 +181,11 @@ public class Player : MonoBehaviour
                     spritePlayer.sortingLayerName = "Player";
                 }
 
-            } else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
+            }
+            else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
             {
+                sh.StopWalking();
+
                 spritePlayer.sortingLayerName = "Player";
                 anim.SetBool("running", true);
                 anim.SetBool("crouching", false);
@@ -177,8 +194,10 @@ public class Player : MonoBehaviour
                 isCrouching = false;
                 isHidden = false;
                 isRunning = true;
+
                 PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
-            } else
+            }
+            else
             {
                 spritePlayer.sortingLayerName = "Player";
                 anim.SetBool("walking", true);
@@ -188,6 +207,13 @@ public class Player : MonoBehaviour
                 isCrouching = false;
                 isHidden = false;
                 isRunning = false;
+
+                if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
+                {
+                    sh.PlayWalking();
+                    _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
+                }
+
                 PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
             }
 
@@ -212,6 +238,8 @@ public class Player : MonoBehaviour
         
         if (feetContact_water)
         {
+            sh.StopWalking();
+
             anim.SetBool("walking", false);
             anim.SetBool("crouching", false);
             anim.SetBool("running", false);
