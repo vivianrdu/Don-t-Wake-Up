@@ -262,7 +262,7 @@ public class Player : MonoBehaviour
         feetContact = false;
         while (!feetContact)
         {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.Shift))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
             {
                 Vector2 tempPlayerVel = PlayerRB.velocity;
                 PlayerRB.velocity = new Vector2(x_input * running_speed, tempPlayerVel.y);

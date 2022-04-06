@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Spider
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -1482901768940510502, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
+  - {fileID: -6895693200941255271, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
+  - {fileID: 226912778632050985, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
+  - {fileID: -4708846328540670030, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
+  - {fileID: -7482065440149901537, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
+  - {fileID: -5198181450172553608, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
+  - {fileID: 4955556114347793615, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
+  - {fileID: -2131355921969782192, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
+  - {fileID: 2652182241909924386, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
+  m_MinSpeed: 10
+  m_MaxSpeed: 10
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
