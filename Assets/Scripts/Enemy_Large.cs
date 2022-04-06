@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_Large : Enemy
 {
 
-
+    [Header("Variables From Child Class")]
     public bool playerHunt;
     public bool should_I_hunt_the_player;
 

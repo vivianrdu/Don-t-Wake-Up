@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-
+    [Header("Variables From Parent Class")]
     #region Player_Variables
     public Transform playerposition;
     public Player player_in_Game;
@@ -38,7 +38,6 @@ public class Enemy : MonoBehaviour
 
     #region respawn_and_health_variables
     public Vector2 respawn_anchor;
-
     #endregion
 
     void Start()

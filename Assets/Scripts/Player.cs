@@ -209,6 +209,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("swimming", false);
             }
         }
+        
         if (feetContact_water)
         {
             anim.SetBool("walking", false);
@@ -256,11 +257,30 @@ public class Player : MonoBehaviour
         PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
         Debug.Log(feetContact);
 
+
         //yield return new WaitForSeconds(1); // needs to be done to ensure that feetcontact has been lifted
         feetContact = false;
         while (!feetContact)
         {
-            
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
+            {
+                Vector2 tempPlayerVel = PlayerRB.velocity;
+                PlayerRB.velocity = new Vector2(x_input * running_speed, tempPlayerVel.y);
+            }
+            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                Vector2 tempPlayerVel = PlayerRB.velocity;
+                PlayerRB.velocity = new Vector2(x_input * walking_speed, tempPlayerVel.y);
+            }
+
+            if (x_input > 0)
+            {
+                currDirection = Vector2.right;
+            }
+            else if (x_input < 0)
+            {
+                currDirection = Vector2.left;
+            }
             yield return null;
         }
         Debug.Log(feetContact);

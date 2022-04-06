@@ -7,6 +7,7 @@ public class Hideable_object : Non_interactable_Items
     // Start is called before the first frame update
 
     SpriteRenderer spriteRenderer_used;
+    Color spriteRenderer_color;
 
     Player player;
     bool collision_true;
@@ -14,6 +15,7 @@ public class Hideable_object : Non_interactable_Items
     void Awake()
     {
         spriteRenderer_used = GetComponent<SpriteRenderer>();
+        spriteRenderer_color = GetComponent<SpriteRenderer>().color;
         collision_true = false;
     }
 
@@ -62,17 +64,17 @@ public class Hideable_object : Non_interactable_Items
         {
             if(player.isCrouching)
             {
-                spriteRenderer_used.color = new Color(1f, 1f, 1f, .5f);
+                spriteRenderer_used.color = new Color(spriteRenderer_color.r, spriteRenderer_color.g, spriteRenderer_color.b, .5f);
             }
             else
             {
-                spriteRenderer_used.color = new Color(1f, 1f, 1f, 1f);
+                spriteRenderer_used.color = spriteRenderer_color;
             }
 
             yield return null;
         }
 
-        spriteRenderer_used.color = new Color(1f, 1f, 1f, 1f);
+        spriteRenderer_used.color = spriteRenderer_color;
     }
 
     #endregion
