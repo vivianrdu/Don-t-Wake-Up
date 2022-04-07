@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     // bool to detect whether Player's feet is in contact with a surface
     public bool feetContact;
+    private bool feetContact_crate;
     public bool feetContact_ground;
     public bool feetContact_water;
     public bool isCrouching;
@@ -67,7 +68,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
         spritePlayer = GetComponent<SpriteRenderer>();
-
+        feetContact_crate = false;
 
         isHidden = false; //is done as enemy checks that automatically, otherwise get null error
         isCrouching = false;
@@ -82,20 +83,25 @@ public class Player : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
-
-        if (movingCrate) { // if trying to move a crate, does a different set of movements
-            CrateMove();
-        }
-        else
+        if (feetContact)
         {
-            Move();
-            // jump
-            if (Input.GetKeyDown(KeyCode.Space) && canJump())
-            {
-                //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
-                jumping();
+
+            Debug.Log("moving crate?" + movingCrate + " feet ground " + feetContact_ground);
+            if (movingCrate && feetContact_ground)
+            { // if trying to move a crate, does a different set of movements
+                CrateMove();
             }
-            // end jump
+            else
+            {
+                Move();
+                // jump
+                if (Input.GetKeyDown(KeyCode.Space) && canJump())
+                {
+                    //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+                    jumping();
+                }
+                // end jump
+            }
         }
     }
 
@@ -105,7 +111,7 @@ public class Player : MonoBehaviour
     {
         sh.StopWalking();
 
-        if (feetContact && !jumping_routine_ongoing && !isCrouching)
+        if (feetContact && (feetContact_crate || feetContact_ground) && !jumping_routine_ongoing && !isCrouching)
         {
             return true;
         }
@@ -115,16 +121,28 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void topofcrate()
+    {
+        feetContact_crate = true;
+    }
+
+    public void exittopofcrate()
+    {
+        feetContact_crate = false;
+    }
+
     private void CrateMove()
     {
         Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
+            
             if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
             {
                 sh.PlayWalking();
                 _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
             }
+            
 
             anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
@@ -154,8 +172,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if(feetContact)
-        {
+        
             if (Input.GetKey(KeyCode.S))
             {
                 sh.StopWalking();
@@ -208,12 +225,14 @@ public class Player : MonoBehaviour
                 isHidden = false;
                 isRunning = false;
 
+
+                
                 if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
                 {
                     sh.PlayWalking();
                     _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
                 }
-
+                
                 PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
             }
 
@@ -233,7 +252,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("crouching", false);
                 anim.SetBool("running", false);
                 anim.SetBool("swimming", false);
-            }
+            
         }
         
         if (feetContact_water)
