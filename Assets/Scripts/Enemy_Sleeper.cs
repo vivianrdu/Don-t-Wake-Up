@@ -18,7 +18,7 @@ public class Enemy_Sleeper : Enemy
 
     #region Stun_variables
     private bool isSleeping;
-    
+
     #endregion
 
     #region Attack_variables
@@ -27,6 +27,10 @@ public class Enemy_Sleeper : Enemy
 
     #region Physics_components
 
+    #endregion
+
+    #region Animation_components
+    SpriteRenderer spriteEnemy;
     #endregion
 
     // Start is called before the first frame update
@@ -38,6 +42,7 @@ public class Enemy_Sleeper : Enemy
         anim.SetBool("isSleeping", true);
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
+        spriteEnemy = GetComponent<SpriteRenderer>();
 
     }
 
@@ -100,16 +105,40 @@ public class Enemy_Sleeper : Enemy
 
     #region Waking_up and Falling_asleep
 
-     IEnumerator Wake_up()
+    IEnumerator Wake_up()
     {
         //input animation code here please
+        StartCoroutine(Change_color());
+        
+        //change number here to fit with waking up
+
         DEnemyColl.enabled = true;
-        Debug.Log("woke up");
         isSleeping = false;
+        yield return new WaitForSeconds(1);
+
+
         anim.SetBool("isSleeping", false);
-        yield return new WaitForSeconds(1); //change number here to fit with waking up
         anim.SetBool("playerDetected", true);
         hunt_player();
+        spriteEnemy.color = Color.white;
+    }
+
+    IEnumerator Change_color()
+    {
+        float totalTransitionTime = 0.5f;
+        float elapsedTime = 0;
+        Debug.Log("changing color");
+
+        Color originalColor = spriteEnemy.color;
+
+        while (elapsedTime <= totalTransitionTime)
+        {
+            spriteEnemy.color = Color.Lerp(spriteEnemy.color, Color.black, elapsedTime / totalTransitionTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+
     }
 
     #endregion
