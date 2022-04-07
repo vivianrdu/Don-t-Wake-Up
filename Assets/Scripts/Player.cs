@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
     // jump function
     public bool canJump()
     {
-        sh.StopWalking();
+        //sh.StopWalking();
 
         if (feetContact && (feetContact_crate || feetContact_ground) && !jumping_routine_ongoing && !isCrouching)
         {
@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
             
             if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
             {
-                sh.PlayWalking();
+                //sh.PlayWalking();
                 _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
             }
             
@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
         
             if (Input.GetKey(KeyCode.S))
             {
-                sh.StopWalking();
+                //sh.StopWalking();
 
                 anim.SetBool("crouching", true);
                 anim.SetBool("running", false);
@@ -201,7 +201,7 @@ public class Player : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
             {
-                sh.StopWalking();
+                //sh.StopWalking();
 
                 spritePlayer.sortingLayerName = "Player";
                 anim.SetBool("running", true);
@@ -229,7 +229,7 @@ public class Player : MonoBehaviour
                 
                 if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
                 {
-                    sh.PlayWalking();
+                    //sh.PlayWalking();
                     _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
                 }
                 
