@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
             /*
             if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
             {
-                sh.PlayWalking();
+                //sh.PlayWalking();
                 _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
             }
             */
