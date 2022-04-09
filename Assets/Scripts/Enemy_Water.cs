@@ -42,6 +42,7 @@ public class Enemy_Water : Enemy
 
     void Update()
     {
+        /*
         patrol_stopping_timer -= Time.deltaTime;
 
         if (playerposition == null || player_in_Game == null)
@@ -61,7 +62,7 @@ public class Enemy_Water : Enemy
                 anim.SetBool("playerDetected", false);
                 patrol();
             }
-
+            
             //not currently stunned
             else if (anim.GetBool("Stunned") == false)
             {
@@ -71,6 +72,7 @@ public class Enemy_Water : Enemy
             }
 
         }
+        */
 
     }
 

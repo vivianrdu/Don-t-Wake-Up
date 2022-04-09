@@ -95,10 +95,7 @@ public class Enemy_Sleeper : Enemy
     #region Move_functions
     public void hunt_player()
     {
-        Debug.Log("is sleeper running" + isMoving);
         isMoving = true;
-        Debug.Log("is sleeper running2" + isMoving);
-
     }
 
     #endregion
@@ -108,34 +105,40 @@ public class Enemy_Sleeper : Enemy
     IEnumerator Wake_up()
     {
         //input animation code here please
-        StartCoroutine(Change_color());
-        
-        //change number here to fit with waking up
+        yield return StartCoroutine(Change_color(Color.black));
 
+        //change number here to fit with waking up
+        
         DEnemyColl.enabled = true;
         isSleeping = false;
-        yield return new WaitForSeconds(1);
-
-
+        
         anim.SetBool("isSleeping", false);
         anim.SetBool("playerDetected", true);
+        yield return StartCoroutine(Change_color(Color.white));
+
         hunt_player();
-        spriteEnemy.color = Color.white;
     }
 
-    IEnumerator Change_color()
+    IEnumerator Change_color(Color col)
     {
-        float totalTransitionTime = 0.5f;
+        float totalTransitionTime = 1.5f;
         float elapsedTime = 0;
         Debug.Log("changing color");
 
-        Color originalColor = spriteEnemy.color;
-
         while (elapsedTime <= totalTransitionTime)
         {
-            spriteEnemy.color = Color.Lerp(spriteEnemy.color, Color.black, elapsedTime / totalTransitionTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            if (col == Color.black)
+            {
+                spriteEnemy.color = Color.Lerp(spriteEnemy.color, Color.black, elapsedTime / totalTransitionTime);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            else
+            {
+                spriteEnemy.color = Color.Lerp(spriteEnemy.color, Color.white, elapsedTime / totalTransitionTime);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
         }
         
 
