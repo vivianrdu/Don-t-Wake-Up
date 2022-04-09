@@ -42,7 +42,7 @@ public class Enemy_Water : Enemy
 
     void Update()
     {
-        /*
+        
         patrol_stopping_timer -= Time.deltaTime;
 
         if (playerposition == null || player_in_Game == null)
@@ -64,16 +64,13 @@ public class Enemy_Water : Enemy
             }
             
             //not currently stunned
-            else if (anim.GetBool("Stunned") == false)
+            else
             {
                 anim.SetBool("playerDetected", true); //maybe have to move this for animation
                 Attack();
                 Move();
             }
-
         }
-        */
-
     }
 
     #region Movement_functions
