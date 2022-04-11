@@ -12,7 +12,8 @@ public class Enemy_Water : Enemy
     #region Movement_variables
     public float patrol_radius;
     public float patrol_stopping_randoness;
-
+    public bool pebble_Detected;
+    public Transform pebbleposition;
     private float currdirection_of_patrol;
     #endregion
 
@@ -53,14 +54,13 @@ public class Enemy_Water : Enemy
 
             return;
         }
-        //detected player in line of sight
         else
         {
-            if (player_in_Game.isHidden)
+            if (pebble_Detected)
             {
                 //Debug.Log("player is hidden is called");
                 anim.SetBool("playerDetected", false);
-                patrol();
+                Follow_pebble();
             }
             
             //not currently stunned
@@ -130,6 +130,20 @@ public class Enemy_Water : Enemy
             currdirection_of_patrol = 1;
 
         }
+    }
+
+    private void Follow_pebble()
+    {
+        if (pebbleposition.position.x > DEnemyRB.transform.position.x)
+        {
+            direction = new Vector2(1, 0);
+        }
+        else
+        {
+            direction = new Vector2(-1, 0);
+        }
+        DEnemyRB.velocity = direction * attack_speed;
+        anim.SetFloat("dirX", direction.x);
     }
     #endregion
 
