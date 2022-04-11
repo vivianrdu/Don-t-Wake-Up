@@ -5480,7 +5480,6 @@ GameObject:
   - component: {fileID: 1284124276}
   - component: {fileID: 1284124278}
   - component: {fileID: 1284124277}
-  - component: {fileID: 1284124279}
   m_Layer: 0
   m_Name: Text (Boulder Explanation)
   m_TagString: Untagged
@@ -5549,18 +5548,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284124275}
   m_CullTransparentMesh: 1
---- !u!114 &1284124279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284124275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e01919dd2298e544833636cd69f7b2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1372680909
 GameObject:
   m_ObjectHideFlags: 0
@@ -6089,7 +6076,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7786459, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6310,7 +6297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569164, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569165, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_Size.x
