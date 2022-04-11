@@ -56,10 +56,13 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Audio_variables
-    private PlayerSoundHandler sh;
+    public PlayerSoundHandler sh;
     const float _timeBetweenFootsteps = 5f;
     float _lastPlayedFootstepSoundTime = -_timeBetweenFootsteps;
+
+    public bool isWalking;
     #endregion
+
 
     // Awake is called before the first frame update
     void Awake()
@@ -73,7 +76,9 @@ public class Player : MonoBehaviour
         isHidden = false; //is done as enemy checks that automatically, otherwise get null error
         isCrouching = false;
 
-        //sh = GetComponent<PlayerSoundHandler>();
+        sh = GameObject.Find("/PlayerSoundHandler").GetComponent<PlayerSoundHandler>();
+
+        isWalking = false;
     }
 
     // Update is called once per frame
@@ -109,7 +114,8 @@ public class Player : MonoBehaviour
     // jump function
     public bool canJump()
     {
-        //sh.StopWalking();
+        sh.StopWalking(isWalking);
+        isWalking = false;
 
         if (feetContact && (feetContact_crate || feetContact_ground) && !jumping_routine_ongoing && !isCrouching)
         {
@@ -136,13 +142,15 @@ public class Player : MonoBehaviour
         Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            /*
+            
             if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
             {
-                //sh.PlayWalking();
+                sh.PlayWalking(isWalking);
+                isWalking = true;
+
                 _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
             }
-            */
+            
 
             anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
@@ -175,7 +183,8 @@ public class Player : MonoBehaviour
         
             if (Input.GetKey(KeyCode.S))
             {
-                //sh.StopWalking();
+                sh.StopWalking(isWalking);
+                isWalking = false;
 
                 anim.SetBool("crouching", true);
                 anim.SetBool("running", false);
@@ -201,7 +210,8 @@ public class Player : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
             {
-                //sh.StopWalking();
+                sh.StopWalking(isWalking);
+                isWalking = false;
 
                 spritePlayer.sortingLayerName = "Player";
                 anim.SetBool("running", true);
@@ -229,7 +239,8 @@ public class Player : MonoBehaviour
                 
                 if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
                 {
-                    //sh.PlayWalking();
+                    sh.PlayWalking(isWalking);
+                    isWalking = true;
                     _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
                 }
                 
@@ -257,7 +268,8 @@ public class Player : MonoBehaviour
         
         if (feetContact_water)
         {
-            //sh.StopWalking();
+            sh.StopWalking(isWalking);
+            isWalking = false;
 
             anim.SetBool("walking", false);
             anim.SetBool("crouching", false);
