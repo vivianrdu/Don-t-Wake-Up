@@ -404,7 +404,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Crate"))
+        if(collision.gameObject.CompareTag("Crate") || collision.gameObject.CompareTag("Enemy"))
         {
             //Debug.Log("feetcontact");
             feetContact = true;
