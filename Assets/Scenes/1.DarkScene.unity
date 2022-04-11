@@ -1104,6 +1104,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6850176443532512752, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6850176443532512753, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
       propertyPath: player
       value: 
@@ -3022,7 +3026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &980876331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9470,6 +9474,10 @@ PrefabInstance:
     - target: {fileID: 6850176443532512748, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850176443532512752, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6850176443532512753, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
       propertyPath: player

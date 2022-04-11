@@ -14,12 +14,14 @@ public class Crate : MonoBehaviour
     #region Physics_variables
     Rigidbody2D CrateRB;
     public Vector2 CrateDirection;
+    private Vector2 respawn_anchor;
     #endregion 
 
     void Awake()
     {
         CrateRB = GetComponent<Rigidbody2D>();
         playerCharacter = player.GetComponent<Player>();
+        respawn_anchor = transform.position;
     }
 
     // Update is called once per frame
@@ -42,4 +44,12 @@ public class Crate : MonoBehaviour
             CrateRB.velocity = Vector2.zero;
         }
     }
+
+    public void Reset_position()
+    {
+        transform.position = respawn_anchor;
+        //reset
+      
+    }
+
 }

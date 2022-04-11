@@ -21,6 +21,7 @@ public class Pebbles : MonoBehaviour
     private bool player_touch;
     private bool player_picked_up;
     private Player player;
+    private bool touch_water;
 
 
     //temp test variables
@@ -68,7 +69,7 @@ public class Pebbles : MonoBehaviour
         Debug.Log("pick up routine started");
         //I set position to freeze so gravity does not affect it.
         rB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-
+        cc.enabled = false;
         rB.mass = 0; // prevent it from going up and down constantly
         while (player_picked_up)
         {
@@ -82,9 +83,9 @@ public class Pebbles : MonoBehaviour
 
     IEnumerator throwing()
     {
-        
+        cc.enabled = true;
         transform.position = player.transform.position + player.transform.TransformDirection(new Vector3(0.5f * player.currDirection.x, 0, 0));
-        rB.mass = 1;
+        rB.mass = 0.1f;
         rB.velocity = new Vector2(player.currDirection.x * throw_velocity, 3);
         yield return new WaitForSeconds(1);
     }
@@ -117,9 +118,11 @@ public class Pebbles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Water"))
-        {
-            enemy_game.Move();
-        }
+        touch_water = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        touch_water = false;
     }
 }
