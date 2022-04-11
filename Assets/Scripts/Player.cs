@@ -264,8 +264,14 @@ public class Player : MonoBehaviour
             anim.SetBool("running", false);
             anim.SetBool("swimming", true);
             isCrouching = false;
-
-            PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
+            } 
+            else 
+            {
+                PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+            }
 
             if (x_input > 0)
             {
