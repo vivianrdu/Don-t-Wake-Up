@@ -294,7 +294,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.3481293, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1103,6 +1103,10 @@ PrefabInstance:
     - target: {fileID: 6850176443532512748, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850176443532512752, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6850176443532512753, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
       propertyPath: player
@@ -1984,7 +1988,7 @@ Tilemap:
       - {fileID: 4955556114347793615, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: -2131355921969782192, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: 2652182241909924386, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -11, y: -9, z: 0}
@@ -2014,7 +2018,7 @@ Tilemap:
       - {fileID: 4955556114347793615, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: -2131355921969782192, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: 2652182241909924386, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 35, y: -9, z: 0}
@@ -3022,7 +3026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &980876331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9369,6 +9373,10 @@ PrefabInstance:
     - target: {fileID: 6850176443532512748, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850176443532512752, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6850176443532512753, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
       propertyPath: player
