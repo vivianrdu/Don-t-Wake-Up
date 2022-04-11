@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
-        if (feetContact)
+        if (feetContact || feetContact_water)
         {
 
             //Debug.Log("moving crate?" + movingCrate + " feet ground " + feetContact_ground);
