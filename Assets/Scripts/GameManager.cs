@@ -69,9 +69,11 @@ public class GameManager : MonoBehaviour
     {
         Enemy[] enemies_in_Scene;
         Nightlight[] nightlights;
+        Crate[] crates;
         //Scene scene = SceneManager.GetActiveScene();
         enemies_in_Scene = FindObjectsOfType<Enemy>();
         nightlights = FindObjectsOfType<Nightlight>();
+        crates = FindObjectsOfType<Crate>();
 
         // iterate root objects and do something
         for (int i = 0; i < enemies_in_Scene.Length; ++i)
@@ -91,6 +93,13 @@ public class GameManager : MonoBehaviour
             }
 
         }
+
+        for (int i = 0; i < crates.Length;i++)
+        {
+            Crate crate = crates[i];
+            crate.Reset_position();
+        }
+
         for (int i = 0; i < nightlights.Length; ++i)
         {
             //Make an Enemy Class then let each class inherit main functions from Parent
