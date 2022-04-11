@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     // bool to detect whether Player's feet is in contact with a surface
     public bool feetContact;
+    private bool feetContact_crate;
     public bool feetContact_ground;
     public bool feetContact_water;
     public bool isCrouching;
@@ -67,12 +68,12 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
         spritePlayer = GetComponent<SpriteRenderer>();
-
+        feetContact_crate = false;
 
         isHidden = false; //is done as enemy checks that automatically, otherwise get null error
         isCrouching = false;
 
-        sh = GetComponent<PlayerSoundHandler>();
+        //sh = GetComponent<PlayerSoundHandler>();
     }
 
     // Update is called once per frame
@@ -82,20 +83,25 @@ public class Player : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
-
-        if (movingCrate) { // if trying to move a crate, does a different set of movements
-            CrateMove();
-        }
-        else
+        if (feetContact)
         {
-            Move();
-            // jump
-            if (Input.GetKeyDown(KeyCode.Space) && canJump())
-            {
-                //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
-                jumping();
+
+            //Debug.Log("moving crate?" + movingCrate + " feet ground " + feetContact_ground);
+            if (movingCrate && feetContact_ground)
+            { // if trying to move a crate, does a different set of movements
+                CrateMove();
             }
-            // end jump
+            else
+            {
+                Move();
+                // jump
+                if (Input.GetKeyDown(KeyCode.Space) && canJump())
+                {
+                    //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+                    jumping();
+                }
+                // end jump
+            }
         }
     }
 
@@ -103,9 +109,9 @@ public class Player : MonoBehaviour
     // jump function
     public bool canJump()
     {
-        sh.StopWalking();
+        //sh.StopWalking();
 
-        if (feetContact && !jumping_routine_ongoing && !isCrouching)
+        if (feetContact && (feetContact_crate || feetContact_ground) && !jumping_routine_ongoing && !isCrouching)
         {
             return true;
         }
@@ -115,16 +121,28 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void topofcrate()
+    {
+        feetContact_crate = true;
+    }
+
+    public void exittopofcrate()
+    {
+        feetContact_crate = false;
+    }
+
     private void CrateMove()
     {
         Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
+            /*
             if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
             {
-                sh.PlayWalking();
+                //sh.PlayWalking();
                 _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
             }
+            */
 
             anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
@@ -154,11 +172,10 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if(feetContact)
-        {
+        
             if (Input.GetKey(KeyCode.S))
             {
-                sh.StopWalking();
+                //sh.StopWalking();
 
                 anim.SetBool("crouching", true);
                 anim.SetBool("running", false);
@@ -184,7 +201,7 @@ public class Player : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
             {
-                sh.StopWalking();
+                //sh.StopWalking();
 
                 spritePlayer.sortingLayerName = "Player";
                 anim.SetBool("running", true);
@@ -208,12 +225,14 @@ public class Player : MonoBehaviour
                 isHidden = false;
                 isRunning = false;
 
+
+                
                 if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
                 {
-                    sh.PlayWalking();
+                    //sh.PlayWalking();
                     _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
                 }
-
+                
                 PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
             }
 
@@ -233,12 +252,12 @@ public class Player : MonoBehaviour
                 anim.SetBool("crouching", false);
                 anim.SetBool("running", false);
                 anim.SetBool("swimming", false);
-            }
+            
         }
         
         if (feetContact_water)
         {
-            sh.StopWalking();
+            //sh.StopWalking();
 
             anim.SetBool("walking", false);
             anim.SetBool("crouching", false);
@@ -274,7 +293,7 @@ public class Player : MonoBehaviour
     IEnumerator Jumping_Routine()
     {
         jumping_routine_ongoing = true;
-        Debug.Log("jumping coroutine starts");
+        //Debug.Log("jumping coroutine starts");
         anim.SetBool("walking", false);
         anim.SetBool("crouching", false);
         anim.SetBool("running", false);
@@ -283,7 +302,7 @@ public class Player : MonoBehaviour
         anim.SetBool("jumping", true);
         yield return new WaitForSeconds(0.1f);
         PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
-        Debug.Log(feetContact);
+        //Debug.Log(feetContact);
 
 
         //yield return new WaitForSeconds(1); // needs to be done to ensure that feetcontact has been lifted
@@ -369,7 +388,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Crate"))
         {
-            Debug.Log("feetcontact");
+            //Debug.Log("feetcontact");
             feetContact = true;
         }
 
@@ -396,7 +415,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Crate"))
         {
-            Debug.Log("feetcontact gone");
+            //Debug.Log("feetcontact gone");
 
             if (!feetContact_ground)
             {
@@ -412,11 +431,11 @@ public class Player : MonoBehaviour
         {
 
             withinHiding = true;
-            Debug.Log("within Hiding" + withinHiding);
+            //Debug.Log("within Hiding" + withinHiding);
         }
         if (collision.gameObject.CompareTag("Water"))
         {
-            Debug.Log("feetcontact in water");
+            //Debug.Log("feetcontact in water");
             feetContact_water = true;
         }
     }
@@ -429,7 +448,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Water"))
         {
-            Debug.Log("feetcontact out of water");
+            //Debug.Log("feetcontact out of water");
             feetContact_water = false;
         }
     }
@@ -438,7 +457,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Water"))
         {
-            Debug.Log("feetcontact in water");
+            //Debug.Log("feetcontact in water");
             feetContact_water = true;
         }
     }
