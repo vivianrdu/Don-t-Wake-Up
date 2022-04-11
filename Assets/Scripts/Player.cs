@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
-        if (feetContact)
+        if (feetContact || feetContact_water)
         {
 
             //Debug.Log("moving crate?" + movingCrate + " feet ground " + feetContact_ground);
@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
                 isCrouching = true;
                 isRunning = false;
 
-                    PlayerRB.velocity = new Vector2(x_input * crouching_speed,0);
+                    PlayerRB.velocity = new Vector2(x_input * crouching_speed, 0);
 
                 if(withinHiding)
                 {
@@ -321,7 +321,7 @@ public class Player : MonoBehaviour
         feetContact = false;
         while (!feetContact)
         {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
             {
                 Vector2 tempPlayerVel = PlayerRB.velocity;
                 PlayerRB.velocity = new Vector2(x_input * running_speed, tempPlayerVel.y);
