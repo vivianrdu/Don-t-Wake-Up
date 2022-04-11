@@ -21,6 +21,7 @@ public class Pebbles : MonoBehaviour
     private bool player_touch;
     private bool player_picked_up;
     private Player player;
+    private bool touch_water;
 
 
     //temp test variables
@@ -117,9 +118,11 @@ public class Pebbles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Water"))
-        {
-            enemy_game.Move();
-        }
+        touch_water = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        touch_water = false;
     }
 }
