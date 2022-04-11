@@ -58,7 +58,7 @@ public class Enemy_Water : Enemy
         {
             if (pebble_Detected)
             {
-                //Debug.Log("player is hidden is called");
+                Debug.Log("Pebble detected");
                 anim.SetBool("playerDetected", false);
                 Follow_pebble();
             }
