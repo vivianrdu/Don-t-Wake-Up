@@ -12,6 +12,7 @@ TagManager:
   - Hideable_Object
   - Water
   - Crate
+  - Pebble
   layers:
   - Default
   - TransparentFX
