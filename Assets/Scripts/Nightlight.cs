@@ -132,7 +132,7 @@ public class Nightlight : MonoBehaviour
     {
         StopAllCoroutines();
         TurnOff();
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<Rigidbody2D>().isKinematic = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         transform.position = respawn_anchor;
         //reset

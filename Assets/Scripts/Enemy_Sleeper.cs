@@ -74,6 +74,7 @@ public class Enemy_Sleeper : Enemy
         
     }
 
+    
 
     public new void Reset_position()
     {
@@ -95,6 +96,7 @@ public class Enemy_Sleeper : Enemy
     #region Move_functions
     public void hunt_player()
     {
+        Debug.Log("hunt player has started");
         isMoving = true;
     }
 

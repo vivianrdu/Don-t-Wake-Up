@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
     public void Attack()
     {
         if (isAttacking == false && (
-                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) |
+                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) ||
                     (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))
         {
 
