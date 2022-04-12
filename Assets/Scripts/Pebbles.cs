@@ -106,6 +106,10 @@ public class Pebbles : MonoBehaviour
                 player = collision.gameObject.GetComponent<Player>();
             }
         }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("on ground");
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -118,7 +122,12 @@ public class Pebbles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        touch_water = true;
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            Debug.Log("Pebble in water");
+            touch_water = true;
+            rB.mass = 11f;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

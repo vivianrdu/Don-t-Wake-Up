@@ -66,6 +66,25 @@ public class Enemy : MonoBehaviour
     {
         
     }
+
+    public void Move_new(Rigidbody2D MovedObject, Transform TargetObject)
+    /**
+     * @param MovedObject: Object that is being moved
+     * @param TargetObject: The object MovedObject is moving to
+    */
+    {
+        Debug.Log("New move function");
+        if (TargetObject.position.x > MovedObject.transform.position.x)
+        {
+            direction = new Vector2(1, 0);
+        }
+        else
+        {
+            direction = new Vector2(-1, 0);
+        }
+        MovedObject.velocity = direction * attack_speed;
+        anim.SetFloat("dirX", direction.x);
+    }
     
     public void move_to_player()
     {
