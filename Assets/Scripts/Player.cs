@@ -85,6 +85,19 @@ public class Player : MonoBehaviour
     void Update()
     {
         // check if movement keys are being pressed WASD + Shift
+        /*
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            x_input = 1;
+        }else if(Input.GetAxisRaw("Horizontal") < 0)
+        {
+            x_input = -1;
+        }
+        else
+        {
+            x_input = Input.GetAxisRaw("Horizontal");
+        }
+        */
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
@@ -95,10 +108,12 @@ public class Player : MonoBehaviour
             if (movingCrate && feetContact_ground)
             { // if trying to move a crate, does a different set of movements
                 CrateMove();
+                //Debug.Log("Velocity: " + PlayerRB.velocity);
             }
             else
             {
                 Move();
+                
                 // jump
                 if (Input.GetKeyDown(KeyCode.Space) && canJump())
                 {
@@ -139,7 +154,7 @@ public class Player : MonoBehaviour
 
     private void CrateMove()
     {
-        Debug.Log("moving crate");
+        //Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             
@@ -176,6 +191,8 @@ public class Player : MonoBehaviour
             anim.SetBool("running", false);
             anim.SetBool("swimming", false);
         }
+
+        //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0); This one works better for some reason
     }
 
     private void Move()
