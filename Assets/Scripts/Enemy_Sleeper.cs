@@ -56,7 +56,7 @@ public class Enemy_Sleeper : Enemy
         if (isMoving)
         {
             Attack();
-            move_to_player();
+            Move(DEnemyRB, playerposition);
            
         }
         else

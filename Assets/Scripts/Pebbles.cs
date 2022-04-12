@@ -4,46 +4,40 @@ using UnityEngine;
 
 public class Pebbles : MonoBehaviour
 {
-
-
     #region body_variables
 
     private Rigidbody2D rB;
     private CapsuleCollider2D cc;
     public float throw_velocity;
-
+    // floor is the bottom of the ocean
+    public bool on_floor;
+    private bool touch_water;
     #endregion
-
-
-    public Enemy enemy_game;
 
     #region playerinteractions variables
     private bool player_touch;
     private bool player_picked_up;
     private Player player;
-    private bool touch_water;
-
-
-    //temp test variables
-
 
     #endregion
-    // Start is called before the first frame update
+
     void Awake()
     {
         rB = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         player_picked_up = false;
+        touch_water = false;
+        on_floor = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         
         if(player_touch)
         {
-            if (Input.GetKey(KeyCode.E) && !player_picked_up)
+            // Allow the player to pick up if they have not picked it up already and thrown it into the water
+            if (Input.GetKey(KeyCode.E) && !player_picked_up && !touch_water)
             {
                 player_picked_up = true;
                 StartCoroutine(pick_uproutine());
@@ -108,7 +102,8 @@ public class Pebbles : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("on ground");
+            Debug.Log("At the bottom of the ocean");
+            on_floor = true;
         }
     }
 
@@ -126,12 +121,7 @@ public class Pebbles : MonoBehaviour
         {
             Debug.Log("Pebble in water");
             touch_water = true;
-            rB.mass = 11f;
+            rB.mass = 10f;
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        touch_water = false;
     }
 }

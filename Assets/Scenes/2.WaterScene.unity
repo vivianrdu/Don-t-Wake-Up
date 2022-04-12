@@ -7195,7 +7195,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.023208618, y: -4.7114925}
+  m_Offset: {x: -0.023208618, y: -6.7203007}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7206,7 +7206,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 25.471703, y: 4.2662525}
+  m_Size: {x: 25.471703, y: 8.283869}
   m_EdgeRadius: 0
 --- !u!253 &1452322945
 BuoyancyEffector2D:
@@ -8943,6 +8943,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3785669523118155110, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785669523118155110, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
 --- !u!1 &2098509882
@@ -9294,7 +9302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060333780679156533, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
       propertyPath: m_Mass
-      value: 300
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 9060333780679156533, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
       propertyPath: m_LinearDrag
@@ -9359,6 +9367,14 @@ PrefabInstance:
     - target: {fileID: 9060333780679156555, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
       propertyPath: patrol_radius
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060333780679156555, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
+      propertyPath: walking_speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060333780679156555, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
+      propertyPath: patrol_stopping_randoness
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}

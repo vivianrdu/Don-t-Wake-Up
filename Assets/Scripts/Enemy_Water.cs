@@ -12,8 +12,8 @@ public class Enemy_Water : Enemy
     #region Movement_variables
     public float patrol_radius;
     public float patrol_stopping_randoness;
-    public bool pebble_Detected;
-    public Transform pebbleposition;
+    public bool pebble_detected;
+    public Transform pebble_position;
     private float currdirection_of_patrol;
     #endregion
 
@@ -45,12 +45,12 @@ public class Enemy_Water : Enemy
     {
         
         patrol_stopping_timer -= Time.deltaTime;
-        //Pebble detection takes priority
-        if (pebble_Detected)
+        //Pebble detection takes priority, stops detecting once the pebble hits the bottom of the ocean
+        if (pebble_detected && pebble_position.GetComponent<Pebbles>().on_floor == false)
         {
             //Pebble detected, stops detecting player
             anim.SetBool("playerDetected", false);
-            Move_new(DEnemyRB, pebbleposition);
+            Move(DEnemyRB, pebble_position);
         }
         else if (playerposition == null || player_in_Game == null)
         {
@@ -62,7 +62,7 @@ public class Enemy_Water : Enemy
             //Player detected and currently not following pebble, starts following player
             anim.SetBool("playerDetected", true); 
             Attack();
-            Move_new(DEnemyRB, playerposition);
+            Move(DEnemyRB, playerposition);
             Set_patrol_timer();
         }
     }
