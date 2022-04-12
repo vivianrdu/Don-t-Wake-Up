@@ -12,8 +12,8 @@ public class Enemy_Water : Enemy
     #region Movement_variables
     public float patrol_radius;
     public float patrol_stopping_randoness;
-    public bool pebble_Detected;
-    public Transform pebbleposition;
+    public bool pebble_detected;
+    public Transform pebble_position;
     private float currdirection_of_patrol;
     #endregion
 
@@ -45,40 +45,31 @@ public class Enemy_Water : Enemy
     {
         
         patrol_stopping_timer -= Time.deltaTime;
-
-        if (playerposition == null || player_in_Game == null)
+        //Pebble detection takes priority, stops detecting once the pebble hits the bottom of the ocean
+        if (pebble_detected && pebble_position.GetComponent<Pebbles>().on_floor == false)
+        {
+            //Pebble detected, stops detecting player
+            anim.SetBool("playerDetected", false);
+            Move(DEnemyRB, pebble_position);
+        }
+        else if (playerposition == null || player_in_Game == null)
         {
             anim.SetBool("playerDetected", false);
             patrol();
-
-
-            return;
         }
         else
         {
-            if (pebble_Detected)
-            {
-                Debug.Log("Pebble detected");
-                anim.SetBool("playerDetected", false);
-                Follow_pebble();
-            }
-            
-            //not currently stunned
-            else
-            {
-                anim.SetBool("playerDetected", true); //maybe have to move this for animation
-                Attack();
-                Move();
-            }
+            //Player detected and currently not following pebble, starts following player
+            anim.SetBool("playerDetected", true); 
+            Attack();
+            Move(DEnemyRB, playerposition);
+            Set_patrol_timer();
         }
     }
 
     #region Movement_functions
-    public new void Move()
+    public void Set_patrol_timer()
     {
-
-        move_to_player();
-
         patrol_stopping_timer = Random.Range(0, 5); 
     }
 
@@ -130,20 +121,6 @@ public class Enemy_Water : Enemy
             currdirection_of_patrol = 1;
 
         }
-    }
-
-    private void Follow_pebble()
-    {
-        if (pebbleposition.position.x > DEnemyRB.transform.position.x)
-        {
-            direction = new Vector2(1, 0);
-        }
-        else
-        {
-            direction = new Vector2(-1, 0);
-        }
-        DEnemyRB.velocity = direction * attack_speed;
-        anim.SetFloat("dirX", direction.x);
     }
     #endregion
 

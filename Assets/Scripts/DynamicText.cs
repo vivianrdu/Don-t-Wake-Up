@@ -9,10 +9,6 @@ public class DynamicText : MonoBehaviour
     private Text text;
     #endregion
 
-    #region Other_variables
-    private bool alreadyRunning;
-    #endregion
-
     #region Targeting_variables
     public Transform player;
     #endregion
