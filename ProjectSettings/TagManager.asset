@@ -13,6 +13,7 @@ TagManager:
   - Water
   - Crate
   - Pebble
+  - Enemy
   layers:
   - Default
   - TransparentFX
