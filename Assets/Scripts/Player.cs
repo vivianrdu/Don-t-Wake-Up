@@ -310,9 +310,13 @@ public class Player : MonoBehaviour
         {
             currDirection = Vector2.right;
         }
-        else
+        else if (x_input < 0)
         {
             currDirection = Vector2.left;
+        }
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
         }
 
         anim.SetFloat("dirX", currDirection.x);
