@@ -20,7 +20,7 @@ public class PlayerSoundHandler : MonoBehaviour
     {
         if (!walking.isPlaying)
         {
-            Debug.Log("Play walking sound");
+            //Debug.Log("Play walking sound");
             walking.Play(0);
         }
     }
@@ -28,7 +28,7 @@ public class PlayerSoundHandler : MonoBehaviour
     public void StopWalking()
     {
 
-        Debug.Log("Stop walking sound");
+        //Debug.Log("Stop walking sound");
         walking.Stop();
     }
     #endregion

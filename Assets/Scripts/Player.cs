@@ -58,8 +58,6 @@ public class Player : MonoBehaviour
 
     #region Audio_variables
     public PlayerSoundHandler sh;
-    const float _timeBetweenFootsteps = 5f;
-    float _lastPlayedFootstepSoundTime = -_timeBetweenFootsteps;
 
     #endregion
 
@@ -77,7 +75,6 @@ public class Player : MonoBehaviour
         isCrouching = false;
 
         sh = GameObject.Find("/PlayerSoundHandler").GetComponent<PlayerSoundHandler>();
-
     }
 
     // Update is called once per frame
@@ -199,6 +196,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             sh.StopWalking();
+            sh.StopRunning();
             
             anim.SetBool("crouching", true);
             anim.SetBool("running", false);
@@ -225,10 +223,6 @@ public class Player : MonoBehaviour
             }
         else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
         {
-
-            sh.StopWalking();
-
-
             spritePlayer.sortingLayerName = "Player";
             anim.SetBool("running", true);
             anim.SetBool("crouching", false);
@@ -237,6 +231,26 @@ public class Player : MonoBehaviour
             isCrouching = false;
             isHidden = false;
             isRunning = true;
+
+            Debug.Log("Stop walking sound");
+            sh.StopWalking();
+
+            //bool running_cond1 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(x_input * walking_speed - x_input);
+            //bool running_cond2 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(-x_input * walking_speed + x_input);
+            bool running_cond3 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
+            bool running_cond4 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
+
+            Debug.Log("Get to running");
+            Debug.Log(PlayerRB.velocity.x);
+            Debug.Log(x_input * walking_speed - x_input);
+            Debug.Log(x_input * running_speed - x_input);
+            Debug.Log((running_cond3) || (running_cond4));
+
+            if ((running_cond3) || (running_cond4))
+            {
+                Debug.Log("Play running sound");
+                sh.PlayRunning();
+            }
 
             PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
         }
@@ -251,17 +265,21 @@ public class Player : MonoBehaviour
             isHidden = false;
             isRunning = false;
 
+            sh.StopRunning();
 
-            Debug.Log("Get to walking");
-            Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
+            //Debug.Log("Get to walking");
+            //Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
 
-            if (Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - (x_input)) || Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input))
+            bool walking_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - x_input);
+            bool walking_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input);
+
+            if (walking_cond1 || walking_cond2)
             {
-                Debug.Log("Playing walking sound");
+                //Debug.Log("Playing walking sound");
                 sh.PlayWalking();
             }
 
-                PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+            PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
         }
         else
         {
@@ -270,12 +288,15 @@ public class Player : MonoBehaviour
             anim.SetBool("crouching", false);
             anim.SetBool("running", false);
             anim.SetBool("swimming", false);
+
+            sh.StopWalking();
+            sh.StopRunning();
         }
         
         if (feetContact_water)
         {
             sh.StopWalking();
-            
+            sh.StopRunning();
 
 
             anim.SetBool("walking", false);
@@ -325,6 +346,7 @@ public class Player : MonoBehaviour
         if (Mathf.Abs(x_input) == 0)
         {
             sh.StopWalking();
+            sh.StopRunning();
         }
     }
 
