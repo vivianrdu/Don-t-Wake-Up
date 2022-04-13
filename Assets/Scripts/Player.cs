@@ -101,6 +101,13 @@ public class Player : MonoBehaviour
             x_input = Input.GetAxisRaw("Horizontal");
         }
         */
+        Debug.Log("raycast check ground: " + Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("Ground")));
+        Debug.Log("raycast check crate: " + Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("crate")));
+        Debug.Log("raycast check water: " + Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("water")));
+
+
+        //feetContact_ground = (Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("ground")));
+
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
