@@ -31,8 +31,6 @@ public class Enemy_Water : Enemy
 
         isAttacking = false;
         anim.SetBool("playerDetected", false);
-        anim.SetBool("Stunned", false);
-
         respawn_anchor = this.transform.position;
 
         currdirection_of_patrol = -1;//set initial start of patrol
@@ -60,10 +58,11 @@ public class Enemy_Water : Enemy
         else
         {
             //Player detected and currently not following pebble, starts following player
-            anim.SetBool("playerDetected", true); 
-            Attack();
-            Move(DEnemyRB, playerposition);
-            Set_patrol_timer();
+             anim.SetBool("playerDetected", true);
+             Attack();
+             Move(DEnemyRB, playerposition);
+             Set_patrol_timer();
+            
         }
     }
 
@@ -91,7 +90,6 @@ public class Enemy_Water : Enemy
             DEnemyRB.velocity = direction * walking_speed;
             anim.SetFloat("dirX", direction.x);
             anim.SetBool("playerDetected", false);
-            anim.SetBool("Stunned", false);
 
             return;
         }

@@ -84,6 +84,15 @@ public class Pebbles : MonoBehaviour
         yield return new WaitForSeconds(1);
     }
 
+    // The enemy will follow the pebble for 5 seconds after touching the floor
+    IEnumerator Pebble_delay()
+    {
+        yield return new WaitForSeconds(5f);
+        Debug.Log("At the bottom of the ocean");
+        on_floor = true;
+        yield return null;
+    }
+
     #endregion
    
 
@@ -102,8 +111,7 @@ public class Pebbles : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("At the bottom of the ocean");
-            on_floor = true;
+            StartCoroutine(Pebble_delay());
         }
     }
 

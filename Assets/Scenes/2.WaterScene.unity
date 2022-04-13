@@ -9107,6 +9107,14 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3785669523118155110, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785669523118155110, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785669523118155110, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
@@ -9527,7 +9535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060333780679156533, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
       propertyPath: m_Mass
-      value: 3000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 9060333780679156533, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
       propertyPath: m_LinearDrag
@@ -9588,6 +9596,10 @@ PrefabInstance:
     - target: {fileID: 9060333780679156535, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060333780679156555, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
+      propertyPath: attack_speed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9060333780679156555, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
       propertyPath: patrol_radius
