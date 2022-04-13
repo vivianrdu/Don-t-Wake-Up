@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
 
             PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
         }
-        else
+        else if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
         {
             spritePlayer.sortingLayerName = "Player";
             anim.SetBool("walking", true);
@@ -262,16 +262,6 @@ public class Player : MonoBehaviour
             }
 
                 PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
-            }
-
-
-        if (x_input > 0)
-        {
-            currDirection = Vector2.right;
-        }
-        else if (x_input < 0)
-        {
-            currDirection = Vector2.left;
         }
         else
         {
@@ -315,6 +305,16 @@ public class Player : MonoBehaviour
                 PlayerRB.velocity = Vector2.zero;
             }
         }
+
+        if (x_input > 0)
+        {
+            currDirection = Vector2.right;
+        }
+        else
+        {
+            currDirection = Vector2.left;
+        }
+
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
 

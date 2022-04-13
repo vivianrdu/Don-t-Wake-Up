@@ -83,7 +83,6 @@ public class Enemy_Dark : Enemy
                 Attack();
                 Move(DEnemyRB, playerposition);
                 patrol_stopping_timer = Random.Range(0, 5);
-                //Move();
             }
             
         }
@@ -91,17 +90,6 @@ public class Enemy_Dark : Enemy
     }
 
     #region Movement_functions
-    /** redundant
-    public new void Move()
-    {
-
-        move_to_player();
-
-        //DEnemyRB.velocity = direction * attack_speed;
-        //anim.SetFloat("dirX", direction.x);
-        patrol_stopping_timer = Random.Range(0, 5); //so there is a delay when the enemy stops following the player, so it doesn't immeadietly walk away
-    }*/
-
     public new void patrol()
     {
         //Debug.Log("patrol timer" + patrol_stopping_timer);
