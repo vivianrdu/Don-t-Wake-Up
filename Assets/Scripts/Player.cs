@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     public bool feetContact_water;
     public bool isCrouching;
     public bool isRunning;
+
+    private Vector3 ground_normalVactor;
+    private Vector3 ground_contact_point;
     
     // bool to detect whether player is moving something currently
     public bool movingCrate;
@@ -173,7 +176,8 @@ public class Player : MonoBehaviour
             anim.SetBool("swimming", false);
             isCrouching = false;
             isHidden = false;
-            PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+            //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+            //Vector3.ProjectOnPlane(PlayerRB.velocity, ground_contact_point);
         }
 
         if (x_input > 0)
@@ -191,7 +195,8 @@ public class Player : MonoBehaviour
             anim.SetBool("running", false);
             anim.SetBool("swimming", false);
         }
-
+        PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+        //Vector3.ProjectOnPlane(PlayerRB.velocity, ground_contact_point);
         //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0); This one works better for some reason
     }
 
@@ -439,6 +444,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    /*
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            ground_contact_point = collision.contacts[0].point;
+        }
+    }
+    */
     private void OnCollisionExit2D(Collision2D collision)
     {
         
