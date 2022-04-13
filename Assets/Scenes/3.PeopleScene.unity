@@ -1441,7 +1441,7 @@ GameObject:
   - component: {fileID: 650878830}
   - component: {fileID: 650878829}
   - component: {fileID: 650878831}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sofa
   m_TagString: Hideable_Object
   m_Icon: {fileID: 0}
