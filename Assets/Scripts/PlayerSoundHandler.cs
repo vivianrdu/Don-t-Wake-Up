@@ -6,30 +6,48 @@ public class PlayerSoundHandler : MonoBehaviour
     private AudioSource[] playerSounds;
 
     private AudioSource walking;
+    private AudioSource running;
 
     void Start()
     {
         playerSounds = GetComponents<AudioSource>();
         walking = playerSounds[0];
+        running = playerSounds[1];
     }
 
     #region Walking_functions
-    public void PlayWalking(bool isWalking)
+    public void PlayWalking()
     {
-        if (!isWalking)
+        if (!walking.isPlaying)
         {
             Debug.Log("Play walking sound");
-            walking.PlayOneShot(walking.clip);
+            walking.Play(0);
         }
     }
 
-    public void StopWalking(bool isWalking)
+    public void StopWalking()
     {
-        if (isWalking)
+
+        Debug.Log("Stop walking sound");
+        walking.Stop();
+    }
+    #endregion
+
+    #region Running_functions
+    public void PlayRunning()
+    {
+        if (!running.isPlaying)
         {
-            Debug.Log("Stop walking sound");
-            walking.Stop();
+            Debug.Log("Play running sound");
+            running.Play(0);
         }
+    }
+
+    public void StopRunning()
+    {
+
+        Debug.Log("Stop running sound");
+        running.Stop();
     }
     #endregion
 
