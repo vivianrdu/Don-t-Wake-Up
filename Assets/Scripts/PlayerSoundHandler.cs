@@ -7,20 +7,26 @@ public class PlayerSoundHandler : MonoBehaviour
 
     private AudioSource walking;
     private AudioSource running;
+    private AudioSource swimming;
+    private AudioSource dying;
+    private AudioSource dragging;
 
     void Start()
     {
         playerSounds = GetComponents<AudioSource>();
         walking = playerSounds[0];
         running = playerSounds[1];
+        swimming = playerSounds[2];
+        dying = playerSounds[3];
+        dragging = playerSounds[4];
     }
 
     #region Walking_functions
     public void PlayWalking()
     {
-        if (!walking.isPlaying)
+        if (!walking.isPlaying & !dragging.isPlaying)
         {
-            Debug.Log("Play walking sound");
+            //Debug.Log("Play walking sound");
             walking.Play(0);
         }
     }
@@ -28,7 +34,7 @@ public class PlayerSoundHandler : MonoBehaviour
     public void StopWalking()
     {
 
-        Debug.Log("Stop walking sound");
+        //Debug.Log("Stop walking sound");
         walking.Stop();
     }
     #endregion
@@ -45,12 +51,58 @@ public class PlayerSoundHandler : MonoBehaviour
 
     public void StopRunning()
     {
-
-        Debug.Log("Stop running sound");
-        running.Stop();
+        if (running.isPlaying)
+        {
+            Debug.Log("Stop running sound");
+            running.Stop();
+        }
     }
     #endregion
 
+    #region Swimming_functions
+    public void PlaySwimming()
+    {
+        if (!swimming.isPlaying)
+        {
+            //Debug.Log("Play swimming sound");
+            swimming.Play(0);
+        }
+    }
+
+    public void StopSwimming()
+    {
+
+        //Debug.Log("Stop swimming sound");
+        swimming.Stop();
+    }
+    #endregion
+
+    public void PlayDying()
+    {
+        if (!dying.isPlaying)
+        {
+            //Debug.Log("Play dying sound");
+            dying.Play(0);
+        }
+    }
+
+    #region Dragging_functions
+    public void PlayDragging()
+    {
+        if (!dragging.isPlaying)
+        {
+            Debug.Log("Play dragging sound");
+            dragging.Play(0);
+        }
+    }
+
+    public void StopDragging()
+    {
+
+        Debug.Log("Stop dragging sound");
+        dragging.Stop();
+    }
+    #endregion
 
     public void FadeSound(AudioSource s1)
     {
