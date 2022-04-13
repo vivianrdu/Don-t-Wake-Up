@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -63,7 +61,6 @@ public class Player : MonoBehaviour
     const float _timeBetweenFootsteps = 5f;
     float _lastPlayedFootstepSoundTime = -_timeBetweenFootsteps;
 
-    public bool isWalking;
     #endregion
 
 
@@ -81,7 +78,6 @@ public class Player : MonoBehaviour
 
         sh = GameObject.Find("/PlayerSoundHandler").GetComponent<PlayerSoundHandler>();
 
-        isWalking = false;
     }
 
     // Update is called once per frame
@@ -117,7 +113,6 @@ public class Player : MonoBehaviour
 
         if (feetContact || feetContact_water)
         {
-
             //Debug.Log("moving crate?" + movingCrate + " feet ground " + feetContact_ground);
             if (movingCrate && feetContact_ground)
             { // if trying to move a crate, does a different set of movements
@@ -143,8 +138,8 @@ public class Player : MonoBehaviour
     // jump function
     public bool canJump()
     {
-        sh.StopWalking(isWalking);
-        isWalking = false;
+        sh.StopWalking();
+            
 
         if (feetContact && (feetContact_crate || feetContact_ground) && !jumping_routine_ongoing && !isCrouching)
         {
@@ -171,15 +166,6 @@ public class Player : MonoBehaviour
         //Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            
-            if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
-            {
-                sh.PlayWalking(isWalking);
-                isWalking = true;
-
-                _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
-            }
-            
 
             anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
@@ -213,96 +199,88 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        
-            if (Input.GetKey(KeyCode.S))
-            {
-                sh.StopWalking(isWalking);
-                isWalking = false;
 
-                anim.SetBool("crouching", true);
-                anim.SetBool("running", false);
-                anim.SetBool("walking", false);
-                anim.SetBool("swimming", false);
-                isCrouching = true;
-                isRunning = false;
-
-                    PlayerRB.velocity = new Vector2(x_input * crouching_speed, 0);
-
-                if(withinHiding)
-                {
-                    Debug.Log("hiding called");
-                    isHidden = true;
-                    Debug.Log(isHidden);
-                    spritePlayer.sortingLayerName = "Player_Hidden";
-                }else
-                {
-                    isHidden = false;
-                    spritePlayer.sortingLayerName = "Player";
-                }
-
-            }
-            else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
-            {
-                sh.StopWalking(isWalking);
-                isWalking = false;
-
-                spritePlayer.sortingLayerName = "Player";
-                anim.SetBool("running", true);
-                anim.SetBool("crouching", false);
-                anim.SetBool("walking", false);
-                anim.SetBool("swimming", false);
-                isCrouching = false;
-                isHidden = false;
-                isRunning = true;
-
-                PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
-            }
-            else
-            {
-                spritePlayer.sortingLayerName = "Player";
-                anim.SetBool("walking", true);
-                anim.SetBool("crouching", false);
-                anim.SetBool("running", false);
-                anim.SetBool("swimming", false);
-                isCrouching = false;
-                isHidden = false;
-                isRunning = false;
-
-
-                
-                if (Time.timeSinceLevelLoad - _lastPlayedFootstepSoundTime > _timeBetweenFootsteps)
-                {
-                    sh.PlayWalking(isWalking);
-                    isWalking = true;
-                    _lastPlayedFootstepSoundTime = Time.timeSinceLevelLoad;
-                }
-                
-                PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
-            }
-
-
-            if (x_input > 0)
-            {
-                currDirection = Vector2.right;
-            }
-            else if (x_input < 0)
-            {
-                currDirection = Vector2.left;
-            }
-            else
-            {
-                PlayerRB.velocity = Vector2.zero;
-                anim.SetBool("walking", false);
-                anim.SetBool("crouching", false);
-                anim.SetBool("running", false);
-                anim.SetBool("swimming", false);
+        if (Input.GetKey(KeyCode.S))
+        {
+            sh.StopWalking();
             
+            anim.SetBool("crouching", true);
+            anim.SetBool("running", false);
+            anim.SetBool("walking", false);
+            anim.SetBool("swimming", false);
+            isCrouching = true;
+            isRunning = false;
+
+            PlayerRB.velocity = new Vector2(x_input * crouching_speed, 0);
+
+            if(withinHiding)
+            {
+                Debug.Log("hiding called");
+                isHidden = true;
+                Debug.Log(isHidden);
+                spritePlayer.sortingLayerName = "Player_Hidden";
+            }
+            else
+            {
+                isHidden = false;
+                spritePlayer.sortingLayerName = "Player";
+            }
+
+            }
+        else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
+        {
+
+            sh.StopWalking();
+
+
+            spritePlayer.sortingLayerName = "Player";
+            anim.SetBool("running", true);
+            anim.SetBool("crouching", false);
+            anim.SetBool("walking", false);
+            anim.SetBool("swimming", false);
+            isCrouching = false;
+            isHidden = false;
+            isRunning = true;
+
+            PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
+        }
+        else if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
+        {
+            spritePlayer.sortingLayerName = "Player";
+            anim.SetBool("walking", true);
+            anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
+            anim.SetBool("swimming", false);
+            isCrouching = false;
+            isHidden = false;
+            isRunning = false;
+
+
+            Debug.Log("Get to walking");
+            Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
+
+            if (Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - (x_input)) || Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input))
+            {
+                Debug.Log("Playing walking sound");
+                sh.PlayWalking();
+            }
+
+                PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+        }
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
+            anim.SetBool("walking", false);
+            anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
+            anim.SetBool("swimming", false);
         }
         
         if (feetContact_water)
         {
-            sh.StopWalking(isWalking);
-            isWalking = false;
+            sh.StopWalking();
+            
+
 
             anim.SetBool("walking", false);
             anim.SetBool("crouching", false);
@@ -331,8 +309,27 @@ public class Player : MonoBehaviour
                 PlayerRB.velocity = Vector2.zero;
             }
         }
+
+        if (x_input > 0)
+        {
+            currDirection = Vector2.right;
+        }
+        else if (x_input < 0)
+        {
+            currDirection = Vector2.left;
+        }
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
+        }
+
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
+
+        if (Mathf.Abs(x_input) == 0)
+        {
+            sh.StopWalking();
+        }
     }
 
 
