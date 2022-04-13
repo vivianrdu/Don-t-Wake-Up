@@ -4,45 +4,40 @@ using UnityEngine;
 
 public class Pebbles : MonoBehaviour
 {
-
-
     #region body_variables
 
     private Rigidbody2D rB;
     private CapsuleCollider2D cc;
     public float throw_velocity;
-
+    // floor is the bottom of the ocean
+    public bool on_floor;
+    private bool touch_water;
     #endregion
-
-
-    public Enemy enemy_game;
 
     #region playerinteractions variables
     private bool player_touch;
     private bool player_picked_up;
     private Player player;
 
-
-    //temp test variables
-
-
     #endregion
-    // Start is called before the first frame update
+
     void Awake()
     {
         rB = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         player_picked_up = false;
+        touch_water = false;
+        on_floor = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         
         if(player_touch)
         {
-            if (Input.GetKey(KeyCode.E) && !player_picked_up)
+            // Allow the player to pick up if they have not picked it up already and thrown it into the water
+            if (Input.GetKey(KeyCode.E) && !player_picked_up && !touch_water)
             {
                 player_picked_up = true;
                 StartCoroutine(pick_uproutine());
@@ -68,7 +63,7 @@ public class Pebbles : MonoBehaviour
         Debug.Log("pick up routine started");
         //I set position to freeze so gravity does not affect it.
         rB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-
+        cc.enabled = false;
         rB.mass = 0; // prevent it from going up and down constantly
         while (player_picked_up)
         {
@@ -82,9 +77,9 @@ public class Pebbles : MonoBehaviour
 
     IEnumerator throwing()
     {
-        
+        cc.enabled = true;
         transform.position = player.transform.position + player.transform.TransformDirection(new Vector3(0.5f * player.currDirection.x, 0, 0));
-        rB.mass = 1;
+        rB.mass = 0.1f;
         rB.velocity = new Vector2(player.currDirection.x * throw_velocity, 3);
         yield return new WaitForSeconds(1);
     }
@@ -105,6 +100,11 @@ public class Pebbles : MonoBehaviour
                 player = collision.gameObject.GetComponent<Player>();
             }
         }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("At the bottom of the ocean");
+            on_floor = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -117,9 +117,11 @@ public class Pebbles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Water"))
+        if (collision.gameObject.CompareTag("Water"))
         {
-            enemy_game.Move();
+            Debug.Log("Pebble in water");
+            touch_water = true;
+            rB.mass = 10f;
         }
     }
 }

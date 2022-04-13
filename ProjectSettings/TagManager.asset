@@ -12,6 +12,9 @@ TagManager:
   - Hideable_Object
   - Water
   - Crate
+  - Pebble
+  - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX

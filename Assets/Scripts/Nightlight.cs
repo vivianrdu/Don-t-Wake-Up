@@ -91,7 +91,7 @@ public class Nightlight : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    private void Reset()
+    private void Reset_Again()
     {
         StopCoroutine(Countdown());
         StartCoroutine(Countdown());
@@ -99,9 +99,12 @@ public class Nightlight : MonoBehaviour
 
     private void TurnOff()
     {
+
         anim.SetBool("on", false);
         timerIsRunning = false; //stops timer
         GetComponent<BoxCollider2D>().enabled = true; //falls onto the ground
+        GetComponent<Rigidbody2D>().isKinematic = false;
+        
     }
 
     public IEnumerator Countdown()
@@ -125,7 +128,12 @@ public class Nightlight : MonoBehaviour
 
 
     public void Reset_position()
+
     {
+        StopAllCoroutines();
+        TurnOff();
+        GetComponent<Rigidbody2D>().isKinematic = false;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         transform.position = respawn_anchor;
         //reset
         timerIsRunning = false;

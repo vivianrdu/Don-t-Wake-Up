@@ -19,6 +19,14 @@ public class Line_of_Sight_Enemy : MonoBehaviour
             Debug.Log("Detected player");
             
         }
+
+        if (coll.CompareTag("Pebble"))
+        {
+            GetComponentInParent<Enemy_Water>().pebble_detected = true;
+            GetComponentInParent<Enemy_Water>().pebble_position = coll.transform;
+            Debug.Log("Detected pebble");
+
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -27,6 +35,12 @@ public class Line_of_Sight_Enemy : MonoBehaviour
         {
             GetComponentInParent<Enemy>().playerposition = null;
             
+        }
+
+        if (collision.CompareTag("Pebble"))
+        {
+            GetComponentInParent<Enemy_Water>().pebble_detected = false;
+            GetComponentInParent<Enemy_Water>().pebble_position = null;
         }
     }
 

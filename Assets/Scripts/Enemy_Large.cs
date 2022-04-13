@@ -41,13 +41,10 @@ public class Enemy_Large : Enemy
             anim.SetBool("playerDetected", true); //maybe have to move this for animation
             StartCoroutine(Detected_routine());
         }
-
-        
-
         if (playerHunt)
         {
             
-            Move();
+            Hunt();
         }
     }
 
@@ -77,25 +74,13 @@ public class Enemy_Large : Enemy
 
 
     #region Movement_functions
-    public new void Move()
+    public void Hunt()
     {
-        
-
         anim.SetBool("Chasing", true);
-        move_to_player();
-        
-    }
-
-    public new void move_to_player()
-    {
-        
-        
         direction = new Vector2(1, 0);
-        //Debug.Log("iscalled");
         DEnemyRB.velocity = direction * attack_speed;
         anim.SetFloat("dirX", direction.x);
     }
-
     #endregion
 
     #region Triggers and Collisions
