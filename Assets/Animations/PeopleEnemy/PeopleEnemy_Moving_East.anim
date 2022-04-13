@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PeopleEnemy_Moving_West
+  m_Name: PeopleEnemy_Moving_East
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -5313723106989321622, guid: be7a1092586de48e9a26b1b469c44636, type: 3}
+      value: {fileID: -8810440693664788340, guid: ae506488f5b4f46269bb4f09537b7d81, type: 3}
     - time: 0.016666668
-      value: {fileID: 8841644114319984972, guid: be7a1092586de48e9a26b1b469c44636, type: 3}
+      value: {fileID: -6088768461228869065, guid: ae506488f5b4f46269bb4f09537b7d81, type: 3}
     - time: 0.033333335
-      value: {fileID: 8914818985407439162, guid: be7a1092586de48e9a26b1b469c44636, type: 3}
+      value: {fileID: -9041050481396284256, guid: ae506488f5b4f46269bb4f09537b7d81, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -5313723106989321622, guid: be7a1092586de48e9a26b1b469c44636, type: 3}
-    - {fileID: 8841644114319984972, guid: be7a1092586de48e9a26b1b469c44636, type: 3}
-    - {fileID: 8914818985407439162, guid: be7a1092586de48e9a26b1b469c44636, type: 3}
+    - {fileID: -8810440693664788340, guid: ae506488f5b4f46269bb4f09537b7d81, type: 3}
+    - {fileID: -6088768461228869065, guid: ae506488f5b4f46269bb4f09537b7d81, type: 3}
+    - {fileID: -9041050481396284256, guid: ae506488f5b4f46269bb4f09537b7d81, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
