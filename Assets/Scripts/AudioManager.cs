@@ -132,7 +132,7 @@ public class AudioManager : MonoBehaviour
 
         while (timeElapsed < timeToFade)
         {
-            newSource.volume = Mathf.Lerp(0, 0.5f, timeElapsed / timeToFade);
+            newSource.volume = Mathf.Lerp(0, 0.3f, timeElapsed / timeToFade);
             timeElapsed += Time.deltaTime;
             Debug.Log(newSource.volume.ToString());
             yield return null;
@@ -161,8 +161,8 @@ public class AudioManager : MonoBehaviour
 
         while (timeElapsed < timeToFade)
         {
-            source1.volume = Mathf.Lerp(0.5f, 0, timeElapsed / timeToFade);
-            source2.volume = Mathf.Lerp(0, 0.5f, timeElapsed / timeToFade);
+            source1.volume = Mathf.Lerp(0.3f, 0, timeElapsed / timeToFade);
+            source2.volume = Mathf.Lerp(0, 0.3f, timeElapsed / timeToFade);
 
             timeElapsed += Time.deltaTime;
             yield return null;

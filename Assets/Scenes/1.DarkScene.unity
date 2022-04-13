@@ -3022,7 +3022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &980876331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4472,7 +4472,7 @@ PrefabInstance:
     - target: {fileID: 3651259561510494917, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6830079826703392768}
     - target: {fileID: 3651259561510494919, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
       propertyPath: m_Name
       value: Checkpoint (1)
@@ -9230,7 +9230,7 @@ PrefabInstance:
     - target: {fileID: 3651259561510494917, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6830079826703392768}
     - target: {fileID: 3651259561510494919, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
       propertyPath: m_Name
       value: Checkpoint
