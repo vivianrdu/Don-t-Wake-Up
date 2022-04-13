@@ -58,8 +58,6 @@ public class Player : MonoBehaviour
 
     #region Audio_variables
     public PlayerSoundHandler sh;
-    const float _timeBetweenFootsteps = 5f;
-    float _lastPlayedFootstepSoundTime = -_timeBetweenFootsteps;
 
     #endregion
 
@@ -77,7 +75,6 @@ public class Player : MonoBehaviour
         isCrouching = false;
 
         sh = GameObject.Find("/PlayerSoundHandler").GetComponent<PlayerSoundHandler>();
-
     }
 
     // Update is called once per frame
@@ -122,6 +119,11 @@ public class Player : MonoBehaviour
                 // jump
                 if (Input.GetKeyDown(KeyCode.Space) && canJump())
                 {
+                    sh.StopWalking();
+                    sh.StopRunning();
+                    sh.StopSwimming();
+                    sh.StopDragging();
+
                     //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
                     jumping();
                 }
@@ -134,9 +136,6 @@ public class Player : MonoBehaviour
     // jump function
     public bool canJump()
     {
-        sh.StopWalking();
-            
-
         if (feetContact && (feetContact_crate || feetContact_ground) && !jumping_routine_ongoing && !isCrouching)
         {
             return true;
@@ -159,9 +158,16 @@ public class Player : MonoBehaviour
 
     private void CrateMove()
     {
-        //Debug.Log("moving crate");
+        Debug.Log("Call CrateMove");
+
+        sh.StopWalking();
+        sh.StopRunning();
+        sh.StopSwimming();
+
+        Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
+            sh.PlayDragging();
 
             anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
@@ -199,6 +205,9 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             sh.StopWalking();
+            sh.StopRunning();
+            sh.StopSwimming();
+            sh.StopDragging();
             
             anim.SetBool("crouching", true);
             anim.SetBool("running", false);
@@ -225,10 +234,6 @@ public class Player : MonoBehaviour
             }
         else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
         {
-
-            sh.StopWalking();
-
-
             spritePlayer.sortingLayerName = "Player";
             anim.SetBool("running", true);
             anim.SetBool("crouching", false);
@@ -237,6 +242,28 @@ public class Player : MonoBehaviour
             isCrouching = false;
             isHidden = false;
             isRunning = true;
+
+            //Debug.Log("Stop walking sound");
+            sh.StopWalking();
+            sh.StopSwimming();
+            sh.StopDragging();
+
+            //bool running_cond1 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(x_input * walking_speed - x_input);
+            //bool running_cond2 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(-x_input * walking_speed + x_input);
+            bool running_cond3 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
+            bool running_cond4 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
+
+            //Debug.Log("Get to running");
+            //Debug.Log(PlayerRB.velocity.x);
+            //Debug.Log(x_input * walking_speed - x_input);
+            //Debug.Log(x_input * running_speed - x_input);
+            //Debug.Log((running_cond3) || (running_cond4));
+
+            if ((running_cond3) || (running_cond4))
+            {
+                //Debug.Log("Play running sound");
+                sh.PlayRunning();
+            }
 
             PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
         }
@@ -251,17 +278,23 @@ public class Player : MonoBehaviour
             isHidden = false;
             isRunning = false;
 
+            sh.StopRunning();
+            sh.StopSwimming();
+            sh.StopDragging();
 
-            Debug.Log("Get to walking");
-            Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
+            //Debug.Log("Get to walking");
+            //Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
 
-            if (Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - (x_input)) || Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input))
+            bool walking_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - x_input);
+            bool walking_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input);
+
+            if (walking_cond1 || walking_cond2)
             {
-                Debug.Log("Playing walking sound");
+                //Debug.Log("Playing walking sound");
                 sh.PlayWalking();
             }
 
-                PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+            PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
         }
         else
         {
@@ -270,19 +303,36 @@ public class Player : MonoBehaviour
             anim.SetBool("crouching", false);
             anim.SetBool("running", false);
             anim.SetBool("swimming", false);
+
+            sh.StopWalking();
+            sh.StopRunning();
+            sh.StopSwimming();
+            sh.StopDragging();
         }
         
         if (feetContact_water)
         {
             sh.StopWalking();
-            
+            sh.StopRunning();
+            sh.StopDragging();
 
+            bool swimming_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
+            bool swimming_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
+
+            Debug.Log("Get swimming sound");
+
+            if (swimming_cond1 || swimming_cond2)
+            {
+                Debug.Log("Playing swimming sound");
+                sh.PlayWalking();
+            }
 
             anim.SetBool("walking", false);
             anim.SetBool("crouching", false);
             anim.SetBool("running", false);
             anim.SetBool("swimming", true);
             isCrouching = false;
+
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
@@ -325,6 +375,9 @@ public class Player : MonoBehaviour
         if (Mathf.Abs(x_input) == 0)
         {
             sh.StopWalking();
+            sh.StopRunning();
+            sh.StopSwimming();
+            sh.StopDragging();
         }
     }
 
@@ -394,6 +447,8 @@ public class Player : MonoBehaviour
     {
         /** Player SpriteRenderer disabled (disappears) **/
         transform.GetComponent<SpriteRenderer>().enabled = false;
+
+        sh.PlayDying();
 
         GameObject img = GameObject.FindWithTag("Fade");
         yield return StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
