@@ -7,12 +7,16 @@ public class PlayerSoundHandler : MonoBehaviour
 
     private AudioSource walking;
     private AudioSource running;
+    private AudioSource swimming;
+    private AudioSource dying;
 
     void Start()
     {
         playerSounds = GetComponents<AudioSource>();
         walking = playerSounds[0];
         running = playerSounds[1];
+        swimming = playerSounds[2];
+        dying = playerSounds[3];
     }
 
     #region Walking_functions
@@ -45,12 +49,40 @@ public class PlayerSoundHandler : MonoBehaviour
 
     public void StopRunning()
     {
-
-        Debug.Log("Stop running sound");
-        running.Stop();
+        if (running.isPlaying)
+        {
+            Debug.Log("Stop running sound");
+            running.Stop();
+        }
     }
     #endregion
 
+    #region Swimming_functions
+    public void PlaySwimming()
+    {
+        if (!swimming.isPlaying)
+        {
+            Debug.Log("Play swimming sound");
+            swimming.Play(0);
+        }
+    }
+
+    public void StopSwimming()
+    {
+
+        Debug.Log("Stop swimming sound");
+        swimming.Stop();
+    }
+    #endregion
+
+    public void PlayDying()
+    {
+        if (!dying.isPlaying)
+        {
+            Debug.Log("Play dying sound");
+            dying.Play(0);
+        }
+    }
 
     public void FadeSound(AudioSource s1)
     {
