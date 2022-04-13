@@ -14,22 +14,20 @@ public class PlayerSoundHandler : MonoBehaviour
     }
 
     #region Walking_functions
-    public void PlayWalking(bool isWalking)
+    public void PlayWalking()
     {
-        if (!isWalking)
+        if (!walking.isPlaying)
         {
             Debug.Log("Play walking sound");
-            walking.PlayOneShot(walking.clip);
+            walking.Play(0);
         }
     }
 
-    public void StopWalking(bool isWalking)
+    public void StopWalking()
     {
-        if (isWalking)
-        {
-            Debug.Log("Stop walking sound");
-            walking.Stop();
-        }
+
+        Debug.Log("Stop walking sound");
+        walking.Stop();
     }
     #endregion
 
