@@ -9,6 +9,7 @@ public class PlayerSoundHandler : MonoBehaviour
     private AudioSource running;
     private AudioSource swimming;
     private AudioSource dying;
+    private AudioSource dragging;
 
     void Start()
     {
@@ -17,12 +18,13 @@ public class PlayerSoundHandler : MonoBehaviour
         running = playerSounds[1];
         swimming = playerSounds[2];
         dying = playerSounds[3];
+        dragging = playerSounds[4];
     }
 
     #region Walking_functions
     public void PlayWalking()
     {
-        if (!walking.isPlaying)
+        if (!walking.isPlaying & !dragging.isPlaying)
         {
             //Debug.Log("Play walking sound");
             walking.Play(0);
@@ -62,7 +64,7 @@ public class PlayerSoundHandler : MonoBehaviour
     {
         if (!swimming.isPlaying)
         {
-            Debug.Log("Play swimming sound");
+            //Debug.Log("Play swimming sound");
             swimming.Play(0);
         }
     }
@@ -70,7 +72,7 @@ public class PlayerSoundHandler : MonoBehaviour
     public void StopSwimming()
     {
 
-        Debug.Log("Stop swimming sound");
+        //Debug.Log("Stop swimming sound");
         swimming.Stop();
     }
     #endregion
@@ -79,10 +81,28 @@ public class PlayerSoundHandler : MonoBehaviour
     {
         if (!dying.isPlaying)
         {
-            Debug.Log("Play dying sound");
+            //Debug.Log("Play dying sound");
             dying.Play(0);
         }
     }
+
+    #region Dragging_functions
+    public void PlayDragging()
+    {
+        if (!dragging.isPlaying)
+        {
+            Debug.Log("Play dragging sound");
+            dragging.Play(0);
+        }
+    }
+
+    public void StopDragging()
+    {
+
+        Debug.Log("Stop dragging sound");
+        dragging.Stop();
+    }
+    #endregion
 
     public void FadeSound(AudioSource s1)
     {

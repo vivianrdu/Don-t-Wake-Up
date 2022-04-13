@@ -119,6 +119,11 @@ public class Player : MonoBehaviour
                 // jump
                 if (Input.GetKeyDown(KeyCode.Space) && canJump())
                 {
+                    sh.StopWalking();
+                    sh.StopRunning();
+                    sh.StopSwimming();
+                    sh.StopDragging();
+
                     //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
                     jumping();
                 }
@@ -131,9 +136,6 @@ public class Player : MonoBehaviour
     // jump function
     public bool canJump()
     {
-        sh.StopWalking();
-            
-
         if (feetContact && (feetContact_crate || feetContact_ground) && !jumping_routine_ongoing && !isCrouching)
         {
             return true;
@@ -156,9 +158,16 @@ public class Player : MonoBehaviour
 
     private void CrateMove()
     {
-        //Debug.Log("moving crate");
+        Debug.Log("Call CrateMove");
+
+        sh.StopWalking();
+        sh.StopRunning();
+        sh.StopSwimming();
+
+        Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
+            sh.PlayDragging();
 
             anim.SetBool("walking", true);
             anim.SetBool("crouching", false);
@@ -198,6 +207,7 @@ public class Player : MonoBehaviour
             sh.StopWalking();
             sh.StopRunning();
             sh.StopSwimming();
+            sh.StopDragging();
             
             anim.SetBool("crouching", true);
             anim.SetBool("running", false);
@@ -236,6 +246,7 @@ public class Player : MonoBehaviour
             //Debug.Log("Stop walking sound");
             sh.StopWalking();
             sh.StopSwimming();
+            sh.StopDragging();
 
             //bool running_cond1 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(x_input * walking_speed - x_input);
             //bool running_cond2 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(-x_input * walking_speed + x_input);
@@ -269,6 +280,7 @@ public class Player : MonoBehaviour
 
             sh.StopRunning();
             sh.StopSwimming();
+            sh.StopDragging();
 
             //Debug.Log("Get to walking");
             //Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
@@ -295,12 +307,14 @@ public class Player : MonoBehaviour
             sh.StopWalking();
             sh.StopRunning();
             sh.StopSwimming();
+            sh.StopDragging();
         }
         
         if (feetContact_water)
         {
             sh.StopWalking();
             sh.StopRunning();
+            sh.StopDragging();
 
             bool swimming_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
             bool swimming_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
@@ -363,6 +377,7 @@ public class Player : MonoBehaviour
             sh.StopWalking();
             sh.StopRunning();
             sh.StopSwimming();
+            sh.StopDragging();
         }
     }
 
