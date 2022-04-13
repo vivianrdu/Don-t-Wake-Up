@@ -62,14 +62,14 @@ public class Enemy : MonoBehaviour
     }
 
     #region Movement_functions
-    public void Move()
+    public void Move(Rigidbody2D MovedObject, Transform TargetObject)
+    /**
+     * @param MovedObject: Object that is being moved
+     * @param TargetObject: The object MovedObject is moving to
+    */
     {
-        
-    }
-    
-    public void move_to_player()
-    {
-        if (playerposition.position.x > DEnemyRB.transform.position.x)
+        Debug.Log("New move function");
+        if (TargetObject.position.x > MovedObject.transform.position.x)
         {
             direction = new Vector2(1, 0);
         }
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
         {
             direction = new Vector2(-1, 0);
         }
-        DEnemyRB.velocity = direction * attack_speed;
+        MovedObject.velocity = direction * attack_speed;
         anim.SetFloat("dirX", direction.x);
     }
 

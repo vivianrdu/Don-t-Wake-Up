@@ -22,8 +22,8 @@ public class Line_of_Sight_Enemy : MonoBehaviour
 
         if (coll.CompareTag("Pebble"))
         {
-            GetComponentInParent<Enemy_Water>().pebble_Detected = true;
-            GetComponentInParent<Enemy_Water>().pebbleposition = coll.transform;
+            GetComponentInParent<Enemy_Water>().pebble_detected = true;
+            GetComponentInParent<Enemy_Water>().pebble_position = coll.transform;
             Debug.Log("Detected pebble");
 
         }
@@ -39,8 +39,8 @@ public class Line_of_Sight_Enemy : MonoBehaviour
 
         if (collision.CompareTag("Pebble"))
         {
-            GetComponentInParent<Enemy_Water>().pebble_Detected = false;
-            GetComponentInParent<Enemy_Water>().pebbleposition = null;
+            GetComponentInParent<Enemy_Water>().pebble_detected = false;
+            GetComponentInParent<Enemy_Water>().pebble_position = null;
         }
     }
 
