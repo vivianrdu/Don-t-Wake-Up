@@ -71,12 +71,49 @@ public class Enemy : MonoBehaviour
         Debug.Log("New move function");
         if (TargetObject.position.x > MovedObject.transform.position.x)
         {
-            direction = new Vector2(1, 0);
+            if (MovedObject.GetComponent("Enemy_Water.cs") != null)
+            {
+                if (TargetObject.position.y > MovedObject.transform.position.y)
+                {
+                    direction = new Vector2(-1, 1);
+                }
+                else if (TargetObject.position.y < MovedObject.transform.position.y)
+                {
+                    direction = new Vector2(-1, -1);
+                }
+                else
+                {
+                    direction = new Vector2(-1, 0);
+                }
+            }
+            else
+            {
+                direction = new Vector2(1, 0);
+            } 
         }
         else
         {
-            direction = new Vector2(-1, 0);
+            if (MovedObject.GetComponent("Enemy_Water.cs") != null)
+            {
+                if (TargetObject.position.y > MovedObject.transform.position.y)
+                {
+                    direction = new Vector2(-1, 1);
+                }
+                else if (TargetObject.position.y < MovedObject.transform.position.y)
+                {
+                    direction = new Vector2(-1, -1);
+                }
+                else
+                {
+                    direction = new Vector2(-1, 0);
+                }
+            }
+            else
+            {
+                direction = new Vector2(-1, 0);
+            }
         }
+
         MovedObject.velocity = direction * attack_speed;
         anim.SetFloat("dirX", direction.x);
     }
