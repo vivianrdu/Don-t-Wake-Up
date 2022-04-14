@@ -368,7 +368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74210248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.05, y: 0.11999917, z: -10}
+  m_LocalPosition: {x: 2.34, y: 0.10999918, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 117509804}
   - component: {fileID: 117509803}
   - component: {fileID: 117509802}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Waves (4)
   m_TagString: Water
   m_Icon: {fileID: 0}
@@ -749,11 +749,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6830079826673740720, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.01
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 6830079826673740720, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.99
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6830079826673740720, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
       propertyPath: m_LocalPosition.z
@@ -791,22 +791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6830079826673740733, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
-      propertyPath: m_Size.x
-      value: 0.2711881
-      objectReference: {fileID: 0}
     - target: {fileID: 6830079826673740734, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
       propertyPath: sh
       value: 
       objectReference: {fileID: 296811748}
-    - target: {fileID: 6830079826673740734, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6830079826673740734, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
-      propertyPath: ground_distance
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
 --- !u!1 &144284470
@@ -1182,7 +1170,7 @@ GameObject:
   - component: {fileID: 185328554}
   - component: {fileID: 185328553}
   - component: {fileID: 185328552}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Waves (7)
   m_TagString: Water
   m_Icon: {fileID: 0}
@@ -1310,7 +1298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 219820359}
   - component: {fileID: 219820360}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Island (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2291,7 +2279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 402987517}
   - component: {fileID: 402987518}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Island (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2670,7 +2658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474163107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.05, y: 0.11999917, z: -10}
+  m_LocalPosition: {x: 2.34, y: 0.10999918, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1316364963}
@@ -5075,7 +5063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 817573892}
   - component: {fileID: 817573893}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Island (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5915,7 +5903,7 @@ GameObject:
   - component: {fileID: 1161666161}
   - component: {fileID: 1161666160}
   - component: {fileID: 1161666159}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Waves (3)
   m_TagString: Water
   m_Icon: {fileID: 0}
@@ -6078,7 +6066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1175533830}
   - component: {fileID: 1175533831}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Island (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6213,11 +6201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.49
+      value: 4.45
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.11
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7271,7 +7259,7 @@ GameObject:
   - component: {fileID: 1452322946}
   - component: {fileID: 1452322945}
   - component: {fileID: 1452322944}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Waves
   m_TagString: Water
   m_Icon: {fileID: 0}
@@ -8427,7 +8415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1816409491}
   - component: {fileID: 1816409492}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Island (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -9076,11 +9064,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3785669523118155108, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.58
+      value: -0.92
       objectReference: {fileID: 0}
     - target: {fileID: 3785669523118155108, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.82
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 3785669523118155108, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
       propertyPath: m_LocalPosition.z

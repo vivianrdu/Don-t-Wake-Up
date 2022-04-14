@@ -45,7 +45,6 @@ public class Player : MonoBehaviour
 
     #region Physics_components
     Rigidbody2D PlayerRB;
-    BoxCollider2D playercollider;
     #endregion
 
     #region Health_variables and respawns;
@@ -65,13 +64,10 @@ public class Player : MonoBehaviour
     #endregion
 
 
-    public float ground_distance;
-
     // Awake is called before the first frame update
     void Awake()
     {
         PlayerRB = GetComponent<Rigidbody2D>();
-        playercollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
         spritePlayer = GetComponent<SpriteRenderer>();
@@ -102,22 +98,26 @@ public class Player : MonoBehaviour
         }
         */
 
+        LayerMask masky = LayerMask.GetMask("Ground");
+        Debug.Log("mask" + masky);
 
-
+        Debug.Log("raycast check ground: " + Physics.Raycast(transform.position, Vector3.down, 1f, masky));
+        Debug.Log("raycast check crate: " + Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("crate")));
+        Debug.Log("raycast check water: " + Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("water")));
 
 
         //feetContact_ground = (Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("ground")));
-        contact_check();
+
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
         if (feetContact || feetContact_water)
         {
-            
+            //Debug.Log("moving crate?" + movingCrate + " feet ground " + feetContact_ground);
             if (movingCrate && feetContact_ground)
             { // if trying to move a crate, does a different set of movements
                 CrateMove();
-                
+                //Debug.Log("Velocity: " + PlayerRB.velocity);
             }
             else
             {
@@ -167,188 +167,16 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
 
-            move_setup("walking");
+            anim.SetBool("walking", true);
+            anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
+            anim.SetBool("swimming", false);
+            isCrouching = false;
+            isHidden = false;
             //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
             //Vector3.ProjectOnPlane(PlayerRB.velocity, ground_contact_point);
         }
 
-        move_direction();
-        //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
-        //Vector3.ProjectOnPlane(PlayerRB.velocity, ground_contact_point);
-        //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0); This one works better for some reason
-    }
-
-    private void Move()
-    {
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            sh.StopWalking();
-
-            move_setup("crouching");
-            }
-        else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
-        {
-
-            sh.StopWalking();
-
-            move_setup("running");
-
-        }
-        else if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
-        {
-            move_setup("walking");
-            //Debug.Log("Get to walking");
-            //Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
-
-            if (Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - (x_input)) || Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input))
-            {
-                //Debug.Log("Playing walking sound");
-                sh.PlayWalking();
-            }  
-        }
-        else
-        {
-            //PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
-            //animator_walking("none");
-        }
-        
-        if (feetContact_water)
-        {
-            sh.StopWalking();
-
-            move_setup("swimming");
-
-        }
-
-        move_direction();
-
-        if (Mathf.Abs(x_input) == 0)
-        {
-            sh.StopWalking();
-        }
-    }
-
-    public void contact_check()
-    {
-        LayerMask masky = LayerMask.GetMask("Ground", "Crate", "Water","Enemy");
-        //Debug.Log("mask" + masky);
-
-        
-
-        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, ground_distance, masky);
-
-        if (hit2D.collider != null && !jumping_routine_ongoing)
-        {
-
-            //Debug.Log("ground hits: " + hit2D.collider.tag);
-            if (hit2D.collider.CompareTag("Ground"))
-            {
-                feetContact = true;
-                feetContact_water = false;
-                feetContact_ground = true;
-
-            }
-            else if (hit2D.collider.CompareTag("Crate") || hit2D.collider.CompareTag("Enemy"))
-            {
-                //Debug.Log("feetcontact");
-                feetContact = true;
-                feetContact_water = false;
-                feetContact_ground = false;
-            }
-            else if (hit2D.collider.CompareTag("Water"))
-            {
-
-                feetContact_water = true;
-                feetContact_ground = false;
-            }
-            
-            else
-            {
-                feetContact = false;
-                feetContact_water = false;
-                feetContact_ground = false;
-            }
-
-         
-
-            //Debug.Log("raycast check hit2D: " + hit2D.collider.tag);
-            //Debug.Log("raycast layerCheck: " + hit2D.collider.gameObject.layer);
-        }
-        /*else
-        {
-            Debug.Log("raycast check hit2D: null");
-        }
-        */
-    }
-
-
-    public void move_setup(string whichisit)
-    {
-        if(whichisit.Equals("running"))
-        {
-            spritePlayer.sortingLayerName = "Player";
-            animator_walking(whichisit);
-            
-            isCrouching = false;
-            isHidden = false;
-            isRunning = true;
-
-            //PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
-
-            
-
-            PlayerRB.velocity = new Vector2(x_input * running_speed, PlayerRB.velocity.y);
-        }
-        else if (whichisit.Equals("crouching"))
-        {
-            animator_walking(whichisit); 
-            isCrouching = true;
-            isRunning = false;
-
-            if (withinHiding)
-            {
-                isHidden = true;
-
-                spritePlayer.sortingLayerName = "Player_Hidden";
-            }
-            else
-            {
-                isHidden = false;
-                spritePlayer.sortingLayerName = "Player";
-            }
-            
-            
-            //PlayerRB.velocity = new Vector2(x_input * crouching_speed, 0); In case player falls through world but should not happen
-            PlayerRB.velocity = new Vector2(x_input * crouching_speed, PlayerRB.velocity.y);
-
-        }
-        else if (whichisit.Equals("walking"))
-        {
-            spritePlayer.sortingLayerName = "Player";
-            animator_walking(whichisit);
-            
-            isCrouching = false;
-            isHidden = false;
-            isRunning = false;
-
-            
-            PlayerRB.velocity = new Vector2(x_input * walking_speed, PlayerRB.velocity.y);
-
-        }else if(whichisit.Equals("swimming"))
-        {
-
-            animator_walking(whichisit);
-            isCrouching = false;
-
-            
-           
-        }
-    }
-
-
-    public void move_direction()
-    {
         if (x_input > 0)
         {
             currDirection = Vector2.right;
@@ -359,30 +187,152 @@ public class Player : MonoBehaviour
         }
         else
         {
+            PlayerRB.velocity = Vector2.zero;
+            anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
+            anim.SetBool("swimming", false);
+        }
+        PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+        //Vector3.ProjectOnPlane(PlayerRB.velocity, ground_contact_point);
+        //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0); This one works better for some reason
+    }
 
-            PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
-            animator_walking("none");
+    private void Move()
+    {
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            sh.StopWalking();
+            
+            anim.SetBool("crouching", true);
+            anim.SetBool("running", false);
+            anim.SetBool("walking", false);
+            anim.SetBool("swimming", false);
+            isCrouching = true;
+            isRunning = false;
+
+            PlayerRB.velocity = new Vector2(x_input * crouching_speed, 0);
+
+            if(withinHiding)
+            {
+                Debug.Log("hiding called");
+                isHidden = true;
+                Debug.Log(isHidden);
+                spritePlayer.sortingLayerName = "Player_Hidden";
+            }
+            else
+            {
+                isHidden = false;
+                spritePlayer.sortingLayerName = "Player";
+            }
+
+            }
+        else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
+        {
+
+            sh.StopWalking();
+
+
+            spritePlayer.sortingLayerName = "Player";
+            anim.SetBool("running", true);
+            anim.SetBool("crouching", false);
+            anim.SetBool("walking", false);
+            anim.SetBool("swimming", false);
+            isCrouching = false;
+            isHidden = false;
+            isRunning = true;
+
+            PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
+        }
+        else if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
+        {
+            spritePlayer.sortingLayerName = "Player";
+            anim.SetBool("walking", true);
+            anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
+            anim.SetBool("swimming", false);
+            isCrouching = false;
+            isHidden = false;
+            isRunning = false;
+
+
+            Debug.Log("Get to walking");
+            Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
+
+            if (Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - (x_input)) || Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input))
+            {
+                Debug.Log("Playing walking sound");
+                sh.PlayWalking();
+            }
+
+                PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+        }
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
+            anim.SetBool("walking", false);
+            anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
+            anim.SetBool("swimming", false);
+        }
+        
+        if (feetContact_water)
+        {
+            sh.StopWalking();
+            
+
+
+            anim.SetBool("walking", false);
+            anim.SetBool("crouching", false);
+            anim.SetBool("running", false);
+            anim.SetBool("swimming", true);
+            isCrouching = false;
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
+            } 
+            else 
+            {
+                PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
+            }
+
+            if (x_input > 0)
+            {
+                currDirection = Vector2.right;
+            }
+            else if (x_input < 0)
+            {
+                currDirection = Vector2.left;
+            }
+            else
+            {
+                PlayerRB.velocity = Vector2.zero;
+            }
+        }
+
+        if (x_input > 0)
+        {
+            currDirection = Vector2.right;
+        }
+        else if (x_input < 0)
+        {
+            currDirection = Vector2.left;
+        }
+        else
+        {
+            PlayerRB.velocity = Vector2.zero;
         }
 
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
-    }
 
-    public void animator_walking(string whichisit)
-    {
-        
-
-        anim.SetBool("walking", false);
-        anim.SetBool("crouching", false);
-        anim.SetBool("running", false);
-        anim.SetBool("swimming", false);
-        //anim.SetBool("jumping", false);
-
-        if (!whichisit.Equals("none"))
+        if (Mathf.Abs(x_input) == 0)
         {
-            anim.SetBool(whichisit, true);
+            sh.StopWalking();
         }
     }
+
+
     private void jumping()
     {
         StartCoroutine(Jumping_Routine());
@@ -391,9 +341,11 @@ public class Player : MonoBehaviour
     IEnumerator Jumping_Routine()
     {
         jumping_routine_ongoing = true;
-        
-
-        animator_walking("none");
+        //Debug.Log("jumping coroutine starts");
+        anim.SetBool("walking", false);
+        anim.SetBool("crouching", false);
+        anim.SetBool("running", false);
+        anim.SetBool("swimming", false);
 
         anim.SetBool("jumping", true);
         yield return new WaitForSeconds(0.1f);
@@ -482,9 +434,6 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        feetContact = true;
-        /*
         if(collision.gameObject.CompareTag("Crate") || collision.gameObject.CompareTag("Enemy"))
         {
             //Debug.Log("feetcontact");
@@ -496,12 +445,11 @@ public class Player : MonoBehaviour
             feetContact = true;
             feetContact_ground = true;
         }
-        */
+
         if (collision.gameObject.CompareTag("respawn_anchor"))
         {
             respawn_anchor = collision.transform.position;
         }
-        
     }
 
     /*
@@ -515,8 +463,8 @@ public class Player : MonoBehaviour
     */
     private void OnCollisionExit2D(Collision2D collision)
     {
-        //feetContact = false;
-        /*
+        
+
         if (collision.gameObject.CompareTag("Ground"))
         {
             feetContact_ground = false;
@@ -531,7 +479,6 @@ public class Player : MonoBehaviour
                 feetContact = false;
             }
         }
-        */
     }
 
 
@@ -543,14 +490,11 @@ public class Player : MonoBehaviour
             withinHiding = true;
             //Debug.Log("within Hiding" + withinHiding);
         }
-        
-        /*
         if (collision.gameObject.CompareTag("Water"))
         {
             //Debug.Log("feetcontact in water");
             feetContact_water = true;
         }
-        */
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -559,24 +503,20 @@ public class Player : MonoBehaviour
         {
             withinHiding = false;
         }
-        /*
         if (collision.gameObject.CompareTag("Water"))
         {
             //Debug.Log("feetcontact out of water");
             feetContact_water = false;
         }
-        */
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        /*
         if (collision.gameObject.CompareTag("Water"))
         {
             //Debug.Log("feetcontact in water");
             feetContact_water = true;
         }
-        */
     }
     #endregion
 
