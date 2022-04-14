@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Pebbles : MonoBehaviour
 {
-    #region body_variables
+    #region Body_variables
 
     private Rigidbody2D rB;
     private CapsuleCollider2D cc;
-    public float throw_velocity;
+    
     // floor is the bottom of the ocean
     public bool on_floor;
     private bool touch_water;
+    #endregion
+
+    #region Physics_variables
+    public float throw_velocity;
+    private Vector2 respawn_anchor;
     #endregion
 
     #region playerinteractions variables
@@ -25,6 +30,7 @@ public class Pebbles : MonoBehaviour
     {
         rB = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
+        respawn_anchor = transform.position;
         player_picked_up = false;
         touch_water = false;
         on_floor = false;
@@ -32,8 +38,6 @@ public class Pebbles : MonoBehaviour
 
     void Update()
     {
-
-        
         if(player_touch)
         {
             // Allow the player to pick up if they have not picked it up already and thrown it into the water
@@ -56,7 +60,7 @@ public class Pebbles : MonoBehaviour
 
 
 
-    #region routines
+    #region Coroutines
 
     IEnumerator pick_uproutine()
     {
@@ -94,8 +98,15 @@ public class Pebbles : MonoBehaviour
     }
 
     #endregion
-   
+    #region Respawn
+    public void Reset_position()
+    {
+        transform.position = respawn_anchor;
 
+    }
+    #endregion
+
+    #region Collisions and Triggers
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -132,4 +143,5 @@ public class Pebbles : MonoBehaviour
             rB.mass = 10f;
         }
     }
+    #endregion
 }
