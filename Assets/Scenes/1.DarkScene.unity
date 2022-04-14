@@ -2022,7 +2022,7 @@ Tilemap:
       - {fileID: 4955556114347793615, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: -2131355921969782192, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: 2652182241909924386, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 35, y: -9, z: 0}
@@ -8302,7 +8302,6 @@ Transform:
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
 --- !u!1 &1855544580
 GameObject:
   m_ObjectHideFlags: 0
@@ -8323,20 +8322,10 @@ GameObject:
   m_IsActive: 1
 --- !u!114 &1855544581
 MonoBehaviour:
-=======
---- !u!1 &1863090123 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6830079826673740723, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
-  m_PrefabInstance: {fileID: 6830079826703392759}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1863090124
-AudioSource:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_GameObject: {fileID: 1855544580}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -8358,105 +8347,11 @@ Transform:
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1855544583
-=======
-  m_GameObject: {fileID: 1863090123}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -220058948930709544, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 11264bcecd80d4d93a9df096b726cd3d, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &1863090125
->>>>>>> Stashed changes
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_GameObject: {fileID: 1855544580}
   m_Enabled: 1
   serializedVersion: 4
@@ -8464,15 +8359,6 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 34f3fb90be7274b03a948833152a869b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-=======
-  m_GameObject: {fileID: 1863090123}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4853085873983550569, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
-  m_audioClip: {fileID: 8300000, guid: bcbdd598b3d724d2b801ff1bb92b21fe, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.5
->>>>>>> Stashed changes
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -9425,11 +9311,7 @@ PrefabInstance:
     - target: {fileID: 6830079826673740734, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
       propertyPath: sh
       value: 
-<<<<<<< Updated upstream
       objectReference: {fileID: 1855544581}
-=======
-      objectReference: {fileID: 0}
->>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61e39444aad1c6b4db4e1761a6cb1533, type: 3}
 --- !u!1 &6830079826703392760 stripped
