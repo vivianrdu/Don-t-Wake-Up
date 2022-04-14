@@ -70,10 +70,12 @@ public class GameManager : MonoBehaviour
         Enemy[] enemies_in_Scene;
         Nightlight[] nightlights;
         Crate[] crates;
+        Pebbles[] pebbles;
         //Scene scene = SceneManager.GetActiveScene();
         enemies_in_Scene = FindObjectsOfType<Enemy>();
         nightlights = FindObjectsOfType<Nightlight>();
         crates = FindObjectsOfType<Crate>();
+        pebbles = FindObjectsOfType<Pebbles>();
 
         // iterate root objects and do something
         for (int i = 0; i < enemies_in_Scene.Length; ++i)
@@ -91,13 +93,13 @@ public class GameManager : MonoBehaviour
                 Enemy_Sleeper enemy = (Enemy_Sleeper)enemies_in_Scene[i];
                 enemy.Reset_position();
             }
+            else if (enemies_in_Scene[i] is Enemy_Water)
+            {
+                Enemy_Water enemy = (Enemy_Water)enemies_in_Scene[i];
+                enemy.Reset_position();
+            }
 
-        }
 
-        for (int i = 0; i < crates.Length;i++)
-        {
-            Crate crate = crates[i];
-            crate.Reset_position();
         }
 
         for (int i = 0; i < nightlights.Length; ++i)
@@ -106,6 +108,18 @@ public class GameManager : MonoBehaviour
 
             Nightlight nightlight = nightlights[i];
             nightlight.Reset_position();
+        }
+
+        for (int i = 0; i < crates.Length;i++)
+        {
+            Crate crate = crates[i];
+            crate.Reset_position();
+        }
+
+        for (int i = 0; i < pebbles.Length; i++)
+        {
+            Pebbles pebble = pebbles[i];
+            pebble.Reset_position();
         }
     }
 
