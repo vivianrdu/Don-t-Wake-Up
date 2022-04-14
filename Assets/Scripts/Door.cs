@@ -59,7 +59,23 @@ public class Door : MonoBehaviour
 
     public void EnterDoor()
     {
+        GameObject img = GameObject.FindWithTag("Fade");
+
+        /** Player SpriteRenderer disabled (disappears) **/
+        player.GetComponent<SpriteRenderer>().enabled = false;
+
+        /** This occurs when screen is black:
+         * Player position moves to other door
+         * Player SpriteRenderer reenabled (appears)
+         * Player faces forward
+        **/
         player.position = otherSide.doorCoordinates;
+        player.GetComponent<SpriteRenderer>().enabled = true;
+        player.GetComponent<Player>().currDirection = Vector2.down;
+
+        /** Fades from black **/
+        StartCoroutine(img.GetComponent<Fade>().FadeFromBlack());
+
         canOpen = true;
         otherSide.canOpen = false;
     }
