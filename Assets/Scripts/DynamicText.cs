@@ -55,6 +55,10 @@ public class DynamicText : MonoBehaviour
                 {
                     StartCoroutine(FadeTextToZeroAlpha(1f, text));
                 }
+                else if ((Input.GetKeyDown(KeyCode.E)) && text.text == "press (e) to pick up key")
+                {
+                    StartCoroutine(FadeTextToZeroAlpha(1f, text));
+                }
             }
         }
     }
