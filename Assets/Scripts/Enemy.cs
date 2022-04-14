@@ -68,22 +68,21 @@ public class Enemy : MonoBehaviour
      * @param TargetObject: The object MovedObject is moving to
     */
     {
-        Debug.Log("New move function");
         if (TargetObject.position.x > MovedObject.transform.position.x)
         {
-            if (MovedObject.GetComponent("Enemy_Water.cs") != null)
+            if (MovedObject.name == "WaterEnemy")
             {
                 if (TargetObject.position.y > MovedObject.transform.position.y)
                 {
-                    direction = new Vector2(-1, 1);
+                    direction = new Vector2(1, 1);
                 }
                 else if (TargetObject.position.y < MovedObject.transform.position.y)
                 {
-                    direction = new Vector2(-1, -1);
+                    direction = new Vector2(1, -1);
                 }
                 else
                 {
-                    direction = new Vector2(-1, 0);
+                    direction = new Vector2(1, 0);
                 }
             }
             else
@@ -93,7 +92,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if (MovedObject.GetComponent("Enemy_Water.cs") != null)
+            if (MovedObject.name == "WaterEnemy")
             {
                 if (TargetObject.position.y > MovedObject.transform.position.y)
                 {
