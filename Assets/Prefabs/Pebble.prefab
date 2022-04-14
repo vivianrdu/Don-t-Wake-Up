@@ -98,15 +98,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 11
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 3
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!70 &3785669523118155111
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -135,5 +135,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37a51375121ffc40af1ccd65eb3c0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on_floor: 0
   throw_velocity: 5
-  enemy_game: {fileID: 0}
