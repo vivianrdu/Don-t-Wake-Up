@@ -35,15 +35,15 @@ public class Crate : MonoBehaviour
 
             if (playerCharacter.feetContact_ground)
             {
-                Debug.Log("feetground and crate move");
-                Debug.Log("playerRBvelocity: " + playerCharacter.returnPlayerRB().velocity);
+                //Debug.Log("feetground and crate move");
+                //Debug.Log("playerRBvelocity: " + playerCharacter.returnPlayerRB().velocity);
                 CrateRB.velocity = playerCharacter.returnPlayerRB().velocity;
             }
         }
         else
         {
             playerCharacter.movingCrate = false;
-            CrateRB.velocity = Vector2.zero;
+            CrateRB.velocity = new Vector2(0, CrateRB.velocity.y);
         }
     }
 
