@@ -36,12 +36,6 @@ public class Line_of_Sight_Enemy : MonoBehaviour
             GetComponentInParent<Enemy>().playerposition = null;
             
         }
-
-        if (collision.CompareTag("Pebble"))
-        {
-            GetComponentInParent<Enemy_Water>().pebble_detected = false;
-            GetComponentInParent<Enemy_Water>().pebble_position = null;
-        }
     }
 
 }
