@@ -24,6 +24,7 @@ public class Door : MonoBehaviour
     void Awake()
     {
         DoorRB = GetComponent<Rigidbody2D>();
+        player = FindObjectsOfType<Player>()[0].transform;
         doorCoordinates = transform.position;
     }
     
