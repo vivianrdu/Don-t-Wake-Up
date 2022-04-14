@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8507887553624861682}
   m_Layer: 7
   m_Name: DarkEnemy 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,9 +188,9 @@ GameObject:
   - component: {fileID: 8507887554019217497}
   - component: {fileID: 8507887554019217496}
   - component: {fileID: 4115688411014797125}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: LineOfSight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

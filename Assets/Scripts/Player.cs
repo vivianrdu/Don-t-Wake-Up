@@ -118,6 +118,8 @@ public class Player : MonoBehaviour
             }
             else
             {
+
+                Debug.Log("Calls move");
                 Move();
 
                 // jump
@@ -311,16 +313,16 @@ public class Player : MonoBehaviour
     public void contact_check()
     {
         LayerMask masky = LayerMask.GetMask("Ground", "Crate", "Water", "Enemy");
-        //Debug.Log("mask" + masky);
+        Debug.Log("mask" + masky);
 
-
+        
 
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, ground_distance, masky);
-
+        Debug.Log("ground hits: " + hit2D.collider != null);
         if (hit2D.collider != null && !jumping_routine_ongoing)
         {
 
-            //Debug.Log("ground hits: " + hit2D.collider.tag);
+            Debug.Log("ground hits: " + hit2D.collider.tag);
             if (hit2D.collider.CompareTag("Ground"))
             {
                 feetContact = true;
@@ -353,6 +355,9 @@ public class Player : MonoBehaviour
 
             //Debug.Log("raycast check hit2D: " + hit2D.collider.tag);
             //Debug.Log("raycast layerCheck: " + hit2D.collider.gameObject.layer);
+        }else if(jumping_routine_ongoing && PlayerRB.velocity.y < 0 && hit2D.collider != null) //only when player is falling can feetcontact reactivate
+        {
+            feetContact = true;
         }
         /*else
         {
@@ -517,7 +522,7 @@ public class Player : MonoBehaviour
             }
             yield return null;
         }
-        Debug.Log(feetContact);
+        //Debug.Log(feetContact);
         anim.SetBool("jumping", false);
         jumping_routine_ongoing = false;
 
