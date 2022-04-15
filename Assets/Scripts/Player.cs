@@ -294,7 +294,8 @@ public class Player : MonoBehaviour
             if (swimming_cond1 || swimming_cond2)
             {
                 Debug.Log("Playing swimming sound");
-                sh.PlayWalking(); // why is this walking
+                sh.PlaySwimming();
+
             }
 
 
