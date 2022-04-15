@@ -190,6 +190,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3844015392984823355, guid: 129d3c1b8bfe24052b37491dec55f382, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844015392984823355, guid: 129d3c1b8bfe24052b37491dec55f382, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 977517257
+      objectReference: {fileID: 0}
     - target: {fileID: 3844015392984823356, guid: 129d3c1b8bfe24052b37491dec55f382, type: 3}
       propertyPath: m_Name
       value: Key
@@ -198,8 +206,23 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 433568007}
+    - target: {fileID: 8434562323693208189, guid: 129d3c1b8bfe24052b37491dec55f382, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 129d3c1b8bfe24052b37491dec55f382, type: 3}
+--- !u!114 &295659474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8710801849890558500, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+  m_PrefabInstance: {fileID: 2265813680415676653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fc18174306301498e186fefbccef10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &313995976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +1994,7 @@ PrefabInstance:
     - target: {fileID: 5394389441659319049, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
       propertyPath: otherSide
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 295659474}
     - target: {fileID: 5394389441659319060, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
       propertyPath: m_Name
       value: One-Way Door (Main Room)
@@ -2196,7 +2219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &936243357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6386,6 +6409,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1500887913004386383, guid: 180d4415814074ec0a82b0ca6762b530, type: 3}
   m_PrefabInstance: {fileID: 1500887912308786773}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2082490182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8710801849890558500, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+  m_PrefabInstance: {fileID: 1331087454}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fc18174306301498e186fefbccef10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1500887912308786773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6584,7 +6618,7 @@ PrefabInstance:
     - target: {fileID: 5394389441659319049, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
       propertyPath: otherSide
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2082490182}
     - target: {fileID: 5394389441659319060, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
       propertyPath: m_Name
       value: One-Way Door (Start Room)
