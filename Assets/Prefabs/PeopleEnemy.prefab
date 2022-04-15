@@ -228,9 +228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerposition: {fileID: 0}
   player_in_Game: {fileID: 0}
-  walking_speed: 0
-  attack_speed: 0
-  anim: {fileID: 0}
+  walking_speed: 4
+  attack_speed: 4
+  anim: {fileID: 1500887913004386382}
   audioManager: {fileID: 0}
   respawn_anchor: {x: 0, y: 0}
   patrol_radius: 0
