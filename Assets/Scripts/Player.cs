@@ -317,7 +317,7 @@ public class Player : MonoBehaviour
 
         
 
-        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, ground_distance, masky);
+        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 3, masky);
         Debug.Log("ground hits: " + hit2D.collider != null);
         if (hit2D.collider != null && !jumping_routine_ongoing)
         {
@@ -343,22 +343,26 @@ public class Player : MonoBehaviour
                 feetContact_water = true;
                 feetContact_ground = false;
             }
+            
 
-            else
-            {
-                feetContact = false;
-                feetContact_water = false;
-                feetContact_ground = false;
-            }
+
 
 
 
             //Debug.Log("raycast check hit2D: " + hit2D.collider.tag);
             //Debug.Log("raycast layerCheck: " + hit2D.collider.gameObject.layer);
-        }else if(jumping_routine_ongoing && PlayerRB.velocity.y < 0 && hit2D.collider != null) //only when player is falling can feetcontact reactivate
+        }
+        else if(jumping_routine_ongoing && PlayerRB.velocity.y < 0 && hit2D.collider != null) //only when player is falling can feetcontact reactivate
         {
             feetContact = true;
         }
+        else
+        {
+            feetContact = false;
+            feetContact_water = false;
+            feetContact_ground = false;
+        }
+
         /*else
         {
             Debug.Log("raycast check hit2D: null");
@@ -581,7 +585,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        //feetContact = true;
+        feetContact = true;
         /*
         if(collision.gameObject.CompareTag("Crate") || collision.gameObject.CompareTag("Enemy"))
 
