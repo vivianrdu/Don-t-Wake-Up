@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 1500887913004386371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 36.7, y: 23.9, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1500887912832409700}
   m_Father: {fileID: 0}
@@ -182,7 +182,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008394733, y: -0.014690638}
+  m_Offset: {x: 0.021828927, y: -0.014690638}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -193,7 +193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31260762, y: 1.2506187}
+  m_Size: {x: 0.4546203, y: 1.2506187}
   m_EdgeRadius: 0
 --- !u!95 &1500887913004386382
 Animator:
@@ -228,10 +228,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerposition: {fileID: 0}
   player_in_Game: {fileID: 0}
-  walking_speed: 4
+  walking_speed: 2
   attack_speed: 4
   anim: {fileID: 1500887913004386382}
   audioManager: {fileID: 0}
   respawn_anchor: {x: 0, y: 0}
-  patrol_radius: 0
-  patrol_stopping_randoness: 0
+  patrol_radius: 4
+  patrol_stopping_randoness: 10

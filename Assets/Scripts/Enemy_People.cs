@@ -52,6 +52,7 @@ public class Enemy_People : Enemy
         if (playerposition == null || player_in_Game == null)
         {
             anim.SetBool("playerDetected", false);
+            anim.SetBool("Patrolling", true);
             patrol();
 
 
@@ -64,12 +65,13 @@ public class Enemy_People : Enemy
             {
                 //Debug.Log("player is hidden is called");
                 anim.SetBool("playerDetected", false);
+                anim.SetBool("Patrolling", true);
                 patrol();
             }
 
-            //not currently stunned
             else
             {
+                anim.SetBool("Patrolling", false);
                 anim.SetBool("playerDetected", true); //maybe have to move this for animation
                 Attack();
                 Move(DEnemyRB, playerposition);
@@ -110,7 +112,7 @@ public class Enemy_People : Enemy
         {
             direction = new Vector2(0, 0);
             DEnemyRB.velocity = direction * walking_speed;
-
+            anim.SetBool("Patrolling", false);
             return;
         }
 
