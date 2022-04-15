@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound sound in sounds)
         {
-            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source = gameObject.GetComponent<AudioSource>();
 
             sound.source.clip = sound.clip;
 
@@ -60,6 +60,38 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void Update()
+    {
+        foreach (Sound sound in sounds)
+        {
+            sound.source = gameObject.GetComponent<AudioSource>();
+
+            sound.source.clip = sound.clip;
+
+            if (sound.group == "Music")
+            {
+                Debug.Log("Play Music");
+                sound.source.outputAudioMixerGroup = musicGroup;
+                sound.source.playOnAwake = true;
+                sound.source.loop = true;
+            }
+            else if (sound.group == "Foley")
+            {
+                sound.source.loop = true;
+                sound.source.outputAudioMixerGroup = foleyGroup;
+            }
+            else if (sound.group == "SFX")
+            {
+                sound.source.outputAudioMixerGroup = sfxGroup;
+            }
+            else
+            {
+                sound.source.outputAudioMixerGroup = foleyGroup;
+            }
+
+        }
     }
 
     void OnEnable()
