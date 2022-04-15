@@ -128,7 +128,6 @@ public class Player : MonoBehaviour
                     sh.StopWalking();
                     sh.StopRunning();
                     sh.StopSwimming();
-                    sh.StopDragging();
 
                     //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
                     jumping();
@@ -173,7 +172,6 @@ public class Player : MonoBehaviour
         Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            sh.PlayDragging();
 
             move_setup("walking");
             //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
@@ -195,7 +193,6 @@ public class Player : MonoBehaviour
 
             sh.StopRunning();
             sh.StopSwimming();
-            sh.StopDragging();
 
 
 
@@ -208,7 +205,6 @@ public class Player : MonoBehaviour
 
             sh.StopWalking();
             sh.StopSwimming();
-            sh.StopDragging();
 
 
             bool running_cond3 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
@@ -250,7 +246,6 @@ public class Player : MonoBehaviour
 
             sh.StopRunning();
             sh.StopSwimming();
-            sh.StopDragging();
 
             //Debug.Log("Get to walking");
             //Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
@@ -274,29 +269,25 @@ public class Player : MonoBehaviour
             sh.StopWalking();
             sh.StopRunning();
             sh.StopSwimming();
-            sh.StopDragging();
-
-
         }
 
         if (feetContact_water)
         {
             sh.StopWalking();
-
             sh.StopRunning();
-            sh.StopDragging();
 
-            bool swimming_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
-            bool swimming_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
+            sh.PlaySwimming();
+            //bool swimming_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
+            //bool swimming_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
 
-            //Debug.Log("Get swimming sound");
+            ////Debug.Log("Get swimming sound");
 
-            if (swimming_cond1 || swimming_cond2)
-            {
-                Debug.Log("Playing swimming sound");
-                sh.PlaySwimming();
+            //if (swimming_cond1 || swimming_cond2)
+            //{
+            //    Debug.Log("Playing swimming sound");
+            //    sh.PlaySwimming();
 
-            }
+            //}
 
 
             move_setup("swimming");
