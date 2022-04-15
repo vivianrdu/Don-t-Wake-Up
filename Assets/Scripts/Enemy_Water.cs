@@ -135,6 +135,7 @@ public class Enemy_Water : Enemy
         transform.position = respawn_anchor;
         //reset
         isAttacking = false;
+        pebble_detected = false;
         anim.SetBool("playerDetected", false);
     }
     #endregion
