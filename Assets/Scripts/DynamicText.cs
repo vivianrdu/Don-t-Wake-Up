@@ -51,6 +51,14 @@ public class DynamicText : MonoBehaviour
                 {
                     StartCoroutine(FadeTextToZeroAlpha(1f, text));
                 }
+                else if ((Input.GetKeyDown(KeyCode.F)) && text.text == "press (e) to pick up pebble\npress (f) to throw pebble")
+                {
+                    StartCoroutine(FadeTextToZeroAlpha(1f, text));
+                }
+                else if ((Input.GetKeyDown(KeyCode.E)) && text.text == "press (e) to pick up key")
+                {
+                    StartCoroutine(FadeTextToZeroAlpha(1f, text));
+                }
             }
         }
     }

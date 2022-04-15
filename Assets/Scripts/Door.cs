@@ -24,6 +24,7 @@ public class Door : MonoBehaviour
     void Awake()
     {
         DoorRB = GetComponent<Rigidbody2D>();
+        player = FindObjectsOfType<Player>()[0].transform;
         doorCoordinates = transform.position;
     }
     
@@ -47,6 +48,11 @@ public class Door : MonoBehaviour
         {
             if (isKeyDoor && player.GetComponent<Player>().keys > 0)
             {
+                if (transform.Find("Lock") != null)
+                {
+                    Transform doorLock = transform.Find("Lock");
+                    doorLock.GetComponent<SpriteRenderer>().enabled = false;
+                }
                 EnterDoor();
             }
             else if (!isKeyDoor)
@@ -58,7 +64,23 @@ public class Door : MonoBehaviour
 
     public void EnterDoor()
     {
+        GameObject img = GameObject.FindWithTag("Fade");
+
+        /** Player SpriteRenderer disabled (disappears) **/
+        player.GetComponent<SpriteRenderer>().enabled = false;
+
+        /** This occurs when screen is black:
+         * Player position moves to other door
+         * Player SpriteRenderer reenabled (appears)
+         * Player faces forward
+        **/
         player.position = otherSide.doorCoordinates;
+        player.GetComponent<SpriteRenderer>().enabled = true;
+        player.GetComponent<Player>().currDirection = Vector2.down;
+
+        /** Fades from black **/
+        StartCoroutine(img.GetComponent<Fade>().FadeFromBlack());
+
         canOpen = true;
         otherSide.canOpen = false;
     }

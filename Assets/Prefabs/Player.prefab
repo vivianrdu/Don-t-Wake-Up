@@ -160,6 +160,7 @@ MonoBehaviour:
   currDirection: {x: 0, y: 0}
   keys: 0
   sh: {fileID: 0}
+  ground_distance: 0.9
 --- !u!61 &6830079826673740733
 BoxCollider2D:
   m_ObjectHideFlags: 0
