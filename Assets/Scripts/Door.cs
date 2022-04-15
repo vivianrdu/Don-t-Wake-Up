@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-
     #region Targeting_variables
     public Transform player;
     public Door otherSide;
