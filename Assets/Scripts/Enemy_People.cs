@@ -159,6 +159,20 @@ public class Enemy_People : Enemy
         {
             Physics2D.IgnoreCollision(collision.transform.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
+        // Change orientation when crashing into the wall
+        if (collision.gameObject.tag == "Wall" && !anim.GetBool("playerDetected"))
+        {
+            Debug.Log("Change orientation");
+            float orientation = (transform.position.x - respawn_anchor.x);
+            if (orientation < 0)
+            {
+                currdirection_of_patrol = 1;
+            }
+            else
+            {
+                currdirection_of_patrol = -1;
+            }
+        }
     }
     #endregion
 }

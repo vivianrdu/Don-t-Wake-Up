@@ -233,5 +233,5 @@ MonoBehaviour:
   anim: {fileID: 1500887913004386382}
   audioManager: {fileID: 0}
   respawn_anchor: {x: 0, y: 0}
-  patrol_radius: 4
+  patrol_radius: 10
   patrol_stopping_randoness: 10

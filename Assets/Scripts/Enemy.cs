@@ -179,8 +179,8 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log(Vector2.Distance(playerposition.position, transform.position));
         if (transform.name == "PeopleEnemy" && isAttacking == false && (
-                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 6) ||
-                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 6)))
+                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 3) ||
+                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 3)))
         {
             Debug.Log("PeopleEnemy Attack");
             StartCoroutine(Attack_routine());
