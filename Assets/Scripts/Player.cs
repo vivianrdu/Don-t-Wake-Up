@@ -324,7 +324,7 @@ public class Player : MonoBehaviour
             if (swimming_cond1 || swimming_cond2)
             {
                 Debug.Log("Playing swimming sound");
-                sh.PlayWalking();
+                sh.PlaySwimming();
             }
 
             anim.SetBool("walking", false);
