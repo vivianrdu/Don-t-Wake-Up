@@ -1909,7 +1909,7 @@ Tilemap:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 14
       m_IsLooping: 1
   - first: {x: 6, y: -18, z: 0}
@@ -2011,7 +2011,7 @@ Tilemap:
       - {fileID: 4955556114347793615, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: -2131355921969782192, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: 2652182241909924386, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 8, y: -9, z: 0}
@@ -8858,27 +8858,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2000263305 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3651259560115368320, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
-  m_PrefabInstance: {fileID: 3651259561665998911}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &2000263306
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000263305}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0000009536743, y: 0}
-  serializedVersion: 2
-  m_Radius: 4.981675
 --- !u!1 &2026068322
 GameObject:
   m_ObjectHideFlags: 0
@@ -9072,10 +9051,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1076227179}
     m_Modifications:
-    - target: {fileID: 3651259560115368320, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3651259561510494914, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -9127,10 +9102,6 @@ PrefabInstance:
     - target: {fileID: 3651259561510494919, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
       propertyPath: m_Name
       value: Checkpoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 3651259561510494919, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
