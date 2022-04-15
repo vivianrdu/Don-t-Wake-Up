@@ -68,15 +68,51 @@ public class Enemy : MonoBehaviour
      * @param TargetObject: The object MovedObject is moving to
     */
     {
-        Debug.Log("New move function");
         if (TargetObject.position.x > MovedObject.transform.position.x)
         {
-            direction = new Vector2(1, 0);
+            if (MovedObject.name == "WaterEnemy")
+            {
+                if (TargetObject.position.y > MovedObject.transform.position.y)
+                {
+                    direction = new Vector2(1, 1);
+                }
+                else if (TargetObject.position.y < MovedObject.transform.position.y)
+                {
+                    direction = new Vector2(1, -1);
+                }
+                else
+                {
+                    direction = new Vector2(1, 0);
+                }
+            }
+            else
+            {
+                direction = new Vector2(1, 0);
+            } 
         }
         else
         {
-            direction = new Vector2(-1, 0);
+            if (MovedObject.name == "WaterEnemy")
+            {
+                if (TargetObject.position.y > MovedObject.transform.position.y)
+                {
+                    direction = new Vector2(-1, 1);
+                }
+                else if (TargetObject.position.y < MovedObject.transform.position.y)
+                {
+                    direction = new Vector2(-1, -1);
+                }
+                else
+                {
+                    direction = new Vector2(-1, 0);
+                }
+            }
+            else
+            {
+                direction = new Vector2(-1, 0);
+            }
         }
+
         MovedObject.velocity = direction * attack_speed;
         anim.SetFloat("dirX", direction.x);
     }
@@ -94,6 +130,13 @@ public class Enemy : MonoBehaviour
     {
         //transform.position = respawn_anchor;
         //reset
+
+    }
+
+
+    public void darkness_Island_reset()
+    {
+        transform.position = respawn_anchor;
 
     }
 

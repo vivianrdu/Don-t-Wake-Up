@@ -157,8 +157,8 @@ public class Enemy_Dark : Enemy
         anim.SetBool("Stunned", false);
     }
 
-    
 
+    
     #endregion
 
     #region Triggers and Collisions

@@ -10,6 +10,9 @@ public class darkness_Island : MonoBehaviour
     //private BoxCollider2D second_collider;
     public Light2D light_global;
     private float current_intensity;
+
+   
+    private List<Enemy> enemies;
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,7 +32,7 @@ public class darkness_Island : MonoBehaviour
             second_collider = collidersObj[0];
         }
        */
-
+        enemies = new List<Enemy>();
     }
 
     // Update is called once per frame
@@ -40,14 +43,25 @@ public class darkness_Island : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+
+        if (collision.CompareTag("Enemy"))
+        {
+           enemies.Add(collision.GetComponent<Enemy>());
+
+        }
+
+        if (collision.CompareTag("Player"))
         {
 
             StopAllCoroutines();
             current_intensity = light_global.intensity;
-            
+
             StartCoroutine(change_global_light(true));
         }
+
+        
+
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -57,6 +71,16 @@ public class darkness_Island : MonoBehaviour
             StopAllCoroutines();
             current_intensity = light_global.intensity;
             StartCoroutine(change_global_light(false));
+
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.darkness_Island_reset();
+
+            }
+        }
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<Enemy>().darkness_Island_reset();
         }
     }
 
