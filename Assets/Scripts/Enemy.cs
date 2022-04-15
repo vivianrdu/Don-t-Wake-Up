@@ -133,6 +133,13 @@ public class Enemy : MonoBehaviour
 
     }
 
+
+    public void darkness_Island_reset()
+    {
+        transform.position = respawn_anchor;
+
+    }
+
     #endregion
 
     #region Triggers and Collisions
