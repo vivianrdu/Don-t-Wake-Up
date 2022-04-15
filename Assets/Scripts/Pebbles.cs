@@ -102,7 +102,9 @@ public class Pebbles : MonoBehaviour
     public void Reset_position()
     {
         transform.position = respawn_anchor;
-
+        player_picked_up = false;
+        touch_water = false;
+        on_floor = false;
     }
     #endregion
 
