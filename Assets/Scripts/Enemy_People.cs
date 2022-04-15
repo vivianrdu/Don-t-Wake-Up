@@ -153,6 +153,12 @@ public class Enemy_People : Enemy
     #endregion
 
     #region Triggers and Collisions
-    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && player_in_Game.isHidden)
+        {
+            Physics2D.IgnoreCollision(collision.transform.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+    }
     #endregion
 }
