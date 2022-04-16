@@ -51,7 +51,12 @@ public class Door : MonoBehaviour
                 {
                     Transform doorLock = transform.Find("Lock");
                     doorLock.GetComponent<SpriteRenderer>().enabled = false;
+                    player.GetComponent<Player>().keys -= 1;
                 }
+                EnterDoor();
+            } 
+            else if (transform.Find("Lock") != null && transform.Find("Lock").GetComponent<SpriteRenderer>().enabled == false)
+            {
                 EnterDoor();
             }
             else if (!isKeyDoor)
