@@ -190,22 +190,23 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             sh.StopWalking();
-
             sh.StopRunning();
             sh.StopSwimming();
-
-
 
             move_setup("crouching");
         }
         else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
         {
-
-
-
-            sh.StopWalking();
-            sh.StopSwimming();
-
+            if (feetContact_water)
+            {
+                sh.PlaySwimming();
+            }
+            else
+            {
+                sh.StopWalking();
+                sh.StopSwimming();
+            }
+           
 
             bool running_cond3 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
             bool running_cond4 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
@@ -240,12 +241,16 @@ public class Player : MonoBehaviour
 
         else if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
         {
-
-
-
-
-            sh.StopRunning();
-            sh.StopSwimming();
+            if (feetContact_water)
+            {
+                sh.PlaySwimming();
+            }
+            else
+            {
+                sh.StopRunning();
+                sh.StopSwimming();
+            }
+            
 
             //Debug.Log("Get to walking");
             //Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
@@ -276,19 +281,7 @@ public class Player : MonoBehaviour
             Debug.Log("feet contact water");
             sh.StopWalking();
             sh.StopRunning();
-
-            Debug.Log("calls PlaySwimming");
-            sh.PlaySwimming();
-            //bool swimming_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
-            //bool swimming_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
-
-            ////Debug.Log("Get swimming sound");
-            //if (swimming_cond1 || swimming_cond2)
-            //{
-            //    Debug.Log("Playing swimming sound");
-            //    sh.PlaySwimming();
-            //}
-
+            sh.PlayRunning();
 
             move_setup("swimming");
 
