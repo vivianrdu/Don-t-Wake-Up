@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1173226376}
   - component: {fileID: 1173226377}
   - component: {fileID: 1173226378}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Line of Sight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 1316620045646451252}
   - component: {fileID: 1316620045646451253}
   - component: {fileID: 1081789524}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Painting
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -177,3 +177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799f57739f1494243a487be43038f0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerposition: {fileID: 0}
+  player_in_Game: {fileID: 0}
+  walking_speed: 0
+  attack_speed: 0
+  anim: {fileID: 1316620045646451253}
+  audioManager: {fileID: 0}
+  respawn_anchor: {x: 0, y: 0}
+  nearbyEnemies:
+  - {fileID: 0}

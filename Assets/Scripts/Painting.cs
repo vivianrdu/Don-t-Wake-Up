@@ -13,6 +13,7 @@ public class Painting : Enemy
     {
         Startup();
         anim.SetBool("playerDetected", false);
+        anim.SetBool("Idle", true);
 
     }
 
@@ -30,12 +31,14 @@ public class Painting : Enemy
             if (player_in_Game.isHidden)
             {
                 anim.SetBool("playerDetected", false);
+                anim.SetBool("Idle", true);
             }
             else
             {
                 if (player_in_Game.isRunning)
                 {
                     anim.SetBool("playerDetected", true);
+                    anim.SetBool("Idle", false);
                     WarnNearbyEnemies();
                 }
             }
