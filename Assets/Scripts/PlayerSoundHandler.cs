@@ -22,7 +22,7 @@ public class PlayerSoundHandler : MonoBehaviour
     #region Walking_functions
     public void PlayWalking()
     {
-        if (!walking.isPlaying & !dragging.isPlaying)
+        if (!walking.isPlaying)
         {
             //Debug.Log("Play walking sound");
             walking.Play(0);
