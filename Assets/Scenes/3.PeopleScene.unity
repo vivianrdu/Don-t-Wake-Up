@@ -9428,6 +9428,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dresser
       objectReference: {fileID: 0}
+    - target: {fileID: 2638446308777677167, guid: b373017afb4454b26b8c455c7290bbbf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b373017afb4454b26b8c455c7290bbbf, type: 3}
 --- !u!1001 &3088104790408631653
