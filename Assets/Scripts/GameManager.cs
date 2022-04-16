@@ -100,7 +100,11 @@ public class GameManager : MonoBehaviour
                 Enemy_Water enemy = (Enemy_Water)enemies_in_Scene[i];
                 enemy.Reset_position();
             }
-
+            else if (enemies_in_Scene[i] is Enemy_People)
+            {
+                Enemy_People enemy = (Enemy_People)enemies_in_Scene[i];
+                enemy.Reset_position();
+            }
 
         }
 
