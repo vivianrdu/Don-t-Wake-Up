@@ -28,6 +28,7 @@ public class Nightlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>().transform;
         /** Nightlight itself has a Light2D, this ensures the glow Light2D is the fire **/
         Light2D[] lights = GetComponentsInChildren<Light2D>();
         foreach (Light2D li in lights)
@@ -74,10 +75,12 @@ public class Nightlight : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         if (collision.gameObject.tag == "Player")
         {
             Physics2D.IgnoreCollision(collision.transform.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
+        */
     }
 
     private void PickedUp()
