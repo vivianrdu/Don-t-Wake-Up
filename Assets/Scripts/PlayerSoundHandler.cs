@@ -42,7 +42,7 @@ public class PlayerSoundHandler : MonoBehaviour
     {
         if (!running.isPlaying)
         {
-            Debug.Log("Play running sound");
+            //Debug.Log("Play running sound");
             running.Play(0);
         }
     }
@@ -51,7 +51,7 @@ public class PlayerSoundHandler : MonoBehaviour
     {
         if (running.isPlaying)
         {
-            Debug.Log("Stop running sound");
+            //Debug.Log("Stop running sound");
             running.Stop();
         }
     }
