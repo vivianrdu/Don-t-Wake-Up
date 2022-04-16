@@ -46,12 +46,11 @@ public class Nightlight : MonoBehaviour
 
     void Update()
     {
-        float distFromPlayer = Vector2.Distance(player.position, transform.position);
-
         if (player == null)
         {
             return;
         }
+        float distFromPlayer = Vector2.Distance(player.position, transform.position);
         if (timerIsRunning)
         {
             if (player.GetComponent<Player>().currDirection == Vector2.right)
@@ -78,7 +77,7 @@ public class Nightlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(collision.transform.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
     }
 

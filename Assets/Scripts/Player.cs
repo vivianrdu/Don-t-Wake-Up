@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
             else
             {
 
-                Debug.Log("Calls move");
+                //Debug.Log("Calls move");
                 Move();
 
                 // jump
@@ -128,7 +128,6 @@ public class Player : MonoBehaviour
                     sh.StopWalking();
                     sh.StopRunning();
                     sh.StopSwimming();
-                    sh.StopDragging();
 
                     //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
                     jumping();
@@ -164,16 +163,15 @@ public class Player : MonoBehaviour
 
     private void CrateMove()
     {
-        Debug.Log("Call CrateMove");
+        //Debug.Log("Call CrateMove");
 
         sh.StopWalking();
         sh.StopRunning();
         sh.StopSwimming();
 
-        Debug.Log("moving crate");
+        //Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            sh.PlayDragging();
 
             move_setup("walking");
             //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
@@ -195,7 +193,6 @@ public class Player : MonoBehaviour
 
             sh.StopRunning();
             sh.StopSwimming();
-            sh.StopDragging();
 
 
 
@@ -208,7 +205,6 @@ public class Player : MonoBehaviour
 
             sh.StopWalking();
             sh.StopSwimming();
-            sh.StopDragging();
 
 
             bool running_cond3 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
@@ -250,7 +246,6 @@ public class Player : MonoBehaviour
 
             sh.StopRunning();
             sh.StopSwimming();
-            sh.StopDragging();
 
             //Debug.Log("Get to walking");
             //Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
@@ -274,29 +269,23 @@ public class Player : MonoBehaviour
             sh.StopWalking();
             sh.StopRunning();
             sh.StopSwimming();
-            sh.StopDragging();
-
-
         }
 
         if (feetContact_water)
         {
             sh.StopWalking();
-
             sh.StopRunning();
-            sh.StopDragging();
 
-            bool swimming_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
-            bool swimming_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
+            sh.PlaySwimming();
+            //bool swimming_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
+            //bool swimming_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
 
-            //Debug.Log("Get swimming sound");
-
-            if (swimming_cond1 || swimming_cond2)
-            {
-                Debug.Log("Playing swimming sound");
-                sh.PlaySwimming();
-
-            }
+            ////Debug.Log("Get swimming sound");
+            //if (swimming_cond1 || swimming_cond2)
+            //{
+            //    Debug.Log("Playing swimming sound");
+            //    sh.PlaySwimming();
+            //}
 
 
             move_setup("swimming");
@@ -314,12 +303,12 @@ public class Player : MonoBehaviour
     public void contact_check()
     {
         LayerMask masky = LayerMask.GetMask("Ground", "Crate", "Water", "Enemy");
-        Debug.Log("mask" + masky);
+        //Debug.Log("mask" + masky);
 
         
 
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 3, masky);
-        Debug.Log("ground hits: " + hit2D.collider != null);
+        //Debug.Log("ground hits: " + hit2D.collider != null);
         if (hit2D.collider != null && !jumping_routine_ongoing)
         {
 
