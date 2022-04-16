@@ -13,11 +13,15 @@ public class Key : MonoBehaviour
     public float radius;
     #endregion
 
+    #region Respawn_variables
+    private Vector2 respawn_anchor;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-
+        respawn_anchor = transform.position;
     }
 
     // Update is called once per frame
@@ -39,7 +43,8 @@ public class Key : MonoBehaviour
     void Grab()
     {
         player.GetComponent<Player>().keys += 1;
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        transform.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -48,5 +53,13 @@ public class Key : MonoBehaviour
         {
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
+    }
+
+    public void Reset_position()
+    {
+        transform.position = respawn_anchor;
+        transform.GetComponent<SpriteRenderer>().enabled = true;
+        //reset
+
     }
 }
