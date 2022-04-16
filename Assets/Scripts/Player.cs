@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
             else
             {
 
-                Debug.Log("Calls move");
+                //Debug.Log("Calls move");
                 Move();
 
                 // jump
@@ -163,13 +163,13 @@ public class Player : MonoBehaviour
 
     private void CrateMove()
     {
-        Debug.Log("Call CrateMove");
+        //Debug.Log("Call CrateMove");
 
         sh.StopWalking();
         sh.StopRunning();
         sh.StopSwimming();
 
-        Debug.Log("moving crate");
+        //Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
 
@@ -281,12 +281,10 @@ public class Player : MonoBehaviour
             //bool swimming_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
 
             ////Debug.Log("Get swimming sound");
-
             //if (swimming_cond1 || swimming_cond2)
             //{
             //    Debug.Log("Playing swimming sound");
             //    sh.PlaySwimming();
-
             //}
 
 
@@ -305,12 +303,12 @@ public class Player : MonoBehaviour
     public void contact_check()
     {
         LayerMask masky = LayerMask.GetMask("Ground", "Crate", "Water", "Enemy");
-        Debug.Log("mask" + masky);
+        //Debug.Log("mask" + masky);
 
         
 
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 3, masky);
-        Debug.Log("ground hits: " + hit2D.collider != null);
+        //Debug.Log("ground hits: " + hit2D.collider != null);
         if (hit2D.collider != null && !jumping_routine_ongoing)
         {
 

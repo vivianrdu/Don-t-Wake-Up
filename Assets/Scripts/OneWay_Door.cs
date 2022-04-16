@@ -6,11 +6,12 @@ public class OneWay_Door : Door //this is the scipt for the EXIT of the one way 
 {
 
     #region Opening_Door_variables
-    bool canOpen = false;
+    //bool canOpen = false; not supported
     #endregion
 
     void Update()
     {
+        canOpen = false;
         return;
     }
 
