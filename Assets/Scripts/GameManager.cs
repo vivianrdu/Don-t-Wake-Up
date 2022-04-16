@@ -71,11 +71,13 @@ public class GameManager : MonoBehaviour
         Nightlight[] nightlights;
         Crate[] crates;
         Pebbles[] pebbles;
+        Key[] keys;
         //Scene scene = SceneManager.GetActiveScene();
         enemies_in_Scene = FindObjectsOfType<Enemy>();
         nightlights = FindObjectsOfType<Nightlight>();
         crates = FindObjectsOfType<Crate>();
         pebbles = FindObjectsOfType<Pebbles>();
+        keys = FindObjectsOfType<Key>();
 
         // iterate root objects and do something
         for (int i = 0; i < enemies_in_Scene.Length; ++i)
@@ -120,6 +122,12 @@ public class GameManager : MonoBehaviour
         {
             Pebbles pebble = pebbles[i];
             pebble.Reset_position();
+        }
+
+        for (int i = 0; i < keys.Length; i++)
+        {
+            Key key = keys[i];
+            key.Reset_position();
         }
     }
 
