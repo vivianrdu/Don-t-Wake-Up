@@ -21,6 +21,7 @@ public class Key : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        player = FindObjectsOfType<Player>()[0].transform;
         respawn_anchor = transform.position;
     }
 
