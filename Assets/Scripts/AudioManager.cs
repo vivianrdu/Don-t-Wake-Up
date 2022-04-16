@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound sound in sounds)
         {
-            sound.source = gameObject.GetComponent<AudioSource>();
+            sound.source = gameObject.AddComponent<AudioSource>();
 
             sound.source.clip = sound.clip;
 
@@ -66,9 +66,9 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound sound in sounds)
         {
-            sound.source = gameObject.GetComponent<AudioSource>();
+            //sound.source = gameObject.GetComponent<AudioSource>();
 
-            sound.source.clip = sound.clip;
+            //sound.source.clip = sound.clip;
 
             if (sound.group == "Music")
             {
@@ -141,7 +141,7 @@ public class AudioManager : MonoBehaviour
         {
             return;
         }
-        s.source.PlayOneShot(s.source.clip);
+        s.source.Play();
     }
 
     public void PlayMusic(string name)
@@ -160,7 +160,7 @@ public class AudioManager : MonoBehaviour
         float timeToFade = 1.25f;
         float timeElapsed = 0;
 
-        newSource.PlayOneShot(newSource.clip);
+        newSource.Play();
 
         while (timeElapsed < timeToFade)
         {
@@ -189,7 +189,7 @@ public class AudioManager : MonoBehaviour
         float timeToFade = 1.25f;
         float timeElapsed = 0;
 
-        source2.PlayOneShot(source2.clip);
+        source2.Play();
 
         while (timeElapsed < timeToFade)
         {

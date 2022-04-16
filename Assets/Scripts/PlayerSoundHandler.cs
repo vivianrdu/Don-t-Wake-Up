@@ -62,7 +62,7 @@ public class PlayerSoundHandler : MonoBehaviour
     {
         if (!swimming.isPlaying)
         {
-            //Debug.Log("Play swimming sound");
+            Debug.Log("SWIMMING");
             swimming.Play(0);
         }
     }
