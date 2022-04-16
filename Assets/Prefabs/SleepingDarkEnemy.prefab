@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 892183942407765028}
   - component: {fileID: 7371221786264440771}
   - component: {fileID: 892183942407765027}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SleepingDarkEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

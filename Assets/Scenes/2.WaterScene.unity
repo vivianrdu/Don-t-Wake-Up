@@ -2217,9 +2217,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1388799215}
     m_Modifications:
+    - target: {fileID: 9060333780382992068, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060333780382992068, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 9060333780679156529, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
       propertyPath: m_Name
       value: WaterEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060333780679156529, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060333780679156529, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 9060333780679156535, guid: 5ef4663d38c1f4909a7a6da03da42c49, type: 3}
       propertyPath: m_RootOrder
@@ -2810,7 +2826,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7786459, y: 1}
+    m_SensorSize: {x: 2.352381, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7989,7 +8005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1384468349
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10616,11 +10632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3785669523118155108, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -95.256096
+      value: -100.29
       objectReference: {fileID: 0}
     - target: {fileID: 3785669523118155108, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12580872
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3785669523118155108, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
       propertyPath: m_LocalPosition.z
