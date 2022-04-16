@@ -47,11 +47,14 @@ public class Painting : Enemy
 
     void WarnNearbyEnemies()
     {
-        for (int i = 0; i < nearbyEnemies.Length; ++i)
+        if (nearbyEnemies != null)
         {
+            for (int i = 0; i < nearbyEnemies.Length; ++i)
+            {
 
-            Enemy_People person = nearbyEnemies[i];
-            person.change_orientation_to_painting(transform);
+                Enemy_People person = nearbyEnemies[i];
+                person.change_orientation_to_painting(transform);
+            }
         }
     }
 }
