@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9060333780382992089}
   m_Layer: 0
   m_Name: Line of Sight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 9060333780679156532}
   - component: {fileID: 9060333780679156533}
   - component: {fileID: 9060333780679156555}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WaterEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

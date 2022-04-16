@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float crouching_speed;
     float x_input;
     float y_input;
+    public bool change_in_direction;
 
 
     // bool to detect whether Player's feet is in contact with a surface
@@ -41,6 +42,8 @@ public class Player : MonoBehaviour
     #region Animation_components
     SpriteRenderer spritePlayer;
     Animator anim;
+
+    private string current_animation;
     #endregion
 
     #region Physics_components
@@ -68,6 +71,7 @@ public class Player : MonoBehaviour
     // Awake is called before the first frame update
     void Awake()
     {
+        current_animation = "start";
         PlayerRB = GetComponent<Rigidbody2D>();
         playercollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -84,26 +88,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // check if movement keys are being pressed WASD + Shift
-        /*
-        if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            x_input = 1;
-        }else if(Input.GetAxisRaw("Horizontal") < 0)
-        {
-            x_input = -1;
-        }
-        else
-        {
-            x_input = Input.GetAxisRaw("Horizontal");
-        }
-        */
-
-
-
-
-
-        //feetContact_ground = (Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("ground")));
+       
         contact_check();
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
@@ -187,42 +172,53 @@ public class Player : MonoBehaviour
     private void Move()
     {
 
+        
+       
+
+
         if (Input.GetKey(KeyCode.S))
         {
+
+            PlayerRB.velocity = new Vector2(x_input * crouching_speed, PlayerRB.velocity.y);
+            if (feetContact_water)
+            {
+                
+
+
+                move_setup("swimming");
+
+            }
+            else
+            {
+                /*
             sh.StopWalking();
             sh.StopRunning();
             sh.StopSwimming();
 
-            move_setup("crouching");
+            */
+                move_setup("crouching");
+
+
+            }
+
+
+            
         }
         else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
         {
+            PlayerRB.velocity = new Vector2(x_input * running_speed, PlayerRB.velocity.y);
             if (feetContact_water)
             {
-                sh.PlaySwimming();
+               
+
+                move_setup("swimming");
+
             }
             else
             {
-                sh.StopWalking();
-                sh.StopSwimming();
+                
+                move_setup("running");
             }
-           
-
-            bool running_cond3 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
-            bool running_cond4 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
-
-            //Debug.Log("Get to running");
-            //Debug.Log(PlayerRB.velocity.x);
-            //Debug.Log(x_input * walking_speed - x_input);
-            //Debug.Log(x_input * running_speed - x_input);
-            //Debug.Log((running_cond3) || (running_cond4));
-
-            if ((running_cond3) || (running_cond4))
-            {
-                //Debug.Log("Play running sound");
-                sh.PlayRunning();
-            }
-            move_setup("running");
 
         }
         /*
@@ -241,51 +237,41 @@ public class Player : MonoBehaviour
 
         else if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
         {
+            PlayerRB.velocity = new Vector2(x_input * walking_speed, PlayerRB.velocity.y);
             if (feetContact_water)
             {
-                sh.PlaySwimming();
+            
+                move_setup("swimming");
+
             }
             else
             {
-                sh.StopRunning();
-                sh.StopSwimming();
-            }
+
             
-
-            //Debug.Log("Get to walking");
-            //Debug.Log(PlayerRB.velocity.x < x_input * walking_speed - (x_input));
-
-            bool walking_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - x_input);
-            bool walking_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input);
-
-
-            if (walking_cond1 || walking_cond2)
-            {
-                //Debug.Log("Playing walking sound");
-                sh.PlayWalking();
-
+                move_setup("walking");
             }
-            move_setup("walking");
         }
         else
         {
-            //PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
-            //animator_walking("none");
-            sh.StopWalking();
-            sh.StopRunning();
-            sh.StopSwimming();
+            if (feetContact_water)
+            {
+
+                move_setup("swimming");
+
+            }
+            else
+            {
+                //PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
+                //animator_walking("none");
+                /*
+                sh.StopWalking();
+                sh.StopRunning();
+                sh.StopSwimming();
+                */
+                move_setup("none");
+            }
         }
 
-        if (feetContact_water)
-        {
-            Debug.Log("feet contact water");
-            sh.StopWalking();
-            sh.StopRunning();
-            sh.PlayRunning();
-
-            move_setup("swimming");
-
-        }
 
         move_direction();
 
@@ -367,24 +353,51 @@ public class Player : MonoBehaviour
     {
         if (whichisit.Equals("running"))
         {
-            spritePlayer.sortingLayerName = "Player";
-            animator_walking(whichisit);
 
-            isCrouching = false;
-            isHidden = false;
-            isRunning = true;
+            if (!current_animation.Equals("running") || change_in_direction)
+            {
+                change_in_direction = false;
+                current_animation = "running";
+                spritePlayer.sortingLayerName = "Player";
+                animator_walking(whichisit);
 
-            //PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
+                isCrouching = false;
+                isHidden = false;
+                isRunning = true;
+                sh.StopWalking();
+                sh.StopSwimming();
+                bool running_cond3 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
+                bool running_cond4 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
 
+                
 
+                if ((running_cond3) || (running_cond4))
+                {
+                    //Debug.Log("Play running sound");
+                    sh.PlayRunning();
+                }
+                
+            }
 
-            PlayerRB.velocity = new Vector2(x_input * running_speed, PlayerRB.velocity.y);
+            
         }
         else if (whichisit.Equals("crouching"))
         {
-            animator_walking(whichisit);
-            isCrouching = true;
-            isRunning = false;
+            
+            if(!current_animation.Equals("crouching") || change_in_direction)
+            {
+                change_in_direction = false;
+                current_animation = "crouching";
+                animator_walking(whichisit);
+                isCrouching = true;
+                isRunning = false;
+                sh.StopWalking();
+
+                sh.StopRunning();
+                sh.StopSwimming();
+
+            }
+
 
             if (withinHiding)
             {
@@ -400,31 +413,80 @@ public class Player : MonoBehaviour
 
 
             //PlayerRB.velocity = new Vector2(x_input * crouching_speed, 0); In case player falls through world but should not happen
-            PlayerRB.velocity = new Vector2(x_input * crouching_speed, PlayerRB.velocity.y);
+            
 
         }
         else if (whichisit.Equals("walking"))
         {
-            spritePlayer.sortingLayerName = "Player";
-            animator_walking(whichisit);
+            
 
-            isCrouching = false;
-            isHidden = false;
-            isRunning = false;
+            if (!current_animation.Equals("walking") || change_in_direction)
+            {
+                change_in_direction = false;
+                current_animation = "walking";
+                spritePlayer.sortingLayerName = "Player";
+                animator_walking(whichisit);
+
+                isCrouching = false;
+                isHidden = false;
+                isRunning = false;
+
+                sh.StopRunning();
+                sh.StopSwimming();
 
 
-            PlayerRB.velocity = new Vector2(x_input * walking_speed, PlayerRB.velocity.y);
+                bool walking_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - x_input);
+                bool walking_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input);
+
+
+                if (walking_cond1 || walking_cond2)
+                {
+                    //Debug.Log("Playing walking sound");
+                    sh.PlayWalking();
+
+                }
+            }
+
+            
 
         }
         else if (whichisit.Equals("swimming"))
         {
+            if (!current_animation.Equals("swimming") || change_in_direction)
+            {
+                change_in_direction = false;
+                current_animation = "swimming";
+                spritePlayer.sortingLayerName = "Player";
+                animator_walking(whichisit);
+                isCrouching = false;
+                sh.StopWalking();
+                sh.StopRunning();
 
-            animator_walking(whichisit);
-            isCrouching = false;
+                //Debug.Log("calls PlaySwimming");
+                sh.PlaySwimming();
+            }
+            
 
 
 
         }
+
+        else if (whichisit.Equals("none"))
+        {
+            
+            if (!current_animation.Equals("none") || change_in_direction)
+            {
+                change_in_direction = false;
+                spritePlayer.sortingLayerName = "Player";
+                animator_walking(whichisit);
+                sh.StopWalking();
+                sh.StopRunning();
+                sh.StopSwimming();
+            }
+            
+        }
+            
+    
     }
 
 
@@ -432,17 +494,42 @@ public class Player : MonoBehaviour
     {
         if (x_input > 0)
         {
+            if(currDirection != Vector2.right)
+            {
+                change_in_direction = true;
+            }
+
             currDirection = Vector2.right;
         }
         else if (x_input < 0)
         {
+            if (currDirection != Vector2.left)
+            {
+                change_in_direction = true;
+            }
             currDirection = Vector2.left;
         }
         else
         {
 
             PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
-            animator_walking("none");
+            if (feetContact_water)
+            {
+
+                move_setup("swimming");
+
+            }
+            else
+            {
+                //PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
+                //animator_walking("none");
+                /*
+                sh.StopWalking();
+                sh.StopRunning();
+                sh.StopSwimming();
+                */
+                move_setup("none");
+            }
         }
 
         anim.SetFloat("dirX", currDirection.x);
@@ -477,6 +564,7 @@ public class Player : MonoBehaviour
     }
     private void jumping()
     {
+        current_animation = "jump";
         StartCoroutine(Jumping_Routine());
     }
 
