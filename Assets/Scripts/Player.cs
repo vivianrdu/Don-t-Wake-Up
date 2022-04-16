@@ -192,7 +192,6 @@ public class Player : MonoBehaviour
             {
                 /*
             sh.StopWalking();
-
             sh.StopRunning();
             sh.StopSwimming();
 
@@ -272,7 +271,6 @@ public class Player : MonoBehaviour
                 move_setup("none");
             }
         }
-
 
 
         move_direction();

@@ -33,6 +33,10 @@ public class Enemy_Sleeper : Enemy
     SpriteRenderer spriteEnemy;
     #endregion
 
+    #region Audio_variables
+    public DarkEnemySoundHandler sh;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +59,8 @@ public class Enemy_Sleeper : Enemy
         }
         if (isMoving)
         {
+            sh.StopSnoring();
+            sh.PlayChasing();
             Attack();
             Move(DEnemyRB, playerposition);
            
@@ -66,6 +72,8 @@ public class Enemy_Sleeper : Enemy
                 if (player_in_Game.isRunning && isSleeping)
                 {
                     Debug.Log("Waking up");
+                    sh.StopSnoring();
+                    sh.PlayChasing();
                     StartCoroutine(Wake_up());
 
                 }
