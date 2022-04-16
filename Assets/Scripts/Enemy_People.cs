@@ -136,6 +136,20 @@ public class Enemy_People : Enemy
         }
     }
 
+    public void change_orientation_to_painting(Transform painting)
+    {
+          float orientation = (transform.position.x - painting.position.x);
+
+          if (orientation >= 0)
+          {
+              currdirection_of_patrol = -1;
+          }
+          else
+          {
+              currdirection_of_patrol = 1;
+          }
+    }
+
     #endregion
 
     #region Death_and_Respawn_variables
