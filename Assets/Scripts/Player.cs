@@ -300,8 +300,13 @@ public class Player : MonoBehaviour
         LayerMask masky = LayerMask.GetMask("Ground", "Crate", "Water", "Enemy");
         //Debug.Log("mask" + masky);
 
-        
+        //Bounds boxBounds = playercollider.bounds;
+        //Vector2 topRight = new Vector2(boxBounds.center.x + boxBounds.extents.x, boxBounds.center.y + boxBounds.extents.y);
+        //Debug.Log("topright x: " + topRight.x + "     topright y: " + topRight.y);
+        //Vector2 center = (Vector2)transform.position + playercollider.offset);
+        //Vector2 feet = new Vector2();
 
+        //RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 0.91f, masky);
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 3, masky);
         //Debug.Log("ground hits: " + hit2D.collider != null);
         if (hit2D.collider != null && !jumping_routine_ongoing)
@@ -313,7 +318,7 @@ public class Player : MonoBehaviour
                 feetContact = true;
                 feetContact_water = false;
                 feetContact_ground = true;
-
+                //Debug.Log("ground distance: " + hit2D.distance);
             }
             else if (hit2D.collider.CompareTag("Crate") || hit2D.collider.CompareTag("Enemy"))
             {
@@ -321,12 +326,14 @@ public class Player : MonoBehaviour
                 feetContact = true;
                 feetContact_water = false;
                 feetContact_ground = false;
+                //Debug.Log("Crate distance: " + hit2D.distance);
             }
             else if (hit2D.collider.CompareTag("Water"))
             {
 
                 feetContact_water = true;
                 feetContact_ground = false;
+                //Debug.Log("water distance: " + hit2D.distance);
             }
             
 
