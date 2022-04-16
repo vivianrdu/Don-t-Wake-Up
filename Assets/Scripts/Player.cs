@@ -303,12 +303,12 @@ public class Player : MonoBehaviour
         //Bounds boxBounds = playercollider.bounds;
         //Vector2 topRight = new Vector2(boxBounds.center.x + boxBounds.extents.x, boxBounds.center.y + boxBounds.extents.y);
         //Debug.Log("topright x: " + topRight.x + "     topright y: " + topRight.y);
-        //Vector2 center = (Vector2)transform.position + playercollider.offset);
-        //Vector2 feet = new Vector2();
-
+        //Vector2 center = new Vector2(transform.position.x + playercollider.offset.x,transform.position.y + playercollider.offset.y);
+        Vector2 feet = new Vector2(playercollider.bounds.center.x ,playercollider.bounds.min.y);
+        Vector2 feetsize = new Vector2(playercollider.bounds.extents.x * 2, 0.1f);
         //RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 0.91f, masky);
-        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 3, masky);
-        //Debug.Log("ground hits: " + hit2D.collider != null);
+        RaycastHit2D hit2D = Physics2D.BoxCast(feet, feetsize ,0 ,Vector3.down, 0.1f ,masky);
+        Debug.Log("ground hits: " + hit2D.collider != null);
         if (hit2D.collider != null && !jumping_routine_ongoing)
         {
 
@@ -577,7 +577,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        feetContact = true;
+        //feetContact = true;
         /*
         if(collision.gameObject.CompareTag("Crate") || collision.gameObject.CompareTag("Enemy"))
 
