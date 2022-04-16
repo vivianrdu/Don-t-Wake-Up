@@ -30,6 +30,10 @@ public class Enemy_Dark : Enemy
 
     #endregion
 
+    #region Audio_variables
+    public DarkEnemySoundHandler sh;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +51,7 @@ public class Enemy_Dark : Enemy
         
         patrol_stopping_timer = 0;
 
+        sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
 
     }
 
@@ -71,6 +76,8 @@ public class Enemy_Dark : Enemy
         {
             if (player_in_Game.isHidden)
             {
+                sh.StopChasing();
+                sh.PlayBreathing();
                 //Debug.Log("player is hidden is called");
                 anim.SetBool("playerDetected", false);
                 patrol();
@@ -79,6 +86,9 @@ public class Enemy_Dark : Enemy
             //not currently stunned
             else if (anim.GetBool("Stunned") == false)
             {
+                sh.StopBreathing();
+                sh.PlayChasing();
+
                 anim.SetBool("playerDetected", true); //maybe have to move this for animation
                 Attack();
                 Move(DEnemyRB, playerposition);
@@ -166,6 +176,9 @@ public class Enemy_Dark : Enemy
     {            
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
+            sh.StopBreathing();
+            sh.StopChasing();
+            sh.PlayScreeching();
             Debug.Log("Stunned " + stun_length);
             // check to make sure not already stunned
             if (DEnemyColl.enabled)

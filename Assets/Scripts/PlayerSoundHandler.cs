@@ -62,7 +62,7 @@ public class PlayerSoundHandler : MonoBehaviour
     {
         if (!swimming.isPlaying)
         {
-            Debug.Log("SWIMMING");
+            //Debug.Log("SWIMMING");
             swimming.Play(0);
         }
     }
@@ -91,10 +91,11 @@ public class PlayerSoundHandler : MonoBehaviour
             Debug.Log("No input audio source.");
             return;
         }
-        StartCoroutine("FadeSounds");
+        IEnumerator coroutine = FadeSoundsOut(s1);
+        StartCoroutine(coroutine);
     }
 
-    private IEnumerator FadeSounds(AudioSource s1)
+    private IEnumerator FadeSoundsOut(AudioSource s1)
     {
         float timeToFade = 0.75f;
         float timeElapsed = 0;
