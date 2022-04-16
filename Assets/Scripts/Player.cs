@@ -273,9 +273,11 @@ public class Player : MonoBehaviour
 
         if (feetContact_water)
         {
+            Debug.Log("feet contact water");
             sh.StopWalking();
             sh.StopRunning();
 
+            Debug.Log("calls PlaySwimming");
             sh.PlaySwimming();
             //bool swimming_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
             //bool swimming_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
