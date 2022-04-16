@@ -18,7 +18,6 @@ public class Nightlight : MonoBehaviour
 
     #region Targeting_variables
     public Transform player;
-    public Transform checkpoint;
     #endregion
 
     #region respawn_variables
