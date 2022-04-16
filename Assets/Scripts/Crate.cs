@@ -12,7 +12,8 @@ public class Crate : MonoBehaviour
     #endregion
 
     #region Physics_variables
-    Rigidbody2D CrateRB;
+    public Rigidbody2D CrateRB;
+    private BoxCollider2D box;
     public Vector2 CrateDirection;
     private Vector2 respawn_anchor;
     #endregion 
@@ -22,12 +23,17 @@ public class Crate : MonoBehaviour
         CrateRB = GetComponent<Rigidbody2D>();
         playerCharacter = player.GetComponent<Player>();
         respawn_anchor = transform.position;
+        box = GetComponent<BoxCollider2D>();
+        radius = 1.1f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         float distFromPlayer = Vector2.Distance(player.position, transform.position);
+        
         if (Input.GetKey(KeyCode.L) && distFromPlayer <= radius)
         {
             //Debug.Log("moving crate");
@@ -35,15 +41,15 @@ public class Crate : MonoBehaviour
 
             if (playerCharacter.feetContact_ground)
             {
-                Debug.Log("feetground and crate move");
-                Debug.Log("playerRBvelocity: " + playerCharacter.returnPlayerRB().velocity);
-                CrateRB.velocity = playerCharacter.returnPlayerRB().velocity;
+                //Debug.Log("feetground and crate move");
+                //Debug.Log("playerRBvelocity: " + playerCharacter.returnPlayerRB().velocity);
+                CrateRB.velocity = new Vector2(playerCharacter.returnPlayerRB().velocity.x, CrateRB.velocity.y);
             }
         }
         else
         {
             playerCharacter.movingCrate = false;
-            CrateRB.velocity = Vector2.zero;
+            CrateRB.velocity = new Vector2(0, CrateRB.velocity.y); ;
         }
     }
 
