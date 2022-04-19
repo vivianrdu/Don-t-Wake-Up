@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
 
     private void CrateMove()
     {
-        //Debug.Log("Call CrateMove");
+        Debug.Log("Call CrateMove");
 
         sh.StopWalking();
         sh.StopRunning();
@@ -152,16 +152,10 @@ public class Player : MonoBehaviour
         //Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-
             move_setup("walking");
-            //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
-            //Vector3.ProjectOnPlane(PlayerRB.velocity, ground_contact_point);
         }
 
         move_direction();
-        //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0);
-        //Vector3.ProjectOnPlane(PlayerRB.velocity, ground_contact_point);
-        //PlayerRB.velocity = new Vector2(x_input * walking_speed, 0); This one works better for some reason
     }
 
     private void Move()

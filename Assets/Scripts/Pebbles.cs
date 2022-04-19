@@ -55,7 +55,7 @@ public class Pebbles : MonoBehaviour
             }
         }
 
-        if(player_picked_up && Input.GetKey(KeyCode.F))
+        if(player_picked_up && Input.GetKey(KeyCode.E))
         {
             player_picked_up = false;
             StartCoroutine(throwing());
