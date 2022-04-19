@@ -778,7 +778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8573235879137934345, guid: ff53d7c78a02e45e1a1f1971e10b3aac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff53d7c78a02e45e1a1f1971e10b3aac, type: 3}
@@ -1002,10 +1002,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DarkEnemy 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1049,10 +1045,6 @@ PrefabInstance:
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507887554019217496, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
-      propertyPath: m_Radius
-      value: 1.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
@@ -2385,11 +2377,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 892183942407765031, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
   m_PrefabInstance: {fileID: 747563236}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &752163684 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 892183942407765030, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
-  m_PrefabInstance: {fileID: 747563236}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &754816210
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,7 +3017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &980876331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8442,10 +8429,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 279270138}
     m_Modifications:
-    - target: {fileID: 892183942407765027, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 752163684}
     - target: {fileID: 892183942407765031, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
       propertyPath: m_RootOrder
       value: 6

@@ -67,7 +67,9 @@ public class Enemy_Dark : Enemy
         {
             anim.SetBool("playerDetected", false);
             patrol();
-            
+
+            sh.StopBreathing();
+            sh.StopChasing();
             
             return;
         }
@@ -159,6 +161,10 @@ public class Enemy_Dark : Enemy
 
     public new void Reset_position()
     {
+        sh.StopBreathing();
+        sh.StopChasing();
+        sh.StopScreeching();
+        sh.StopSnoring();
         transform.position = respawn_anchor;
         //reset
         stun = 0;
@@ -213,6 +219,7 @@ public class Enemy_Dark : Enemy
         }
         DEnemyColl.enabled = !DEnemyColl.enabled;
         anim.SetBool("Stunned", false);
+        sh.StopScreeching();
     }
     #endregion
 }
