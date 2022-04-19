@@ -210,6 +210,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            //idle
             move_setup("none");
         }
         move_direction();
@@ -282,48 +283,38 @@ public class Player : MonoBehaviour
         if (whichisit.Equals("running"))
         {
 
-            if (!current_animation.Equals("running") || change_in_direction)
+            current_animation = "running";
+            spritePlayer.sortingLayerName = "Player";
+            animator_walking(whichisit);
+
+            isCrouching = false;
+            isHidden = false;
+            isRunning = true;
+            sh.StopWalking();
+            sh.StopSwimming();
+            bool running_cond3 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
+            bool running_cond4 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
+
+            if ((running_cond3) || (running_cond4))
             {
-                change_in_direction = false;
-                current_animation = "running";
-                spritePlayer.sortingLayerName = "Player";
-                animator_walking(whichisit);
-
-                isCrouching = false;
-                isHidden = false;
-                isRunning = true;
-                sh.StopWalking();
-                sh.StopSwimming();
-                bool running_cond3 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * running_speed - x_input);
-                bool running_cond4 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * running_speed + x_input);
-
-                
-
-                if ((running_cond3) || (running_cond4))
-                {
-                    //Debug.Log("Play running sound");
-                    sh.PlayRunning();
-                }
-                
+                //Debug.Log("Play running sound");
+                sh.PlayRunning();
             }
+                
+            
 
             
         }
         else if (whichisit.Equals("crouching"))
         {
-            if(!current_animation.Equals("crouching") || change_in_direction)
-            {
-                change_in_direction = false;
-                current_animation = "crouching";
-                animator_walking(whichisit);
-                isCrouching = true;
-                isRunning = false;
-                sh.StopWalking();
+            current_animation = "crouching";
+            animator_walking(whichisit);
+            isCrouching = true;
+            isRunning = false;
+            sh.StopWalking();
+            sh.StopRunning();
+            sh.StopSwimming();
 
-                sh.StopRunning();
-                sh.StopSwimming();
-
-            }
             if (withinHiding)
             {
                 isHidden = true;
@@ -334,74 +325,54 @@ public class Player : MonoBehaviour
             {
                 isHidden = false;
                 spritePlayer.sortingLayerName = "Player";
-            }
-
-
-            //PlayerRB.velocity = new Vector2(x_input * crouching_speed, 0); In case player falls through world but should not happen
-            
-
+            }            
         }
         else if (whichisit.Equals("walking"))
         {
-            
 
-            if (!current_animation.Equals("walking") || change_in_direction)
+            //change_in_direction = false;
+            current_animation = "walking";
+            spritePlayer.sortingLayerName = "Player";
+            animator_walking(whichisit);
+
+            isCrouching = false;
+            isHidden = false;
+            isRunning = false;
+
+            sh.StopRunning();
+            sh.StopSwimming();
+
+
+            bool walking_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - x_input);
+            bool walking_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input);
+
+
+            if (walking_cond1 || walking_cond2)
             {
-                change_in_direction = false;
-                current_animation = "walking";
-                spritePlayer.sortingLayerName = "Player";
-                animator_walking(whichisit);
+                //Debug.Log("Playing walking sound");
+                sh.PlayWalking();
 
-                isCrouching = false;
-                isHidden = false;
-                isRunning = false;
-
-                sh.StopRunning();
-                sh.StopSwimming();
-
-
-                bool walking_cond1 = Mathf.Abs(PlayerRB.velocity.x) < Mathf.Abs(x_input * walking_speed - x_input);
-                bool walking_cond2 = Mathf.Abs(PlayerRB.velocity.x) > Mathf.Abs(-x_input * walking_speed + x_input);
-
-
-                if (walking_cond1 || walking_cond2)
-                {
-                    //Debug.Log("Playing walking sound");
-                    sh.PlayWalking();
-
-                }
             }
-
-            
-
         }
         else if (whichisit.Equals("swimming"))
         {
-            if (!current_animation.Equals("swimming") || change_in_direction)
-            {
-                change_in_direction = false;
-                current_animation = "swimming";
-                spritePlayer.sortingLayerName = "Player";
-                animator_walking(whichisit);
-                isCrouching = false;
-                sh.StopWalking();
-                sh.StopRunning();
-                sh.PlaySwimming();
-            }
+            current_animation = "swimming";
+            spritePlayer.sortingLayerName = "Player";
+            animator_walking(whichisit);
+            isCrouching = false;
+            sh.StopWalking();
+            sh.StopRunning();
+            sh.PlaySwimming();
         }
 
         else if (whichisit.Equals("none"))
         {
+            spritePlayer.sortingLayerName = "Player";
+            animator_walking(whichisit);
+            sh.StopWalking();
+            sh.StopRunning();
+            sh.StopSwimming();
             
-            if (!current_animation.Equals("none") || change_in_direction)
-            {
-                change_in_direction = false;
-                spritePlayer.sortingLayerName = "Player";
-                animator_walking(whichisit);
-                sh.StopWalking();
-                sh.StopRunning();
-                sh.StopSwimming();
-            }
         }
     }
 
@@ -410,19 +381,10 @@ public class Player : MonoBehaviour
     {
         if (x_input > 0)
         {
-            if(currDirection != Vector2.right)
-            {
-                change_in_direction = true;
-            }
-
             currDirection = Vector2.right;
         }
         else if (x_input < 0)
         {
-            if (currDirection != Vector2.left)
-            {
-                change_in_direction = true;
-            }
             currDirection = Vector2.left;
         }
         anim.SetFloat("dirX", currDirection.x);
