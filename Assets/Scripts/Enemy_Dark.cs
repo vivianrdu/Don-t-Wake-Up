@@ -32,7 +32,6 @@ public class Enemy_Dark : Enemy
 
     #region Audio_variables
     public DarkEnemySoundHandler sh;
-    public bool in_breathing_radius;
     #endregion
 
     // Start is called before the first frame update
@@ -73,14 +72,6 @@ public class Enemy_Dark : Enemy
             sh.StopChasing();
             
             return;
-        }
-        else if (in_breathing_radius)
-        {
-            sh.PlayBreathing();
-        }
-        else if (!in_breathing_radius)
-        {
-            sh.StopBreathing();
         }
         //detected player in line of sight
         else
