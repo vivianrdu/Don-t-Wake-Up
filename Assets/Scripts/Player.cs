@@ -392,8 +392,6 @@ public class Player : MonoBehaviour
                 isCrouching = false;
                 sh.StopWalking();
                 sh.StopRunning();
-
-                //Debug.Log("calls PlaySwimming");
                 sh.PlaySwimming();
             }
         }
@@ -410,10 +408,7 @@ public class Player : MonoBehaviour
                 sh.StopRunning();
                 sh.StopSwimming();
             }
-            
         }
-            
-    
     }
 
 
@@ -436,16 +431,6 @@ public class Player : MonoBehaviour
             }
             currDirection = Vector2.left;
         }
-        else
-        {
-
-            PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
-            if (!feetContact_water)
-            {
-                move_setup("none");
-            }
-        }
-
         anim.SetFloat("dirX", currDirection.x);
         anim.SetFloat("dirY", currDirection.y);
     }
