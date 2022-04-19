@@ -67,7 +67,8 @@ public class Enemy_Dark : Enemy
         {
             anim.SetBool("playerDetected", false);
             patrol();
-            
+
+            sh.StopChasing();
             
             return;
         }
@@ -159,6 +160,10 @@ public class Enemy_Dark : Enemy
 
     public new void Reset_position()
     {
+        sh.StopBreathing();
+        sh.StopChasing();
+        sh.StopScreeching();
+        sh.StopSnoring();
         transform.position = respawn_anchor;
         //reset
         stun = 0;
