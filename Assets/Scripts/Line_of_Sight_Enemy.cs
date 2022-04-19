@@ -23,9 +23,9 @@ public class Line_of_Sight_Enemy : MonoBehaviour
 
         if (coll.CompareTag("Pebble"))
         {
+            Debug.Log("Pebble in line of sight");
             GetComponentInParent<Enemy_Water>().pebble_detected = true;
             GetComponentInParent<Enemy_Water>().pebble_position = coll.transform;
-            Debug.Log("Detected pebble");
             //GetComponentInParent<DarkEnemySoundHandler>().StopChasing();
         }
     }

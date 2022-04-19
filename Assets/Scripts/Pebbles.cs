@@ -36,6 +36,7 @@ public class Pebbles : MonoBehaviour
         player_picked_up = false;
         touch_water = false;
         on_floor = false;
+        can_throw = false;
         distance_to_player = new Vector2(transform.position.x - player.transform.position.x, transform.position.y - player.transform.position.y);
     }
 
@@ -60,7 +61,6 @@ public class Pebbles : MonoBehaviour
             Debug.Log("Throw");
             player_picked_up = false;
             StartCoroutine(throwing());
-            
         }
     }
 
@@ -109,6 +109,7 @@ public class Pebbles : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Debug.Log("At the bottom of the ocean");
         on_floor = true;
+        can_throw = false;
         yield return null;
     }
 
@@ -120,6 +121,7 @@ public class Pebbles : MonoBehaviour
         player_picked_up = false;
         touch_water = false;
         on_floor = false;
+        can_throw = false;
     }
     #endregion
 
