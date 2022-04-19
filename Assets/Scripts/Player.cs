@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
     // bool to detect whether player is moving something currently
     public bool movingCrate;
 
-
     // bool to decide how high Player can jump
     //public float jumpForce;
     public float jumpHeight;
@@ -38,7 +37,6 @@ public class Player : MonoBehaviour
     private bool withinHiding;
     #endregion
 
-
     #region Animation_components
     SpriteRenderer spritePlayer;
     Animator anim;
@@ -49,6 +47,7 @@ public class Player : MonoBehaviour
     #region Physics_components
     Rigidbody2D PlayerRB;
     BoxCollider2D playercollider;
+    public float ground_distance;
     #endregion
 
     #region Health_variables and respawns;
@@ -62,11 +61,7 @@ public class Player : MonoBehaviour
 
     #region Audio_variables
     public PlayerSoundHandler sh;
-
     #endregion
-
-
-    public float ground_distance;
 
     // Awake is called before the first frame update
     void Awake()
@@ -107,8 +102,8 @@ public class Player : MonoBehaviour
                 //Debug.Log("Calls move");
                 Move();
 
-                // jump
-                if (Input.GetKeyDown(KeyCode.Space) && canJump())
+                // If the conditions for jumping is fullfilled 
+                if (canJump() && Input.GetKeyDown(KeyCode.Space))
                 {
                     sh.StopWalking();
                     sh.StopRunning();
@@ -172,109 +167,49 @@ public class Player : MonoBehaviour
     private void Move()
     {
 
-        
-       
-
-
-        if (Input.GetKey(KeyCode.S))
+        // if the player is in the water, only shift, a, d keys will respond
+        if (feetContact_water)
         {
-
-            PlayerRB.velocity = new Vector2(x_input * crouching_speed, PlayerRB.velocity.y);
-            if (feetContact_water)
+            if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
             {
-                
-
-
-                move_setup("swimming");
-
+                PlayerRB.velocity = new Vector2(x_input * running_speed, PlayerRB.velocity.y);
             }
-            else
+            move_setup("swimming");
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            Debug.Log("Crouching");
+            PlayerRB.velocity = new Vector2(x_input * crouching_speed, PlayerRB.velocity.y);
+            if (!feetContact_water)
             {
-                /*
-            sh.StopWalking();
-            sh.StopRunning();
-            sh.StopSwimming();
-
-            */
                 move_setup("crouching");
 
-
             }
-
-
-            
         }
         else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
         {
             PlayerRB.velocity = new Vector2(x_input * running_speed, PlayerRB.velocity.y);
-            if (feetContact_water)
+            if (!feetContact_water)
             {
-               
-
-                move_setup("swimming");
-
-            }
-            else
-            {
-                
                 move_setup("running");
             }
 
         }
-        /*
-        else if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
-        {
-            move_setup("walking");
-
-            
-
-            PlayerRB.velocity = new Vector2(x_input * running_speed, 0);
-        }
-        */
-
-        //There is a repeat in the code here I changed it so it makes more sense
-
-
         else if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
         {
             PlayerRB.velocity = new Vector2(x_input * walking_speed, PlayerRB.velocity.y);
-            if (feetContact_water)
+            if (!feetContact_water)
             {
-            
-                move_setup("swimming");
-
-            }
-            else
-            {
-
-            
                 move_setup("walking");
             }
         }
         else
         {
-            if (feetContact_water)
-            {
-
-                move_setup("swimming");
-
-            }
-            else
-            {
-                //PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
-                //animator_walking("none");
-                /*
-                sh.StopWalking();
-                sh.StopRunning();
-                sh.StopSwimming();
-                */
-                move_setup("none");
-            }
+            move_setup("none");
         }
-
-
         move_direction();
 
+        // FIX THIS
         if (Mathf.Abs(x_input) == 0)
         {
             sh.StopWalking();
@@ -322,11 +257,6 @@ public class Player : MonoBehaviour
                 //Debug.Log("water distance: " + hit2D.distance);
             }
             
-
-
-
-
-
             //Debug.Log("raycast check hit2D: " + hit2D.collider.tag);
             //Debug.Log("raycast layerCheck: " + hit2D.collider.gameObject.layer);
         }
@@ -340,12 +270,6 @@ public class Player : MonoBehaviour
             feetContact_water = false;
             feetContact_ground = false;
         }
-
-        /*else
-        {
-            Debug.Log("raycast check hit2D: null");
-        }
-        */
     }
 
 
@@ -383,7 +307,6 @@ public class Player : MonoBehaviour
         }
         else if (whichisit.Equals("crouching"))
         {
-            
             if(!current_animation.Equals("crouching") || change_in_direction)
             {
                 change_in_direction = false;
@@ -465,10 +388,6 @@ public class Player : MonoBehaviour
                 //Debug.Log("calls PlaySwimming");
                 sh.PlaySwimming();
             }
-            
-
-
-
         }
 
         else if (whichisit.Equals("none"))
