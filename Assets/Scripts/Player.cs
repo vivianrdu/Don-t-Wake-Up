@@ -172,7 +172,19 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
             {
-                PlayerRB.velocity = new Vector2(x_input * running_speed, PlayerRB.velocity.y);
+                if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
+                {
+                    PlayerRB.velocity = new Vector2(x_input * running_speed, PlayerRB.velocity.y);
+
+                }
+                else
+                {
+                    PlayerRB.velocity = new Vector2(x_input * walking_speed, PlayerRB.velocity.y);
+                }
+            }
+            else
+            {
+                PlayerRB.velocity = new Vector2(x_input, PlayerRB.velocity.y);
             }
             move_setup("swimming");
         }
@@ -183,7 +195,6 @@ public class Player : MonoBehaviour
             if (!feetContact_water)
             {
                 move_setup("crouching");
-
             }
         }
         else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
@@ -209,7 +220,6 @@ public class Player : MonoBehaviour
         }
         move_direction();
 
-        // FIX THIS
         if (Mathf.Abs(x_input) == 0)
         {
             sh.StopWalking();
@@ -320,8 +330,6 @@ public class Player : MonoBehaviour
                 sh.StopSwimming();
 
             }
-
-
             if (withinHiding)
             {
                 isHidden = true;
@@ -432,21 +440,8 @@ public class Player : MonoBehaviour
         {
 
             PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
-            if (feetContact_water)
+            if (!feetContact_water)
             {
-
-                move_setup("swimming");
-
-            }
-            else
-            {
-                //PlayerRB.velocity = new Vector2(0, PlayerRB.velocity.y);
-                //animator_walking("none");
-                /*
-                sh.StopWalking();
-                sh.StopRunning();
-                sh.StopSwimming();
-                */
                 move_setup("none");
             }
         }
@@ -493,12 +488,9 @@ public class Player : MonoBehaviour
 
 
         animator_walking("none");
-
         anim.SetBool("jumping", true);
         yield return new WaitForSeconds(0.1f);
         PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
-        //Debug.Log(feetContact);
-
 
         //yield return new WaitForSeconds(1); // needs to be done to ensure that feetcontact has been lifted
         feetContact = false;
@@ -525,7 +517,6 @@ public class Player : MonoBehaviour
             }
             yield return null;
         }
-        //Debug.Log(feetContact);
         anim.SetBool("jumping", false);
         jumping_routine_ongoing = false;
 
@@ -584,23 +575,6 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        //feetContact = true;
-        /*
-        if(collision.gameObject.CompareTag("Crate") || collision.gameObject.CompareTag("Enemy"))
-
-        if(collision.gameObject.CompareTag("Crate") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Pebble"))
-
-        {
-            //Debug.Log("feetcontact");
-            feetContact = true;
-        }
-
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            feetContact = true;
-            feetContact_ground = true;
-        }
-        */
         if (collision.gameObject.CompareTag("respawn_anchor"))
         {
             respawn_anchor = collision.transform.position;
@@ -608,34 +582,9 @@ public class Player : MonoBehaviour
 
     }
 
-    /*
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            ground_contact_point = collision.contacts[0].point;
-        }
-    }
-    */
     private void OnCollisionExit2D(Collision2D collision)
     {
-        //feetContact = false;
-        /*
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            feetContact_ground = false;
-            feetContact = false;
-        }
-        if (collision.gameObject.CompareTag("Crate"))
-        {
-            //Debug.Log("feetcontact gone");
 
-            if (!feetContact_ground)
-            {
-                feetContact = false;
-            }
-        }
-        */
     }
 
 
@@ -648,13 +597,6 @@ public class Player : MonoBehaviour
             //Debug.Log("within Hiding" + withinHiding);
         }
 
-        /*
-        if (collision.gameObject.CompareTag("Water"))
-        {
-            //Debug.Log("feetcontact in water");
-            feetContact_water = true;
-        }
-        */
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -663,24 +605,11 @@ public class Player : MonoBehaviour
         {
             withinHiding = false;
         }
-        /*
-        if (collision.gameObject.CompareTag("Water"))
-        {
-            //Debug.Log("feetcontact out of water");
-            feetContact_water = false;
-        }
-        */
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        /*
-        if (collision.gameObject.CompareTag("Water"))
-        {
-            //Debug.Log("feetcontact in water");
-            feetContact_water = true;
-        }
-        */
+
     }
     #endregion
 
