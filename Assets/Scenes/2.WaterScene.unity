@@ -10774,10 +10774,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pebble
       objectReference: {fileID: 0}
-    - target: {fileID: 3785669523118155104, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3785669523118155108, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
       propertyPath: m_RootOrder
       value: 0
