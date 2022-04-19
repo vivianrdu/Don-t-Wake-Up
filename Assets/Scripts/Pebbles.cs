@@ -22,6 +22,7 @@ public class Pebbles : MonoBehaviour
     #region playerinteractions variables
     private bool player_touch;
     private bool player_picked_up;
+    private bool can_throw;
     private Player player;
     private Vector2 distance_to_player;
     #endregion
@@ -40,9 +41,6 @@ public class Pebbles : MonoBehaviour
 
     void Update()
     {
-
-
-
         dist_play();
 
         if (player_touch)
@@ -50,20 +48,20 @@ public class Pebbles : MonoBehaviour
             // Allow the player to pick up if they have not picked it up already and thrown it into the water
             if (Input.GetKey(KeyCode.E) && !player_picked_up && !touch_water)
             {
-                player_picked_up = true;
                 StartCoroutine(pick_uproutine());
             }
         }
-
-        else if(player_picked_up && Input.GetKey(KeyCode.E))
+        if (player_picked_up && Input.GetKeyUp(KeyCode.E))
+        {
+            can_throw = true;
+        }
+        if (can_throw && Input.GetKey(KeyCode.E))
         {
             Debug.Log("Throw");
             player_picked_up = false;
             StartCoroutine(throwing());
             
         }
-        
-
     }
 
     private void dist_play()
@@ -86,9 +84,9 @@ public class Pebbles : MonoBehaviour
         rB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         cc.enabled = false;
         rB.mass = 0; // prevent it from going up and down constantly
+        player_picked_up = true;
         while (player_picked_up)
         {
-           
             transform.position = player.transform.position + player.transform.TransformDirection(new Vector3(0.5f*player.currDirection.x, 0, 0));
             yield return null;
         }
@@ -128,23 +126,6 @@ public class Pebbles : MonoBehaviour
     #region Collisions and Triggers
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        //Debug.Log("collision happens");
-
-        /*
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("touching Player");
-            
-            
-            player_touch = true;
-            if(player == null)
-            {
-                player = collision.gameObject.GetComponent<Player>();
-            }
-            
-        }
-    */
         if (collision.gameObject.CompareTag("Wall"))
         {
             StartCoroutine(Pebble_delay());
@@ -153,13 +134,7 @@ public class Pebbles : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-       
-        /*
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            player_touch = false;
-        }
-        */
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
