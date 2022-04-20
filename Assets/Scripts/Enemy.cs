@@ -32,12 +32,12 @@ public class Enemy : MonoBehaviour
     protected BoxCollider2D DEnemyColl;
     #endregion
 
-    #region Sound_variables
-    public AudioManager audioManager;
-    #endregion
-
     #region respawn_and_health_variables
     public Vector2 respawn_anchor;
+    #endregion
+
+    #region Audio_variables
+    DarkEnemySoundHandler sh;
     #endregion
 
     void Start()
@@ -59,6 +59,7 @@ public class Enemy : MonoBehaviour
         DEnemyColl = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
+        sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
     }
 
     #region Movement_functions
@@ -153,6 +154,7 @@ public class Enemy : MonoBehaviour
         float attackLength = 1f;
         DEnemyRB.velocity = Vector2.zero;
 
+
         anim.SetTrigger("Attacking");
 
         while (attackLength >= 0)
@@ -183,6 +185,10 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
+<<<<<<< HEAD
+=======
+        //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
+>>>>>>> ec1f20f3b8b4a7d4929c8eee562495142ac6181e
         if (transform.name == "PeopleEnemy" && isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 3) ||
                     (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 3)))
@@ -196,6 +202,10 @@ public class Enemy : MonoBehaviour
         {
 
             Debug.Log("Attack");
+            sh.StopBreathing();
+            sh.StopChasing();
+            sh.StopScreeching();
+            sh.StopSnoring();
             StartCoroutine(Attack_routine());
         }
     }
