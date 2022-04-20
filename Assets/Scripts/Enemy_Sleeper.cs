@@ -68,7 +68,7 @@ public class Enemy_Sleeper : Enemy
             sh.PlayChasing();
             Attack();
             Move(DEnemyRB, playerposition);
-           
+
         }
         else
         {
@@ -82,14 +82,14 @@ public class Enemy_Sleeper : Enemy
                 }
             }
         }
-        
+
     }
 
     public new void Reset_position()
     {
         sh.StopChasing();
         sh.StopSnoring();
-    
+
         transform.position = respawn_anchor;
         //reset
         direction = new Vector2(0, 0);
@@ -122,10 +122,10 @@ public class Enemy_Sleeper : Enemy
         yield return StartCoroutine(Change_color(Color.black));
 
         //change number here to fit with waking up
-        
+
         DEnemyColl.enabled = true;
         isSleeping = false;
-        
+
         anim.SetBool("isSleeping", false);
         anim.SetBool("playerDetected", true);
         yield return StartCoroutine(Change_color(Color.white));
@@ -154,7 +154,7 @@ public class Enemy_Sleeper : Enemy
                 yield return null;
             }
         }
-        
+
 
     }
 
