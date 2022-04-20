@@ -85,8 +85,6 @@ public class Enemy_Sleeper : Enemy
         
     }
 
-    
-
     public new void Reset_position()
     {
         sh.StopChasing();
