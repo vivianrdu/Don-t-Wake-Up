@@ -161,7 +161,13 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
+        Vector2 vector_enemy = Vector2.one;
+        if (transform.name == "PeopleEnemy")
+        {
+            vector_enemy = new Vector2(5, 5);
+        }
+
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, vector_enemy, 0f, Vector2.zero);
 
         foreach (RaycastHit2D hit in hits)
         {
@@ -177,7 +183,6 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log(Vector2.Distance(playerposition.position, transform.position));
         if (transform.name == "PeopleEnemy" && isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 3) ||
                     (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 3)))
