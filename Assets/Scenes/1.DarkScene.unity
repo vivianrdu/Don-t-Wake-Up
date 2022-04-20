@@ -294,7 +294,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7786459, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2884,17 +2884,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1568355385}
     m_Modifications:
-    - target: {fileID: 739957201, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
+    - target: {fileID: 1688189559853854167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688189559853854167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_TagString
       value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569155, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_Name
-      value: Crate (1)
+      value: Crate (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2940,10 +2944,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 6830079826703392768}
-    - target: {fileID: 7611598562479270179, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: radius
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
 --- !u!4 &921249934 stripped
@@ -4891,11 +4891,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6007780930176569155, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_Name
-      value: Crate (2)
+      value: Crate (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8101,8 +8101,8 @@ Transform:
   m_LocalPosition: {x: -25.38, y: -16.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 921249934}
   - {fileID: 1406390566}
+  - {fileID: 921249934}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

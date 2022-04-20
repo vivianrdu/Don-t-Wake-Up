@@ -46,6 +46,7 @@ public class Enemy_Water : Enemy
         //Pebble detection takes priority, stops detecting once the pebble hits the bottom of the ocean
         if (pebble_detected && pebble_position.GetComponent<Pebbles>().on_floor == false)
         {
+            Debug.Log("Pebble detected");
             //Pebble detected, stops detecting player
             anim.SetBool("playerDetected", false);
             Move(DEnemyRB, pebble_position);
