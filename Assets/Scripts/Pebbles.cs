@@ -22,7 +22,6 @@ public class Pebbles : MonoBehaviour
     #region playerinteractions variables
     private bool player_touch;
     private bool player_picked_up;
-    private bool can_throw;
     private Player player;
     private Vector2 distance_to_player;
     #endregion
@@ -36,7 +35,6 @@ public class Pebbles : MonoBehaviour
         player_picked_up = false;
         touch_water = false;
         on_floor = false;
-        can_throw = false;
         distance_to_player = new Vector2(transform.position.x - player.transform.position.x, transform.position.y - player.transform.position.y);
     }
 
@@ -49,18 +47,15 @@ public class Pebbles : MonoBehaviour
             // Allow the player to pick up if they have not picked it up already and thrown it into the water
             if (Input.GetKey(KeyCode.E) && !player_picked_up && !touch_water)
             {
+                player_picked_up = true;
                 StartCoroutine(pick_uproutine());
             }
         }
-        if (player_picked_up && Input.GetKeyUp(KeyCode.E))
+        if (player_picked_up && Input.GetKey(KeyCode.L))
         {
-            can_throw = true;
-        }
-        if (can_throw && Input.GetKey(KeyCode.E))
-        {
-            Debug.Log("Throw");
             player_picked_up = false;
             StartCoroutine(throwing());
+
         }
     }
 
@@ -72,6 +67,9 @@ public class Pebbles : MonoBehaviour
         if(distance_to_player.x < 1 && distance_to_player.y <1)
         {
             player_touch = true;
+        } else
+        {
+            player_touch = false;
         }
     }
 
@@ -84,16 +82,14 @@ public class Pebbles : MonoBehaviour
         rB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         cc.enabled = false;
         rB.mass = 0; // prevent it from going up and down constantly
-        player_picked_up = true;
         while (player_picked_up)
         {
-            transform.position = player.transform.position + player.transform.TransformDirection(new Vector3(0.5f*player.currDirection.x, 0, 0));
+
+            transform.position = player.transform.position + player.transform.TransformDirection(new Vector3(0.5f * player.currDirection.x, 0, 0));
             yield return null;
         }
         yield return null;
     }
-
-
     IEnumerator throwing()
     {
         cc.enabled = true;
@@ -109,7 +105,6 @@ public class Pebbles : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Debug.Log("At the bottom of the ocean");
         on_floor = true;
-        can_throw = false;
         yield return null;
     }
 
@@ -121,7 +116,6 @@ public class Pebbles : MonoBehaviour
         player_picked_up = false;
         touch_water = false;
         on_floor = false;
-        can_throw = false;
     }
     #endregion
 
