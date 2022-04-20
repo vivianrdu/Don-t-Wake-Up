@@ -179,7 +179,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log(Vector2.Distance(playerposition.position, transform.position));
+        //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
         if (transform.name == "PeopleEnemy" && isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 3) ||
                     (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 3)))

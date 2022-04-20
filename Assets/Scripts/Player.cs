@@ -510,7 +510,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(Die());
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -521,6 +524,11 @@ public class Player : MonoBehaviour
             respawn_anchor = collision.transform.position;
         }
 
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(Die());
+
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
