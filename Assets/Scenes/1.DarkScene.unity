@@ -9610,6 +9610,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8507887554285727507, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
 --- !u!1001 &8864652939836010418
@@ -9666,6 +9670,10 @@ PrefabInstance:
     - target: {fileID: 8864652939022678262, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
       propertyPath: m_Name
       value: DarkEnemySoundHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678263, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_Volume
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
