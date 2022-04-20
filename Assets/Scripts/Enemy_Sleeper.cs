@@ -55,6 +55,11 @@ public class Enemy_Sleeper : Enemy
     {
         if (player_in_Game == null || playerposition == null)
         {
+            sh.StopSnoring();
+            sh.StopChasing();
+            sh.StopBreathing();
+            sh.StopScreeching();
+
             return;
         }
         if (isMoving)
@@ -86,6 +91,7 @@ public class Enemy_Sleeper : Enemy
     {
         sh.StopChasing();
         sh.StopSnoring();
+    
         transform.position = respawn_anchor;
         //reset
         direction = new Vector2(0, 0);

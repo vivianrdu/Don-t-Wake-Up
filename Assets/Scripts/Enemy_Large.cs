@@ -67,9 +67,9 @@ public class Enemy_Large : Enemy
 
 
 
-        Debug.Log(" is playerhunt true?" +playerHunt);
-        Debug.Log(" is playerhunt true?" + should_I_hunt_the_player);
-        Debug.Log(" is playerposition null? " + playerposition == null);
+        //Debug.Log(" is playerhunt true?" +playerHunt);
+        //Debug.Log(" is playerhunt true?" + should_I_hunt_the_player);
+        //Debug.Log(" is playerposition null? " + playerposition == null);
     }
 
 
