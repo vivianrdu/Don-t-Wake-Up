@@ -31,7 +31,8 @@ public class DarkEnemySoundHandler : MonoBehaviour
     public void StopBreathing()
     {
         Debug.Log("dark enemy stop breathing");
-        FadeSoundOut(breathing); 
+        //FadeSoundOut(breathing);
+        breathing.Stop();
     }
 
     public void PlayChasing()
