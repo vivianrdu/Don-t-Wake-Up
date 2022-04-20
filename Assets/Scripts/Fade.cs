@@ -25,7 +25,7 @@ public class Fade : MonoBehaviour
 
     public IEnumerator FadeFromBlack()
     {
-        Debug.Log("Fade from black");
+        //Debug.Log("Fade from black");
         // loop over 1 second
         for (float i = 1; i >= 0; i -= Time.deltaTime)
         {
