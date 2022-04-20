@@ -68,7 +68,6 @@ public class Enemy_Dark : Enemy
             anim.SetBool("playerDetected", false);
             patrol();
 
-            //sh.StopBreathing();
             sh.StopChasing();
 
             return;
