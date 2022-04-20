@@ -17,7 +17,7 @@ public class Lamppost : MonoBehaviour
     void Start()
     {
         location = transform.position;
-        //coll = transform.GetComponent<Collider2D>();
+        player = FindObjectsOfType<Player>()[0].transform;
     }
 
     private void OnTriggerEnter2D(Collider2D coll)

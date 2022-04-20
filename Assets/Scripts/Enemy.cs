@@ -161,7 +161,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, new Vector2(5,5), 0f, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, Vector2.one, 0f, Vector2.zero);
 
         foreach (RaycastHit2D hit in hits)
         {
