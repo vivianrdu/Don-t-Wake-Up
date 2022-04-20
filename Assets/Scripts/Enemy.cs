@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-                
+
 
     }
 
@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 direction = new Vector2(1, 0);
-            } 
+            }
         }
         else
         {
@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
 
     public void patrol()
     {
-    
+
     }
 
     #endregion
@@ -185,10 +185,6 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-<<<<<<< HEAD
-=======
-        //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
->>>>>>> ec1f20f3b8b4a7d4929c8eee562495142ac6181e
         if (transform.name == "PeopleEnemy" && isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 3) ||
                     (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 3)))
