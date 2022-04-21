@@ -268,7 +268,7 @@ public class Player : MonoBehaviour
             //Debug.Log("raycast check hit2D: " + hit2D.collider.tag);
             //Debug.Log("raycast layerCheck: " + hit2D.collider.gameObject.layer);
         }
-        else if(jumping_routine_ongoing && PlayerRB.velocity.y < 0 && hit2D.collider != null) //only when player is falling can feetcontact reactivate
+        else if(jumping_routine_ongoing && PlayerRB.velocity.y <= 0 && hit2D.collider != null) //only when player is falling can feetcontact reactivate
         {
             feetContact = true;
         }
