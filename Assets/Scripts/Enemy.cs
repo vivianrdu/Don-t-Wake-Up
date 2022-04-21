@@ -176,9 +176,10 @@ public class Enemy : MonoBehaviour
             if (hit.transform.CompareTag("Player"))
             {
                 yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
+                break;
             }
         }
-
+        Debug.Log("isAttacking is" + isAttacking);
         isAttacking = false;
         anim.SetBool("Attacking", false);
     }
@@ -202,7 +203,10 @@ public class Enemy : MonoBehaviour
             sh.StopChasing();
             sh.StopScreeching();
             sh.StopSnoring();
-            StartCoroutine(Attack_routine());
+            if (!isAttacking)
+            {
+                StartCoroutine(Attack_routine());
+            }
         }
     }
     #endregion  

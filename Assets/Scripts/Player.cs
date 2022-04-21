@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
 
     #region Health_variables and respawns;
     public Vector2 respawn_anchor;
+    private bool isDying;
     #endregion
 
     #region Other_variables
@@ -73,6 +74,8 @@ public class Player : MonoBehaviour
 
         isHidden = false; //is done as enemy checks that automatically, otherwise get null error
         isCrouching = false;
+
+        isDying = false;
 
         sh = GameObject.Find("/PlayerSoundHandler").GetComponent<PlayerSoundHandler>();
     }
@@ -146,7 +149,6 @@ public class Player : MonoBehaviour
         sh.StopRunning();
         sh.StopSwimming();
 
-        //Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             move_setup("walking");
@@ -181,7 +183,6 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            Debug.Log("Crouching");
             PlayerRB.velocity = new Vector2(x_input * crouching_speed, PlayerRB.velocity.y);
             if (!feetContact_water)
             {
@@ -231,11 +232,11 @@ public class Player : MonoBehaviour
         Vector2 feetsize = new Vector2(playercollider.bounds.extents.x * 2, 0.1f);
         //RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 0.91f, masky);
         RaycastHit2D hit2D = Physics2D.BoxCast(feet, feetsize ,0 ,Vector3.down, 0.1f ,masky);
-        Debug.Log("ground hits: " + hit2D.collider != null);
+        //Debug.Log("ground hits: " + hit2D.collider != null);
         if (hit2D.collider != null && !jumping_routine_ongoing)
         {
 
-            Debug.Log("ground hits: " + hit2D.collider.tag);
+            //Debug.Log("ground hits: " + hit2D.collider.tag);
             if (hit2D.collider.CompareTag("Ground"))
             {
                 feetContact = true;
@@ -466,15 +467,22 @@ public class Player : MonoBehaviour
     #region Health_functions
     public IEnumerator Die()
     {
-        /** Player SpriteRenderer disabled (disappears) **/
-        transform.GetComponent<SpriteRenderer>().enabled = false;
+        if (!isDying)
+        {
+            isDying = true;
+            /** Player SpriteRenderer disabled (disappears) **/
+            transform.GetComponent<SpriteRenderer>().enabled = false;
 
-        sh.PlayDying();
+            sh.PlayDying();
 
-        GameObject img = GameObject.FindWithTag("Fade");
-        yield return StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
-        yield return new WaitForSeconds(1f);
-        Reload();
+            GameObject img = GameObject.FindWithTag("Fade");
+
+            yield return StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
+            yield return new WaitForSeconds(1f);
+            Reload();
+            isDying = false;
+        }
+       
     }
 
     public void Reload()
@@ -483,14 +491,15 @@ public class Player : MonoBehaviour
         GameObject img = GameObject.FindWithTag("Fade");
 
         /** This occurs when screen is black:
+         * Player faces forward
          * Player position is reset
          * Player SpriteRenderer reenabled (appears)
-         * Player faces forward
         **/
         gm.GetComponent<GameManager>().Reset_current_scene();
+        currDirection = Vector2.down;
         transform.GetComponent<SpriteRenderer>().enabled = true;
         transform.position = respawn_anchor;
-        currDirection = Vector2.down;
+        
 
         /** Fades from black **/
         StartCoroutine(img.GetComponent<Fade>().FadeFromBlack());
@@ -518,7 +527,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(Die());
-
         }
     }
 

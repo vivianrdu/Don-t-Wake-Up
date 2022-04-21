@@ -272,7 +272,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5241253310001259122, guid: e4760e96976e54d31921d832363b73a3, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5241253310001259122, guid: e4760e96976e54d31921d832363b73a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1106,7 +1106,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6203,7 +6203,7 @@ Transform:
   - {fileID: 2071087826}
   - {fileID: 173390944}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817573891
 GameObject:
@@ -7408,67 +7408,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3651259561510494918, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
---- !u!1001 &1206792973
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6007780930176569155, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_Name
-      value: Crate
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007780930176569167, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611598562479270179, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 559964285}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c71646b08f9ff4199aa751abb21782ef, type: 3}
 --- !u!1 &1207145109
 GameObject:
   m_ObjectHideFlags: 0
@@ -8066,7 +8005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1384468349
 RectTransform:
   m_ObjectHideFlags: 0
