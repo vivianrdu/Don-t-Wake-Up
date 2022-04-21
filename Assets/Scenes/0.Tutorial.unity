@@ -4877,7 +4877,6 @@ GameObject:
   - component: {fileID: 910270288}
   - component: {fileID: 910270287}
   - component: {fileID: 910270286}
-  - component: {fileID: 910270290}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -4986,18 +4985,6 @@ RectTransform:
   m_AnchoredPosition: {x: 568, y: 415}
   m_SizeDelta: {x: 1136, y: 830}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &910270290
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910270285}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &940178685
 GameObject:
   m_ObjectHideFlags: 0
@@ -5546,6 +5533,7 @@ GameObject:
   - component: {fileID: 1242301339}
   - component: {fileID: 1242301338}
   - component: {fileID: 1242301337}
+  - component: {fileID: 1242301340}
   m_Layer: 0
   m_Name: Fade
   m_TagString: Fade
@@ -5623,6 +5611,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242301335}
   m_CullTransparentMesh: 1
+--- !u!225 &1242301340
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242301335}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1284124275
 GameObject:
   m_ObjectHideFlags: 0
