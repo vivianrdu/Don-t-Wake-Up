@@ -74,7 +74,6 @@ public class Enemy_Sleeper : Enemy
             {
                 if (player_in_Game.isRunning && isSleeping)
                 {
-                    Debug.Log("Waking up");
                     StartCoroutine(Wake_up());
 
                 }
@@ -106,7 +105,6 @@ public class Enemy_Sleeper : Enemy
     #region Move_functions
     public void hunt_player()
     {
-        Debug.Log("hunt player has started");
         isMoving = true;
     }
 
@@ -135,7 +133,6 @@ public class Enemy_Sleeper : Enemy
     {
         float totalTransitionTime = 1.5f;
         float elapsedTime = 0;
-        Debug.Log("changing color");
 
         while (elapsedTime <= totalTransitionTime)
         {

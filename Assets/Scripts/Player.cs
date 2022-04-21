@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
 
     #region Other_variables
     public Vector2 currDirection;
+    private bool isTyping;
     public int keys = 0; // the number of keys the player has
     #endregion
 
@@ -76,6 +77,7 @@ public class Player : MonoBehaviour
         isCrouching = false;
 
         isDying = false;
+        isTyping = true;
 
         sh = GameObject.Find("/PlayerSoundHandler").GetComponent<PlayerSoundHandler>();
     }
@@ -88,31 +90,34 @@ public class Player : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
-        if (feetContact || feetContact_water)
+        if (isTyping) // make sure game isn't reloading
         {
-
-            if (movingCrate && feetContact_ground)
-            { // if trying to move a crate, does a different set of movements
-                CrateMove();
-
-            }
-            else
+            if (feetContact || feetContact_water)
             {
 
-                //Debug.Log("Calls move");
-                Move();
+                if (movingCrate && feetContact_ground)
+                { // if trying to move a crate, does a different set of movements
+                    CrateMove();
 
-                // If the conditions for jumping is fullfilled 
-                if (canJump() && Input.GetKeyDown(KeyCode.Space))
-                {
-                    sh.StopWalking();
-                    sh.StopRunning();
-                    sh.StopSwimming();
-
-                    //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
-                    jumping();
                 }
-                // end jump
+                else
+                {
+
+                    //Debug.Log("Calls move");
+                    Move();
+
+                    // If the conditions for jumping is fullfilled 
+                    if (canJump() && Input.GetKeyDown(KeyCode.Space))
+                    {
+                        sh.StopWalking();
+                        sh.StopRunning();
+                        sh.StopSwimming();
+
+                        //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+                        jumping();
+                    }
+                    // end jump
+                }
             }
         }
     }
@@ -470,6 +475,8 @@ public class Player : MonoBehaviour
         if (!isDying)
         {
             isDying = true;
+            isTyping = false;
+
             /** Player SpriteRenderer disabled (disappears) **/
             transform.GetComponent<SpriteRenderer>().enabled = false;
 
@@ -503,6 +510,8 @@ public class Player : MonoBehaviour
 
         /** Fades from black **/
         StartCoroutine(img.GetComponent<Fade>().FadeFromBlack());
+        isTyping = true;
+
     }
     #endregion
 
@@ -510,7 +519,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && collision.collider.GetType() == typeof(CircleCollider2D))
         {
             StartCoroutine(Die());
         }
@@ -524,8 +533,9 @@ public class Player : MonoBehaviour
             respawn_anchor = collision.transform.position;
         }
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && collision.collider.GetType() == typeof(CircleCollider2D))
         {
+            Debug.Log("On top of enemy");
             StartCoroutine(Die());
         }
     }

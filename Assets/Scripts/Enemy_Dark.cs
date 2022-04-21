@@ -18,6 +18,7 @@ public class Enemy_Dark : Enemy
     #endregion
 
     #region Stun_variables
+    protected CircleCollider2D HeadColl;
     private float stun;
     public float stun_length;
     #endregion
@@ -38,6 +39,7 @@ public class Enemy_Dark : Enemy
     {
         Startup();
 
+        HeadColl = GetComponent<CircleCollider2D>();
         stun = 0;
         isAttacking = false;
         anim.SetBool("playerDetected", false);
@@ -206,6 +208,7 @@ public class Enemy_Dark : Enemy
         }
         //turn off collider
         DEnemyColl.enabled = !DEnemyColl.enabled;
+        HeadColl.enabled = !HeadColl.enabled;
 
         while (stun >= 0)
         {
@@ -213,6 +216,8 @@ public class Enemy_Dark : Enemy
             yield return null;
         }
         DEnemyColl.enabled = !DEnemyColl.enabled;
+        HeadColl.enabled = !HeadColl.enabled;
+
         anim.SetBool("Stunned", false);
         sh.StopScreeching();
     }
