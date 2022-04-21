@@ -15,7 +15,6 @@ TagManager:
   - Pebble
   - Enemy
   - Wall
-  - Kill
   layers:
   - Default
   - TransparentFX
