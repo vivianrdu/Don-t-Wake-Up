@@ -179,7 +179,6 @@ public class Enemy : MonoBehaviour
                 break;
             }
         }
-        Debug.Log("isAttacking is" + isAttacking);
         isAttacking = false;
         anim.SetBool("Attacking", false);
     }

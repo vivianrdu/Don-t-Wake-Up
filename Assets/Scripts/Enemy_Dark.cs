@@ -179,11 +179,9 @@ public class Enemy_Dark : Enemy
             sh.StopBreathing();
             sh.StopChasing();
             sh.PlayScreeching();
-            Debug.Log("Stunned " + stun_length);
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {
-                Debug.Log("Stunned 2" + stun_length);
                 stun = stun_length;
                 anim.SetBool("Stunned", true);
                 DEnemyRB.velocity = new Vector2(0, 0);
@@ -201,7 +199,11 @@ public class Enemy_Dark : Enemy
 
     IEnumerator Stun_routine()
     {
-        Debug.Log("Stunned");
+        Debug.Log("Stun routine");
+        if (isAttacking)
+        {
+            StopCoroutine(Attack_routine());
+        }
         //turn off collider
         DEnemyColl.enabled = !DEnemyColl.enabled;
 
