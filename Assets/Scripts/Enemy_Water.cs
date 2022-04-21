@@ -43,27 +43,31 @@ public class Enemy_Water : Enemy
     {
         
         patrol_stopping_timer -= Time.deltaTime;
-        //Pebble detection takes priority, stops detecting once the pebble hits the bottom of the ocean
-        if (pebble_detected && pebble_position.GetComponent<Pebbles>().on_floor == false)
+        //prevent enemy from going above water
+        if (transform.position.y <= -2.61)
         {
-            Debug.Log("Pebble detected");
-            //Pebble detected, stops detecting player
-            anim.SetBool("playerDetected", false);
-            Move(DEnemyRB, pebble_position);
-        }
-        else if (playerposition == null || player_in_Game == null)
-        {
-            anim.SetBool("playerDetected", false);
-            patrol();
-        }
-        else
-        {
-            //Player detected and currently not following pebble, starts following player
-             anim.SetBool("playerDetected", true);
-             Attack();
-             Move(DEnemyRB, playerposition);
-             Set_patrol_timer();
-            
+            //Pebble detection takes priority, stops detecting once the pebble hits the bottom of the ocean
+            if (pebble_detected && pebble_position.GetComponent<Pebbles>().on_floor == false)
+            {
+                Debug.Log("Pebble detected");
+                //Pebble detected, stops detecting player
+                anim.SetBool("playerDetected", false);
+                Move(DEnemyRB, pebble_position);
+            }
+            else if (playerposition == null || player_in_Game == null)
+            {
+                anim.SetBool("playerDetected", false);
+                patrol();
+            }
+            else
+            {
+                //Player detected and currently not following pebble, starts following player
+                anim.SetBool("playerDetected", true);
+                Attack();
+                Move(DEnemyRB, playerposition);
+                Set_patrol_timer();
+
+            }
         }
     }
 

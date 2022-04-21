@@ -31,7 +31,6 @@ public class Enemy_Dark : Enemy
     #endregion
 
     #region Audio_variables
-    public DarkEnemySoundHandler sh;
     #endregion
 
     // Start is called before the first frame update
@@ -51,7 +50,7 @@ public class Enemy_Dark : Enemy
         
         patrol_stopping_timer = 0;
 
-        sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
+        // already in enemy class; sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
 
     }
 

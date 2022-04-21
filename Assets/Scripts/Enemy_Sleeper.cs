@@ -34,7 +34,6 @@ public class Enemy_Sleeper : Enemy
     #endregion
 
     #region Audio_variables
-    public DarkEnemySoundHandler sh;
     #endregion
 
     // Start is called before the first frame update
@@ -47,7 +46,6 @@ public class Enemy_Sleeper : Enemy
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
         spriteEnemy = GetComponent<SpriteRenderer>();
-        sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
     }
 
     // Update is called once per frame

@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     #endregion
 
     #region Audio_variables
-    DarkEnemySoundHandler sh;
+    public DarkEnemySoundHandler sh;
     #endregion
 
     void Start()

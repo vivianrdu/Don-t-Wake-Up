@@ -40,8 +40,6 @@ public class Player : MonoBehaviour
     #region Animation_components
     SpriteRenderer spritePlayer;
     Animator anim;
-
-    private string current_animation;
     #endregion
 
     #region Physics_components
@@ -66,7 +64,6 @@ public class Player : MonoBehaviour
     // Awake is called before the first frame update
     void Awake()
     {
-        current_animation = "start";
         PlayerRB = GetComponent<Rigidbody2D>();
         playercollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -283,7 +280,6 @@ public class Player : MonoBehaviour
         if (whichisit.Equals("running"))
         {
 
-            current_animation = "running";
             spritePlayer.sortingLayerName = "Player";
             animator_walking(whichisit);
 
@@ -307,7 +303,6 @@ public class Player : MonoBehaviour
         }
         else if (whichisit.Equals("crouching"))
         {
-            current_animation = "crouching";
             animator_walking(whichisit);
             isCrouching = true;
             isRunning = false;
@@ -330,8 +325,6 @@ public class Player : MonoBehaviour
         else if (whichisit.Equals("walking"))
         {
 
-            //change_in_direction = false;
-            current_animation = "walking";
             spritePlayer.sortingLayerName = "Player";
             animator_walking(whichisit);
 
@@ -356,7 +349,6 @@ public class Player : MonoBehaviour
         }
         else if (whichisit.Equals("swimming"))
         {
-            current_animation = "swimming";
             spritePlayer.sortingLayerName = "Player";
             animator_walking(whichisit);
             isCrouching = false;
@@ -419,7 +411,6 @@ public class Player : MonoBehaviour
     }
     private void jumping()
     {
-        current_animation = "jump";
         StartCoroutine(Jumping_Routine());
     }
 
