@@ -49,16 +49,11 @@ public class Enemy_Dark : Enemy
 
 
         patrol_stopping_timer = 0;
-
-        // already in enemy class; sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
-
 
         patrol_stopping_timer -= Time.deltaTime;
 
@@ -206,13 +201,12 @@ public class Enemy_Dark : Enemy
 
     IEnumerator Stun_routine()
     {
-        Debug.Log("Stun routine started test");
+        Debug.Log("Stunned");
         //turn off collider
         DEnemyColl.enabled = !DEnemyColl.enabled;
 
         while (stun >= 0)
         {
-            Debug.Log("coroutine is happening" + stun);
             stun -= Time.deltaTime;
             yield return null;
         }
