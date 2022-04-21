@@ -13,7 +13,7 @@ public class Enemy_Dark : Enemy
     #region Movement_variables
     public float patrol_radius;
     public float patrol_stopping_randoness;
-    
+
     private float currdirection_of_patrol;
     #endregion
 
@@ -46,8 +46,8 @@ public class Enemy_Dark : Enemy
         respawn_anchor = this.transform.position;
 
         currdirection_of_patrol = -1;//set initial start of patrol
-        
-        
+
+
         patrol_stopping_timer = 0;
 
         // already in enemy class; sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
@@ -67,9 +67,8 @@ public class Enemy_Dark : Enemy
             anim.SetBool("playerDetected", false);
             patrol();
 
-            //sh.StopBreathing();
             sh.StopChasing();
-            
+
             return;
         }
         //detected player in line of sight
@@ -83,7 +82,7 @@ public class Enemy_Dark : Enemy
                 anim.SetBool("playerDetected", false);
                 patrol();
             }
-            
+
             //not currently stunned
             else if (anim.GetBool("Stunned") == false)
             {
@@ -95,16 +94,16 @@ public class Enemy_Dark : Enemy
                 Move(DEnemyRB, playerposition);
                 patrol_stopping_timer = Random.Range(0, 5);
             }
-            
+
         }
-        
+
     }
 
     #region Movement_functions
     public new void patrol()
     {
         //Debug.Log("patrol timer" + patrol_stopping_timer);
-        
+
         if (patrol_stopping_timer <= 0)
         {
 
@@ -114,7 +113,7 @@ public class Enemy_Dark : Enemy
             if (random_number < patrol_stopping_randoness)
             {
                 patrol_stopping_timer = Random.Range(0, 5);
-                
+
                 return;
             }
 
@@ -126,31 +125,32 @@ public class Enemy_Dark : Enemy
             anim.SetBool("Stunned", false);
 
             return;
-        } else if(patrol_stopping_timer > 0)
+        }
+        else if (patrol_stopping_timer > 0)
         {
             direction = new Vector2(0, 0);
             DEnemyRB.velocity = direction * walking_speed;
 
             return;
         }
-        
-        
+
+
     }
 
     private void patrol_orientation()
     {
         float orientation = (transform.position.x - respawn_anchor.x);
 
-            if ((orientation >= patrol_radius))
+        if ((orientation >= patrol_radius))
         {
             currdirection_of_patrol = -1;
-            
+
         }
         else if (orientation <= (-patrol_radius))
         {
 
             currdirection_of_patrol = 1;
-            
+
         }
     }
 
@@ -173,12 +173,12 @@ public class Enemy_Dark : Enemy
     }
 
 
-    
+
     #endregion
 
     #region Triggers and Collisions
     private void OnTriggerEnter2D(Collider2D coll)
-    {            
+    {
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
             sh.StopBreathing();
@@ -196,13 +196,13 @@ public class Enemy_Dark : Enemy
                 StartCoroutine(Stun_routine());
             }
 
-        
+
         }
     }
     #endregion
 
     #region Routines
-    
+
 
     IEnumerator Stun_routine()
     {
@@ -222,3 +222,4 @@ public class Enemy_Dark : Enemy
     }
     #endregion
 }
+
