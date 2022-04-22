@@ -34,7 +34,6 @@ public class Enemy_Sleeper : Enemy
     #endregion
 
     #region Audio_variables
-    public DarkEnemySoundHandler sh;
     #endregion
 
     // Start is called before the first frame update
@@ -47,7 +46,6 @@ public class Enemy_Sleeper : Enemy
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
         spriteEnemy = GetComponent<SpriteRenderer>();
-        sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
     }
 
     // Update is called once per frame
@@ -76,7 +74,6 @@ public class Enemy_Sleeper : Enemy
             {
                 if (player_in_Game.isRunning && isSleeping)
                 {
-                    Debug.Log("Waking up");
                     StartCoroutine(Wake_up());
 
                 }
@@ -108,7 +105,6 @@ public class Enemy_Sleeper : Enemy
     #region Move_functions
     public void hunt_player()
     {
-        Debug.Log("hunt player has started");
         isMoving = true;
     }
 
@@ -137,7 +133,6 @@ public class Enemy_Sleeper : Enemy
     {
         float totalTransitionTime = 1.5f;
         float elapsedTime = 0;
-        Debug.Log("changing color");
 
         while (elapsedTime <= totalTransitionTime)
         {

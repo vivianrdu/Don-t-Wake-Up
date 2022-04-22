@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     #endregion
 
     #region Audio_variables
-    DarkEnemySoundHandler sh;
+    public DarkEnemySoundHandler sh;
     #endregion
 
     void Start()
@@ -176,9 +176,9 @@ public class Enemy : MonoBehaviour
             if (hit.transform.CompareTag("Player"))
             {
                 yield return StartCoroutine(playerposition.GetComponent<Player>().Die());
+                break;
             }
         }
-
         isAttacking = false;
         anim.SetBool("Attacking", false);
     }
@@ -202,7 +202,10 @@ public class Enemy : MonoBehaviour
             sh.StopChasing();
             sh.StopScreeching();
             sh.StopSnoring();
-            StartCoroutine(Attack_routine());
+            if (!isAttacking)
+            {
+                StartCoroutine(Attack_routine());
+            }
         }
     }
     #endregion  

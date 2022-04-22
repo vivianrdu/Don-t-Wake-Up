@@ -4942,7 +4942,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -818588857
+  m_SortingLayerID: 1026919303
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &910270289
@@ -5533,6 +5533,7 @@ GameObject:
   - component: {fileID: 1242301339}
   - component: {fileID: 1242301338}
   - component: {fileID: 1242301337}
+  - component: {fileID: 1242301340}
   m_Layer: 0
   m_Name: Fade
   m_TagString: Fade
@@ -5556,8 +5557,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -487.36523, y: -428.05994}
-  m_SizeDelta: {x: 265.0707, y: 10.282}
+  m_AnchoredPosition: {x: -486.63608, y: -428.05994}
+  m_SizeDelta: {x: 263.6122, y: 10.282}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242301337
 MonoBehaviour:
@@ -5610,6 +5611,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242301335}
   m_CullTransparentMesh: 1
+--- !u!225 &1242301340
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242301335}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1284124275
 GameObject:
   m_ObjectHideFlags: 0
