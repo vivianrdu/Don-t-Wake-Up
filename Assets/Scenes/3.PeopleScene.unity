@@ -13595,6 +13595,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1607534330
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.158567
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -15.495484
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -394.06003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678261, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864652939022678262, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
+      propertyPath: m_Name
+      value: DarkEnemySoundHandler
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 209df855648e3493fb243f2e81caa19d, type: 3}
 --- !u!114 &1648315399 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1500887913004386377, guid: 180d4415814074ec0a82b0ca6762b530, type: 3}
