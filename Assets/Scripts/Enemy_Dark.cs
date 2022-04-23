@@ -48,8 +48,6 @@ public class Enemy_Dark : Enemy
         respawn_anchor = this.transform.position;
 
         currdirection_of_patrol = -1;//set initial start of patrol
-
-
         patrol_stopping_timer = 0;
     }
 
