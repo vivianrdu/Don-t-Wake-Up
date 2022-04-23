@@ -74,7 +74,6 @@ public class Enemy_Dark : Enemy
             if (player_in_Game.isHidden)
             {
                 sh.StopChasing();
-                sh.PlayBreathing();
                 //Debug.Log("player is hidden is called");
                 anim.SetBool("playerDetected", false);
                 patrol();
@@ -180,7 +179,6 @@ public class Enemy_Dark : Enemy
         {
             sh.StopBreathing();
             sh.StopChasing();
-            sh.PlayScreeching();
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {
@@ -202,6 +200,8 @@ public class Enemy_Dark : Enemy
     IEnumerator Stun_routine()
     {
         Debug.Log("Stun routine");
+        sh.PlayScreeching();
+
         if (isAttacking)
         {
             StopCoroutine(Attack_routine());
