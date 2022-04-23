@@ -97,12 +97,6 @@ public class Nightlight : MonoBehaviour
         sh.PlayTurnOn();
     }
 
-    private void Reset_Again()
-    {
-        StopCoroutine(Countdown());
-        StartCoroutine(Countdown());
-    }
-
     private void TurnOff()
     {
 

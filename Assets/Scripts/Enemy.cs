@@ -192,6 +192,13 @@ public class Enemy : MonoBehaviour
             Debug.Log("PeopleEnemy Attack");
             StartCoroutine(Attack_routine());
         }
+        else if (transform.name == "SleepingDarkEnemy" && isAttacking == false && (
+                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) ||
+                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.3)))
+        {
+            Debug.Log("SleepingEnemy Attack");
+            StartCoroutine(Attack_routine());
+        }
         else if (isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) ||
                     (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))

@@ -726,6 +726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnoringRadius
       objectReference: {fileID: 0}
+    - target: {fileID: 5300358151513359353, guid: 562582071a1c941fd85a585c4e6fe5d8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 562582071a1c941fd85a585c4e6fe5d8, type: 3}
 --- !u!1 &1519009919173741265 stripped
