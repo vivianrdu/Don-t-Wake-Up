@@ -163,7 +163,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1488948925
-  m_SortingLayer: 8
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -5155265716505206911, guid: e65fdedc9ad344001897cf70ccd3dbc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -259,11 +259,10 @@ MonoBehaviour:
   walking_speed: 1
   attack_speed: 4
   anim: {fileID: 892183942407765030}
-  audioManager: {fileID: 0}
   respawn_anchor: {x: 0, y: 0}
+  sh: {fileID: 0}
   patrol_radius: 0
   isMoving: 0
-  sh: {fileID: 0}
 --- !u!114 &545316077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,6 +659,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1831435113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519009919173741265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe21acaeaf2e4431a7658078b936bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6672712667086031144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -717,6 +728,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 562582071a1c941fd85a585c4e6fe5d8, type: 3}
+--- !u!1 &1519009919173741265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5300358151513359353, guid: 562582071a1c941fd85a585c4e6fe5d8, type: 3}
+  m_PrefabInstance: {fileID: 6672712667086031144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6854930161596130712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 268991639432064176, guid: 562582071a1c941fd85a585c4e6fe5d8, type: 3}

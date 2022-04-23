@@ -64,7 +64,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
 
     public void PlaySnoring()
     {
-        //Debug.Log("dark enemy snoring");
+        Debug.Log("dark enemy snoring");
         if (!snoring.isPlaying)
         {
             snoring.Play(0);
