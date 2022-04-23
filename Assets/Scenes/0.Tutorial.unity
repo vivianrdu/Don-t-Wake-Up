@@ -3805,7 +3805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &487733038
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3871,7 +3871,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.2
-  m_Text: press SPACE to jump on crates
+  m_Text: press SPACE to jump
 --- !u!222 &487733041
 CanvasRenderer:
   m_ObjectHideFlags: 0

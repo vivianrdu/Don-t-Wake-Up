@@ -47,7 +47,7 @@ public class DynamicText : MonoBehaviour
                 {
                     StartCoroutine(FadeTextToZeroAlpha(1f, text));
                 }
-                else if ((Input.GetKeyDown(KeyCode.Space)) && text.text == "press SPACE to jump on crates")
+                else if ((Input.GetKeyDown(KeyCode.Space)) && text.text == "press SPACE to jump")
                 {
                     StartCoroutine(FadeTextToZeroAlpha(1f, text));
                 }

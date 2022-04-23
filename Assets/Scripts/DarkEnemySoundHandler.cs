@@ -30,7 +30,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     }
     public void StopBreathing()
     {
-        //FadeSoundOut(breathing);
+        StartCoroutine(FadeOut(breathing, 1f));
         breathing.Stop();
     }
 
@@ -45,6 +45,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     public void StopChasing()
     {
         //Debug.Log("dark enemy stop chasing");
+        StartCoroutine(FadeOut(chasing, 1f));
         chasing.Stop();
     }
 
@@ -74,5 +75,16 @@ public class DarkEnemySoundHandler : MonoBehaviour
     {
         //Debug.Log("dark enemy stop snoring");
         snoring.Stop();
+    }
+
+    public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    {
+        float startVolume = audioSource.volume;
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+            yield return null;
+        }
+        audioSource.Stop();
     }
 }
