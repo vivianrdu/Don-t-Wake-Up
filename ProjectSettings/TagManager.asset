@@ -70,11 +70,11 @@ TagManager:
   - name: Hideable_Object
     uniqueID: 2413960821
     locked: 0
-  - name: Objects
-    uniqueID: 977517257
-    locked: 0
   - name: Enemies
     uniqueID: 2806018371
+    locked: 0
+  - name: Objects
+    uniqueID: 977517257
     locked: 0
   - name: Player
     uniqueID: 1026919303
