@@ -10,6 +10,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     private AudioSource chasing;
     private AudioSource screeching;
     private AudioSource snoring;
+    private AudioSource large_enemy_chasing;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
         chasing = darkEnemySounds[1];
         screeching = darkEnemySounds[2];
         snoring = darkEnemySounds[3];
+        large_enemy_chasing = darkEnemySounds[4];
     }
 
     public void PlayBreathing()
@@ -71,6 +73,19 @@ public class DarkEnemySoundHandler : MonoBehaviour
     {
         //Debug.Log("dark enemy stop snoring");
         StartCoroutine(FadeOut(snoring, 1f));
+    }
+
+    public void PlayLargeEnemyChasing()
+    {
+        //Debug.Log("dark enemy breathing");
+        if (!large_enemy_chasing.isPlaying)
+        {
+            large_enemy_chasing.Play(0);
+        }
+    }
+    public void StopLargeEnemyChasing()
+    {
+        large_enemy_chasing.Stop();
     }
 
     public static IEnumerator FadeIn(AudioSource audioSource, float FadeTime)
