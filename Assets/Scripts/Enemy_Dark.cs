@@ -18,6 +18,7 @@ public class Enemy_Dark : Enemy
     #endregion
 
     #region Stun_variables
+    protected CircleCollider2D HeadColl;
     private float stun;
     public float stun_length;
     #endregion
@@ -31,7 +32,6 @@ public class Enemy_Dark : Enemy
     #endregion
 
     #region Audio_variables
-    public DarkEnemySoundHandler sh;
     #endregion
 
     // Start is called before the first frame update
@@ -39,6 +39,7 @@ public class Enemy_Dark : Enemy
     {
         Startup();
 
+        HeadColl = GetComponent<CircleCollider2D>();
         stun = 0;
         isAttacking = false;
         anim.SetBool("playerDetected", false);
@@ -50,16 +51,11 @@ public class Enemy_Dark : Enemy
 
 
         patrol_stopping_timer = 0;
-
-        sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
-
 
         patrol_stopping_timer -= Time.deltaTime;
 
@@ -191,10 +187,10 @@ public class Enemy_Dark : Enemy
             sh.StopBreathing();
             sh.StopChasing();
             Debug.Log("Stunned " + stun_length);
+            sh.PlayScreeching();
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {
-                Debug.Log("Stunned 2" + stun_length);
                 stun = stun_length;
                 anim.SetBool("Stunned", true);
                 DEnemyRB.velocity = new Vector2(0, 0);
@@ -212,17 +208,23 @@ public class Enemy_Dark : Enemy
 
     IEnumerator Stun_routine()
     {
-        Debug.Log("Stun routine started test");
+        Debug.Log("Stun routine");
+        if (isAttacking)
+        {
+            StopCoroutine(Attack_routine());
+        }
         //turn off collider
         DEnemyColl.enabled = !DEnemyColl.enabled;
+        HeadColl.enabled = !HeadColl.enabled;
 
         while (stun >= 0)
         {
-            Debug.Log("coroutine is happening" + stun);
             stun -= Time.deltaTime;
             yield return null;
         }
         DEnemyColl.enabled = !DEnemyColl.enabled;
+        HeadColl.enabled = !HeadColl.enabled;
+
         anim.SetBool("Stunned", false);
         sh.StopScreeching();
     }

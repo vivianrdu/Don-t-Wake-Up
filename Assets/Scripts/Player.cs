@@ -40,8 +40,6 @@ public class Player : MonoBehaviour
     #region Animation_components
     SpriteRenderer spritePlayer;
     Animator anim;
-
-    private string current_animation;
     #endregion
 
     #region Physics_components
@@ -52,10 +50,12 @@ public class Player : MonoBehaviour
 
     #region Health_variables and respawns;
     public Vector2 respawn_anchor;
+    private bool isDying;
     #endregion
 
     #region Other_variables
     public Vector2 currDirection;
+    private bool isTyping;
     public int keys = 0; // the number of keys the player has
     #endregion
 
@@ -66,7 +66,6 @@ public class Player : MonoBehaviour
     // Awake is called before the first frame update
     void Awake()
     {
-        current_animation = "start";
         PlayerRB = GetComponent<Rigidbody2D>();
         playercollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -76,6 +75,9 @@ public class Player : MonoBehaviour
 
         isHidden = false; //is done as enemy checks that automatically, otherwise get null error
         isCrouching = false;
+
+        isDying = false;
+        isTyping = true;
 
         sh = GameObject.Find("/PlayerSoundHandler").GetComponent<PlayerSoundHandler>();
     }
@@ -88,31 +90,34 @@ public class Player : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
-        if (feetContact || feetContact_water)
+        if (isTyping) // make sure game isn't reloading
         {
-
-            if (movingCrate && feetContact_ground)
-            { // if trying to move a crate, does a different set of movements
-                CrateMove();
-
-            }
-            else
+            if (feetContact || feetContact_water)
             {
 
-                //Debug.Log("Calls move");
-                Move();
+                if (movingCrate && feetContact_ground)
+                { // if trying to move a crate, does a different set of movements
+                    CrateMove();
 
-                // If the conditions for jumping is fullfilled 
-                if (canJump() && Input.GetKeyDown(KeyCode.Space))
-                {
-                    sh.StopWalking();
-                    sh.StopRunning();
-                    sh.StopSwimming();
-
-                    //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
-                    jumping();
                 }
-                // end jump
+                else
+                {
+
+                    //Debug.Log("Calls move");
+                    Move();
+
+                    // If the conditions for jumping is fullfilled 
+                    if (canJump() && Input.GetKeyDown(KeyCode.Space))
+                    {
+                        sh.StopWalking();
+                        sh.StopRunning();
+                        sh.StopSwimming();
+
+                        //PlayerRB.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+                        jumping();
+                    }
+                    // end jump
+                }
             }
         }
     }
@@ -149,7 +154,6 @@ public class Player : MonoBehaviour
         sh.StopRunning();
         sh.StopSwimming();
 
-        //Debug.Log("moving crate");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             move_setup("walking");
@@ -184,7 +188,6 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            Debug.Log("Crouching");
             PlayerRB.velocity = new Vector2(x_input * crouching_speed, PlayerRB.velocity.y);
             if (!feetContact_water)
             {
@@ -234,11 +237,11 @@ public class Player : MonoBehaviour
         Vector2 feetsize = new Vector2(playercollider.bounds.extents.x * 2, 0.1f);
         //RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 0.91f, masky);
         RaycastHit2D hit2D = Physics2D.BoxCast(feet, feetsize ,0 ,Vector3.down, 0.1f ,masky);
-        Debug.Log("ground hits: " + hit2D.collider != null);
+        //Debug.Log("ground hits: " + hit2D.collider != null);
         if (hit2D.collider != null && !jumping_routine_ongoing)
         {
 
-            Debug.Log("ground hits: " + hit2D.collider.tag);
+            //Debug.Log("ground hits: " + hit2D.collider.tag);
             if (hit2D.collider.CompareTag("Ground"))
             {
                 feetContact = true;
@@ -265,7 +268,7 @@ public class Player : MonoBehaviour
             //Debug.Log("raycast check hit2D: " + hit2D.collider.tag);
             //Debug.Log("raycast layerCheck: " + hit2D.collider.gameObject.layer);
         }
-        else if(jumping_routine_ongoing && PlayerRB.velocity.y < 0 && hit2D.collider != null) //only when player is falling can feetcontact reactivate
+        else if(jumping_routine_ongoing && PlayerRB.velocity.y <= 0 && hit2D.collider != null) //only when player is falling can feetcontact reactivate
         {
             feetContact = true;
         }
@@ -283,7 +286,6 @@ public class Player : MonoBehaviour
         if (whichisit.Equals("running"))
         {
 
-            current_animation = "running";
             spritePlayer.sortingLayerName = "Player";
             animator_walking(whichisit);
 
@@ -307,7 +309,6 @@ public class Player : MonoBehaviour
         }
         else if (whichisit.Equals("crouching"))
         {
-            current_animation = "crouching";
             animator_walking(whichisit);
             isCrouching = true;
             isRunning = false;
@@ -330,8 +331,6 @@ public class Player : MonoBehaviour
         else if (whichisit.Equals("walking"))
         {
 
-            //change_in_direction = false;
-            current_animation = "walking";
             spritePlayer.sortingLayerName = "Player";
             animator_walking(whichisit);
 
@@ -356,7 +355,6 @@ public class Player : MonoBehaviour
         }
         else if (whichisit.Equals("swimming"))
         {
-            current_animation = "swimming";
             spritePlayer.sortingLayerName = "Player";
             animator_walking(whichisit);
             isCrouching = false;
@@ -419,7 +417,6 @@ public class Player : MonoBehaviour
     }
     private void jumping()
     {
-        current_animation = "jump";
         StartCoroutine(Jumping_Routine());
     }
 
@@ -475,15 +472,24 @@ public class Player : MonoBehaviour
     #region Health_functions
     public IEnumerator Die()
     {
-        /** Player SpriteRenderer disabled (disappears) **/
-        transform.GetComponent<SpriteRenderer>().enabled = false;
+        if (!isDying)
+        {
+            isDying = true;
+            isTyping = false;
 
-        sh.PlayDying();
+            /** Player SpriteRenderer disabled (disappears) **/
+            transform.GetComponent<SpriteRenderer>().enabled = false;
 
-        GameObject img = GameObject.FindWithTag("Fade");
-        yield return StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
-        yield return new WaitForSeconds(1f);
-        Reload();
+            sh.PlayDying();
+
+            GameObject img = GameObject.FindWithTag("Fade");
+
+            yield return StartCoroutine(img.GetComponent<Fade>().FadeToBlack());
+            yield return new WaitForSeconds(1f);
+            Reload();
+            isDying = false;
+        }
+       
     }
 
     public void Reload()
@@ -492,17 +498,20 @@ public class Player : MonoBehaviour
         GameObject img = GameObject.FindWithTag("Fade");
 
         /** This occurs when screen is black:
+         * Player faces forward
          * Player position is reset
          * Player SpriteRenderer reenabled (appears)
-         * Player faces forward
         **/
         gm.GetComponent<GameManager>().Reset_current_scene();
+        currDirection = Vector2.down;
         transform.GetComponent<SpriteRenderer>().enabled = true;
         transform.position = respawn_anchor;
-        currDirection = Vector2.down;
+        
 
         /** Fades from black **/
         StartCoroutine(img.GetComponent<Fade>().FadeFromBlack());
+        isTyping = true;
+
     }
     #endregion
 
@@ -510,7 +519,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && collision.collider.GetType() == typeof(CircleCollider2D))
         {
             StartCoroutine(Die());
         }
@@ -524,10 +533,10 @@ public class Player : MonoBehaviour
             respawn_anchor = collision.transform.position;
         }
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && collision.collider.GetType() == typeof(CircleCollider2D))
         {
+            Debug.Log("On top of enemy");
             StartCoroutine(Die());
-
         }
     }
 

@@ -30,14 +30,12 @@ public class DarkEnemySoundHandler : MonoBehaviour
     }
     public void StopBreathing()
     {
-        //Debug.Log("dark enemy stop breathing");
-        //FadeSoundOut(breathing);
         breathing.Stop();
     }
 
     public void PlayChasing()
     {
-        Debug.Log("dark enemy chasing");
+        //Debug.Log("dark enemy chasing");
         if (!chasing.isPlaying)
         {
             chasing.Play(0);
@@ -45,7 +43,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     }
     public void StopChasing()
     {
-        Debug.Log("dark enemy stop chasing");
+        //Debug.Log("dark enemy stop chasing");
         chasing.Stop();
     }
 
@@ -65,7 +63,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
 
     public void PlaySnoring()
     {
-        Debug.Log("dark enemy snoring");
+        //Debug.Log("dark enemy snoring");
         if (!snoring.isPlaying)
         {
             snoring.Play(0);
@@ -73,7 +71,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     }
     public void StopSnoring()
     {
-        Debug.Log("dark enemy stop snoring");
+        //Debug.Log("dark enemy stop snoring");
         snoring.Stop();
     }
 }
