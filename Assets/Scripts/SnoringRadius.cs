@@ -8,7 +8,7 @@ public class SnoringRadius : MonoBehaviour
     {
         if (coll.CompareTag("Player"))
         {
-            Debug.Log("dark enemy breathes");
+            Debug.Log("dark enemy snores");
             GetComponentInParent<DarkEnemySoundHandler>().PlaySnoring();
         }
     }
@@ -17,7 +17,7 @@ public class SnoringRadius : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("dark enemy stops breathes");
+            Debug.Log("dark enemy stops snoring");
             GetComponentInParent<DarkEnemySoundHandler>().StopSnoring();
         }
     }

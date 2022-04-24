@@ -76,6 +76,9 @@ public class Enemy_Sleeper : Enemy
             {
                 if (player_in_Game.isRunning && isSleeping)
                 {
+                    Debug.Log("Waking up");
+                    sh.PlayChasing();
+
                     StartCoroutine(Wake_up());
 
                 }

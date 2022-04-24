@@ -76,10 +76,16 @@ public class Enemy_Dark : Enemy
                 anim.SetBool("playerDetected", false);
                 patrol();
             }
-
+            else if (anim.GetBool("Stunned") == true)
+            {
+                sh.StopBreathing();
+                sh.StopChasing();
+                sh.PlayScreeching();
+            }
             //not currently stunned
             else if (anim.GetBool("Stunned") == false)
             {
+                sh.StopScreeching();
                 sh.StopBreathing();
                 sh.PlayChasing();
 
@@ -177,6 +183,8 @@ public class Enemy_Dark : Enemy
         {
             sh.StopBreathing();
             sh.StopChasing();
+            Debug.Log("Stunned " + stun_length);
+            sh.PlayScreeching();
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {

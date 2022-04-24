@@ -25,6 +25,9 @@ public class Enemy_Water : Enemy
 
     #endregion
 
+    #region Audio_variables
+    #endregion
+
     void Start()
     {
         Startup();
@@ -53,16 +56,25 @@ public class Enemy_Water : Enemy
                 //Pebble detected, stops detecting player
                 anim.SetBool("playerDetected", false);
                 Move(DEnemyRB, pebble_position);
+
+                wsh.StopChasing();
+               
             }
             else if (playerposition == null || player_in_Game == null)
             {
                 anim.SetBool("playerDetected", false);
+
                 patrol();
+
+                wsh.StopChasing();
             }
             else
             {
                 //Player detected and currently not following pebble, starts following player
                 anim.SetBool("playerDetected", true);
+
+                wsh.PlayChasing();
+
                 Attack();
                 Move(DEnemyRB, playerposition);
                 Set_patrol_timer();

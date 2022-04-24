@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
 
     #region Audio_variables
     public DarkEnemySoundHandler sh;
+    public WaterEnemySoundHandler wsh;
     #endregion
 
     void Start()
@@ -48,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-
+                
 
     }
 
@@ -60,6 +61,7 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
         sh = GetComponent<DarkEnemySoundHandler>();
+        wsh = GetComponent<WaterEnemySoundHandler>();
     }
 
     #region Movement_functions
@@ -89,7 +91,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 direction = new Vector2(1, 0);
-            }
+            } 
         }
         else
         {
@@ -120,7 +122,7 @@ public class Enemy : MonoBehaviour
 
     public void patrol()
     {
-
+    
     }
 
     #endregion
@@ -205,10 +207,10 @@ public class Enemy : MonoBehaviour
         {
 
             Debug.Log("Attack");
-            GetComponent<DarkEnemySoundHandler>().StopBreathing();
-            GetComponent<DarkEnemySoundHandler>().StopChasing();
-            GetComponent<DarkEnemySoundHandler>().StopScreeching();
-            GetComponent<DarkEnemySoundHandler>().StopSnoring();
+            //GetComponent<DarkEnemySoundHandler>().StopBreathing();
+            //GetComponent<DarkEnemySoundHandler>().StopChasing();
+            //GetComponent<DarkEnemySoundHandler>().StopScreeching();
+            //GetComponent<DarkEnemySoundHandler>().StopSnoring();
             if (!isAttacking)
             {
                 StartCoroutine(Attack_routine());
