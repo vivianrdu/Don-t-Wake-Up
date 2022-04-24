@@ -22,7 +22,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
 
     public void PlayBreathing()
     {
-        Debug.Log("dark enemy breathing");
+        //Debug.Log("dark enemy breathing");
         if (!breathing.isPlaying)
         {
             breathing.Play(0);
@@ -30,7 +30,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     }
     public void StopBreathing()
     {
-        Debug.Log("dark enemy stop breathing");
+        //Debug.Log("dark enemy stop breathing");
         //FadeSoundOut(breathing);
         breathing.Stop();
     }
@@ -51,7 +51,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
 
     public void PlayScreeching()
     {
-        Debug.Log("dark enemy screeching");
+        //Debug.Log("dark enemy screeching");
         if (!screeching.isPlaying)
         {
             screeching.Play(0);
@@ -59,7 +59,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     }
     public void StopScreeching()
     {
-        Debug.Log("dark enemy stop screeching");
+        //Debug.Log("dark enemy stop screeching");
         screeching.Stop();
     }
 

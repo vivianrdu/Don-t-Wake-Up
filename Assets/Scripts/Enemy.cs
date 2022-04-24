@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-
+                
 
     }
 
@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 direction = new Vector2(1, 0);
-            }
+            } 
         }
         else
         {
@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
 
     public void patrol()
     {
-
+    
     }
 
     #endregion
