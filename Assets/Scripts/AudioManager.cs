@@ -126,6 +126,28 @@ public class AudioManager : MonoBehaviour
                 PlayMusic("DarkSceneBGMusic");
             }
         }
+        else if (sceneName == "2.WaterScene")
+        {
+            if (IsPlaying("DarkSceneBGMusic"))
+            {
+                SwapMusic("DarkSceneBGMusic", "WaterSceneBGMusic");
+            }
+            else
+            {
+                PlayMusic("WaterSceneBGMusic");
+            }
+        }
+        else if (sceneName == "3.PeopleScene")
+        {
+            if (IsPlaying("WaterSceneBGMusic"))
+            {
+                SwapMusic("WaterSceneBGMusic", "PeopleSceneBGMusic");
+            }
+            else
+            {
+                PlayMusic("PeopleSceneBGMusic");
+            }
+        }
     }
 
     void OnDisable()

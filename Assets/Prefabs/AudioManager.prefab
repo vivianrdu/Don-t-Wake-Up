@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3037822773899798573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3037822773899798575}
+  - component: {fileID: 3037822773899798574}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3037822773899798575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3037822773899798573}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -37.142666, y: -10.493092, z: -331.00824}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3037822773899798574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3037822773899798573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763d82f8ba8e14ee2ad23232ec41606a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: StartMenuBGMusic
+    group: Music
+    clip: {fileID: 8300000, guid: 9b254a0bb48fa4f9a820a0f980cdedb3, type: 3}
+    source: {fileID: 0}
+  - name: DarkSceneBGMusic
+    group: Music
+    clip: {fileID: 8300000, guid: b1d280c5b37ba44f29361ff992f00d71, type: 3}
+    source: {fileID: 0}
+  - name: WaterSceneBGMusic
+    group: Music
+    clip: {fileID: 8300000, guid: d963f94bfe0b64c89a6bde55da4215c3, type: 3}
+    source: {fileID: 0}
+  - name: PeopleSceneBGMusic
+    group: Music
+    clip: {fileID: 8300000, guid: f198bd5bd73674e86ab457d1c99c5beb, type: 3}
+    source: {fileID: 0}
+  musicGroup: {fileID: -5065870052020328332, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
+  sfxGroup: {fileID: -220058948930709544, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
+  foleyGroup: {fileID: 4853085873983550569, guid: ad511191eafe74b24a1fef91b44c25ab, type: 2}
