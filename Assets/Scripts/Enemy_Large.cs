@@ -43,10 +43,14 @@ public class Enemy_Large : Enemy
         {
             anim.SetBool("playerDetected", true); //maybe have to move this for animation
             StartCoroutine(Detected_routine());
+            //sh.StopBreathing();
+            //sh.PlayLargeEnemyChasing();
         }
         if (playerHunt)
         {
             Hunt();
+            //sh.StopBreathing();
+            //sh.PlayLargeEnemyChasing();
         }
     }
 
