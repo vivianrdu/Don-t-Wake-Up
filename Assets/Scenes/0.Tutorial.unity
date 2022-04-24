@@ -3730,6 +3730,63 @@ PrefabInstance:
       objectReference: {fileID: 9039090}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 627d0d6a97b02b94c916a2231904143a, type: 3}
+--- !u!1001 &445447634
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1989051604955211217, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_Name
+      value: NightlightSoundHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -40.233643
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.378596
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -334.8157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691401083746293952, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f9ae21501bd945b98d4dbd014fb395d, type: 3}
 --- !u!1 &487733037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,7 +3805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &487733038
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3814,7 +3871,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.2
-  m_Text: press SPACE to jump on crates
+  m_Text: press SPACE to jump
 --- !u!222 &487733041
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5163,7 +5220,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5241253310001259122, guid: e4760e96976e54d31921d832363b73a3, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 5241253310001259122, guid: e4760e96976e54d31921d832363b73a3, type: 3}
       propertyPath: m_LocalPosition.x
