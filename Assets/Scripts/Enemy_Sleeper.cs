@@ -46,6 +46,8 @@ public class Enemy_Sleeper : Enemy
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
         spriteEnemy = GetComponent<SpriteRenderer>();
+        sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
+
     }
 
     // Update is called once per frame

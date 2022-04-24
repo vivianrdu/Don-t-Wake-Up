@@ -25,13 +25,13 @@ public class DarkEnemySoundHandler : MonoBehaviour
         //Debug.Log("dark enemy breathing");
         if (!breathing.isPlaying)
         {
-            breathing.Play(0);
+            StartCoroutine(FadeIn(breathing, 1f));
+            //breathing.Play(0);
         }
     }
     public void StopBreathing()
     {
-        //FadeSoundOut(breathing);
-        breathing.Stop();
+        StartCoroutine(FadeOut(breathing, 1f));
     }
 
     public void PlayChasing()
@@ -45,7 +45,8 @@ public class DarkEnemySoundHandler : MonoBehaviour
     public void StopChasing()
     {
         //Debug.Log("dark enemy stop chasing");
-        chasing.Stop();
+        StartCoroutine(FadeOut(chasing, 1f));
+        //chasing.Stop();
     }
 
     public void PlayScreeching()
@@ -59,20 +60,39 @@ public class DarkEnemySoundHandler : MonoBehaviour
     public void StopScreeching()
     {
         //Debug.Log("dark enemy stop screeching");
-        screeching.Stop();
+        StartCoroutine(FadeOut(screeching, 1f));
     }
 
     public void PlaySnoring()
     {
-        //Debug.Log("dark enemy snoring");
-        if (!snoring.isPlaying)
-        {
-            snoring.Play(0);
-        }
+        StartCoroutine(FadeIn(snoring, 1f));
     }
     public void StopSnoring()
     {
         //Debug.Log("dark enemy stop snoring");
-        snoring.Stop();
+        StartCoroutine(FadeOut(snoring, 1f));
+    }
+
+    public static IEnumerator FadeIn(AudioSource audioSource, float FadeTime)
+    {
+        audioSource.Play();
+        audioSource.volume = 0f;
+        while (audioSource.volume <= 0.9)
+        {
+            audioSource.volume += Time.deltaTime / FadeTime;
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    {
+        float startVolume = audioSource.volume;
+        while (audioSource.volume >= 0.1)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+            yield return null;
+        }
+        audioSource.Stop();
+        audioSource.volume = startVolume;
     }
 }

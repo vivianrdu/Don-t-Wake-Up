@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
         DEnemyColl = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         respawn_anchor = this.transform.position;
-        sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
+        sh = GetComponent<DarkEnemySoundHandler>();
     }
 
     #region Movement_functions
@@ -192,16 +192,23 @@ public class Enemy : MonoBehaviour
             Debug.Log("PeopleEnemy Attack");
             StartCoroutine(Attack_routine());
         }
+        else if (transform.name == "SleepingDarkEnemy" && isAttacking == false && (
+                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) ||
+                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.3)))
+        {
+            Debug.Log("SleepingEnemy Attack");
+            StartCoroutine(Attack_routine());
+        }
         else if (isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) ||
                     (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.5)))
         {
 
             Debug.Log("Attack");
-            sh.StopBreathing();
-            sh.StopChasing();
-            sh.StopScreeching();
-            sh.StopSnoring();
+            GetComponent<DarkEnemySoundHandler>().StopBreathing();
+            GetComponent<DarkEnemySoundHandler>().StopChasing();
+            GetComponent<DarkEnemySoundHandler>().StopScreeching();
+            GetComponent<DarkEnemySoundHandler>().StopSnoring();
             if (!isAttacking)
             {
                 StartCoroutine(Attack_routine());

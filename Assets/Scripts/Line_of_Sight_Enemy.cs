@@ -18,7 +18,7 @@ public class Line_of_Sight_Enemy : MonoBehaviour
             GetComponentInParent<Enemy>().player_in_Game = coll.GetComponent<Player>();
             if (GetComponentInParent<Enemy>().transform.name == "DarkEnemy")
             {
-                GetComponentInParent<DarkEnemySoundHandler>().PlayChasing();
+                GetComponentInParent<Enemy>().sh.PlayChasing();
             }
             Debug.Log("Detected player");
             
@@ -40,7 +40,7 @@ public class Line_of_Sight_Enemy : MonoBehaviour
             GetComponentInParent<Enemy>().playerposition = null;
             if (GetComponentInParent<Enemy>().transform.name == "DarkEnemy")
             {
-                GetComponentInParent<DarkEnemySoundHandler>().StopChasing();
+                GetComponentInParent<Enemy>().sh.StopChasing();
             }
         }
     }

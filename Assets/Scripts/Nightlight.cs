@@ -22,7 +22,10 @@ public class Nightlight : MonoBehaviour
 
     #region respawn_variables
     public Vector2 respawn_anchor;
+    #endregion
 
+    #region Audio_variables
+    public NightlightSoundHandler sh;
     #endregion
 
     // Start is called before the first frame update
@@ -42,6 +45,7 @@ public class Nightlight : MonoBehaviour
         timerIsRunning = false;
         alreadyOn = false;
         respawn_anchor = transform.position;
+        sh = GameObject.Find("/NightlightSoundHandler").GetComponent<NightlightSoundHandler>();
     }
 
     void Update()
@@ -90,12 +94,7 @@ public class Nightlight : MonoBehaviour
         timerIsRunning = true;
         alreadyOn = true; //player can't pick it up again
         GetComponent<BoxCollider2D>().enabled = false;
-    }
-
-    private void Reset_Again()
-    {
-        StopCoroutine(Countdown());
-        StartCoroutine(Countdown());
+        sh.PlayTurnOn();
     }
 
     private void TurnOff()
@@ -105,7 +104,7 @@ public class Nightlight : MonoBehaviour
         timerIsRunning = false; //stops timer
         GetComponent<BoxCollider2D>().enabled = true; //falls onto the ground
         GetComponent<Rigidbody2D>().isKinematic = false;
-        
+        sh.PlayTurnOff();
     }
 
     public IEnumerator Countdown()
@@ -132,11 +131,12 @@ public class Nightlight : MonoBehaviour
 
     {
         StopAllCoroutines();
-        TurnOff();
         GetComponent<Rigidbody2D>().isKinematic = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         transform.position = respawn_anchor;
         //reset
+        anim.SetBool("on", false);
+        GetComponent<BoxCollider2D>().enabled = true;
         timerIsRunning = false;
         alreadyOn = false;
         anim.SetBool("reset", true);
