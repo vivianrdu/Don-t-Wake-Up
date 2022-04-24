@@ -24,7 +24,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
 
     public void PlayBreathing()
     {
-        //Debug.Log("dark enemy breathing");
+        Debug.Log("dark enemy breathing");
         if (!breathing.isPlaying)
         {
             StartCoroutine(FadeIn(breathing, 1f));
@@ -77,7 +77,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
 
     public void PlayLargeEnemyChasing()
     {
-        //Debug.Log("dark enemy breathing");
+        Debug.Log("large dark enemy chasing");
         if (!large_enemy_chasing.isPlaying)
         {
             large_enemy_chasing.Play(0);

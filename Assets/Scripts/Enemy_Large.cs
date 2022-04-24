@@ -35,8 +35,8 @@ public class Enemy_Large : Enemy
             Debug.Log("Teststtststs:" + playerposition);
             should_I_hunt_the_player = true;
             Debug.Log("Play large enemy chasing sounds");
-            sh.StopBreathing();
-            sh.PlayLargeEnemyChasing();
+            //sh.StopBreathing();
+            //sh.PlayLargeEnemyChasing();
         }
 
         if (should_I_hunt_the_player)
@@ -95,6 +95,8 @@ public class Enemy_Large : Enemy
         
         if (collision.gameObject.CompareTag("Player") && !isAttacking)
         {
+            sh.StopBreathing();
+            sh.PlayLargeEnemyChasing();
             isAttacking = true;
             StartCoroutine(Attack_routine());
         }
