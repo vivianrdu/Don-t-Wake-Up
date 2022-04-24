@@ -77,7 +77,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     {
         audioSource.Play();
         audioSource.volume = 0f;
-        while (audioSource.volume <= 1)
+        while (audioSource.volume <= 0.9)
         {
             audioSource.volume += Time.deltaTime / FadeTime;
             yield return null;
@@ -87,7 +87,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     public IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
     {
         float startVolume = audioSource.volume;
-        while (audioSource.volume >= 0)
+        while (audioSource.volume >= 0.1)
         {
             audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
             yield return null;
