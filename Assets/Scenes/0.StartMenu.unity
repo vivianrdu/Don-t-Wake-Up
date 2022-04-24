@@ -1194,34 +1194,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3037822773899798574, guid: 9319de51601e14584b45c1ec9dd74292, type: 3}
-      propertyPath: sounds.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3037822773899798574, guid: 9319de51601e14584b45c1ec9dd74292, type: 3}
-      propertyPath: sounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: d963f94bfe0b64c89a6bde55da4215c3, type: 3}
-    - target: {fileID: 3037822773899798574, guid: 9319de51601e14584b45c1ec9dd74292, type: 3}
-      propertyPath: sounds.Array.data[2].name
-      value: WaterSceneBGMusic
-      objectReference: {fileID: 0}
-    - target: {fileID: 3037822773899798574, guid: 9319de51601e14584b45c1ec9dd74292, type: 3}
-      propertyPath: sounds.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: f198bd5bd73674e86ab457d1c99c5beb, type: 3}
-    - target: {fileID: 3037822773899798574, guid: 9319de51601e14584b45c1ec9dd74292, type: 3}
-      propertyPath: sounds.Array.data[3].name
-      value: PeopleSceneBGMusic
-      objectReference: {fileID: 0}
-    - target: {fileID: 3037822773899798574, guid: 9319de51601e14584b45c1ec9dd74292, type: 3}
-      propertyPath: sounds.Array.data[2].group
-      value: Music
-      objectReference: {fileID: 0}
-    - target: {fileID: 3037822773899798574, guid: 9319de51601e14584b45c1ec9dd74292, type: 3}
-      propertyPath: sounds.Array.data[3].group
-      value: Music
-      objectReference: {fileID: 0}
     - target: {fileID: 3037822773899798575, guid: 9319de51601e14584b45c1ec9dd74292, type: 3}
       propertyPath: m_RootOrder
       value: 5
