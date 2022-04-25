@@ -21,7 +21,6 @@ public class WaterEnemySoundHandler : MonoBehaviour
         if (!chasing.isPlaying)
         {
             StartCoroutine(FadeIn(chasing, 1f));
-            //breathing.Play(0);
         }
     }
     public void StopChasing()
