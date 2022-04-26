@@ -126,24 +126,30 @@ public class AudioManager : MonoBehaviour
                 PlayMusic("DarkSceneBGMusic");
             }
         }
-        else if (sceneName == "2.WaterScene")
+        else if (sceneName == "1.DarkSceneAnimated")
         {
             if (IsPlaying("DarkSceneBGMusic"))
             {
-                SwapMusic("DarkSceneBGMusic", "WaterSceneBGMusic");
+                StopMusic("DarkSceneBGMusic");
             }
-            else
+        }
+        else if (sceneName == "2.WaterScene")
+        {
+            if (!IsPlaying("WaterSceneBGMusic"))
             {
                 PlayMusic("WaterSceneBGMusic");
             }
         }
-        else if (sceneName == "3.PeopleScene")
+        else if (sceneName == "2.WaterSceneAnimated")
         {
             if (IsPlaying("WaterSceneBGMusic"))
             {
-                SwapMusic("WaterSceneBGMusic", "PeopleSceneBGMusic");
+                StopMusic("WaterSceneBGMusic");
             }
-            else
+        }
+        else if (sceneName == "3.PeopleScene")
+        {
+            if (!IsPlaying("PeopleSceneBGMusic"))
             {
                 PlayMusic("PeopleSceneBGMusic");
             }
@@ -175,6 +181,32 @@ public class AudioManager : MonoBehaviour
         }
         s.source.volume = 0;
         StartCoroutine(FadeTrackIn(s.source));
+    }
+
+    public void StopMusic(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            return;
+        }
+        StartCoroutine(FadeTrackOut(s.source));
+    }
+
+    private IEnumerator FadeTrackOut(AudioSource newSource)
+    {
+        float timeToFade = 1.25f;
+        float timeElapsed = 0;
+
+        newSource.Play();
+
+        while (timeElapsed < timeToFade)
+        {
+            newSource.volume = Mathf.Lerp(0.3f, 0, timeElapsed / timeToFade);
+            timeElapsed += Time.deltaTime;
+            Debug.Log(newSource.volume.ToString());
+            yield return null;
+        }
     }
 
     private IEnumerator FadeTrackIn(AudioSource newSource)
