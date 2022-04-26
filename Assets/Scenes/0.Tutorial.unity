@@ -351,6 +351,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pebble
       objectReference: {fileID: 0}
+    - target: {fileID: 3785669523118155104, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3785669523118155108, guid: 680d6ea57cb9b462a9c8a7244759402e, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -6739,7 +6743,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.3481293, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

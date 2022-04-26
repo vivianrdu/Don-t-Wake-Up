@@ -149,11 +149,16 @@ public class Enemy_Water : Enemy
 
     public new void Reset_position()
     {
+        
         transform.position = respawn_anchor;
         //reset
         isAttacking = false;
         pebble_detected = false;
         anim.SetBool("playerDetected", false);
+
+
+
+        reset_attack();
     }
     #endregion
 }

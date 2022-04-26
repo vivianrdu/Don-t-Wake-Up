@@ -142,6 +142,12 @@ public class Enemy : MonoBehaviour
         transform.position = respawn_anchor;
 
     }
+    public void reset_attack()
+    {
+
+        isAttacking = false;
+        anim.SetBool("Attacking", false);
+    }
 
     #endregion
 

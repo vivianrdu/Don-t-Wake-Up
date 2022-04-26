@@ -56,6 +56,7 @@ public class Enemy_Large : Enemy
 
     public new void Reset_position()
     {
+        
         transform.position = respawn_anchor;
         //reset
 
@@ -70,6 +71,8 @@ public class Enemy_Large : Enemy
         should_I_hunt_the_player = false;
         DEnemyColl.enabled = false;
         transform.localScale = new Vector3(3, 3, 1);
+
+        reset_attack();
 
 
 

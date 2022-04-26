@@ -133,6 +133,9 @@ public class GameManager : MonoBehaviour
             Key key = keys[i];
             key.Reset_position();
         }
+
+
+        StopAllCoroutines();
     }
 
 

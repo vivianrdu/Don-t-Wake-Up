@@ -164,12 +164,15 @@ public class Enemy_Dark : Enemy
         sh.StopChasing();
         sh.StopScreeching();
         sh.StopSnoring();
+        
         transform.position = respawn_anchor;
         //reset
         stun = 0;
         isAttacking = false;
         anim.SetBool("playerDetected", false);
         anim.SetBool("Stunned", false);
+
+        reset_attack();
     }
 
 
