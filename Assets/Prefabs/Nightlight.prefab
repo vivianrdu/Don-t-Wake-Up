@@ -123,9 +123,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.022497177, y: 0}
+  m_Offset: {x: 0.0011472702, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
 --- !u!1 &6850176443532512746
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 977517257
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -6344965914745571226, guid: 5ab1cd4e337de4607ad15ef9f3315de1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -250,6 +250,7 @@ MonoBehaviour:
   timerIsRunning: 0
   player: {fileID: 0}
   respawn_anchor: {x: 0, y: 0}
+  sh: {fileID: 0}
 --- !u!61 &6850176443532512750
 BoxCollider2D:
   m_ObjectHideFlags: 0

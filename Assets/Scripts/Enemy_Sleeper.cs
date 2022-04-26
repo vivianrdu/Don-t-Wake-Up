@@ -89,8 +89,11 @@ public class Enemy_Sleeper : Enemy
 
     public new void Reset_position()
     {
+
         sh.StopChasing();
         sh.StopSnoring();
+
+        
 
         transform.position = respawn_anchor;
         //reset
@@ -104,6 +107,7 @@ public class Enemy_Sleeper : Enemy
         DEnemyColl.enabled = false;
         isAttacking = false;
         playerposition = null;
+        reset_attack();
     }
 
 

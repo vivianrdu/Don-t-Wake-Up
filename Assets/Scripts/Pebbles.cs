@@ -41,7 +41,7 @@ public class Pebbles : MonoBehaviour
     void Update()
     {
         dist_play();
-
+        //Debug.Log( "Player touch" +  player_touch);
         if (player_touch)
         {
             // Allow the player to pick up if they have not picked it up already and thrown it into the water
@@ -64,7 +64,9 @@ public class Pebbles : MonoBehaviour
         distance_to_player.x = transform.position.x - player.transform.position.x;
         distance_to_player.y = transform.position.y - player.transform.position.y;
 
-        if(distance_to_player.x < 1 && distance_to_player.y <1)
+        
+
+        if(distance_to_player.x < 1 && distance_to_player.y < 1 && distance_to_player.x > -1 && distance_to_player.y > -1)
         {
             player_touch = true;
         } else
@@ -112,6 +114,7 @@ public class Pebbles : MonoBehaviour
     #region Respawn
     public void Reset_position()
     {
+        cc.enabled = true;
         transform.position = respawn_anchor;
         player_picked_up = false;
         touch_water = false;
