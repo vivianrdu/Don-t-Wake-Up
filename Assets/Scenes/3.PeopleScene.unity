@@ -14756,10 +14756,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PeopleEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1500887913004386377, guid: 180d4415814074ec0a82b0ca6762b530, type: 3}
-      propertyPath: patrol_stopping_randoness
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1500887913004386383, guid: 180d4415814074ec0a82b0ca6762b530, type: 3}
       propertyPath: m_RootOrder
       value: 0
