@@ -139,4 +139,18 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void reset_position_people()
+    {
+        Enemy[] enemies_in_Scene;
+        enemies_in_Scene = FindObjectsOfType<Enemy>();
+        for (int i = 0; i < enemies_in_Scene.Length; ++i)
+        { 
+            if (enemies_in_Scene[i] is Enemy_People)
+            {
+                Enemy_People enemy = (Enemy_People)enemies_in_Scene[i];
+                enemy.Reset_position();
+            }
+        }
+    }
+
 }

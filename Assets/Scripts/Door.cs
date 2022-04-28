@@ -69,10 +69,10 @@ public class Door : MonoBehaviour
     public void EnterDoor()
     {
         GameObject img = GameObject.FindWithTag("Fade");
-
+        GameObject gm = GameObject.FindWithTag("GameController");
         /** Player SpriteRenderer disabled (disappears) **/
         player.GetComponent<SpriteRenderer>().enabled = false;
-
+        gm.GetComponent<GameManager>().reset_position_people();
         /** This occurs when screen is black:
          * Player position moves to other door
          * Player SpriteRenderer reenabled (appears)
