@@ -734,7 +734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8573235879137934343, guid: ff53d7c78a02e45e1a1f1971e10b3aac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -163.3
+      value: 161
       objectReference: {fileID: 0}
     - target: {fileID: 8573235879137934343, guid: ff53d7c78a02e45e1a1f1971e10b3aac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1566,7 +1566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_RootOrder
@@ -2584,7 +2584,7 @@ Tilemap:
       - {fileID: 4955556114347793615, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: -2131355921969782192, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: 2652182241909924386, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 35, y: -9, z: 0}
@@ -3648,7 +3648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &980876331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8671,6 +8671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SleepingDarkEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 892183942407765049, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1519009919173741265, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -10227,7 +10231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861644, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8507887553624861646, guid: 3b0fcd32ba8a40040961c622e40905e4, type: 3}
       propertyPath: m_RootOrder
