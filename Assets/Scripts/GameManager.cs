@@ -63,6 +63,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("3.PeopleSceneAnimated");
     }
+
+    public void EndCutscene()
+    {
+        SceneManager.LoadScene("4.End");
+    }
     #endregion
 
     public void Reset_current_scene()
@@ -138,5 +143,19 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
     }
 
+
+    public void reset_position_people()
+    {
+        Enemy[] enemies_in_Scene;
+        enemies_in_Scene = FindObjectsOfType<Enemy>();
+        for (int i = 0; i < enemies_in_Scene.Length; ++i)
+        { 
+            if (enemies_in_Scene[i] is Enemy_People)
+            {
+                Enemy_People enemy = (Enemy_People)enemies_in_Scene[i];
+                enemy.Reset_position();
+            }
+        }
+    }
 
 }
