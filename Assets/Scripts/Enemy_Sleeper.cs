@@ -46,7 +46,6 @@ public class Enemy_Sleeper : Enemy
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
         spriteEnemy = GetComponent<SpriteRenderer>();
-        sh = GameObject.Find("/DarkEnemySoundHandler").GetComponent<DarkEnemySoundHandler>();
 
     }
 
@@ -55,15 +54,13 @@ public class Enemy_Sleeper : Enemy
     {
         if (player_in_Game == null || playerposition == null)
         {
-            sh.StopSnoring();
+            Debug.Log("stop all sounds");
             sh.StopChasing();
-            sh.StopBreathing();
-            sh.StopScreeching();
-
             return;
         }
         if (isMoving)
         {
+            Debug.Log("stop snoring and start chasing");
             sh.StopSnoring();
             sh.PlayChasing();
             Attack();
@@ -77,7 +74,6 @@ public class Enemy_Sleeper : Enemy
                 if (player_in_Game.isRunning && isSleeping)
                 {
                     Debug.Log("Waking up");
-                    sh.PlayChasing();
 
                     StartCoroutine(Wake_up());
 
