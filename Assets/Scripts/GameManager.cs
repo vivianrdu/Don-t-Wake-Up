@@ -63,6 +63,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("3.PeopleSceneAnimated");
     }
+
+    public void EndCutscene()
+    {
+        SceneManager.LoadScene("4.End");
+    }
     #endregion
 
     public void Reset_current_scene()
