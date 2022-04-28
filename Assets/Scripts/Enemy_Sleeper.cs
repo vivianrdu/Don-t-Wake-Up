@@ -55,11 +55,7 @@ public class Enemy_Sleeper : Enemy
         if (player_in_Game == null || playerposition == null)
         {
             Debug.Log("stop all sounds");
-            sh.StopSnoring();
             sh.StopChasing();
-            sh.StopBreathing();
-            sh.StopScreeching();
-
             return;
         }
         if (isMoving)
@@ -78,9 +74,6 @@ public class Enemy_Sleeper : Enemy
                 if (player_in_Game.isRunning && isSleeping)
                 {
                     Debug.Log("Waking up");
-                    Debug.Log("Stop snoring because player running");
-                    sh.StopSnoring();
-                    sh.PlayChasing();
 
                     StartCoroutine(Wake_up());
 

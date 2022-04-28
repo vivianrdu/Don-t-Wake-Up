@@ -41,6 +41,7 @@ public class Line_of_Sight_Enemy : MonoBehaviour
             if (GetComponentInParent<Enemy>().transform.name == "DarkEnemy")
             {
                 GetComponentInParent<Enemy>().sh.StopChasing();
+                GetComponentInParent<Enemy>().sh.PlayBreathing();
             }
         }
     }
