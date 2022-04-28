@@ -294,7 +294,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3481293, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2539,7 +2539,7 @@ Tilemap:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 14
       m_IsLooping: 1
   - first: {x: -26, y: -9, z: 0}
@@ -2584,7 +2584,7 @@ Tilemap:
       - {fileID: 4955556114347793615, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: -2131355921969782192, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
       - {fileID: 2652182241909924386, guid: 6a5678370068a43679bd0e441672cf45, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 35, y: -9, z: 0}
@@ -3648,7 +3648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &980876331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8623,6 +8623,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 279270138}
     m_Modifications:
+    - target: {fileID: 892183942407765028, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
+      propertyPath: m_Size.x
+      value: 0.3753712
+      objectReference: {fileID: 0}
+    - target: {fileID: 892183942407765028, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
+      propertyPath: m_Size.y
+      value: 0.1352217
+      objectReference: {fileID: 0}
+    - target: {fileID: 892183942407765028, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.1103895
+      objectReference: {fileID: 0}
+    - target: {fileID: 892183942407765028, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.143888
+      objectReference: {fileID: 0}
     - target: {fileID: 892183942407765031, guid: 14dedc880dafe4adca7ef34f61963f57, type: 3}
       propertyPath: m_RootOrder
       value: 3
