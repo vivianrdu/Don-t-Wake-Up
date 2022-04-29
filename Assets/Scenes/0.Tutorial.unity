@@ -6522,7 +6522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.2
-  m_Text: press (e) to pick up and throw pebble and (L) to throw
+  m_Text: press (e) to pick up pebble and (L) to throw
 --- !u!222 &1826198898
 CanvasRenderer:
   m_ObjectHideFlags: 0
