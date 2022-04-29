@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4.End.unity
     guid: b2c59496eaebe4d2988466d669b0007b
+  - enabled: 1
+    path: Assets/Scenes/3.PeopleSceneAnimated.unity
+    guid: 33db609ac9fbc40ef8e95d7f3e4c8301
   m_configObjects: {}

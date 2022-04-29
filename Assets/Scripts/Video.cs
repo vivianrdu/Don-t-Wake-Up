@@ -27,6 +27,10 @@ public class Video : MonoBehaviour
         {
             SceneManager.LoadScene("3.PeopleScene");
         }
+        else if (currentScene == "3.PeopleSceneAnimated")
+        {
+            SceneManager.LoadScene("4.End");
+        }
         else
         {
             SceneManager.LoadScene("0.StartMenu");
