@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     public Transform playerposition;
     public Player player_in_Game;
     protected Vector2 direction;
+    public SpriteRenderer spriteEnemy;
+    public Color currentColor;
     #endregion
 
     #region Movement_variables
@@ -62,6 +64,8 @@ public class Enemy : MonoBehaviour
         respawn_anchor = this.transform.position;
         sh = GetComponent<DarkEnemySoundHandler>();
         wsh = GetComponent<WaterEnemySoundHandler>();
+        spriteEnemy = GetComponent<SpriteRenderer>();
+        currentColor = spriteEnemy.color;
     }
 
     #region Movement_functions
@@ -139,9 +143,31 @@ public class Enemy : MonoBehaviour
 
     public void darkness_Island_reset()
     {
+        StartCoroutine(fade_water_scene());
+    }
+
+
+    IEnumerator fade_water_scene()
+    {
+        float totalTransitionTime = 1.5f;
+        float elapsedTime = 0;
+
+        while (elapsedTime <= totalTransitionTime)
+        {
+             spriteEnemy.color = Color.Lerp(spriteEnemy.color, new Color(255, 255, 255, 0), elapsedTime / totalTransitionTime);
+             elapsedTime += Time.deltaTime;
+             yield return null;
+        }
         transform.position = respawn_anchor;
+        smallReset();
 
     }
+
+    public void smallReset()
+    {
+        spriteEnemy.color = currentColor;
+    }
+
     public void reset_attack()
     {
 

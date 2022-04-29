@@ -30,7 +30,6 @@ public class Enemy_Sleeper : Enemy
     #endregion
 
     #region Animation_components
-    SpriteRenderer spriteEnemy;
     #endregion
 
     #region Audio_variables
@@ -45,7 +44,6 @@ public class Enemy_Sleeper : Enemy
         anim.SetBool("isSleeping", true);
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
-        spriteEnemy = GetComponent<SpriteRenderer>();
 
     }
 
@@ -156,6 +154,12 @@ public class Enemy_Sleeper : Enemy
         }
 
 
+    }
+
+    public new void smallReset()
+    {
+        spriteEnemy.color = currentColor;
+        Reset_position();
     }
 
     #endregion
