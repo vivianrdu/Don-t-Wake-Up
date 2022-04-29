@@ -67,12 +67,17 @@ public class DarkEnemySoundHandler : MonoBehaviour
 
     public void PlaySnoring()
     {
-        StartCoroutine(FadeIn(snoring, 1f));
+        if (!snoring.isPlaying)
+        {
+            StartCoroutine(FadeIn(snoring, 1f));
+        }
+        //StartCoroutine(FadeIn(snoring, 1f));
     }
     public void StopSnoring()
     {
         //Debug.Log("dark enemy stop snoring");
-        StartCoroutine(FadeOut(snoring, 1f));
+        snoring.Stop();
+        //StartCoroutine(FadeOut(snoring, 1f));
     }
 
     public void PlayLargeEnemyChasing()
