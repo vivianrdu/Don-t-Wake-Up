@@ -156,7 +156,7 @@ public class Enemy_Sleeper : Enemy
 
     }
 
-    public new void smallReset()
+    public new void SmallReset()
     {
         spriteEnemy.color = currentColor;
         Reset_position();
