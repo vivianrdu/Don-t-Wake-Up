@@ -15,6 +15,7 @@ TagManager:
   - Pebble
   - Enemy
   - Wall
+  - Headcollider
   layers:
   - Default
   - TransparentFX
