@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1365702050}
   m_Layer: 7
   m_Name: HeadCollider
-  m_TagString: Enemy
+  m_TagString: Headcollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,6 +321,7 @@ MonoBehaviour:
   anim: {fileID: 8507887553624861681}
   respawn_anchor: {x: 0, y: 0}
   sh: {fileID: 0}
+  wsh: {fileID: 0}
   patrol_radius: 3
   patrol_stopping_randoness: 0
   stun_length: 5
