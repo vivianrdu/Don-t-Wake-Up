@@ -186,7 +186,6 @@ public class Enemy_Dark : Enemy
         {
             sh.StopBreathing();
             sh.StopChasing();
-            Debug.Log("Stunned " + stun_length);
             sh.PlayScreeching();
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
@@ -208,7 +207,6 @@ public class Enemy_Dark : Enemy
 
     IEnumerator Stun_routine()
     {
-        Debug.Log("Stun routine");
         sh.PlayScreeching();
 
         if (isAttacking)

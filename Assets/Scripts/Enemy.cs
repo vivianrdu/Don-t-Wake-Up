@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     public float walking_speed;
     public float attack_speed;
     [SerializeField]
-    protected Animator anim;
+    public Animator anim;
     #endregion
 
     #region Patrol_variables

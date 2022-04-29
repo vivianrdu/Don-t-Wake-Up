@@ -62,8 +62,10 @@ public class darkness_Island : MonoBehaviour
             StartCoroutine(change_global_light(false));
 
         }
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && !collision.GetComponentInParent<Enemy>().anim.GetBool("Stunned"))
         {
+            Debug.Log("exit dark island trigger");
+
             collision.GetComponentInParent<Enemy>().Darkness_Island_reset();
         }
     }
