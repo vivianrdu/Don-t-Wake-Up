@@ -141,13 +141,13 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void darkness_Island_reset()
+    public void Darkness_Island_reset()
     {
-        StartCoroutine(fade_water_scene());
+        StartCoroutine(Fade_water_scene());
     }
 
 
-    IEnumerator fade_water_scene()
+    IEnumerator Fade_water_scene()
     {
         float totalTransitionTime = 1.5f;
         float elapsedTime = 0;
@@ -159,11 +159,11 @@ public class Enemy : MonoBehaviour
              yield return null;
         }
         transform.position = respawn_anchor;
-        smallReset();
-
+        SmallReset();
+        yield return null;
     }
 
-    public void smallReset()
+    public void SmallReset()
     {
         spriteEnemy.color = currentColor;
     }
