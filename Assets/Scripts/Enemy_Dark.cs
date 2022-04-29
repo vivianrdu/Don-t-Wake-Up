@@ -31,9 +31,6 @@ public class Enemy_Dark : Enemy
 
     #endregion
 
-    #region Audio_variables
-    #endregion
-
     // Start is called before the first frame update
     void Start()
     {
@@ -85,7 +82,7 @@ public class Enemy_Dark : Enemy
             //not currently stunned
             else if (anim.GetBool("Stunned") == false)
             {
-                sh.StopScreeching();
+                //sh.StopScreeching();
                 sh.StopBreathing();
                 sh.PlayChasing();
 
@@ -164,15 +161,12 @@ public class Enemy_Dark : Enemy
         sh.StopChasing();
         sh.StopScreeching();
         sh.StopSnoring();
-        
         transform.position = respawn_anchor;
         //reset
         stun = 0;
         isAttacking = false;
         anim.SetBool("playerDetected", false);
         anim.SetBool("Stunned", false);
-
-        reset_attack();
     }
 
 
@@ -187,7 +181,6 @@ public class Enemy_Dark : Enemy
             sh.StopBreathing();
             sh.StopChasing();
             Debug.Log("Stunned " + stun_length);
-            sh.PlayScreeching();
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {
@@ -209,7 +202,6 @@ public class Enemy_Dark : Enemy
     IEnumerator Stun_routine()
     {
         Debug.Log("Stun routine");
-        sh.PlayScreeching();
 
         if (isAttacking)
         {
@@ -228,7 +220,6 @@ public class Enemy_Dark : Enemy
         HeadColl.enabled = !HeadColl.enabled;
 
         anim.SetBool("Stunned", false);
-        sh.StopScreeching();
     }
     #endregion
 }

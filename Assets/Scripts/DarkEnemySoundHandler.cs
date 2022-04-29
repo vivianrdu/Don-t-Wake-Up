@@ -53,7 +53,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
 
     public void PlayScreeching()
     {
-        //Debug.Log("dark enemy screeching");
+        Debug.Log("dark enemy screeching");
         if (!screeching.isPlaying)
         {
             screeching.Play(0);
@@ -61,7 +61,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
     }
     public void StopScreeching()
     {
-        //Debug.Log("dark enemy stop screeching");
+        Debug.Log("dark enemy stop screeching");
         StartCoroutine(FadeOut(screeching, 1f));
     }
 
