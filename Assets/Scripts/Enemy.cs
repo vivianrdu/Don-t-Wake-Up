@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
     #region Audio_variables
     public DarkEnemySoundHandler sh;
     public WaterEnemySoundHandler wsh;
+    public LargeEnemySoundHandler lsh;
     #endregion
 
     void Start()
@@ -64,6 +65,7 @@ public class Enemy : MonoBehaviour
         respawn_anchor = this.transform.position;
         sh = GetComponent<DarkEnemySoundHandler>();
         wsh = GetComponent<WaterEnemySoundHandler>();
+        lsh = GetComponent<LargeEnemySoundHandler>();
         spriteEnemy = GetComponent<SpriteRenderer>();
         currentColor = spriteEnemy.color;
     }
