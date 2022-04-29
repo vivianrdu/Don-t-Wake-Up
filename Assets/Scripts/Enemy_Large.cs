@@ -32,25 +32,18 @@ public class Enemy_Large : Enemy
 
         if (playerposition != null && should_I_hunt_the_player == false)
         {
-            Debug.Log("Teststtststs:" + playerposition);
             should_I_hunt_the_player = true;
-            Debug.Log("Play large enemy chasing sounds");
-            //sh.StopBreathing();
-            //sh.PlayLargeEnemyChasing();
         }
 
         if (should_I_hunt_the_player)
         {
             anim.SetBool("playerDetected", true); //maybe have to move this for animation
             StartCoroutine(Detected_routine());
-            //sh.StopBreathing();
-            //sh.PlayLargeEnemyChasing();
         }
         if (playerHunt)
         {
             Hunt();
-            //sh.StopBreathing();
-            //sh.PlayLargeEnemyChasing();
+            lsh.PlayChasing();
         }
     }
 
@@ -71,14 +64,8 @@ public class Enemy_Large : Enemy
         should_I_hunt_the_player = false;
         DEnemyColl.enabled = false;
         transform.localScale = new Vector3(3, 3, 1);
-
+        lsh.StopChasing();
         reset_attack();
-
-
-
-        //Debug.Log(" is playerhunt true?" +playerHunt);
-        //Debug.Log(" is playerhunt true?" + should_I_hunt_the_player);
-        //Debug.Log(" is playerposition null? " + playerposition == null);
     }
 
 
@@ -98,8 +85,7 @@ public class Enemy_Large : Enemy
         
         if (collision.gameObject.CompareTag("Player") && !isAttacking)
         {
-            sh.StopBreathing();
-            sh.PlayLargeEnemyChasing();
+            lsh.PlayChasing();
             isAttacking = true;
             StartCoroutine(Attack_routine());
         }

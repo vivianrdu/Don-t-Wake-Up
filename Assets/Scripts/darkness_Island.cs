@@ -12,7 +12,7 @@ public class darkness_Island : MonoBehaviour
     private float current_intensity;
 
    
-    private List<Enemy> enemies;
+    private Enemy_Dark[] enemies;
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,7 +32,7 @@ public class darkness_Island : MonoBehaviour
             second_collider = collidersObj[0];
         }
        */
-        enemies = new List<Enemy>();
+        enemies = FindObjectsOfType<Enemy_Dark>();
     }
 
     // Update is called once per frame
@@ -43,13 +43,6 @@ public class darkness_Island : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.CompareTag("Enemy"))
-        {
-           enemies.Add(collision.GetComponent<Enemy>());
-
-        }
-
         if (collision.CompareTag("Player"))
         {
 
@@ -58,10 +51,6 @@ public class darkness_Island : MonoBehaviour
 
             StartCoroutine(change_global_light(true));
         }
-
-        
-
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -72,15 +61,12 @@ public class darkness_Island : MonoBehaviour
             current_intensity = light_global.intensity;
             StartCoroutine(change_global_light(false));
 
-            foreach (Enemy enemy in enemies)
-            {
-                enemy.darkness_Island_reset();
-
-            }
         }
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && !collision.GetComponentInParent<Enemy>().anim.GetBool("Stunned"))
         {
-            collision.GetComponent<Enemy>().darkness_Island_reset();
+            Debug.Log("exit dark island trigger");
+
+            collision.GetComponentInParent<Enemy>().Darkness_Island_reset();
         }
     }
 
@@ -89,7 +75,6 @@ public class darkness_Island : MonoBehaviour
     {
         float totalTransitionTime = 1.5f;
         float elapsedTime = 0;
-        Debug.Log("godark");
 
         while (elapsedTime <= totalTransitionTime)
         {

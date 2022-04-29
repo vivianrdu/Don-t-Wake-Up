@@ -1384,8 +1384,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185328550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 219.4485, y: 1.14, z: 10}
-  m_LocalScale: {x: 1.5903599, y: 1.27, z: 1}
+  m_LocalPosition: {x: 218.9179, y: 1.14, z: 10}
+  m_LocalScale: {x: 1.6318684, y: 1.27, z: 1}
   m_Children: []
   m_Father: {fileID: 501655828}
   m_RootOrder: 3
@@ -7206,8 +7206,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161666157}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 90.877, y: 1.14, z: 10}
-  m_LocalScale: {x: 1.499108, y: 1.27, z: 1}
+  m_LocalPosition: {x: 89.8092, y: 1.14, z: 10}
+  m_LocalScale: {x: 1.5824584, y: 1.27, z: 1}
   m_Children: []
   m_Father: {fileID: 501655828}
   m_RootOrder: 1
@@ -8628,7 +8628,7 @@ BuoyancyEffector2D:
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 90
-  m_FlowMagnitude: 15
+  m_FlowMagnitude: 2
   m_FlowVariation: 2
 --- !u!212 &1452322946
 SpriteRenderer:

@@ -80,19 +80,6 @@ public class DarkEnemySoundHandler : MonoBehaviour
         //StartCoroutine(FadeOut(snoring, 1f));
     }
 
-    public void PlayLargeEnemyChasing()
-    {
-        Debug.Log("large dark enemy chasing");
-        if (!large_enemy_chasing.isPlaying)
-        {
-            large_enemy_chasing.Play(0);
-        }
-    }
-    public void StopLargeEnemyChasing()
-    {
-        large_enemy_chasing.Stop();
-    }
-
     public static IEnumerator FadeIn(AudioSource audioSource, float FadeTime)
     {
         audioSource.Play();

@@ -29,7 +29,6 @@ public class Line_of_Sight_Enemy : MonoBehaviour
             Debug.Log("Pebble in line of sight");
             GetComponentInParent<Enemy_Water>().pebble_detected = true;
             GetComponentInParent<Enemy_Water>().pebble_position = coll.transform;
-            //GetComponentInParent<DarkEnemySoundHandler>().StopChasing();
         }
     }
 
@@ -38,7 +37,7 @@ public class Line_of_Sight_Enemy : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             GetComponentInParent<Enemy>().playerposition = null;
-            if (GetComponentInParent<Enemy>().transform.name == "DarkEnemy")
+            if(GetComponentInParent<Enemy>().transform.name == "DarkEnemy")
             {
                 GetComponentInParent<Enemy>().sh.StopChasing();
                 GetComponentInParent<Enemy>().sh.PlayBreathing();
