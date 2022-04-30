@@ -59,6 +59,8 @@ public class Enemy_Dark : Enemy
             anim.SetBool("playerDetected", false);
             patrol();
 
+            sh.StopScreeching();
+            sh.StopBreathing();
             sh.StopChasing();
 
             return;
@@ -222,7 +224,7 @@ public class Enemy_Dark : Enemy
         while (stun >= 0)
         {
             sh.StopBreathing();
-            sh.StopChasing();
+            //sh.StopChasing();
             sh.PlayScreeching();
             stun -= Time.deltaTime;
             yield return null;
