@@ -38,7 +38,7 @@ public class DarkEnemySoundHandler : MonoBehaviour
 
     public void PlayChasing()
     {
-        //Debug.Log("dark enemy chasing");
+        Debug.Log("dark enemy chasing");
         if (!chasing.isPlaying)
         {
             chasing.Play(0);
@@ -46,23 +46,22 @@ public class DarkEnemySoundHandler : MonoBehaviour
     }
     public void StopChasing()
     {
-        //Debug.Log("dark enemy stop chasing");
+        Debug.Log("dark enemy stop chasing");
         StartCoroutine(FadeOut(chasing, 1f));
         //chasing.Stop();
     }
 
     public void PlayScreeching()
     {
-        Debug.Log("dark enemy screeching");
         if (!screeching.isPlaying)
         {
-            screeching.Play(0);
+            StartCoroutine(FadeIn(screeching, 1f));
         }
     }
+
     public void StopScreeching()
     {
-        Debug.Log("dark enemy stop screeching");
-        StartCoroutine(FadeOut(screeching, 1f));
+        screeching.Stop();
     }
 
     public void PlaySnoring()
@@ -71,13 +70,10 @@ public class DarkEnemySoundHandler : MonoBehaviour
         {
             StartCoroutine(FadeIn(snoring, 1f));
         }
-        //StartCoroutine(FadeIn(snoring, 1f));
     }
     public void StopSnoring()
     {
-        //Debug.Log("dark enemy stop snoring");
         snoring.Stop();
-        //StartCoroutine(FadeOut(snoring, 1f));
     }
 
     public static IEnumerator FadeIn(AudioSource audioSource, float FadeTime)

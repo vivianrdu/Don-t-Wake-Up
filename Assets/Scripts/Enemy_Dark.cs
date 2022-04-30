@@ -59,6 +59,8 @@ public class Enemy_Dark : Enemy
             anim.SetBool("playerDetected", false);
             patrol();
 
+            sh.StopScreeching();
+            sh.StopBreathing();
             sh.StopChasing();
 
             return;
@@ -73,19 +75,14 @@ public class Enemy_Dark : Enemy
                 anim.SetBool("playerDetected", false);
                 patrol();
             }
-            else if (anim.GetBool("Stunned") == true)
-            {
-                sh.StopBreathing();
-                sh.StopChasing();
-                sh.PlayScreeching();
-            }
             //not currently stunned
             else if (anim.GetBool("Stunned") == false)
             {
-                //sh.StopScreeching();
+                Debug.Log("this line is called");
                 sh.StopBreathing();
+                sh.StopScreeching();
                 sh.PlayChasing();
-
+                
                 anim.SetBool("playerDetected", true); //maybe have to move this for animation
                 Attack();
                 Move(DEnemyRB, playerposition);
@@ -159,8 +156,8 @@ public class Enemy_Dark : Enemy
     {
         sh.StopBreathing();
         sh.StopChasing();
-        sh.StopScreeching();
         sh.StopSnoring();
+        sh.StopScreeching();
         transform.position = respawn_anchor;
         //reset
         stun = 0;
@@ -178,12 +175,13 @@ public class Enemy_Dark : Enemy
     {
         if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius >= 0.2)
         {
-            sh.StopBreathing();
-            sh.StopChasing();
             Debug.Log("Stunned " + stun_length);
             // check to make sure not already stunned
             if (DEnemyColl.enabled)
             {
+                //sh.StopBreathing();
+                //sh.StopChasing();
+                //sh.PlayScreeching();
                 stun = stun_length;
                 anim.SetBool("Stunned", true);
                 DEnemyRB.velocity = new Vector2(0, 0);
@@ -194,6 +192,18 @@ public class Enemy_Dark : Enemy
 
         }
     }
+
+    //private void OnTriggerExit2D(Collider2D coll)
+    //{
+    //    if (coll.CompareTag("Glowing") && coll.GetComponent<Light2D>().pointLightOuterRadius <= 0.2)
+    //    {
+    //        sh.StopScreeching();
+    //        //if (DEnemyColl.enabled)
+    //        //{
+    //        //    sh.StopScreeching();
+    //        //}
+    //    }
+    //}
     #endregion
 
     #region Routines
@@ -213,12 +223,16 @@ public class Enemy_Dark : Enemy
 
         while (stun >= 0)
         {
+            sh.StopBreathing();
+            //sh.StopChasing();
+            sh.PlayScreeching();
             stun -= Time.deltaTime;
             yield return null;
         }
         DEnemyColl.enabled = !DEnemyColl.enabled;
         HeadColl.enabled = !HeadColl.enabled;
 
+        sh.StopScreeching();
         anim.SetBool("Stunned", false);
     }
     #endregion

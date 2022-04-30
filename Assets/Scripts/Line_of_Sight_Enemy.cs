@@ -20,6 +20,10 @@ public class Line_of_Sight_Enemy : MonoBehaviour
             {
                 GetComponentInParent<Enemy>().sh.PlayChasing();
             }
+            if (GetComponentInParent<Enemy>().transform.name == "PeopleEnemy")
+            {
+                GetComponentInParent<AudioSource>().Play(0);
+            }
             Debug.Log("Detected player");
             
         }
@@ -41,6 +45,10 @@ public class Line_of_Sight_Enemy : MonoBehaviour
             {
                 GetComponentInParent<Enemy>().sh.StopChasing();
                 GetComponentInParent<Enemy>().sh.PlayBreathing();
+            }
+            if (GetComponentInParent<Enemy>().transform.name == "PeopleEnemy")
+            {
+                GetComponentInParent<AudioSource>().Stop();
             }
         }
     }
