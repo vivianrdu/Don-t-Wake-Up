@@ -11,17 +11,14 @@ public class Video : MonoBehaviour
     void Start()
     {
         vid = GetComponent<VideoPlayer>();
-        //vid.Play();
+        vid.Play();
         vid.loopPointReached += MoveScene;
 
     }
 
     void Update()
     {
-        if (Input.anyKey)
-        {
-            vid.Play();
-        }
+
     }
 
     void MoveScene (UnityEngine.Video.VideoPlayer vp)
