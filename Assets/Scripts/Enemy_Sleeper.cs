@@ -16,7 +16,8 @@ public class Enemy_Sleeper : Enemy
     public bool isMoving;
     #endregion
 
-    #region Stun_variables
+    #region Sleeping_variables
+    protected CircleCollider2D HeadColl;
     private bool isSleeping;
 
     #endregion
@@ -39,10 +40,12 @@ public class Enemy_Sleeper : Enemy
     void Start()
     {
         Startup();
+        HeadColl = GetComponent<CircleCollider2D>();
         isMoving = false;
         isSleeping = true;
         anim.SetBool("isSleeping", true);
         anim.SetBool("playerDetected", false);
+        HeadColl.enabled = false;
         DEnemyColl.enabled = false;
 
     }
@@ -74,7 +77,8 @@ public class Enemy_Sleeper : Enemy
                     Debug.Log("Waking up");
 
                     StartCoroutine(Wake_up());
-
+                    DEnemyColl.enabled = true;
+                    HeadColl.enabled = true;
                 }
             }
         }
@@ -99,6 +103,7 @@ public class Enemy_Sleeper : Enemy
         anim.SetBool("isSleeping", true);
         anim.SetBool("playerDetected", false);
         DEnemyColl.enabled = false;
+        HeadColl.enabled = false;
         isAttacking = false;
         playerposition = null;
         reset_attack();
@@ -122,7 +127,7 @@ public class Enemy_Sleeper : Enemy
 
         //change number here to fit with waking up
 
-        DEnemyColl.enabled = true;
+        
         isSleeping = false;
 
         anim.SetBool("isSleeping", false);
