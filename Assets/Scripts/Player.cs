@@ -197,7 +197,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift))
         {
             PlayerRB.velocity = new Vector2(x_input * running_speed, PlayerRB.velocity.y);
-            if (!feetContact_water)
+            if (!feetContact_water && !jumping_routine_ongoing)
             {
                 move_setup("running");
             }
@@ -206,7 +206,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D))
         {
             PlayerRB.velocity = new Vector2(x_input * walking_speed, PlayerRB.velocity.y);
-            if (!feetContact_water)
+            if (!feetContact_water && !jumping_routine_ongoing)
             {
                 move_setup("walking");
             }
@@ -227,17 +227,11 @@ public class Player : MonoBehaviour
     public void contact_check()
     {
         LayerMask masky = LayerMask.GetMask("Ground", "Crate", "Water", "Enemy");
-        //Debug.Log("mask" + masky);
-
-        //Bounds boxBounds = playercollider.bounds;
-        //Vector2 topRight = new Vector2(boxBounds.center.x + boxBounds.extents.x, boxBounds.center.y + boxBounds.extents.y);
-        //Debug.Log("topright x: " + topRight.x + "     topright y: " + topRight.y);
-        //Vector2 center = new Vector2(transform.position.x + playercollider.offset.x,transform.position.y + playercollider.offset.y);
+     
         Vector2 feet = new Vector2(playercollider.bounds.center.x ,playercollider.bounds.min.y);
         Vector2 feetsize = new Vector2(playercollider.bounds.extents.x * 2, 0.1f);
-        //RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector3.down, 0.91f, masky);
         RaycastHit2D hit2D = Physics2D.BoxCast(feet, feetsize ,0 ,Vector3.down, 0.1f ,masky);
-        //Debug.Log("ground hits: " + hit2D.collider != null);
+
         if (hit2D.collider != null && !jumping_routine_ongoing)
         {
 
@@ -249,7 +243,7 @@ public class Player : MonoBehaviour
                 feetContact_ground = true;
                 //Debug.Log("ground distance: " + hit2D.distance);
             }
-            else if (hit2D.collider.CompareTag("Crate") || hit2D.collider.CompareTag("Enemy"))
+            else if (hit2D.collider.CompareTag("Enemy") || hit2D.collider.CompareTag("Hideable_Object"))
             {
                 //Debug.Log("feetcontact");
                 feetContact = true;
@@ -457,7 +451,6 @@ public class Player : MonoBehaviour
         }
         anim.SetBool("jumping", false);
         jumping_routine_ongoing = false;
-
     }
 
     #endregion
