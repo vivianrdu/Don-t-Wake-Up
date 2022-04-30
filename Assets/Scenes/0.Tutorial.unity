@@ -5537,8 +5537,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -587.38, y: -427.76}
-  m_SizeDelta: {x: 5.1123, y: 3.8095}
+  m_AnchoredPosition: {x: -587.4696, y: -427.3308}
+  m_SizeDelta: {x: 8.8759, y: 4.663}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1192998240
 MonoBehaviour:
@@ -5573,7 +5573,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.2
-  m_Text: nightlights will only last for 10 seconds
+  m_Text: 'nightlights will only last for 10 seconds
+
+
+    they won''t work on enemies
+    with red eyes'
 --- !u!222 &1192998241
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5601,7 +5605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1242301336
 RectTransform:
   m_ObjectHideFlags: 0
