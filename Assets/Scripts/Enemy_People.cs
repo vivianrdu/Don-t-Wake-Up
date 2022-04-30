@@ -24,6 +24,8 @@ public class Enemy_People : Enemy
 
     #endregion
 
+    private AudioSource chasing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class Enemy_People : Enemy
 
         patrol_stopping_timer = 0;
 
-
+        chasing = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,6 +55,7 @@ public class Enemy_People : Enemy
         {
             anim.SetBool("playerDetected", false);
             anim.SetBool("Patrolling", true);
+            chasing.Stop();
             patrol();
 
 
@@ -66,6 +69,7 @@ public class Enemy_People : Enemy
                 //Debug.Log("player is hidden is called");
                 anim.SetBool("playerDetected", false);
                 anim.SetBool("Patrolling", true);
+                chasing.Stop();
                 patrol();
             }
 
@@ -73,6 +77,10 @@ public class Enemy_People : Enemy
             {
                 anim.SetBool("Patrolling", false);
                 anim.SetBool("playerDetected", true); //maybe have to move this for animation
+                if (!chasing.isPlaying)
+                {
+                    chasing.Play(0);
+                }
                 Attack();
                 Move(DEnemyRB, playerposition);
                 patrol_stopping_timer = Random.Range(0, 5);
