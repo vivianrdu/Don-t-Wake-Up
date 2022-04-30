@@ -241,10 +241,6 @@ public class Enemy : MonoBehaviour
         {
 
             Debug.Log("Attack");
-            //GetComponent<DarkEnemySoundHandler>().StopBreathing();
-            //GetComponent<DarkEnemySoundHandler>().StopChasing();
-            //GetComponent<DarkEnemySoundHandler>().StopScreeching();
-            //GetComponent<DarkEnemySoundHandler>().StopSnoring();
             if (!isAttacking)
             {
                 StartCoroutine(Attack_routine());

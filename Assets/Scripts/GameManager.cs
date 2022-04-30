@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
 
     public void DarkScene()
     {
-        Debug.Log("Load DarkScene");
         SceneManager.LoadScene("1.DarkScene");
     }
 

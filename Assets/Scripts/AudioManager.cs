@@ -72,7 +72,6 @@ public class AudioManager : MonoBehaviour
 
             if (sound.group == "Music")
             {
-                Debug.Log("Play Music");
                 sound.source.outputAudioMixerGroup = musicGroup;
                 sound.source.playOnAwake = true;
                 sound.source.loop = true;
@@ -96,7 +95,6 @@ public class AudioManager : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("OnEnable called");
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -158,7 +156,6 @@ public class AudioManager : MonoBehaviour
 
     void OnDisable()
     {
-        Debug.Log("OnDisable");
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -204,7 +201,6 @@ public class AudioManager : MonoBehaviour
         {
             newSource.volume = Mathf.Lerp(0.3f, 0, timeElapsed / timeToFade);
             timeElapsed += Time.deltaTime;
-            Debug.Log(newSource.volume.ToString());
             yield return null;
         }
     }
@@ -220,7 +216,6 @@ public class AudioManager : MonoBehaviour
         {
             newSource.volume = Mathf.Lerp(0, 0.3f, timeElapsed / timeToFade);
             timeElapsed += Time.deltaTime;
-            Debug.Log(newSource.volume.ToString());
             yield return null;
         }
     }
@@ -260,12 +255,10 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == audio);
         if (s != null && s.source.isPlaying)
         {
-            Debug.Log("playing clip");
             return true;
         }
         else
         {
-            Debug.Log("not playing");
             return false;
         }
     }
