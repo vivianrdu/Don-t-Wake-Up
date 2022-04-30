@@ -7470,8 +7470,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3651259561510494918, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc54a0c257bf1444b8a898349235113a, type: 3}
 --- !u!1 &1207145109
 GameObject:
