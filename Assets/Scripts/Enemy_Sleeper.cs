@@ -62,6 +62,8 @@ public class Enemy_Sleeper : Enemy
         if (isMoving)
         {
             Debug.Log("stop snoring and start chasing");
+            DEnemyColl.enabled = true;
+            HeadColl.enabled = true;
             sh.StopSnoring();
             sh.PlayChasing();
             Attack();
@@ -77,8 +79,6 @@ public class Enemy_Sleeper : Enemy
                     Debug.Log("Waking up");
 
                     StartCoroutine(Wake_up());
-                    DEnemyColl.enabled = true;
-                    HeadColl.enabled = true;
                 }
             }
         }
