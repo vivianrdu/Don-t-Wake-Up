@@ -832,6 +832,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnoringRadius2
       objectReference: {fileID: 0}
+    - target: {fileID: 758588190497390381, guid: 5d26721984ce74272abcdb73019c7822, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758588190497390381, guid: 5d26721984ce74272abcdb73019c7822, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d26721984ce74272abcdb73019c7822, type: 3}
 --- !u!4 &1858079216489137009 stripped
