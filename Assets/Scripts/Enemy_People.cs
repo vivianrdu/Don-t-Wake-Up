@@ -46,9 +46,6 @@ public class Enemy_People : Enemy
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Vector2.Distance(playerposition.position, transform.position));
-
-
         patrol_stopping_timer -= Time.deltaTime;
 
         if (playerposition == null || player_in_Game == null)
@@ -69,6 +66,10 @@ public class Enemy_People : Enemy
                 //Debug.Log("player is hidden is called");
                 anim.SetBool("playerDetected", false);
                 anim.SetBool("Patrolling", true);
+                if (DEnemyColl.enabled)
+                {
+                    DEnemyColl.enabled = !DEnemyColl.enabled;
+                }
                 chasing.Stop();
                 patrol();
             }
@@ -76,12 +77,15 @@ public class Enemy_People : Enemy
             else
             {
                 anim.SetBool("Patrolling", false);
-                anim.SetBool("playerDetected", true); //maybe have to move this for animation
+                anim.SetBool("playerDetected", true); 
                 if (!chasing.isPlaying)
                 {
                     chasing.Play(0);
                 }
-                Attack();
+                if (!DEnemyColl.enabled)
+                {
+                    DEnemyColl.enabled = !DEnemyColl.enabled;
+                }
                 Move(DEnemyRB, playerposition);
                 patrol_stopping_timer = Random.Range(0, 5);
             }
@@ -91,16 +95,20 @@ public class Enemy_People : Enemy
     }
 
     #region Movement_functions
+    public new void Attack()
+    {
+        if (!isAttacking)
+        {
+            StartCoroutine(Attack_routine());
+        }
+    }
+
     public new void patrol()
     {
-        //Debug.Log("patrol timer" + patrol_stopping_timer);
-
         if (patrol_stopping_timer <= 0)
         {
 
-            //Debug.Log("Patrol patrol stopping timer below 0");
             float random_number = Random.Range(0, 1000);
-            //Debug.Log("random number" + random_number);
             if (random_number < patrol_stopping_randoness)
             {
                 patrol_stopping_timer = Random.Range(0, 5);
@@ -157,7 +165,6 @@ public class Enemy_People : Enemy
               currdirection_of_patrol = 1;
           }
     }
-
     #endregion
 
     #region Death_and_Respawn_variables
@@ -169,22 +176,20 @@ public class Enemy_People : Enemy
         isAttacking = false;
         anim.SetBool("playerDetected", false);
     }
-
-
-
     #endregion
 
     #region Triggers and Collisions
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && player_in_Game.isHidden)
+        if (collision.gameObject.tag == "Player")
         {
-            Physics2D.IgnoreCollision(collision.transform.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+            StartCoroutine(playerposition.GetComponent<Player>().Die());
+            
         }
         // Change orientation when crashing into the wall
         if (collision.gameObject.tag == "Wall" && !anim.GetBool("playerDetected"))
         {
-            Debug.Log("Change orientation");
             float orientation = (transform.position.x - respawn_anchor.x);
             if (orientation < 0)
             {

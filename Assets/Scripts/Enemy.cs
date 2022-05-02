@@ -188,9 +188,14 @@ public class Enemy : MonoBehaviour
     {
         isAttacking = true;
         float attackLength = 1f;
+        Vector2 vector_enemy = Vector2.one;
+        if (transform.name == "PeopleEnemy")
+        {
+            vector_enemy = new Vector2(3, 3);
+            attackLength = 0f;
+        }
+        
         DEnemyRB.velocity = Vector2.zero;
-
-
         anim.SetTrigger("Attacking");
 
         while (attackLength >= 0)
@@ -199,14 +204,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        Vector2 vector_enemy = Vector2.one;
-        if (transform.name == "PeopleEnemy")
-        {
-            vector_enemy = new Vector2(5, 5);
-        }
-
         RaycastHit2D[] hits = Physics2D.BoxCastAll(DEnemyRB.position + direction, vector_enemy, 0f, Vector2.zero);
-
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.transform.CompareTag("Player"))
@@ -221,14 +219,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        if (transform.name == "PeopleEnemy" && isAttacking == false && (
-                    (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 3) ||
-                    (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 3)))
-        {
-            Debug.Log("PeopleEnemy Attack");
-            StartCoroutine(Attack_routine());
-        }
-        else if (transform.name == "SleepingDarkEnemy" && isAttacking == false && (
+        if (transform.name == "SleepingDarkEnemy" && isAttacking == false && (
                     (direction.x == 1 && Vector2.Distance(playerposition.position, transform.position) <= 2) ||
                     (direction.x == -1 && Vector2.Distance(playerposition.position, transform.position) <= 1.3)))
         {

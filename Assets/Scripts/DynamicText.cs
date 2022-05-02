@@ -27,7 +27,7 @@ public class DynamicText : MonoBehaviour
         else
         {
             float distFromPlayer = Vector2.Distance(player.position, transform.position);
-            if (distFromPlayer < 3)
+            if (distFromPlayer < 5)
             {
                 if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
                     && text.text == "move\n(a) or (d)")
@@ -44,6 +44,10 @@ public class DynamicText : MonoBehaviour
                 }
                 else if ((Input.GetKeyDown(KeyCode.LeftShift) || (Input.GetKeyDown(KeyCode.RightShift)))
                     && text.text == "hold SHIFT to run")
+                {
+                    StartCoroutine(FadeTextToZeroAlpha(1f, text));
+                }
+                else if ((Input.GetKeyDown(KeyCode.S)) && text.text == "press (s) to crouch")
                 {
                     StartCoroutine(FadeTextToZeroAlpha(1f, text));
                 }
