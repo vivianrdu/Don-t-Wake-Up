@@ -1098,7 +1098,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373089946}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1108,8 +1108,8 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &373089950
 BoxCollider2D:
@@ -1701,6 +1701,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1408245942}
     m_Modifications:
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3165571721274395810, guid: 704803719b2e041938450b83062f8de0, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -5567,6 +5579,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
 --- !u!4 &741758580 stripped
@@ -5658,6 +5682,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1408245942}
     m_Modifications:
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3165571721274395810, guid: 704803719b2e041938450b83062f8de0, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -5807,6 +5843,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5394389441659319062, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394389441659319062, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394389441659319062, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
 --- !u!4 &797491577 stripped
@@ -5899,6 +5947,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1408245942}
     m_Modifications:
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3165571721274395810, guid: 704803719b2e041938450b83062f8de0, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -6111,6 +6171,18 @@ PrefabInstance:
     - target: {fileID: 5371658587898923296, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
@@ -6649,6 +6721,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1408245942}
     m_Modifications:
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3165571721274395810, guid: 704803719b2e041938450b83062f8de0, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -6852,6 +6936,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1408245942}
     m_Modifications:
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3165571721274395810, guid: 704803719b2e041938450b83062f8de0, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -7133,6 +7229,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1408245942}
     m_Modifications:
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3165571721274395810, guid: 704803719b2e041938450b83062f8de0, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -8124,6 +8232,18 @@ PrefabInstance:
     - target: {fileID: 5371658587898923296, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
@@ -14166,6 +14286,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1408245942}
     m_Modifications:
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165571721274395808, guid: 704803719b2e041938450b83062f8de0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3165571721274395810, guid: 704803719b2e041938450b83062f8de0, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -15019,6 +15151,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408832005878805066, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7694021126053942535, guid: 1b05be79c718f4017bff69eb3d53be10, type: 3}
       propertyPath: player
       value: 
@@ -15151,14 +15295,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1408245942}
     m_Modifications:
-    - target: {fileID: 3165571721274395810, guid: 704803719b2e041938450b83062f8de0, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165571721274395810, guid: 704803719b2e041938450b83062f8de0, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 404949445
-      objectReference: {fileID: 0}
     - target: {fileID: 3165571721274395811, guid: 704803719b2e041938450b83062f8de0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -15255,7 +15391,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3308467952598808192}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -15265,8 +15401,8 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &3308467952598808195
 BoxCollider2D:
@@ -15374,14 +15510,6 @@ PrefabInstance:
       propertyPath: otherSide
       value: 
       objectReference: {fileID: 2082490182}
-    - target: {fileID: 5394389441659319048, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5394389441659319048, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 404949445
-      objectReference: {fileID: 0}
     - target: {fileID: 5394389441659319060, guid: 102dbd4ffccc5458bab2b67b06e547f1, type: 3}
       propertyPath: m_Name
       value: One-Way Door (Start Room)

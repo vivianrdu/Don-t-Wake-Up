@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
 
     #region Opening_Door_variables
     public bool canOpen = true;
-    public float openTimer = 1f;
+    public float openTimer = 0.5f;
     #endregion
     
     #region DoorType_variables
@@ -35,7 +35,7 @@ public class Door : MonoBehaviour
             if (openTimer <= 0f)
             {
                 canOpen = true;
-                openTimer = 1f;
+                openTimer = 0.5f;
             }
         }
     }
