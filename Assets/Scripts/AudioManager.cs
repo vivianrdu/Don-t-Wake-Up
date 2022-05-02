@@ -104,7 +104,14 @@ public class AudioManager : MonoBehaviour
 
         if (sceneName == "0.StartMenu")
         {
-            PlayMusic("StartMenuBGMusic");
+            if (IsPlaying("PeopleSceneBGMusic"))
+            {
+                SwapMusic("PeopleSceneBGMusic", "StartMenuBGMusic");
+            }
+            else
+            {
+                PlayMusic("StartMenuBGMusic");
+            }
         }
         else if (sceneName == "0.Tutorial")
         {

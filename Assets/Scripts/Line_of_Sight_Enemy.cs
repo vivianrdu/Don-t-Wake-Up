@@ -37,7 +37,7 @@ public class Line_of_Sight_Enemy : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             GetComponentInParent<Enemy>().playerposition = null;
-            if(GetComponentInParent<Enemy>().transform.name == "DarkEnemy")
+            if (GetComponentInParent<Enemy>().transform.name == "DarkEnemy")
             {
                 GetComponentInParent<Enemy>().sh.StopChasing();
                 GetComponentInParent<Enemy>().sh.PlayBreathing();
