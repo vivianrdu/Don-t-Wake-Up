@@ -59,10 +59,6 @@ public class Enemy_Dark : Enemy
             anim.SetBool("playerDetected", false);
             patrol();
 
-            sh.StopScreeching();
-            sh.StopBreathing();
-            sh.StopChasing();
-
             return;
         }
         //detected player in line of sight
@@ -156,8 +152,8 @@ public class Enemy_Dark : Enemy
     {
         sh.StopBreathing();
         sh.StopChasing();
-        sh.StopSnoring();
         sh.StopScreeching();
+
         transform.position = respawn_anchor;
         //reset
         stun = 0;
@@ -224,7 +220,7 @@ public class Enemy_Dark : Enemy
         while (stun >= 0)
         {
             sh.StopBreathing();
-            //sh.StopChasing();
+            sh.StopChasing();
             sh.PlayScreeching();
             stun -= Time.deltaTime;
             yield return null;
